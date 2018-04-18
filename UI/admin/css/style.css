@@ -1,0 +1,185 @@
+html, body{
+	margin: 0px;
+	height: 100%;
+	background-color: #f6f6f6;
+	font-family: Arial, sans-serif;
+}
+
+input{
+	width: 100%;
+	height: 33px;
+    border-color: #c1b8b8;
+    border-style: solid;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+textarea{
+	width: 100%;
+    border-color: #c1b8b8;
+    border-style: solid;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border-width: 2px;
+}
+nav{
+	background-color: #e54310;
+	padding: 9px;
+	color: white;
+	margin-bottom: 20px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+nav > .title{
+	font-family: "Segoe Print";
+}
+nav > .title > h2{
+	margin: 0;
+}
+
+.card {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  background-color: white;
+  border-radius: 3px;
+}
+
+.card-body{
+	padding: 5px;
+}
+
+.card-title{
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.content{
+	width: 90%;
+	margin: auto;
+}
+
+@media only screen and (max-width: 600px){
+	.content{
+		display: flex;
+		flex-direction: column;
+	}
+
+	.card{
+		width: 90%;
+		margin: auto;
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 20px;
+	}
+
+	.card-img{
+		height: 218px;
+	}
+
+	.card-description{
+		color: #3f3e3e;
+	}
+	.card-img > img{
+		height: 100%;
+		width: 100%;
+	}
+	.card-options{
+		margin-left: auto;
+	}
+	.card-footer{
+		display: flex;
+		padding: 10px;
+	}
+
+	.card-title{
+		font-size: 19px;
+	}
+	nav > .title{
+		text-align: center;
+	}
+	.page-title{
+		margin: 0;
+    	margin-bottom: 14px;
+	}
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+	nav{
+		display: flex;
+		flex-direction: row;
+		padding-left: 30px;
+		padding-right: 30px; 
+	}
+	.nav-menus{
+		margin-left: auto;
+	}
+	.nav-list{
+		list-style: none;
+	}
+	.nav-list > li{
+		display: inline-block;
+		margin-right: 20px;
+	}
+	.nav-list > li > a{
+		text-decoration: none;
+		color: white;
+	}
+	#search{
+		width: 640px;
+	}
+
+	.meals{
+		display: grid;
+		grid-template-columns: auto auto auto auto;
+	}
+
+	.card{
+		width: 90%;
+		margin: auto;
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 20px;
+		margin-right: 20px;
+	}
+
+	.card-img{
+		height: 218px;
+	}
+
+	.card-description{
+		color: #3f3e3e;
+	}
+	.card-img > img{
+		height: 100%;
+		width: 100%;
+	}
+	.card-options{
+		margin-left: auto;
+	}
+	.card-footer{
+		display: flex;
+		padding: 10px;
+	}
+
+	.card-title{
+		font-size: 19px;
+	}
+} 
+
+.add-meal-btn{
+	width: 132px;
+    background-color: #2b2a2a;
+    color: white;
+    font-size: 20px;
+    padding: 6px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: #8b8c89;
+    text-decoration: none;
+}
+
+.add-meal-btn:hover{
+	background-color: #bfb6b6;
+	color: #2b2a2a;
+}

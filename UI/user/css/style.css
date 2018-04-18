@@ -8,7 +8,7 @@ html, body{
 input{
 	width: 100%;
 	height: 33px;
-    border-color: #8c8484;
+    border-color: #c1b8b8;
     border-style: solid;
     border-radius: 5px;
     font-size: 20px;
@@ -33,19 +33,20 @@ form{
 }
 
 .login-btn{
-		width: 100%;
-	    height: 38px;
-	    border-radius: 5px;
-	    border-style: solid;
-	    background-color: #e54310;
-	    color: white;
-	    font-size: 19px;
-	    border-color: #903112;
-	}
+	width: 100%;
+    height: 38px;
+    border-radius: 5px;
+    border-style: solid;
+    background-color: #e54310;
+    color: white;
+    font-size: 19px;
+    border-color: #903112;
+}
 
-	.login-btn:hover{
-		background-color: #903112;
-	}
+.login-btn:hover{
+	background-color: #903112;
+}
+	
 @media only screen and (max-width: 600px){
 
 	.main-nav{
