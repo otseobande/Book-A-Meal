@@ -19,6 +19,11 @@ form{
 	width: 100%;
 }
 
+label{
+	font-weight: bold;
+	color: #373434;
+}
+
 .title{
 	text-align: center;
 	font-family: "Segoe Print";
@@ -46,8 +51,19 @@ form{
 .login-btn:hover{
 	background-color: #903112;
 }
-	
+
+.brand{
+	margin-top: 32px;
+}
+.brand > img{
+	width: 104px;
+}
+
 @media only screen and (max-width: 600px){
+
+	.brand > img{
+		width: 70px;
+	}
 
 	.main-nav{
 		background-color: #4b4b86;

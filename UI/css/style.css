@@ -197,6 +197,9 @@ nav{
 		display: flex;
 		flex-direction: row;
 	}
+	.brand > img{
+		width: 86px;
+	}
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -207,6 +210,7 @@ nav{
 		padding-left: 30px;
 		padding-right: 30px; 
 	}
+	
 	.meal-search-area{
 		display: flex;
 		flex-direction: row;

@@ -19,25 +19,34 @@
 			flex-direction: column;
 		}
 	</style>
-	<h1 class="title" style="margin-top: 38px;">Book-A-Meal</h1>
+	<div class="title brand">
+		<img src="img/logo.svg">
+		<h1 style="margin-top: -9px;">Book-A-Meal</h1>
+	</div>
 	
-	<div class="login-area">
+	
+	<div class="login-area" style="margin-top: 0px;">
 		
 		<form>
-			<label for="fullname">Full name:</label>
-			<input type="text" name="fullname" id="fullname" required>
+			<label for="fullname">Full name:
+				<input type="text" name="fullname" id="fullname" required>
+			</label>
 
-			<label for="email">Email:</label>
-			<input type="email" name="email" id="email" required>
+			<label for="username">Username:
+				<input type="text" id="username" name="username" required>
+			</label>
 
-			<label for="username">Username:</label>
-			<input type="text" id="username" name="username" required>
+			<label for="email">Email:
+				<input type="email" name="email" id="email" required>
+			</label>
 
-			<label for="password">Password:</label>
-			<input type="password" id="password" name="password" required>
+			<label for="password">Password:
+				<input type="password" id="password" name="password" required>
+			</label>
 
-			<label for="password-confirmation">Confirm password:</label>
-			<input type="password" name="password-confirmation" id="password-confirmation">
+			<label for="password-confirmation">Confirm password:
+				<input type="password" name="password-confirmation" id="password-confirmation">
+			</label>
 
 			<button class="login-btn" type="submit">Sign Up</button>
 		</form>
