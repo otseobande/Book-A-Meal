@@ -7,7 +7,7 @@ for(let i = 0; i <= deleteLinks.length -1; i++ ){
 let navToggle = document.querySelector("#nav-toggle");
 let navMenus = document.querySelector(".nav-menus");
 
-navToggle.onclick = (e) =>{
+navToggle.onclick = (e) => {
 	if(navMenus.style.display === 'none' || navMenus.style.display === ''){
 		navMenus.style.display = 'block';
 	}else{
@@ -15,5 +15,3 @@ navToggle.onclick = (e) =>{
 	}
 	
 }
-
-console.log(navMenus)
