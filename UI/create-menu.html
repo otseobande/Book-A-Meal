@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Create menu - Book-A-Meal</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<style type="text/css">
+		@media only screen and (min-width: 768px) {
+			.content{
+				width: 50%;
+			}
+		}
+	</style>
+	<nav class="">
+		<div class="title-area">
+			<a class="title">Book-A-Meal</a>
+			<button id="nav-toggle" href="#">&#9776;</button>
+		</div>
+		<div class="nav-menus">
+			<ul class="nav-list">
+				<li><a href="meals.html">Meals</a></li>
+				<li><a href="#">Menus</a></li>
+				<li><a href="orders.html">Orders</a><li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="content">
+		<h3 class="page-title"><a href="menus.html">Menus</a> &gt; Create menu</h3>
+		<form>
+			<label for="date">Date:</label>
+			<input type="date" name="date" id="id" required>
+			<label>Meals:</label>
+			<select multiple class="meal-select">
+				<option>Pepper soup</option>
+				<option>Amala</option>
+				<option>Ewedu</option>
+				<option>Pounded yam</option>
+			</select>
+			<span style="font-size:15px;">Hold the ctrl button and select multiple meals for the menu</span><br><br>
+			<button type="submit" class="create-menu-btn">Create menu</button>
+		</form>
+	</div>
+
+	<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>

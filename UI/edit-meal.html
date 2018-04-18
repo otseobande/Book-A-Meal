@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Add meal - Book-A-Meal</title>
+	<title>Edit meal - Book-A-Meal</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 	<nav class="">
-		<a class="title"><h2>Book-A-Meal</h2></a>
+		<div class="title-area">
+			<a class="title">Book-A-Meal</a>
+			<button id="nav-toggle" href="#">&#9776;</button>
+		</div>
+		<div class="nav-menus">
+			<ul class="nav-list">
+				<li><a href="meals.html">Meals</a></li>
+				<li><a href="menus.html">Menus</a></li>
+				<li><a href="orders.html">Orders</a><li>
+			</ul>
+		</div>
 	</nav>
 
 	<style type="text/css">
@@ -19,7 +29,7 @@
 	</style>
 	<div class="content">
 		<div style="margin-bottom: 30px;">
-			<h3 class="page-title">Meal options > Edit Meal</h3>
+			<h3 class="page-title"><a href="meals.html">Meals</a> &gt; Edit Meal #4322</h3>
 			<form>
 				<label for="title">Title: </label>
 				<input type="text" value="Chicken pesto pasta" name="title" id="title" required>

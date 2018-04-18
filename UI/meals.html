@@ -1,24 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Meal options - Book-A-Meal</title>
+	<title>Meals - Book-A-Meal</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 	<nav class="">
-		<a class="title"><h2>Book-A-Meal</h2></a>
+		<div class="title-area">
+			<a class="title">Book-A-Meal</a>
+			<button id="nav-toggle" href="#">&#9776;</button>
+		</div>
 		<div class="nav-menus">
 			<ul class="nav-list">
-				<li><a href="meal-options.html">Meals</a></li>
-				<li><a href="#">Menus</a></li>
+				<li><a href="meals.html">Meals</a></li>
+				<li><a href="menus.html">Menus</a></li>
+				<li><a href="orders.html">Orders</a><li>
 			</ul>
 		</div>
 	</nav>
 
+	<style type="text/css">
+		@media only screen and (min-width: 768px) {
+			.add-meal-btn{
+				height: 26px;
+			}
+		}
+	</style>
 	<div class="content">
-		<div style="margin-bottom: 30px;">
-			<h3 class="page-title">Meal options</h3>
+		<h3 class="page-title">Meals</h3>
+		<div class="meal-search-area">
 
 			<label for="search">Search for meals:</label>
 			<input name="search" placeholder="Meal title.." id="search">
