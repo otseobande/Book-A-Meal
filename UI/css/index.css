@@ -52,10 +52,7 @@
 	    left: 69px;
 	}
 
-	.logo{
-		position: absolute;
-	    top: 12px;
-	}
+	
 
 	.nav-list{
 		margin-top: 8px;
@@ -119,7 +116,7 @@ footer{
 		background-size: 100% 357px
 	}
 	.mask{
-		height: 300px;
+		height: 304px;
 	    width: 100%;
 	    background-color: #0000007d;
 	}

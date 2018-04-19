@@ -1,7 +1,7 @@
 body{
 	margin: 0px;
 	height: 100%;
-	background-color: #ff3d0029;
+	/*background-color: #ff3d0029;*/
 	font-family: Arial, sans-serif;
 }
 
@@ -11,7 +11,7 @@ input{
     border-color: #c1b8b8;
     border-style: solid;
     border-radius: 5px;
-    font-size: 20px;
+    font-size: 15px;
     margin-bottom: 10px;
 }
 
@@ -55,8 +55,12 @@ label{
 }
 
 .brand{
+	position: relative;
 	margin-top: 32px;
 	text-decoration: none;
+	text-align: center;
+	top: inherit;
+	left: inherit;
 }
 .brand > a > img{
 	width: 104px;

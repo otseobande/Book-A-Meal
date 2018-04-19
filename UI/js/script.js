@@ -11,10 +11,10 @@ let mask = document.querySelector('.mask');
 navToggle.onclick = (e) => {
 	if(navMenus.style.display === 'none' || navMenus.style.display === ''){
 		navMenus.style.display = 'block';
-		mask.style.height = "218px";
+		mask.style.height = "222px";
 	}else{
 		navMenus.style.display = 'none';
-		mask.style.height = "300px";
+		mask.style.height = "304px";
 	}
 	
 }

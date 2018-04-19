@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Menu - Book-A-Meal</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+	<nav class="">
+		<div class="title-area">
+			<div class="title-area">
+				<a href="index.html" class="title">
+					<img class="logo" src="img/logo-white.svg" width="30">
+					<span class="app-name">Book-A-Meal</span>
+				</a>
+				<button id="nav-toggle" href="#">&#9776;</button>
+			</div>
+		</div>
+			
+		<div class="nav-menus">
+			<ul class="nav-list">
+				<li><a href="menu-user.html">Menu</a></li>
+				<li><a href="orders-user.html">Order History</a><li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="content">
+		<div style="display: flex; width: 100%; flex-direction: column;">
+			
+		<h3 class="page-title">Manage Orders</h3>
+		<div class="filters">
+			<label for="order-date">Order date:
+				<input type="date" id="order-date">
+			</label>
+			<div class="other-filters" >
+				<label for="meals">Meal:
+					<select id="meals">
+						<option>Pepper Soup</option>
+					</select>
+				</label>
+				<label for="customer-name">Customer name:
+					<input type="text" id="customer-name">
+				</label>
+			</div>
+		</div>
+		<div class="order-filter-btns">
+			<button class="btn other-filters-btn">more filters</button>
+			<button class="btn" style="margin-left: auto">Search</button>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Customer name</th>
+					<th>Meal</th>
+					<th>Price</th>
+					<th>Time</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>32</td>
+					<td>Obande Otse</td>
+					<td>Egusi</td>
+					<td>400</td>
+					<td>4th May, 2018</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<script type="text/javascript">
+		let otherFiltersBtn = document.querySelector('.other-filters-btn');
+		let otherFilters = document.querySelector('.other-filters');
+		otherFiltersBtn.onclick = (e) => {
+			if(otherFilters.style.display !== "none" && otherFilters.style.display !== ""){
+				otherFilters.style.display = "none";
+				e.target.innerText = "more filters";
+			}else{
+				otherFilters.style.display = "block";
+				e.target.innerText = "hide filters"
+			}
+		}
+	</script>	
+		</div>
+		<br>
+		<div class="meals">
+		</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>

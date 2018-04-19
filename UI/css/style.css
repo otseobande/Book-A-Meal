@@ -1,3 +1,7 @@
+@font-face {
+    font-family: handWritten;
+    src: url('fonts/angel.ttf');
+}
 body{
 	margin: 0px;
 	height: 100%;
@@ -120,8 +124,8 @@ nav{
 }
 
 .create-menu-btn:hover{
-	background-color: #bfb6b6;
-	color: #2b2a2a;
+	    background-color: #5a5858;
+    color: #ffffff;
 }
 
 
@@ -195,12 +199,27 @@ nav{
 	}
 	.title-area{
 		display: flex;
+		width: 100%;
 	}
 
 	.nav-menus{
 		display: none;
 	}
 
+	.title{
+		position: absolute;
+	    top:none;
+	    left: none;
+	    text-decoration: none;
+	    color: white;
+	}
+
+	.app-name{
+		position: absolute;
+	    top: 0;
+	    left: 33px;
+	    width: 190px;
+	}
 	.nav-menus > .nav-list{
 		list-style: none;
 		text-align: center;
@@ -280,6 +299,7 @@ nav{
 	nav > .title{
 		text-align: center;
 	}
+	
 	.page-title{
 		margin: 0;
     	margin-bottom: 14px;
@@ -308,6 +328,11 @@ nav{
 	.brand > img{
 		width: 86px;
 	}
+
+	.search-menus{
+		margin-top: 10px;
+	}
+
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -316,8 +341,38 @@ nav{
 		display: flex;
 		flex-direction: row;
 		padding-left: 30px;
-		padding-right: 30px; 
+		padding-right: 30px;
+
+		/*background-color: #a82800;*/
+		margin-bottom: 0px;
+		height: 40px;
 	}
+	.menu-date-input{
+		width: 232px;
+		margin-right: 34px;
+	}
+
+	.menu-date-selection{
+		margin:auto;
+	}
+	.nav-list{
+		margin-top: 6px;
+	}
+
+	.title{
+		position: absolute;
+	    top: 7px;
+	    left: 69px;
+	    text-decoration: none;
+	    color: white;
+	}
+
+	.logo{
+		position: absolute;
+	    top: 4px;
+	    left: -40px;
+	}
+
 	
 	.meal-search-area{
 		display: flex;
@@ -422,4 +477,102 @@ nav{
 
 .card-1:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.menu-header{
+    font-weight: lighter;
+    font-family: handWritten;
+    font-size: 80px;
+    margin: 0;
+    margin-top: -9px;
+    text-align: center;
+    margin-bottom: 44px;
+}
+.handwritten{
+	font-family: handWritten;
+	font-weight: 300;
+}
+
+.menu-title {
+   margin: 0;
+    font-weight: 400;
+    font-size: 72px;
+    margin-top: -34px;
+}
+.meal-list{
+	    font-family: cursive;
+    margin-top: -18px;
+    font-size: 26px;
+    margin-left: 42px;
+}
+.scroll{
+	    background: linear-gradient(to right, #f28621 0%,#f7c485 31%,#f9b868 76%,#f28621 100%);
+    min-height: 399px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    border-radius: 2px;
+    box-shadow: 0 111px 339px -83px rgba(0, 0, 0, 0.93), 0 1px 2px rgba(0,0,0,0.24);
+    margin-top: 49px;
+}
+
+.scroll-top{
+	height: 52px;
+	width: 101%;
+	background-color: white;
+	background: linear-gradient(to bottom, #963f0d 1%,#f7c485 30%,#f9b868 70%,#963f0d 100%);
+	box-shadow: 0 1px 127px rgba(0, 0, 0, 0.93), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.scroll-bottom{
+	margin-top: auto;
+	height: 58px;
+	width: 102%;
+
+	background-color: white;
+	background: linear-gradient(to bottom, #963f0d 1%,#f7c485 30%,#f9b868 70%,#963f0d 100%);
+	box-shadow: 0 1px 127px rgba(0, 0, 0, 0.93), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.scroll-body{
+	height: 100%;
+	padding-left: 43px;
+	padding-right: 43px;
+	box-shadow: inset 20px -17px 179px 23px #00000078;
+}
+
+
+.scroll-body li{
+	display: flex;
+	margin-bottom: 6px;
+}
+
+
+
+.meal-order-btn{
+    background-color: #a36b35;
+    border: 1px solid black;
+    font-size: 22px;
+    box-shadow: 0 1px 13px rgba(0, 0, 0, 0.93), 0 1px 2px rgba(0, 0, 0, 0.89);
+    outline: brown;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    text-transform: capitalize;
+    font-family: cursive;
+    margin-left: auto;
+}
+
+.meal-order-btn:hover{
+       
+    /*background-color: #522b2b96;*/
+    
+    box-shadow: 1px 1px 43px rgb(0, 0, 0), 0 1px 2px rgba(0, 0, 0, 0.89);
+    
 }
