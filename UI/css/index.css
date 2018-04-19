@@ -7,6 +7,28 @@
 
 }
 
+@keyframes increase {
+    0% {font-size: 68px;}
+    10% {font-size: 67px;}
+    20% { font-size: 66px; }
+    30% { font-size: 65px; }
+    40% { font-size: 64px; }
+    50% { font-size: 63px; }
+    60% { font-size: 62px; }
+    70% { font-size: 61px; }
+    80% { font-size: 60px; }
+    90% {font-size: 59px}
+    100% {font-size: 58px}
+}
+
+/* The element to apply the animation to */
+.div {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    animation-name: example;
+    animation-duration: 4s;
+}
 
 @media only screen and (min-width: 768px) {
 	nav{
@@ -48,6 +70,7 @@
 	    padding-left: 60px;
 	    font-family: calibri;
 	    padding-right: 60px;
+	    cursor: pointer;
 	}
 	.mask{
 		height: 456px;
@@ -64,6 +87,20 @@
 
 	}
 
+	i.z{
+		font-style: normal !important;
+		margin: -10px;
+		cursor: pointer;
+		transition: font-size 1s
+		
+	}
+
+
+	i.z.bounceIn{
+    	font-size: 40px;
+	}
+
+
 	
 }
 
@@ -76,6 +113,8 @@ footer{
 	}
 
 @media only screen and (max-width: 600px){
+	
+
 	.home{
 		background-size: 100% 357px
 	}
@@ -89,7 +128,7 @@ footer{
 	    font-weight: 900;
 	    text-align: center;
 	    padding-top: 64px;
-	    font-size: 34px;
+	    font-size: 20px;
 	    padding-left: 60px;
 	    font-family: calibri;
 	    padding-right: 60px;	
@@ -104,5 +143,17 @@ footer{
 		text-align: center;
 		margin-bottom: 19px;
 		font-size: 19px;
+	}
+	i.z{
+		font-size: 34px;
+		font-style: normal !important;
+		margin: -10px;
+		cursor: pointer;
+		transition: font-size 1s		
+	}
+
+
+	i.z.bounceIn{
+    	font-size: 20px;
 	}
 }
