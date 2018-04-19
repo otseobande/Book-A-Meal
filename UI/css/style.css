@@ -397,21 +397,22 @@ nav{
 		margin-left: 5px;
 	}
 
-	.order-btn{
-		background-color: #FF5722;
-	    border: 2px solid #b93c15;
-	    color: white;
-	    border-radius: 5px;
-	    padding-left: 9px;
-	    padding-right: 9px;
-	    padding-top: 2px;
-	    padding-bottom: 2px;
-	    font-size: 16px;
-	    text-decoration: none;
-	}
-	.order-btn:hover{
-		background-color: #b93c15;
-	}
+}
+
+.order-btn{
+	background-color: #FF5722;
+    border: 2px solid #b93c15;
+    color: white;
+    border-radius: 5px;
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 16px;
+    text-decoration: none;
+}
+.order-btn:hover{
+	background-color: #b93c15;
 } 
 
 .card-1 {

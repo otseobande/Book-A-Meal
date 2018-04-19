@@ -6,12 +6,15 @@ for(let i = 0; i <= deleteLinks.length -1; i++ ){
 
 let navToggle = document.querySelector("#nav-toggle");
 let navMenus = document.querySelector(".nav-menus");
+let mask = document.querySelector('.mask');
 
 navToggle.onclick = (e) => {
 	if(navMenus.style.display === 'none' || navMenus.style.display === ''){
 		navMenus.style.display = 'block';
+		mask.style.height = "218px";
 	}else{
 		navMenus.style.display = 'none';
+		mask.style.height = "300px";
 	}
 	
 }
