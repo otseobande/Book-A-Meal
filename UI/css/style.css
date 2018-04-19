@@ -1,8 +1,8 @@
-html, body{
+body{
 	margin: 0px;
 	height: 100%;
 	background-color: #f6f6f6;
-	font-family: Arial, sans-serif;
+	font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 input, select{
@@ -43,14 +43,15 @@ nav{
 }
 .title{
 	font-family: "Segoe Print";
-	font-size: 22px
+	font-size: 22px;
+	font-weight: bold;
 }
 
 
 .card {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   background-color: white;
-  border-radius: 3px;
+  border-radius: 5px;
 }
 
 .card-body{
@@ -87,7 +88,111 @@ nav{
     width: 150px;
 }
 
+.add-meal-btn{
+	width: 132px;
+    background-color: #2b2a2a;
+    color: white;
+    font-size: 20px;
+    padding: 6px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: #8b8c89;
+    text-decoration: none;
+    border-width: 1px;
+}
+
+.add-meal-btn:hover{
+	background-color: #bfb6b6;
+	color: #2b2a2a;
+}
+
+.create-menu-btn{
+    background-color: #2b2a2a;
+    color: white;
+    font-size: 20px;
+    padding: 6px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: #8b8c89;
+    text-decoration: none;
+    border-width: 1px;
+    margin-bottom: 5px;
+}
+
+.create-menu-btn:hover{
+	background-color: #bfb6b6;
+	color: #2b2a2a;
+}
+
+
+.checkbox-label {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.checkbox-label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  display: none;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #f1dede;
+  border: 1px solid #eeb19e;
+}
+
+
+.checkbox-label:hover input[type="checkbox"] ~ .checkmark {
+  background-color: #ccc;
+}
+
+
+.checkbox-label input[type="checkbox"]:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-label input[type="checkbox"]:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox-label .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+
 @media only screen and (max-width: 600px){
+	.logo{
+		height: 40px;
+    	margin-right: 10px;
+	}
 	.title-area{
 		display: flex;
 	}
@@ -101,7 +206,7 @@ nav{
 		text-align: center;
 		padding: 0;
 		width: 100%;
-		margin: auto
+		margin: auto;
 	}
 
 	.nav-menus > .nav-list > li{
@@ -133,14 +238,17 @@ nav{
 	    font-size: 21px;
 	    width: 45px;
 	    margin-left: auto;
+	   	height: 36px;
 	}
 	.content{
 		display: flex;
 		flex-direction: column;
 	}
-
+	.home{
+		height: 263px;
+	}
 	.card{
-		width: 90%;
+		width: 75%;
 		margin: auto;
 		display: flex;
 		flex-direction: column;
@@ -220,6 +328,7 @@ nav{
 	}
 	.nav-list{
 		list-style: none;
+		margin-top: 14px;
 	}
 	.nav-list > li{
 		display: inline-block;
@@ -228,6 +337,7 @@ nav{
 	.nav-list > li > a{
 		text-decoration: none;
 		color: white;
+		font-size: 17px;
 	}
 	#search{
 		width: 640px;
@@ -239,20 +349,28 @@ nav{
 	}
 
 	.card{
-		width: 90%;
+		width: 80%;
 		margin: auto;
 		display: flex;
 		flex-direction: column;
 		margin-bottom: 20px;
 		margin-right: 20px;
+		box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 	}
-
+	.card-body{
+		padding: 14px;
+	}
 	.card-img{
 		height: 218px;
 	}
 
 	.card-description{
 		color: #3f3e3e;
+		font-size: 13px;
+		height: 4em; 
+	    line-height: 1em;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
 	}
 	.card-img > img{
 		height: 100%;
@@ -267,108 +385,40 @@ nav{
 	}
 
 	.card-title{
-		font-size: 19px;
+		font-size: 16px;
+		height: 1em; 
+	    line-height: 1em;
+	    overflow: hidden;
+	    white-space: nowrap;
+	    text-overflow: ellipsis;
 	}
 
 	.add-meal-btn{
 		margin-left: 5px;
 	}
+
+	.order-btn{
+		background-color: #FF5722;
+	    border: 2px solid #b93c15;
+	    color: white;
+	    border-radius: 5px;
+	    padding-left: 9px;
+	    padding-right: 9px;
+	    padding-top: 2px;
+	    padding-bottom: 2px;
+	    font-size: 16px;
+	    text-decoration: none;
+	}
+	.order-btn:hover{
+		background-color: #b93c15;
+	}
 } 
 
-.add-meal-btn{
-	width: 132px;
-    background-color: #2b2a2a;
-    color: white;
-    font-size: 20px;
-    padding: 6px;
-    border-radius: 5px;
-    border-style: solid;
-    border-color: #8b8c89;
-    text-decoration: none;
-    border-width: 1px;
+.card-1 {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 
-.add-meal-btn:hover{
-	background-color: #bfb6b6;
-	color: #2b2a2a;
-}
-
-.create-menu-btn{
-    background-color: #2b2a2a;
-    color: white;
-    font-size: 20px;
-    padding: 6px;
-    border-radius: 5px;
-    border-style: solid;
-    border-color: #8b8c89;
-    text-decoration: none;
-    border-width: 1px;
-    margin-bottom: 5px;
-}
-
-.create-menu-btn:hover{
-	background-color: #bfb6b6;
-	color: #2b2a2a;
-}
-
-
-.checkbox-label {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.checkbox-label input[type="checkbox"] {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
-
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 25px;
-  width: 25px;
-  background-color: #f1dede;
-  border: 1px solid #eeb19e;
-}
-
-
-.checkbox-label:hover input[type="checkbox"] ~ .checkmark {
-  background-color: #ccc;
-}
-
-
-.checkbox-label input[type="checkbox"]:checked ~ .checkmark {
-  background-color: #2196F3;
-}
-
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-.checkbox-label input[type="checkbox"]:checked ~ .checkmark:after {
-  display: block;
-}
-
-.checkbox-label .checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
+.card-1:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }

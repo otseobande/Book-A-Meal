@@ -1,7 +1,7 @@
-html, body{
+body{
 	margin: 0px;
 	height: 100%;
-	background-color: #f6f6f6;
+	background-color: #ff3d0029;
 	font-family: Arial, sans-serif;
 }
 
@@ -27,6 +27,7 @@ label{
 .title{
 	text-align: center;
 	font-family: "Segoe Print";
+	font-size: 14px;
 }
 
 .login-area{
@@ -46,6 +47,7 @@ label{
     color: white;
     font-size: 19px;
     border-color: #903112;
+    cursor: pointer;
 }
 
 .login-btn:hover{
@@ -54,9 +56,14 @@ label{
 
 .brand{
 	margin-top: 32px;
+	text-decoration: none;
 }
-.brand > img{
+.brand > a > img{
 	width: 104px;
+}
+.brand > a{
+	text-decoration: none;
+	color: black;
 }
 
 @media only screen and (max-width: 600px){
