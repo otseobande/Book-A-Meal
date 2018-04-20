@@ -20,11 +20,13 @@
 			</div>
 		</div>
 			
+			
 		<div class="nav-menus">
 			<ul class="nav-list">
-				<li><a href="menu-user.html">Menu</a></li>
-				<li><a href="orders-user.html">Order History</a><li>
-				<li><a href="#">Hi User</a></li>
+				<li><a href="meals-caterer.html">Meals</li>
+				<li><a href="menus-caterer.html">Menus</a></li>
+				<li><a href="orders-caterer.html">Order History</a><li>
+				<li><a href="#">Hi Caterer</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -32,7 +34,7 @@
 	<div class="content">
 		<div style="display: flex; width: 100%; flex-direction: column;">
 			
-		<h3 class="page-title">Orders History</h3>
+		<h3 class="page-title">Order History</h3>
 		<div class="filters">
 			<label for="order-date">Order date:
 				<input class="filter-field" type="date" id="order-date">
@@ -43,10 +45,13 @@
 						<option>Pepper Soup</option>
 					</select>
 				</label>
+				<label for="customer-name">Customer Name:
+					<input type="text" name="" id="customer-name" class="filter-field">
+				</label>
 			</div>
 			<div class="order-filter-btns">
 			<button class="btn other-filters-btn">more filters</button>
-			<button class="btn search" >Filter</button>
+			<button class="btn search" >Search</button>
 		</div>
 		</div>
 		
@@ -63,6 +68,9 @@
 	        Meal
 	      </div>
 	      <div class="cell">
+	      	Customer name
+	      </div>
+	      <div class="cell">
 	        Price 
 	      </div>
 	      <div class="cell">
@@ -77,12 +85,15 @@
 	      <div class="cell" data-title="Meal">
 	        Amala and egusi
 	      </div>
+	      <div class="cell" data-title="Customer Name">
+	      	Obande Otse
+	      </div>
 	      <div class="cell" data-title="Price">
 	        &#8358;1,500
 	      </div>
 	      <div class="cell" data-title="date">29th April, 2018</div>
 	    </div>
-  </div>
+ 	 </div>
 	<script type="text/javascript">
 		let otherFiltersBtn = document.querySelector('.other-filters-btn');
 		let otherFilters = document.querySelector('.other-filters');

@@ -6,22 +6,6 @@
 	height: 514px;
 
 }
-
-@keyframes increase {
-    0% {font-size: 68px;}
-    10% {font-size: 67px;}
-    20% { font-size: 66px; }
-    30% { font-size: 65px; }
-    40% { font-size: 64px; }
-    50% { font-size: 63px; }
-    60% { font-size: 62px; }
-    70% { font-size: 61px; }
-    80% { font-size: 60px; }
-    90% {font-size: 59px}
-    100% {font-size: 58px}
-}
-
-/* The element to apply the animation to */
 .div {
     width: 100px;
     height: 100px;
@@ -37,9 +21,8 @@
 		height: 40px;
 		box-shadow: 0 120px 320px rgba(0, 0, 0, 0.41), 0 15px 12px rgba(0,0,0,0.22);
 	}
-	.meals{
-		display: grid;
-		grid-template-columns: repeat(4,1fr);
+	.meal-title{
+		width: 100%;
 	}
 
 	.nav-list{
