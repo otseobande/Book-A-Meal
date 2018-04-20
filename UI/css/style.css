@@ -55,7 +55,7 @@ nav{
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 .title{
-	font-family: "Segoe Print";
+	font-family: "Segoe Print",cursive, calibri;
 	font-size: 22px;
 	font-weight: bold;
 }
