@@ -6,7 +6,7 @@ body{
 	margin: 0px;
 	height: 100%;
 	background-color: #f6f6f6;
-	font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-family: cursive, Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 input, select{
@@ -185,6 +185,8 @@ nav{
     text-transform: capitalize;
     font-family: cursive;
     margin-left: auto;
+    text-decoration: none;
+    color: black;
 }
 
 .meal-order-btn:hover{
@@ -257,176 +259,6 @@ nav{
   transform: rotate(45deg);
 }
 
-
-@media only screen and (max-width: 600px){
-	.logo{
-		height: 40px;
-    	margin-right: 10px;
-	}
-	.title-area{
-		display: flex;
-		width: 100%;
-	}
-
-	.menu-header{
-		font-size: 68px;
-	}
-	.nav-menus{
-		display: none;
-	}
-	.menu-title{
-		font-size: 56px;
-	}
-	.meal-cards{
-		padding-top: 50px;
-	}
-	.meal-list{
-		font-size: 18px;
-		margin-left: -8px;
-		padding: 0px;
-
-	}
-	.meal-list > li{
-		display: flex;
-		flex-direction: column;
-	}
-	.meal-order-btn{
-		font-size: 13px;
-	}
-
-	.meal-title{
-		width: 100%;
-	}
-	.title{
-		position: absolute;
-	    top:none;
-	    left: none;
-	    text-decoration: none;
-	    color: white;
-	}
-
-	.app-name{
-		position: absolute;
-	    top: 7px;
-	    left: 39px;
-	    width: 190px;
-	}
-	.nav-menus > .nav-list{
-		list-style: none;
-		text-align: center;
-		padding: 0;
-		width: 100%;
-		margin: auto;
-	}
-
-	.nav-menus > .nav-list > li{
-		border-bottom: 1px solid #fbfbfb;
-		
-	}
-
-	.nav-menus > .nav-list > li:hover{
-		background-color: #FFC107;
-		color: black;
-	}
-
-	.nav-menus > .nav-list > li > a:hover{
-		color: black;
-	}
-	.nav-menus > .nav-list > li > a{
-		color: white;
-		text-decoration: none;
-		display: block;
-		padding: 11px;
-	}
-	#nav-toggle{
-		display: block;
-		background-color: transparent;
-	    border-radius: 4px;
-	    border-style: solid;
-	    border-color: brown;
-	    color: wheat;
-	    font-size: 21px;
-	    width: 45px;
-	    margin-left: auto;
-	   	height: 36px;
-	}
-	.content{
-		display: flex;
-		flex-direction: column;
-	}
-	.home{
-		height: 263px;
-	}
-	.card{
-		width: 75%;
-		margin: auto;
-		display: flex;
-		flex-direction: column;
-		margin-bottom: 20px;
-	}
-
-	.card-img{
-		height: 218px;
-	}
-
-	.card-description{
-		color: #3f3e3e;
-	}
-	.card-img > img{
-		height: 100%;
-		width: 100%;
-	}
-	.card-options{
-		margin-left: auto;
-	}
-	.card-footer{
-		display: flex;
-		padding: 10px;
-	}
-
-	.card-title{
-		font-size: 19px;
-	}
-	nav > .title{
-		text-align: center;
-	}
-	
-	.page-title{
-		margin: 0;
-    	margin-bottom: 14px;
-	}
-
-	.create-menu-btn{
-		width: 100%;
-	}
-
-	.other-filters-btn{
-		width: 127px;
-		padding: 5px;
-		font-size: 20px;
-	}
-
-	.other-filters{
-		display: none;
-	}
-	.search-orders-btn{
-
-	}
-	.order-filter-btns{
-		display: flex;
-		flex-direction: row;
-	}
-	.brand > img{
-		width: 86px;
-	}
-
-	.search-menus{
-		margin-top: 10px;
-	}
-
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
 	nav{
 		display: flex;
@@ -449,11 +281,6 @@ nav{
 
 	.menu-date-selection{
 		margin:auto;
-	}
-
-
-	.nav-list{
-		margin-top: 6px;
 	}
 
 	.title{
@@ -480,16 +307,29 @@ nav{
 	}
 	.nav-list{
 		list-style: none;
-		margin-top: 14px;
+		margin-top: 6px;
+		height: 100%;
 	}
 	.nav-list > li{
 		display: inline-block;
-		margin-right: 20px;
+		margin-right: 4px;
+		cursor: pointer;    
+    	
 	}
 	.nav-list > li > a{
+		border-radius: 5px;
 		text-decoration: none;
 		color: white;
 		font-size: 17px;
+		padding: 15px;
+	}
+
+	.nav-list > li > a:hover{
+		background-color: #cf1c15;
+		text-decoration: none;
+		color: white;
+		font-size: 17px;
+		padding: 15px;
 	}
 	#search{
 		width: 640px;
@@ -548,7 +388,44 @@ nav{
 	.add-meal-btn{
 		margin-left: 5px;
 	}
+	/*.scroll-tooltip {
+		outline:none; 
+	}
+	.scroll-tooltip strong {line-height:30px;}
+	.scroll-tooltip:hover {text-decoration:none;} 
+	.scroll-tooltip span {
+	    z-index:10;
+	    display:none; 
+	    padding:14px 20px;
+	    margin-top:60px; 
+	    margin-left:-160px;
+	    width:300px; 
+	    line-height:16px;
+	}*/
+	.meal-title:hover span{
+	    display:inline; 
+	    position:absolute; 
+	    border:2px solid #FFF;  
+	    color:#EEE;
+	    top: 0;
+	    bottom: 0;
+	    background:#333 url(http://www.menucool.com/tooltip/cssttp/css-tooltip-gradient-bg.png) repeat-x 0 0;
+	}
+	.meal-title{
+		cursor: pointer;
+	}
 
+	.meal-title:hover{
+		color: #db1616;
+	}
+	.callout {z-index:20;position:absolute;border:0;top:-14px;left:120px;}
+	    
+
+	.scroll-tooltip span
+	{
+	    border-radius:2px;        
+	    box-shadow: 0px 0px 8px 4px #666;
+	}
 	.scroll{
 	    background: linear-gradient(to right, #f28621 0%,#f7c485 31%,#f9b868 76%,#f28621 100%);
 	    min-height: 399px;
@@ -714,4 +591,188 @@ body{
 
 .content {
   flex: 1;
+}
+
+.down-arrow{
+	height: 0;
+	border-width: 3px;
+	border-color: transparent;
+	border-top-color: white;
+	
+}
+
+
+
+@media only screen and (max-width: 600px){
+	.logo{
+		height: 40px;
+    	margin-right: 10px;
+	}
+
+
+	.title-area{
+		display: flex;
+		width: 100%;
+	}
+
+	.menu-header{
+		font-size: 68px;
+	}
+	.nav-menus{
+		display: none;
+	}
+	.menu-title{
+		font-size: 56px;
+	}
+	.meal-cards{
+		padding-top: 50px;
+	}
+	.meal-list{
+		font-size: 18px;
+		margin-left: -8px;
+		padding: 0px;
+
+	}
+	.meal-list > li{
+		display: flex;
+		flex-direction: column;
+	}
+	.meal-order-btn{
+		font-size: 13px;
+	}
+
+	.meal-title{
+		width: 100%;
+	}
+	.title{
+		position: absolute;
+	    top:none;
+	    left: none;
+	    text-decoration: none;
+	    color: white;
+	}
+
+	.app-name{
+		position: absolute;
+	    top: 7px;
+	    left: 39px;
+	    width: 190px;
+	}
+	.nav-menus > .nav-list{
+		list-style: none;
+		text-align: center;
+		padding: 0;
+		width: 100%;
+		margin: auto;
+	}
+
+	.nav-menus > .nav-list > li{
+		border-bottom: 1px solid #fbfbfb;
+		
+	}
+
+	.nav-menus > .nav-list > li:hover{
+		background-color: #cf1c15;
+		color: black;
+	}
+
+	.nav-menus > .nav-list > li > a:hover{
+		color: black;
+	}
+	.nav-menus > .nav-list > li > a{
+		color: white;
+		text-decoration: none;
+		display: block;
+		padding: 11px;
+	}
+	#nav-toggle{
+		display: block;
+		background-color: transparent;
+	    border-radius: 4px;
+	    border-style: solid;
+	    border-color: brown;
+	    color: wheat;
+	    font-size: 21px;
+	    width: 45px;
+	    margin-left: auto;
+	   	height: 36px;
+	}
+	.content{
+		display: flex;
+		flex-direction: column;
+	}
+	.home{
+		height: 263px;
+	}
+	.card{
+		width: 75%;
+		margin: auto;
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 20px;
+	}
+
+	.card-img{
+		height: 218px;
+	}
+
+	.card-description{
+		color: #3f3e3e;
+	}
+	.card-img > img{
+		height: 100%;
+		width: 100%;
+	}
+	.card-options{
+		margin-left: auto;
+	}
+	.card-footer{
+		display: flex;
+		padding: 10px;
+	}
+
+	.card-title{
+		font-size: 19px;
+	}
+	nav > .title{
+		text-align: center;
+	}
+	
+	.page-title{
+		margin: 0;
+    	margin-bottom: 14px;
+	}
+
+	.create-menu-btn{
+		width: 100%;
+	}
+
+	.other-filters-btn{
+		width: 127px;
+		padding: 5px;
+		font-size: 20px;
+	}
+
+	.other-filters{
+		display: none;
+	}
+	.search-orders-btn{
+
+	}
+	.order-filter-btns{
+		display: flex;
+		flex-direction: row;
+	}
+	.brand > img{
+		width: 86px;
+	}
+
+	.search-menus{
+		margin-top: 10px;
+	}
+	.big{
+		flex-direction: column;
+		width: 95%;
+	}
+
 }
