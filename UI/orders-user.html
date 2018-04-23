@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Menu - Book-A-Meal</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="css/orders.css">
+</head>
+<body>
+	<nav class="">
+		<div class="title-area">
+			<div class="title-area">
+				<a href="index.html" class="title">
+					<img class="logo" src="img/logo-white.svg" width="30">
+					<span class="app-name">Book-A-Meal</span>
+				</a>
+				<button id="nav-toggle" href="#">&#9776;</button>
+			</div>
+		</div>
+			
+		<div class="nav-menus">
+			<ul class="nav-list">
+				<li><a href="menu-user.html">Menu</a></li>
+				<li><a href="orders-user.html">Order History</a><li>
+				<li><a href="#">Hi User <span class="down-arrow"></span></a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="content">
+		<div style="display: flex; width: 100%; flex-direction: column;">
+			
+		<h3 class="page-title">Orders History</h3>
+		<div class="filters">
+			<label for="order-date">Order date:
+				<input class="filter-field" type="date" id="order-date">
+			</label>
+			<div class="other-filters" >
+				<label for="meals">Meal:
+					<select  class="filter-field" id="meals">
+						<option>Pepper Soup</option>
+					</select>
+				</label>
+			</div>
+			<div class="order-filter-btns">
+			<button class="btn other-filters-btn">more filters</button>
+			<button class="btn search" >Filter</button>
+		</div>
+		</div>
+		
+	</div>
+	<div class="wrapper">
+  
+	  <div class="table">
+	    
+	    <div class="row header">
+	      <div class="cell">
+	        id
+	      </div>
+	      <div class="cell">
+	        Meal
+	      </div>
+	      <div class="cell">
+	        Price 
+	      </div>
+	      <div class="cell">
+	      	Date
+	      </div>
+	    </div>
+	    
+	    <div class="row">
+	      <div class="cell" data-title="Id">
+	        32
+	      </div>
+	      <div class="cell" data-title="Meal">
+	        Amala and egusi
+	      </div>
+	      <div class="cell" data-title="Price">
+	        &#8358;1,500
+	      </div>
+	      <div class="cell" data-title="date">29th April, 2018</div>
+	    </div>
+  </div>
+	<script type="text/javascript">
+		let otherFiltersBtn = document.querySelector('.other-filters-btn');
+		let otherFilters = document.querySelector('.other-filters');
+		otherFiltersBtn.onclick = (e) => {
+			if(otherFilters.style.display !== "none" && otherFilters.style.display !== ""){
+				otherFilters.style.display = "none";
+				e.target.innerText = "more filters";
+			}else{
+				otherFilters.style.display = "block";
+				e.target.innerText = "hide filters"
+			}
+		}
+	</script>	
+		</div>
+		<br>
+		<div class="meals">
+		</div>
+		</div>
+	</div>
+	<footer>
+		&copy; 2018 Book-A-Meal Inc.
+	</footer>
+	<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
