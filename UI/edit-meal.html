@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Edit meal - Book-A-Meal</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<nav class="">
+		<div class="title-area">
+			<a class="title">Book-A-Meal</a>
+			<button id="nav-toggle" href="#">&#9776;</button>
+		</div>
+			
+		<div class="nav-menus">
+			<ul class="nav-list">
+				<li><a href="meals-caterer.html">Meals</li>
+				<li><a href="menus-caterer.html">Menus</a></li>
+				<li><a href="orders-caterer.html">Order History</a><li>
+				<li><a href="#">Hi Caterer</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<style type="text/css">
+		@media only screen and (min-width: 768px) {
+			.content{
+				width: 50%;
+			}
+		}
+	</style>
+	<div class="content">
+		<div style="margin-bottom: 30px;">
+			<h3 class="page-title"><a href="meals.html">Meals</a> &gt; Edit Meal #4322</h3>
+			<form>
+				<label for="title">Title: </label>
+				<input type="text" value="Chicken pesto pasta" name="title" id="title" required>
+
+				<label for="description">Description: </label>
+				<textarea name="description" value="" id="description" rows="4" required>Sautéed chicken strips in a unique blend of basil pesto, Grana Padano and toasted pine nuts served over fusilli pasta with fresh cream drizzle
+				</textarea>
+
+				<label for="price">Price: </label>
+				<input type="number" value="2000" placeholder="&#8358;" name="price" id="price">
+
+				<label for="image">Image: </label>
+				<input type="file" name="image" id="image">
+				<button type="submit" class="add-meal-btn">Save meal</button>
+			</form>
+		</div>
+	</div>
+	<footer>
+		&copy; 2018 Book-A-Meal Inc.
+	</footer>
+	<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>

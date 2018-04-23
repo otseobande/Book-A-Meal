@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Menu - Book-A-Meal</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/orders.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+	<nav class="">
+		<div class="title-area">
+			<div class="title-area">
+				<a href="index.html" class="title">
+					<img class="logo" src="img/logo-white.svg" width="30">
+					<span class="app-name">Book-A-Meal</span>
+				</a>
+				<button id="nav-toggle" href="#">&#9776;</button>
+			</div>
+		</div>
+			
+		<div class="nav-menus">
+			<ul class="nav-list">
+				<li><a href="meals-caterer.html">Meals</li>
+				<li><a href="menus-caterer.html">Menus</a></li>
+				<li><a href="orders-caterer.html">Order History</a><li>
+				<li><a href="#">Hi Caterer</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="content">
+		<div>
+			<h3 class="page-title">Manage Menus</h3>
+
+			<a class="create-menu-btn" href="create-menu.html" style="margin-bottom: 40px">+ Create menu</a>
+		</div>
+		<br>
+		<div class="wrapper">
+  
+	  <div class="table">
+	    
+	    <div class="row header">
+	      <div class="cell">
+	        id
+	      </div>
+	      <div class="cell">
+	        Title(s)
+	      </div>
+	      <div class="cell">
+	      	Meal options
+	      </div>
+	
+	      <div class="cell">
+	      	Date
+	      </div>
+	      <div class="cell">
+	      	Action
+	      </div>
+	    </div>
+	    
+	    <div class="row">
+	      <div class="cell" data-title="Id">
+	        32
+	      </div>
+	      <div class="cell" data-title="Title(s)">
+	        Solids, Breakfast
+	      </div>
+	      <div class="cell" data-title="Meal options">
+	      	Pounded yam and egusi, amala and ewedu
+	      </div>
+
+	    
+	      <div class="cell" data-title="date">29th April, 2018</div>
+	      <div class="cell" data-title="Action">
+	      	<button class="blue-btn" style="font-size: 17px; padding: 3px">Edit</button>
+	      	<button style="background-color: #cc0e0e;
+    color: white;
+    padding: 3px;
+    border-radius: 4px;
+    border: 1px solid #5a0909;
+    text-decoration: none;
+    font-size: 17px;
+    height: 28px;">Delete</button>
+	      </div>
+	    </div>
+ 	 </div>
+		
+		</div>
+	</div>
+	<footer>
+		&copy; 2018 Book-A-Meal Inc.
+	</footer>
+	<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>

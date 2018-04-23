@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Signup - Book-A-Meal</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/auth.css">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+	<!-- <nav class="main-nav">
+		<a style="text-decoration: none" href="index.html">
+			<h1 class="title">Book-A-Meal</h1>
+		</a>
+	</nav> -->
+	<style type="text/css">
+		.name-area{
+			display: flex;
+			flex-direction: column;
+		}
+	</style>
+	<div class="title brand">
+		<a href="index.html">
+			<img src="img/logo.svg">
+			<h1 style="margin-top: -9px;">Book-A-Meal</h1>
+		</a>
+	</div>
+	
+	
+	<div class="login-area" style="margin-top: 0px;">
+		
+		<form action="menu-user.html">
+			<label for="fullname">Full name:
+				<input class="card-1" type="text" name="fullname" id="fullname" required>
+			</label>
+
+			<label for="username">Username:
+				<input class="card-1" type="text" id="username" name="username" required>
+			</label>
+
+			<label for="email">Email:
+				<input class="card-1" type="email" name="email" id="email" required>
+			</label>
+
+			<label for="password">Password:
+				<input class="card-1" type="password" id="password" name="password" required>
+			</label>
+
+			<label for="password-confirmation">Confirm password:
+				<input class="card-1" type="password" name="password-confirmation" id="password-confirmation">
+			</label>
+
+			<button class="card-1 login-btn" type="submit">Sign Up</button>
+		</form>
+		<p style="text-align: center">Already have an account? <a href="login.html">Login</a></p>
+	</div>
+	<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
