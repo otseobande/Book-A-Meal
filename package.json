@@ -2,7 +2,7 @@
   "name": "book-a-meal",
   "version": "1.0.0",
   "description": "Book-A-Meal is an application that allows customers to make food orders and helps the food vendor know what the customers want to eat. ",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
