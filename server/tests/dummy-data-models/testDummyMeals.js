@@ -1,5 +1,5 @@
 import chai from 'chai';
-import meals from '../dummy-models/meals';
+import meals from '../../dummy-models/meals';
 
 chai.should();
 
