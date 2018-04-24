@@ -1,7 +1,7 @@
 import chai from 'chai';
-import { mockReq, mockRes } from 'sinon-express-mock';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
+import { mockReq, mockRes } from 'sinon-express-mock';
 
 import Controller from '../../../controllers/controller';
 import MealController from '../../../controllers/mealController';
@@ -40,7 +40,10 @@ describe('createMeal method', () => {
   });
 
   it('respond with json message on success', () => {
-	   res.json.should.have.been.calledWith({ message: 'Meal created successfully' });
+	   res.json.should.have.been.calledWith({ 
+            status: 'success',
+            message: 'Meal created successfully' 
+      });
   });
 
   it('should return error 400 if parameters are not fully given', () => {

@@ -10,7 +10,7 @@ router.post('/', MealController.createMeal);
 
 // router.get('/:mealId', () => {});
 
-// router.put("/:mealId",() => {});
+router.put('/:mealId', MealController.updateMeal);
 
 // router.delete("/:mealId",() => {});
 
