@@ -4,9 +4,9 @@ import MealController from '../controllers/mealController';
 const router = express.Router();
 
 // These routes are to be prepended with "/meals"
-router.post('/', MealController.createMeal);
+router.get('/', MealController.getMeals);
 
-// router.post("/",() => {});
+router.post('/', MealController.createMeal);
 
 // router.get('/:mealId', () => {});
 
