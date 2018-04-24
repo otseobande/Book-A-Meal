@@ -29,6 +29,10 @@ class MealController extends Controller {
       message: 'Meal created successfully',
     });
   }
+
+  static getMeals(req, res) {
+    return res.status(200).json(Meals);
+  }
 }
 
 export default MealController;
