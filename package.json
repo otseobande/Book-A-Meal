@@ -4,7 +4,7 @@
   "description": "Book-A-Meal is an application that allows customers to make food orders and helps the food vendor know what the customers want to eat. ",
   "main": "app.js",
   "scripts": {
-    "test": "mocha server/tests --recursive --require babel-core/register --require regenerator-runtime/runtime",
+    "test": "node_modules/.bin/mocha server/tests --exit --recursive --require babel-core/register --require regenerator-runtime/runtime",
     "server:dev": "nodemon --exec babel-node -- app.js",
     "server:lint": "eslint \"server/**/*.js\" app.js --fix"
   },
@@ -28,11 +28,11 @@
     "sequelize-cli": "^4.0.0"
   },
   "devDependencies": {
+    "babel": "^5.8.38",
+    "babel-core": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
-    "babel-core": "^5.8.23",
-    "babel": "^5.8.23",
     "chai": "^4.1.2",
     "chai-http": "^4.0.0",
     "eslint": "^4.19.1",
