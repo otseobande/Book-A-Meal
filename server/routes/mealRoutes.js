@@ -12,6 +12,6 @@ router.post('/', MealController.createMeal);
 
 router.put('/:mealId', MealController.updateMeal);
 
-// router.delete("/:mealId",() => {});
+router.delete('/:mealId', MealController.deleteMeal);
 
 export default router;

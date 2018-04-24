@@ -32,7 +32,12 @@ class MealController extends Controller {
   }
 
   static getMeals(req, res) {
-    return res.status(200).json(Meals);
+    return res.status(200).json({
+      status: 'success',
+      data: {
+        meals: Meals,
+      },
+    });
   }
 
   static updateMeal(req, res) {
@@ -61,6 +66,10 @@ class MealController extends Controller {
       status: 'error',
       message: 'Meal not found',
     });
+  }
+
+  static deleteMeal(req, res) {
+    return res.status(200);
   }
 }
 
