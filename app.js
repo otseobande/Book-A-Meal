@@ -7,8 +7,10 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+const urlPrefix = '/api/v1';
+
 // ..Routes
-app.use('/meals', MealRoutes);
+app.use(`${urlPrefix}/meals`, MealRoutes);
 
 app.get('/',function(req, res){
 	res.send('Welcome to Book-A-Meal');
