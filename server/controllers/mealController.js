@@ -10,10 +10,10 @@ class MealController extends Controller{
 				img
 			} = req.body;
 
-		if(!title, !description, !price){
-			res.status(400).json({
+		if(!title || !description || !price){
+			return res.status(400).json({
 				status: "error",
-				message: "Parameters not supplied correctly"
+				message: "Parameters supplied incorrectly"
 			})
 		}
 
@@ -25,7 +25,7 @@ class MealController extends Controller{
 			img
 		});
 
-		res.status(201).json({
+		return res.status(201).json({
 			message: "Meal created successfully"
 		})
 	}
