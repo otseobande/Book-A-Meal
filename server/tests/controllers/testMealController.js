@@ -64,7 +64,7 @@ describe('Meal Controller', function(){
 			MealController.createMeal(badReq,res)
 			res.json.should.have.been.calledWith({
 				status: "error",
-				message: "Parameters not supplied correctly"
+				message: "Parameters supplied incorrectly"
 			});
 		})
 	})
