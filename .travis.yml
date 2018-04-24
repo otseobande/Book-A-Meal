@@ -1,5 +1,7 @@
 language: node_js
 
+node_js:
+  - "9"
 before_install:
   - npm install -g node-gyp
   - npm install -g node-pre-gyp
@@ -24,3 +26,5 @@ branches:
   except:
   - master
 
+env:
+  - CXX=g++-5
