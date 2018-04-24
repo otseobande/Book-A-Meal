@@ -26,12 +26,41 @@ class MealController extends Controller {
     });
 
     return res.status(201).json({
+      status: 'success',
       message: 'Meal created successfully',
     });
   }
 
   static getMeals(req, res) {
     return res.status(200).json(Meals);
+  }
+
+  static updateMeal(req, res) {
+    const { mealId } = req.params;
+    const {
+      title, description, price, img,
+    } = req.body;
+
+    Meals.forEach((meal, index) => {
+      if (parseInt(meal.id, 10) === parseInt(mealId, 10)) {
+        Meals[index].title = title || Meals[index].title;
+        Meals[index].description = description || Meals[index].description;
+        Meals[index].price = price || Meals[index].price;
+        Meals[index].img = img || Meals[index].img;
+
+        return res.status(202).json({
+          status: 'success',
+          message: 'Meal updated successfully',
+        });
+      }
+
+      return false;
+    });
+
+    res.status(404).json({
+      status: 'error',
+      message: 'Meal not found',
+    });
   }
 }
 
