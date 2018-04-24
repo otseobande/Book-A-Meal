@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test:server": "mocha server/tests --recursive --require babel-core/register --require regenerator-runtime/runtime",
-    "server:dev": "nodemon --exec babel-node -- app.js"
+    "server:dev": "nodemon --exec babel-node -- app.js",
+    "server:lint": "eslint \"server/**/*.js\" app.js --fix"
   },
   "repository": {
     "type": "git",

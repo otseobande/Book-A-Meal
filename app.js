@@ -1,6 +1,8 @@
 import express from 'express';
-import MealRoutes from './server/routes/mealRoutes';
 import bodyParser from 'body-parser';
+
+import MealRoutes from './server/routes/mealRoutes';
+
 
 const app = express();
 
@@ -12,8 +14,8 @@ const urlPrefix = '/api/v1';
 // ..Routes
 app.use(`${urlPrefix}/meals`, MealRoutes);
 
-app.get('/',function(req, res){
-	res.send('Welcome to Book-A-Meal');
+app.get('/', (req, res) => {
+  res.send('Welcome to Book-A-Meal');
 });
 
 app.listen(3000);
