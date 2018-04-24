@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+
 import Controller from './controller';
 import Meals from '../dummy-models/meals';
 
@@ -46,8 +48,8 @@ class MealController extends Controller {
       title, description, price, img,
     } = req.body;
 
-    Meals.forEach((meal, index) => {
-      if (parseInt(meal.id, 10) === parseInt(mealId, 10)) {
+    Object.keys(Meals).forEach((index) => {
+      if (parseInt(Meals[index].id, 10) === parseInt(mealId, 10)) {
         Meals[index].title = title || Meals[index].title;
         Meals[index].description = description || Meals[index].description;
         Meals[index].price = price || Meals[index].price;
@@ -58,18 +60,36 @@ class MealController extends Controller {
           message: 'Meal updated successfully',
         });
       }
-
-      return false;
     });
 
-    res.status(404).json({
+    return res.status(404).json({
       status: 'error',
       message: 'Meal not found',
     });
   }
 
   static deleteMeal(req, res) {
-    return res.status(200);
+    const { mealId } = req.params;
+
+    Object.keys(Meals).forEach((index) => {
+      if (index <= Meals.length - 1) {
+        if (parseInt(Meals[index].id, 10) === parseInt(mealId, 10)) {
+          Meals.splice(index, 1);
+
+          return res.status(202).json({
+            status: 'success',
+            message: 'Meal deleted successfully',
+          });
+        }
+      }
+
+      return false;
+    });
+
+    return res.status(404).json({
+      status: 'error',
+      message: 'Meal not found',
+    });
   }
 }
 
