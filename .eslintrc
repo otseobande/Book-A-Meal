@@ -8,6 +8,7 @@
         }
     },
     "rules": {
-        "semi": 2
+        "semi": 2,
+        "import/no-unresolved": "off"
     }
 }
