@@ -2,6 +2,7 @@ language: node_js
 
 before_install:
   - npm install -g node-gyp
+  - npm install -g node-pre-gyp
 
 addons:
   apt:
@@ -9,7 +10,7 @@ addons:
     - ubuntu-toolchain-r-test
     packages:
     - g++-5
-    
+
 install:
   - npm install
 
