@@ -9,7 +9,7 @@ describe('Dummy menus data', () => {
   });
 
   it('should have correct keys', () => {
-    const mealMenuCategory = MenuCategories[0];
+    const mealMenuCategory = MealMenuCategories[0];
     mealMenuCategory.should.have.keys('id','menuCategoryId','mealId');
   });
 });
