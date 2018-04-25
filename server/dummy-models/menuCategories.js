@@ -1,4 +1,4 @@
-const menuCategory = [
+const MenuCategories = [
 	{
 		id: 1,
 		menuId: 2,
@@ -11,4 +11,4 @@ const menuCategory = [
 	}
 ];
 
-export default menuCategory;
+export default MenuCategories;
