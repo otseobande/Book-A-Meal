@@ -9,6 +9,6 @@ describe('Dummy meals data', () => {
   });
   it('should contain meal objects', () => {
     const meal = Meals[0];
-    meal.should.have.keys('id','title','description','price','img');
+    meal.should.have.keys('id','userId','title','description','price','img');
   });
 });
