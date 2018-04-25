@@ -1,21 +1,15 @@
 import chai from 'chai';
-import meals from '../../dummy-models/meals';
+import Menus from '../../dummy-models/menus';
 
 chai.should();
 
-describe('Dummy meals data', () => {
+describe('Dummy menus data', () => {
   it('should be an array', () => {
-    meals.should.be.an('array');
+    Menus.should.be.an('array');
   });
-  it('should contain meal objects', () => {
-    const testMeal = {
-      id: 1,
-      title: 'Rice and stew',
-      description: 'Nigerian rice and stew',
-      price: 300,
-      img: 'https://africa-public.food.jumia.com/dynamic/production/ng/images/products/80/80418_1465475724_ma.jpg',
-    };
 
-    meals[0].should.deep.equal(testMeal);
+  it('should have correct keys', () => {
+    const menu = Menus[0];
+    menu.should.have.keys('id','userId','title','date');
   });
 });
