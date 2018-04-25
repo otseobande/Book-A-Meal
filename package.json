@@ -7,7 +7,8 @@
     "test": "node_modules/.bin/mocha server/tests --exit --recursive --require babel-core/register --require regenerator-runtime/runtime",
     "server:dev": "nodemon --exec babel-node -- app.js",
     "server:lint": "eslint \"server/**/*.js\" app.js --fix",
-    "cover": "istanbul cover --hook-run-in-contex node_modules/mocha/bin/_mocha server/tests"
+    "cover": "istanbul cover --hook-run-in-contex node_modules/mocha/bin/_mocha server/tests",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
   },
   "repository": {
     "type": "git",

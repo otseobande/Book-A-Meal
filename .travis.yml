@@ -29,3 +29,6 @@ branches:
 
 env:
   - CXX=g++-5
+
+after_success:
+  - npm run coverage
