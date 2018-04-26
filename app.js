@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 
 import MealRoutes from './server/routes/mealRoutes';
-import MenuRoutes from './server/routes/MenuRoutes';
+import MenuRoutes from './server/routes/menuRoutes';
 
 
 const app = express();
