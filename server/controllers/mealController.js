@@ -71,20 +71,30 @@ class MealController extends Controller {
   static deleteMeal(req, res) {
     const { mealId } = req.params;
 
-    Object.keys(Meals).forEach((index) => {
-      if (index <= Meals.length - 1) {
-        if (parseInt(Meals[index].id, 10) === parseInt(mealId, 10)) {
-          Meals.splice(index, 1);
+    const mealIndex = Meals.findIndex(meal => parseInt(meal.id, 10) === parseInt(mealId, 10));
 
-          return res.status(202).json({
-            status: 'success',
-            message: 'Meal deleted successfully',
-          });
-        }
-      }
+    if(mealIndex > -1){
+      Meals.splice(mealIndex, 1);
 
-      return false;
-    });
+      return res.status(202).json({
+        status: 'success',
+        message: 'Meal deleted successfully',
+      });
+    }
+    // Object.keys(Meals).forEach((index) => {
+    //   if (index <= Meals.length - 1) {
+    //     if (parseInt(Meals[index].id, 10) === parseInt(mealId, 10)) {
+    //       Meals.splice(index, 1);
+
+    //       return res.status(202).json({
+    //         status: 'success',
+    //         message: 'Meal deleted successfully',
+    //       });
+    //     }
+    //   }
+
+    //   return false;
+    // });
 
     return res.status(404).json({
       status: 'error',
