@@ -124,6 +124,33 @@ class MenuController extends Controller {
       data: responseData,
     });
   }
+
+  static getSpecificDayMenu(req, res) {
+    const { date } = req.params;
+
+    const jsDate = new Date(date);
+
+    if (Number.isNaN(jsDate.getTime())) {
+      return res.status(400).json({
+        status: 'error',
+        message: 'Date format should be DD-MM-YYYY',
+      });
+    }
+
+    const menus = Menus.filter(menu => (new Date(menu.date)).getTime() === jsDate.getTime());
+
+    if (menus.length < 1) {
+      return res.status(404).json({
+        status: 'error',
+        message: 'No Records Found',
+      });
+    }
+
+    return res.status(200).json({
+      status: 'success',
+      data: menus,
+    });
+  }
 }
 
 export default MenuController;
