@@ -9,6 +9,11 @@ const MenuCategories = [
     menuId: 1,
     title: 'Appetizer',
   },
+  {
+    id: 3,
+    menuId: 3,
+    title: 'Tatalots',
+  },
 ];
 
 export default MenuCategories;
