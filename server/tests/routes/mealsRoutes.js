@@ -51,6 +51,29 @@ describe('POST /api/v1/meals', function() {
 	});
 });
 
+describe('GET /api/v1/meals/:mealId', () => {
+	it('should return a success status 200', async () => {
+		try {
+			const res = await chai.request(App)
+														.get('/api/v1/meals/1');
+			res.should.have.status(200);
+		} catch(err) {
+			throw err;
+		}
+	})
+	it('should return meal', async () => {
+		try {
+			const res = await chai.request(App)
+														.get('/api/v1/meals/1');
+			res.body.data.should.be.an.('object');
+			res.body.data.id.should.be.equal(1);
+		} catch(err) {
+			throw err;
+		}
+	})
+})
+
+
 describe('PUT /api/v1/meals/:mealId', function() {
 	it('should return a success status 202', async function(){
 		try{
