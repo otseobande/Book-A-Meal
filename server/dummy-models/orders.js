@@ -20,7 +20,6 @@ const orders = [
     quantity: 1,
     delivery_address: 'Irepodun street',
   },
-
 ];
 
 export default orders;

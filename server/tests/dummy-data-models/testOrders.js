@@ -3,7 +3,7 @@ import Orders from '../../dummy-models/orders';
 
 chai.should();
 
-describe('Dummy menus data', () => {
+describe('Dummy orders data', () => {
   it('should be an array', () => {
     Orders.should.be.an('array');
   });

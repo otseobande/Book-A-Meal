@@ -3,7 +3,7 @@ import MenuCategories from '../../dummy-models/menuCategories';
 
 chai.should();
 
-describe('Dummy menus data', () => {
+describe('Dummy menuCategories data', () => {
   it('should be an array', () => {
     MenuCategories.should.be.an('array');
   });
