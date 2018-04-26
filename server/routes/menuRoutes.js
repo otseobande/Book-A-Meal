@@ -6,7 +6,7 @@ const router = express.Router();
 // These routes are to be prepended with "/menu"s
 router.post('/', MenuController.createMenu);
 
-// router.post('/', () => {});
+router.get('/', MenuController.getMenus);
 
 // router.get('/:menuId', () => {});
 
