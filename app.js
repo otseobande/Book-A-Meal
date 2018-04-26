@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 
 import MealRoutes from './server/routes/mealRoutes';
+import MenuRoutes from './server/routes/MenuRoutes';
 
 
 const app = express();
@@ -13,6 +14,7 @@ const apiPrefix = '/api/v1';
 
 // ..Routes
 app.use(`${apiPrefix}/meals`, MealRoutes);
+app.use(`${apiPrefix}/menus`, MenuRoutes);
 
 app.get('/', (req, res) => {
   res.send('Welcome to Book-A-Meal');

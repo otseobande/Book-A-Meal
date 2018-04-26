@@ -1,5 +1,3 @@
-/* eslint-disable consistent-return */
-
 import Controller from './controller';
 import Meals from '../dummy-models/meals';
 
@@ -48,19 +46,19 @@ class MealController extends Controller {
       title, description, price, img,
     } = req.body;
 
-    Object.keys(Meals).forEach((index) => {
-      if (parseInt(Meals[index].id, 10) === parseInt(mealId, 10)) {
-        Meals[index].title = title || Meals[index].title;
-        Meals[index].description = description || Meals[index].description;
-        Meals[index].price = price || Meals[index].price;
-        Meals[index].img = img || Meals[index].img;
+    const mealIndex = Meals.findIndex(meal => parseInt(meal.id, 10) === parseInt(mealId, 10));
 
-        return res.status(202).json({
-          status: 'success',
-          message: 'Meal updated successfully',
-        });
-      }
-    });
+    if (mealIndex > -1) {
+      Meals[mealIndex].title = title || Meals[mealIndex].title;
+      Meals[mealIndex].description = description || Meals[mealIndex].description;
+      Meals[mealIndex].price = price || Meals[mealIndex].price;
+      Meals[mealIndex].img = img || Meals[mealIndex].img;
+
+      return res.status(202).json({
+        status: 'success',
+        message: 'Meal updated successfully',
+      });
+    }
 
     return res.status(404).json({
       status: 'error',
@@ -73,7 +71,7 @@ class MealController extends Controller {
 
     const mealIndex = Meals.findIndex(meal => parseInt(meal.id, 10) === parseInt(mealId, 10));
 
-    if(mealIndex > -1){
+    if (mealIndex > -1) {
       Meals.splice(mealIndex, 1);
 
       return res.status(202).json({
@@ -81,20 +79,6 @@ class MealController extends Controller {
         message: 'Meal deleted successfully',
       });
     }
-    // Object.keys(Meals).forEach((index) => {
-    //   if (index <= Meals.length - 1) {
-    //     if (parseInt(Meals[index].id, 10) === parseInt(mealId, 10)) {
-    //       Meals.splice(index, 1);
-
-    //       return res.status(202).json({
-    //         status: 'success',
-    //         message: 'Meal deleted successfully',
-    //       });
-    //     }
-    //   }
-
-    //   return false;
-    // });
 
     return res.status(404).json({
       status: 'error',
