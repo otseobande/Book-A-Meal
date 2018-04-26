@@ -6,9 +6,9 @@ import MealMenuCategories from './mealMenuCategories';
 
 
 export default {
-	Menus,
-	Meals,
-	Orders,
-	MenuCategories,
-	MealMenuCategories,
+  Menus,
+  Meals,
+  Orders,
+  MenuCategories,
+  MealMenuCategories,
 };
