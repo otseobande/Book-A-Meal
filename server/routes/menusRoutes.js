@@ -3,12 +3,12 @@ import MenuController from '../controllers/menuController';
 
 const router = express.Router();
 
-// These routes are to be prepended with "/menu"s
+// These routes are to be prepended with "/menus"
 router.post('/', MenuController.createMenu);
 
 router.get('/', MenuController.getMenus);
 
-// router.get('/:menuId', () => {});
+router.get('/:date', MenuController.getSpecificDayMenu);
 
 // router.put('/:menuId', () => {});
 
