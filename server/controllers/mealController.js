@@ -46,13 +46,24 @@ class MealController extends Controller {
       title, description, price, img,
     } = req.body;
 
+    if (!title || !description || !price || !img) {
+      return res.status(400).json({
+        status: 'error',
+        message: 'Parameters supplied incorrectly',
+      });
+    }
+
     const mealIndex = Meals.findIndex(meal => parseInt(meal.id, 10) === parseInt(mealId, 10));
 
     if (mealIndex > -1) {
-      Meals[mealIndex].title = title || Meals[mealIndex].title;
-      Meals[mealIndex].description = description || Meals[mealIndex].description;
-      Meals[mealIndex].price = price || Meals[mealIndex].price;
-      Meals[mealIndex].img = img || Meals[mealIndex].img;
+      const updatedMeal = Meals[mealIndex];
+
+      updatedMeal.title = title;
+      updatedMeal.description = description;
+      updatedMeal.price = price;
+      updatedMeal.img = img;
+
+      Meals[mealIndex] = updatedMeal;
 
       return res.status(202).json({
         status: 'success',
