@@ -5,6 +5,7 @@ import { mockReq, mockRes } from 'sinon-express-mock';
 
 import Controller from '../../../controllers/controller';
 import MealController from '../../../controllers/mealController';
+import Meals from '../../../dummy-models/meals';
 
 
 chai.use(sinonChai);
@@ -18,7 +19,7 @@ const request = {
     img: 'image_link',
   },
   params:{
-    mealId: 4
+    mealId: 1
   }
 };
 
@@ -31,6 +32,17 @@ const notFoundRequest = {
   },
   params:{
     mealId: 20
+  }
+}
+
+const badParamRequest = {
+  body: {
+    title: 'test meal',
+    description: 'great meal',
+    img: 'image_link',
+  },
+  params: {
+    mealId: 1
   }
 }
 
@@ -53,11 +65,38 @@ describe('updateMeal method', () => {
       });
   });
 
+  it('should update meal data', () => {
+    const testMeal = Meals.find(meal => meal.id === 1);
+    testMeal.should.be.deep.equal({
+      id: 1,
+      title: 'test meal',
+      description: 'great meal',
+      price: 500,
+      img: 'image_link',
+      userId: 1
+    });
+  });
+
   const notFoundReq = mockReq(notFoundRequest);
   
+  it('should return error 400 if request body is not constructed properly', () => {
+    const badParamReq = mockReq(badParamRequest);
+    MealController.updateMeal(badParamReq, res);
+    res.status.should.have.been.calledWith(400);
+  });
+
+  it('should respond with err msg if request body is not constructed properly', () => {
+    const badParamReq = mockReq(badParamRequest);
+    MealController.updateMeal(badParamReq, res);
+    res.status.should.have.been.calledWith(400);
+  });
+
   it('should return error 404 if "id" is not found', function(){
     MealController.updateMeal(notFoundReq, res);
-    res.status.should.have.been.calledWith(404)
+    res.json.should.have.been.calledWith({
+        status: 'error',
+        message: 'Parameters supplied incorrectly',
+      });
   });
 
   it('should respond with error message', function() {
