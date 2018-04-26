@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 
-import MealsRoutes from './server/routes/mealsRoutes';
+import { MealsRoutes } from './server/routes';
 import MenusRoutes from './server/routes/menusRoutes';
 import MenuRoutes from './server/routes/menuRoutes';
 
