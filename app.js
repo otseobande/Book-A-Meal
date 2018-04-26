@@ -18,10 +18,6 @@ app.use(`${apiPrefix}/menu`, MenuRoutes);
 app.use(`${apiPrefix}/meals`, MealsRoutes);
 app.use(`${apiPrefix}/menus`, MenusRoutes);
 
-app.get('/', (req, res) => {
-  res.send('Welcome to Book-A-Meal');
-});
-
 app.listen(3000);
 
 export default app;
