@@ -64,7 +64,7 @@ class MenuController extends Controller {
           MealMenuCategories.forEach((mealMenu) => {
             Meals.forEach((meal) => {
               if (parseInt(meal.id, 10) === parseInt(mealMenu.mealId, 10) &&
-                  parseInt(category.id, 10) === parseInt(mealMenu.menuCategoryId, 10)) {
+                parseInt(category.id, 10) === parseInt(mealMenu.menuCategoryId, 10)) {
                 meals.push(meal);
               }
             });
@@ -104,7 +104,7 @@ class MenuController extends Controller {
           MealMenuCategories.forEach((mealMenu) => {
             Meals.forEach((meal) => {
               if (parseInt(meal.id, 10) === parseInt(mealMenu.mealId, 10) &&
-                 parseInt(category.id, 10) === parseInt(mealMenu.menuCategoryId, 10)) {
+                parseInt(category.id, 10) === parseInt(mealMenu.menuCategoryId, 10)) {
                 meals.push(meal);
               }
             });
