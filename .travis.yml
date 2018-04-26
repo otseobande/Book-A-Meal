@@ -1,0 +1,34 @@
+language: node_js
+
+node_js:
+  - "9"
+before_install:
+  - npm install -g node-gyp
+  - npm install -g node-pre-gyp
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-5
+
+install:
+  - npm install
+
+script:
+  - npm run server:lint
+  - npm test
+
+deploy:
+  skip_cleanup: true
+
+branches:
+  except:
+  - master
+
+env:
+  - CXX=g++-5
+
+after_success:
+  - npm run coverage
