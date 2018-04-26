@@ -14,7 +14,7 @@ const MealMenuCategories = [
     menuCategoryId: 2,
     mealId: 1,
   },
-    {
+  {
     id: 4,
     menuCategoryId: 3,
     mealId: 1,
