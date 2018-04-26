@@ -22,7 +22,7 @@ const res = mockRes();
 
 describe('getMenus method', () => {
   beforeEach(() => {
-    MenuController.getTodaysMenu(req, res);
+    MenuController.getSpecificDayMenu(req, res);
   });
 
   it('should return 201 on success', () => {
