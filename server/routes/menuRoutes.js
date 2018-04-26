@@ -1,9 +1,10 @@
 import express from 'express';
+import MenuController from '../controllers/menuController';
 
 const router = express.Router();
 
-// These routes are to be prepended with "/menu"
-// router.get('/', () => {});
+// These routes are to be prepended with "/menu"s
+router.post('/', MenuController.createMenu);
 
 // router.post('/', () => {});
 
