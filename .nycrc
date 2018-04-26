@@ -13,7 +13,8 @@
     "server/config",
     "server/coverage/**",
     "server/tests/**",
-    "server/test{,-*}.js"
+    "server/test{,-*}.js",
+    "UI"
   ],
   "reporter": ["lcov", "json", "text"],
   "sourceMap": false,
