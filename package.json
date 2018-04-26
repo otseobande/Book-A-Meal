@@ -4,11 +4,12 @@
   "description": "Book-A-Meal is an application that allows customers to make food orders and helps the food vendor know what the customers want to eat. ",
   "main": "app.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha server/tests --exit --recursive --require babel-core/register --require regenerator-runtime/runtime",
-    "server:dev": "nodemon --exec babel-node -- app.js",
-    "server:lint": "eslint \"server/**/*.js\" app.js --fix",
-    "server:lint:test": "npm test && npm run server:lint",
-    "cover": "istanbul cover --hook-run-in-contex node_modules/mocha/bin/_mocha server/tests"
+    "test:server": "node_modules/.bin/mocha server/tests --exit --recursive --require babel-core/register --require regenerator-runtime/runtime",
+    "start:dev": "nodemon --exec babel-node -- app.js",
+    "lint:server": "eslint \"server/**/*.js\" app.js --fix",
+    "lint:test:server": "npm run lint:server && npm run test:server",
+    "coverage": "babel-node ./node_modules/istanbul/lib/cli cover _mocha server/tests",
+    "report-coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",

@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 const apiPrefix = '/api/v1';
 
 // ..Routes
-app.use(`${apiPrefix}/menu`,MenuRoutes);
+app.use(`${apiPrefix}/menu`, MenuRoutes);
 app.use(`${apiPrefix}/meals`, MealsRoutes);
 app.use(`${apiPrefix}/menus`, MenusRoutes);
 
