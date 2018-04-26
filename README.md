@@ -1,4 +1,4 @@
-[![Maintainability](https://api.codeclimate.com/v1/badges/128c9747e0b49230e3f3/maintainability)](https://codeclimate.com/github/otseobande/Book-A-Meal/maintainability)
+[![Coverage Status](https://coveralls.io/repos/github/otseobande/Book-A-Meal/badge.svg?branch=156977386-ft-retrieve-all-menus)](https://coveralls.io/github/otseobande/Book-A-Meal?branch=156977386-ft-retrieve-all-menus) [![Maintainability](https://api.codeclimate.com/v1/badges/128c9747e0b49230e3f3/maintainability)](https://codeclimate.com/github/otseobande/Book-A-Meal/maintainability)
 
 # Book-A-Meal :rice: :fork_and_knife: :point_left:
 Book-A-Meal is an application that allows customers to make food orders and helps the food
