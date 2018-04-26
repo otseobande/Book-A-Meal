@@ -8,8 +8,7 @@
     "start:dev": "nodemon --exec babel-node -- app.js",
     "lint:server": "eslint \"server/**/*.js\" app.js --fix",
     "lint:test:server": "npm run lint:server && npm run test:server",
-    "coverage": "babel-node ./node_modules/istanbul/lib/cli cover _mocha server/tests",
-    "report-coverage": "cat ./coverage/lcov.info | coveralls"
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
