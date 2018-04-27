@@ -3,7 +3,6 @@ import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 import { mockReq, mockRes } from 'sinon-express-mock';
 
-import Controller from '../../../controllers/controller';
 import MealController from '../../../controllers/mealController';
 
 

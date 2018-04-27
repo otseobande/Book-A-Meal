@@ -3,7 +3,6 @@ import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 import { mockReq, mockRes } from 'sinon-express-mock';
 
-import Controller from '../../../controllers/controller';
 import MealController from '../../../controllers/mealController';
 import Meals from '../../../dummy-models/meals';
 
@@ -19,7 +18,7 @@ const request = {
     img: 'image_link',
   },
   params:{
-    mealId: 1
+    mealId: 3
   }
 };
 
@@ -66,9 +65,9 @@ describe('updateMeal method', () => {
   });
 
   it('should update meal data', () => {
-    const testMeal = Meals.find(meal => meal.id === 1);
+    const testMeal = Meals.find(meal => meal.id === req.params.mealId);
     testMeal.should.be.deep.equal({
-      id: 1,
+      id: req.params.mealId,
       title: 'test meal',
       description: 'great meal',
       price: 500,

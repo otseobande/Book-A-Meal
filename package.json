@@ -7,7 +7,7 @@
     "test:server": "cross-env NODE_ENV=test nyc --reporter=html --all --reporter=text --require babel-core/register --require regenerator-runtime/runtime mocha server/tests --exit --recursive ",
     "start:dev": "nodemon --exec babel-node -- app.js",
     "lint:server": "eslint \"server/**/*.js\" app.js --fix",
-    "lint:test:server": "npm run lint:server && npm run test:server",
+    "lint:test:server": "concurrently \"npm run lint:server\" \"npm run test:server\"",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
@@ -39,6 +39,7 @@
     "babel-preset-env": "^1.6.1",
     "chai": "^4.1.2",
     "chai-http": "^4.0.0",
+    "concurrently": "^3.5.1",
     "coveralls": "^3.0.0",
     "cross-env": "^5.1.4",
     "eslint": "^4.19.1",

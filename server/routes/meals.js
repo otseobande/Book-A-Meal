@@ -8,7 +8,7 @@ router.get('/', MealController.getMeals);
 
 router.post('/', MealController.createMeal);
 
-// router.get('/:mealId', () => {});
+router.get('/:mealId', MealController.getMeal);
 
 router.put('/:mealId', MealController.updateMeal);
 
