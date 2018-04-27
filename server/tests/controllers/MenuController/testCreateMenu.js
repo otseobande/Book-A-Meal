@@ -4,7 +4,6 @@ import sinonChai from 'sinon-chai';
 import { mockReq, mockRes } from 'sinon-express-mock';
 
 import Menus from '../../../dummy-models/menus';
-import Controller from '../../../controllers/controller';
 import MenuController from '../../../controllers/menuController';
 
 
