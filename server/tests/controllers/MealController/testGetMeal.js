@@ -13,20 +13,34 @@ chai.should();
 const request = {
   body: {
   },
+  params: {
+  	mealId: 1
+  }
 };
+
+const badRequest = {
+	params: {
+		mealId: 30
+	}
+}
 
 
 const req = mockReq(request);
 const res = mockRes();
 
 describe('getMeals method', () => {
-  beforeEach(() => {
-    MealController.getMeal(req, res);
+  
+  it('should return 200 on success', () => {
+  	MealController.getMeal(req,res);
+		res.status.should.have.been.calledWith(200);
   });
 
-  it('should return 201 on success', () => {
-		 res.status.should.have.been.calledWith(200);
+  it('should return 404 and err msg if not found', () => {
+  	MealController.getMeal(badReq, res);
+		res.status.should.have.been.calledWith(404);
+		res.json.should.have.been.calledWith({
+			status: 'error',
+			message: 'Meal not found',
+		})
   });
-
-
 });
