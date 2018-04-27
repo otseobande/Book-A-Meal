@@ -40,6 +40,23 @@ class MealController extends Controller {
     });
   }
 
+  static getMeal(req, res){
+    const { mealId } = req.params;
+
+    const meal = Meals.find(meal => parseInt(meal.id, 10) === parseInt(mealId, 10));
+
+    if(meal){
+      return res.status(200).json({
+        status: 'success',
+        data: meal,
+      })
+    }
+
+    return res.status(400).json({
+      status: 'error',
+      message: 'Meal not found',
+    })
+  }
   static updateMeal(req, res) {
     const { mealId } = req.params;
     const {
