@@ -4,11 +4,10 @@ node_js:
   - "9"
 
 env:
-  - CXX=g++-5
-  - NODE_ENV=test
-  
   global:
     - CC_TEST_REPORTER_ID=1c4feae9a685078726b61358fc7145f29761f877f1a8e5f2538d593dea207a89
+    - CXX=g++-5
+    - NODE_ENV=test
 
 addons:
   apt:
