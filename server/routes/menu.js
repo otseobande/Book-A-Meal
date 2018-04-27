@@ -7,7 +7,6 @@ const router = express.Router();
 // router.post('/', MenuController.createTodaysMenu);
 
 router.get('/', MenuController.getTodaysMenu);
-
 router.post('/', MenuController.createMenu);
 
 export default router;
