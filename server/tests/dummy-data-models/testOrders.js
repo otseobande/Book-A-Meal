@@ -10,6 +10,6 @@ describe('Dummy orders data', () => {
 
   it('should have correct keys', () => {
     const order = Orders[0];
-    order.should.have.keys('id','userId','mealId','quantity','delivery_address');
+    order.should.have.keys('id','userId','mealId','quantity','deliveryAddress');
   });
 });

@@ -5,13 +5,9 @@ const router = express.Router();
 
 // These routes are to be prepended with "/meals"
 router.get('/', MealController.getMeals);
-
 router.post('/', MealController.createMeal);
-
 router.get('/:mealId', MealController.getMeal);
-
 router.put('/:mealId', MealController.updateMeal);
-
 router.delete('/:mealId', MealController.deleteMeal);
 
 export default router;

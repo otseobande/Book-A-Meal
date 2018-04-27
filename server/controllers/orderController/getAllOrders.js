@@ -10,7 +10,7 @@ const getAllOrders = (req, res) => {
     responseData.push({
       id: order.id,
       quantity: order.quantity,
-      delivery_address: order.delivery_address,
+      deliveryAddress: order.deliveryAddress,
       user: linkedUser,
       meal: linkedMeal,
     });
