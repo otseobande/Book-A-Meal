@@ -8,6 +8,13 @@ const getAllOrders = (req, res) => {
     deliveryAddress,
   } = req.body;
 
+  if (!userId || !mealId || !quantity || !deliveryAddress) {
+    return res.status(400).json({
+      status: 'error',
+      message: 'Parameters supplied incorrectly',
+    });
+  }
+
   Orders.push({
     id: Orders[Orders.length - 1].id + 1,
     userId,

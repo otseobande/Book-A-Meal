@@ -3,11 +3,11 @@ import getMenus from './getMenus';
 import getTodaysMenu from './getTodaysMenu';
 import getSpecificDayMenu from './getSpecificDayMenu';
 
-class MenuController {}
-
-MenuController.createMenu = createMenu;
-MenuController.getMenus = getMenus;
-MenuController.getTodaysMenu = getTodaysMenu;
-MenuController.getSpecificDayMenu = getSpecificDayMenu;
+const MenuController = {
+  createMenu,
+  getMenus,
+  getTodaysMenu,
+  getSpecificDayMenu,
+};
 
 export default MenuController;

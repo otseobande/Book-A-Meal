@@ -4,12 +4,12 @@ import getMeal from './getMeal';
 import updateMeal from './updateMeal';
 import deleteMeal from './deleteMeal';
 
-class MealController {}
-
-MealController.createMeal = createMeal;
-MealController.getMeals = getMeals;
-MealController.getMeal = getMeal;
-MealController.updateMeal = updateMeal;
-MealController.deleteMeal = deleteMeal;
+const MealController = {
+  createMeal,
+  getMeals,
+  getMeal,
+  updateMeal,
+  deleteMeal,
+};
 
 export default MealController;

@@ -18,16 +18,31 @@ const request = {
   },
 };
 
+const badRequest = {
+  body: {
+    userId: 2,
+    quantity: 3,
+    deliveryAddress: 'rahama road',
+  },
+};
+
 
 const req = mockReq(request);
+const badReq = mockReq(badRequest);
 const res = mockRes();
 
 describe('createOrder method', () => {
-  beforeEach(() => {
-    OrderController.createOrder(req, res);
-  });
-
   it('should return 201 on success', () => {
+     OrderController.createOrder(req, res);
 		res.status.should.have.been.calledWith(200);
   });
+
+  it('should return 400 and err msg if parameters are not supplied correctly', () => {
+    OrderController.createOrder(badReq, res);
+    res.status.should.have.been.calledWith(400);
+    res.json.should.have.been.calledWith({
+      status: 'error',
+      message: 'Parameters supplied incorrectly',
+    });
+  })
 });
