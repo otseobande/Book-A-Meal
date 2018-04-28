@@ -13,4 +13,3 @@ router.use(`/${prefix}/meals`, MealsRoutes);
 router.use(`/${prefix}/orders`, OrderRoutes);
 
 export default router;
-
