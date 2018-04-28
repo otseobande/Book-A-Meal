@@ -17,6 +17,7 @@ const createMeal = (req, res) => {
 
   Meals.push({
     id: Meals[Meals.length - 1].id + 1,
+    userId: 1,
     title,
     description,
     price,
