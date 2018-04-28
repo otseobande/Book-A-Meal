@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test:server": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=html --all --reporter=text --require babel-core/register --require regenerator-runtime/runtime mocha server/tests --exit --recursive ",
-    "start:dev": "nodemon --exec babel-node -- app.js",
-    "start": "babel-node app.js",
+    "start:dev": "nodemon --exec babel-node -- server/app.js",
+    "start": "babel-node server/app.js",
     "lint:server": "eslint \"server/**/*.js\" app.js --fix",
     "lint-test:server": "concurrently \"npm run lint:server\" \"npm run test:server\"",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
