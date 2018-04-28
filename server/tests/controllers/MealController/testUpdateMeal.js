@@ -38,7 +38,7 @@ const badParamRequest = {
   body: {
     title: 'test meal',
     description: 'great meal',
-    img: 'image_link',
+    food: 'image_link',
   },
   params: {
     mealId: 1
@@ -94,7 +94,7 @@ describe('updateMeal method', () => {
     MealController.updateMeal(notFoundReq, res);
     res.json.should.have.been.calledWith({
         status: 'error',
-        message: 'Parameters supplied incorrectly',
+        message: 'Wrong parameters supplied',
       });
   });
 
