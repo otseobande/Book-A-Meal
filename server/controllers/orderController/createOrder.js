@@ -4,13 +4,13 @@ const getAllOrders = (req, res) => {
   const {
     mealId,
     quantity,
-    deliveryAddress,
+    deliveryAddress
   } = req.body;
 
   if (!mealId || !quantity || !deliveryAddress) {
     return res.status(400).json({
       status: 'error',
-      message: 'Parameters supplied incorrectly',
+      message: 'Parameters supplied incorrectly'
     });
   }
 
@@ -18,12 +18,12 @@ const getAllOrders = (req, res) => {
     userId: 2,
     mealId,
     quantity,
-    deliveryAddress,
+    deliveryAddress
   });
 
   return res.status(200).json({
     status: 'success',
-    message: 'Order created successfully',
+    message: 'Order created successfully'
   });
 };
 

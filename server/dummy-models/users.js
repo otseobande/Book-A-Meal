@@ -1,4 +1,4 @@
-import DummyModel from './dummyModel';
+import DummyModel from './DummyModel';
 
 const users = new DummyModel([
   {
@@ -6,22 +6,22 @@ const users = new DummyModel([
     name: 'Otse Obande',
     email: 'otseobande@gmail.com',
     password: 'bookameal',
-    role: 'caterer',
+    role: 'caterer'
   },
   {
     id: 2,
     name: 'John Ade',
     email: 'john@gmail.com',
     password: 'bookameal',
-    role: 'customer',
+    role: 'customer'
   },
   {
     id: 3,
     name: 'Zappa Balami',
     email: 'zappabalami@gmail.com',
     password: 'bookameal',
-    role: 'caterer',
-  },
+    role: 'caterer'
+  }
 ]);
 
 export default users;

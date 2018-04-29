@@ -9,7 +9,7 @@ const MenuController = {
   getMenus,
   getTodaysMenu,
   getSpecificDayMenu,
-  updateMenu,
+  updateMenu
 };
 
 export default MenuController;

@@ -9,14 +9,14 @@ const getMenus = (req, res) => {
     const data = {
       id: menu.id,
       title: menu.title,
-      date: menu.date,
+      date: menu.date
     };
     const categories = [];
     menuCategories.data.forEach((category) => {
       if (parseInt(category.menuId, 10) === parseInt(menu.id, 10)) {
         const categoryData = {
           id: category.menuId,
-          title: category.title,
+          title: category.title
         };
 
         const concatMeals = [];
@@ -39,7 +39,7 @@ const getMenus = (req, res) => {
 
   res.status(200).json({
     status: 'success',
-    data: responseData,
+    data: responseData
   });
 };
 

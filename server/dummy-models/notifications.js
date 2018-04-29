@@ -1,18 +1,18 @@
-import DummyModel from './dummyModel';
+import DummyModel from './DummyModel';
 
 const Notifications = new DummyModel([
   {
     id: 1,
     userId: 2,
     info: 'New meal',
-    isRead: true,
+    isRead: true
   },
   {
     id: 2,
     userId: 1,
     info: 'Welcome',
-    isRead: false,
-  },
+    isRead: false
+  }
 ]);
 
 export default Notifications;

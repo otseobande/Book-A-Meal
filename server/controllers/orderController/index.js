@@ -3,7 +3,7 @@ import createOrder from './createOrder';
 
 const OrderController = {
   getAllOrders,
-  createOrder,
+  createOrder
 };
 
 export default OrderController;

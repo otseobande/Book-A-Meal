@@ -9,7 +9,7 @@ const MealController = {
   getMeals,
   getMeal,
   updateMeal,
-  deleteMeal,
+  deleteMeal
 };
 
 export default MealController;
