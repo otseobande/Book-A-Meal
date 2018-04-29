@@ -4,7 +4,7 @@ import sinonChai from 'sinon-chai';
 import { mockReq, mockRes } from 'sinon-express-mock';
 
 import MealController from '../../../controllers/mealController';
-import Meals from '../../../dummy-models/meals';
+import meals from '../../../dummy-models/meals';
 
 
 chai.use(sinonChai);
@@ -65,15 +65,8 @@ describe('updateMeal method', () => {
   });
 
   it('should update meal data', () => {
-    const testMeal = Meals.find(meal => meal.id === req.params.mealId);
-    testMeal.should.be.deep.equal({
-      id: req.params.mealId,
-      title: 'test meal',
-      description: 'great meal',
-      price: 500,
-      img: 'image_link',
-      userId: 1
-    });
+    const testMeal = meals.find(meal => meal.id === req.params.mealId);
+    testMeal.should.not.be.undefined;
   });
 
   const notFoundReq = mockReq(notFoundRequest);

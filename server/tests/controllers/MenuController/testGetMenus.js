@@ -3,7 +3,7 @@ import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 import { mockReq, mockRes } from 'sinon-express-mock';
 
-import MenuController from '../../../controllers/menuController';
+import menuController from '../../../controllers/menuController';
 
 
 chai.use(sinonChai);
@@ -19,11 +19,9 @@ const req = mockReq(request);
 const res = mockRes();
 
 describe('getMenus method', () => {
-  beforeEach(() => {
-    MenuController.getMenus(req, res);
-  });
 
-  it('should return 201 on success', () => {
+  it('should return 200 on success', () => {
+  	menuController.getMenus(req, res);
 		 res.status.should.have.been.calledWith(200);
   });
 });

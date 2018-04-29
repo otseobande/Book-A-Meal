@@ -1,13 +1,11 @@
-import Meals from '../../dummy-models/meals';
+import meals from '../../dummy-models/meals';
 
 const deleteMeal = (req, res) => {
   const { mealId } = req.params;
 
-  const mealIndex = Meals.findIndex(meal => parseInt(meal.id, 10) === parseInt(mealId, 10));
+  const deleted = meals.delete(meal => parseInt(meal.id, 10) === parseInt(mealId, 10));
 
-  if (mealIndex > -1) {
-    Meals.splice(mealIndex, 1);
-
+  if(deleted){
     return res.status(202).json({
       status: 'success',
       message: 'Meal deleted successfully',

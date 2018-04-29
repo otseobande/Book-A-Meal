@@ -1,23 +1,21 @@
-import Orders from '../../dummy-models/orders';
+import orders from '../../dummy-models/orders';
 
 const getAllOrders = (req, res) => {
   const {
-    userId,
     mealId,
     quantity,
     deliveryAddress,
   } = req.body;
 
-  if (!userId || !mealId || !quantity || !deliveryAddress) {
+  if (!mealId || !quantity || !deliveryAddress) {
     return res.status(400).json({
       status: 'error',
       message: 'Parameters supplied incorrectly',
     });
   }
 
-  Orders.push({
-    id: Orders[Orders.length - 1].id + 1,
-    userId,
+  orders.create({
+    userId: 2,
     mealId,
     quantity,
     deliveryAddress,

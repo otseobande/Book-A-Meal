@@ -11,7 +11,6 @@ chai.should();
 
 const request = {
   body: {
-  	userId: 2,
   	mealId: 1,
   	quantity: 3,
   	deliveryAddress: 'rahama road',
@@ -20,7 +19,6 @@ const request = {
 
 const badRequest = {
   body: {
-    userId: 2,
     quantity: 3,
     deliveryAddress: 'rahama road',
   },

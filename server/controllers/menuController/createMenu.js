@@ -1,6 +1,6 @@
-import Menus from '../../dummy-models/menus';
-import MenuCategories from '../../dummy-models/menuCategories';
-import MealMenuCategories from '../../dummy-models/mealMenuCategories';
+import menus from '../../dummy-models/menus';
+import menuCategories from '../../dummy-models/menuCategories';
+import mealMenuCategories from '../../dummy-models/mealMenuCategories';
 
 const createMenu = (req, res) => {
   const { title, date, categories } = req.body;
@@ -12,23 +12,20 @@ const createMenu = (req, res) => {
     });
   }
 
-  Menus.push({
-    id: Menus[Menus.length - 1].id + 1,
+  const menu = menus.create({
     userId: 2,
     title,
     date,
   });
 
   categories.forEach((category) => {
-    MenuCategories.push({
-      id: MenuCategories[MenuCategories.length - 1].id + 1,
-      mealId: Menus[Menus.length - 1].id,
+    menuCategories.create({
+      mealId: menu.id,
       title: category.title,
     });
     category.mealIds.forEach((mealId) => {
-      MealMenuCategories.push({
-        id: MealMenuCategories[MealMenuCategories.length - 1].id + 1,
-        menuCategoryId: MenuCategories[MenuCategories.length - 1].id + 1,
+      mealMenuCategories.create({
+        menuCategoryId: menuCategories.data[menuCategories.data.length - 1].id + 1,
         mealId,
       });
     });

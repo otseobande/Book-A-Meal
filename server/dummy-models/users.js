@@ -1,4 +1,6 @@
-const users = [
+import DummyModel from './dummyModel';
+
+const users = new DummyModel([
   {
     id: 1,
     name: 'Otse Obande',
@@ -20,6 +22,6 @@ const users = [
     password: 'bookameal',
     role: 'caterer',
   },
-];
+]);
 
 export default users;

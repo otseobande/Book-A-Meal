@@ -1,12 +1,12 @@
-import Orders from '../../dummy-models/orders';
-import Users from '../../dummy-models/users';
-import Meals from '../../dummy-models/meals';
+import orders from '../../dummy-models/orders';
+import users from '../../dummy-models/users';
+import meals from '../../dummy-models/meals';
 
-const getAllOrders = (req, res) => {
+const getAllorders = (req, res) => {
   const responseData = [];
-  Orders.forEach((order) => {
-    const linkedUser = Users.find(user => parseInt(user.id, 10) === parseInt(order.userId, 10));
-    const linkedMeal = Meals.find(meal => parseInt(meal.id, 10) === parseInt(order.mealId, 10));
+  orders.data.forEach((order) => {
+    const linkedUser = users.find(user => parseInt(user.id, 10) === parseInt(order.userId, 10));
+    const linkedMeal = meals.find(meal => parseInt(meal.id, 10) === parseInt(order.mealId, 10));
     responseData.push({
       id: order.id,
       quantity: order.quantity,
@@ -22,4 +22,4 @@ const getAllOrders = (req, res) => {
   });
 };
 
-export default getAllOrders;
+export default getAllorders;

@@ -10,7 +10,7 @@ describe('PUT /api/v1/menus/:date', function() {
     it('should return a success status 202', async function() {
         try {
             const res = await chai.request(App)
-                .put('/api/v1/menus/05-22-2018')
+                .put('/api/v1/menus/05-24-2018')
                 .send({
                     title: 'test menu',
                     categories: [{

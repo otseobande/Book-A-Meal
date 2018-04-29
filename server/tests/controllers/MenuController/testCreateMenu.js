@@ -3,7 +3,7 @@ import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 import { mockReq, mockRes } from 'sinon-express-mock';
 
-import Menus from '../../../dummy-models/menus';
+import menus from '../../../dummy-models/menus';
 import MenuController from '../../../controllers/menuController';
 
 
@@ -56,7 +56,7 @@ describe('createMenu method', () => {
   });
 
   it('should add menu to the menu data', () => {
-    const testMenu = Menus.find(menu => menu.title === 'test menu');
+    const testMenu = menus.find(menu => menu.title === 'test menu');
     testMenu.should.not.be.empty;
   });
 
