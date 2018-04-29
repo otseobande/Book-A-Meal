@@ -4,6 +4,7 @@
   "description": "Book-A-Meal is an application that allows customers to make food orders and helps the food vendor know what the customers want to eat. ",
   "main": "server/app.js",
   "scripts": {
+    "test": "npm run test:server",
     "test:server": "cross-env NODE_ENV=test nyc mocha server/tests --exit --recursive ",
     "start:dev": "nodemon --exec babel-node -- server/app.js",
     "start": "babel-node server/app.js",
