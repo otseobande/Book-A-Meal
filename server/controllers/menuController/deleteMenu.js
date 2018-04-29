@@ -3,7 +3,8 @@ import menus from '../../dummy-models/menus';
 const deleteMenu = (req, res) => {
   const { date } = req.params;
 
-  const deleted = menus.delete(menu => (new Date(date)).getTime() === (new Date(menu.date)).getTime());
+  const deleted = menus.delete(menu => (new Date(date)).getTime()
+                              === (new Date(menu.date)).getTime());
 
   if (deleted) {
     return res.status(202).json({

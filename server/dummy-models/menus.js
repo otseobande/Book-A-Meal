@@ -18,6 +18,12 @@ const menus = new DummyModel([
     userId: 2,
     title: 'Nigerian menu',
     date: '05-24-2018'
+  },
+  {
+    id: 4,
+    userId: 2,
+    title: 'cameroon menu',
+    date: '06-24-2018'
   }
 
 ]);
