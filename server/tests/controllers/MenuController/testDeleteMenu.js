@@ -41,12 +41,12 @@ describe('deleteMenu method', () => {
   const notFoundReq = mockReq(badRequest);
   
   it('should return error 404 if menu is not found', function(){
-    menuController.deleteMenu(notFoundReq, res);
+    MenuController.deleteMenu(notFoundReq, res);
     res.status.should.have.been.calledWith(404)
   });
 
   it('should respond with error message', function() {
-    menuController.deleteMenu(notFoundReq, res);
+    MenuController.deleteMenu(notFoundReq, res);
     res.json.should.have.been.calledWith({
       status: "error",
       message: "menu not found",
