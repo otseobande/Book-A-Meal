@@ -3,7 +3,7 @@ import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 import { mockReq, mockRes } from 'sinon-express-mock';
 
-import Meals from '../../../dummy-models/meals';
+import meals from '../../../dummy-models/meals';
 import MealController from '../../../controllers/mealController';
 
 
@@ -40,8 +40,8 @@ describe('createMeal method', () => {
   });
 
   it('should add meal to the meal data', () => {
-    const testMeal = Meals.filter(meal => meal.title === 'test meal');
-    testMeal.length.should.be.above(0);
+    const testMeal = meals.find(meal => meal.title === 'test meal');
+    testMeal.should.not.be.undefined;
   });
 
   it('respond with json message on success', () => {

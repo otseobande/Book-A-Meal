@@ -1,4 +1,4 @@
-import Meals from '../../dummy-models/meals';
+import meals from '../../dummy-models/meals';
 
 const createMeal = (req, res) => {
   const {
@@ -15,8 +15,7 @@ const createMeal = (req, res) => {
     });
   }
 
-  Meals.push({
-    id: Meals[Meals.length - 1].id + 1,
+  meals.create({
     userId: 1,
     title,
     description,

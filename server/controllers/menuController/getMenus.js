@@ -1,35 +1,35 @@
-import Menus from '../../dummy-models/menus';
-import Meals from '../../dummy-models/meals';
-import MenuCategories from '../../dummy-models/menuCategories';
-import MealMenuCategories from '../../dummy-models/mealMenuCategories';
+import menus from '../../dummy-models/menus';
+import meals from '../../dummy-models/meals';
+import menuCategories from '../../dummy-models/menuCategories';
+import mealMenuCategories from '../../dummy-models/mealMenuCategories';
 
 const getMenus = (req, res) => {
   const responseData = [];
-  Menus.forEach((menu) => {
+  menus.data.forEach((menu) => {
     const data = {
       id: menu.id,
       title: menu.title,
       date: menu.date,
     };
     const categories = [];
-    MenuCategories.forEach((category) => {
+    menuCategories.data.forEach((category) => {
       if (parseInt(category.menuId, 10) === parseInt(menu.id, 10)) {
         const categoryData = {
           id: category.menuId,
           title: category.title,
         };
 
-        const meals = [];
-        MealMenuCategories.forEach((mealMenu) => {
-          Meals.forEach((meal) => {
+        const concatMeals = [];
+        mealMenuCategories.data.forEach((mealMenu) => {
+          meals.data.forEach((meal) => {
             if (parseInt(meal.id, 10) === parseInt(mealMenu.mealId, 10) &&
                             parseInt(category.id, 10) === parseInt(mealMenu.menuCategoryId, 10)) {
-              meals.push(meal);
+              concatMeals.push(meal);
             }
           });
         });
 
-        categoryData.meals = meals;
+        categoryData.meals = concatMeals;
         categories.push(categoryData);
       }
     });

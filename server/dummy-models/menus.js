@@ -1,4 +1,6 @@
-const menus = [
+import DummyModel from './dummyModel';
+
+const menus = new DummyModel([
   {
     id: 1,
     userId: 2,
@@ -18,6 +20,6 @@ const menus = [
     date: '05-24-2018',
   },
 
-];
+]);
 
 export default menus;

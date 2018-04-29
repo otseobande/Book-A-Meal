@@ -1,4 +1,6 @@
-const orders = [
+import DummyModel from './dummyModel';
+
+const orders = new DummyModel([
   {
     id: 1,
     userId: 2,
@@ -20,6 +22,6 @@ const orders = [
     quantity: 1,
     deliveryAddress: 'Irepodun street',
   },
-];
+]);
 
 export default orders;

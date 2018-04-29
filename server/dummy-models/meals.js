@@ -1,4 +1,6 @@
-const meals = [{
+import DummyModel from './dummyModel';
+
+const meals = new DummyModel([{
   id: 1,
   userId: 1,
   title: 'Rice and stew',
@@ -22,6 +24,6 @@ const meals = [{
   price: 1200,
   img: 'https://africa-public.food.jumia.com/dynamic/production/ng/images/products/80/80418_1465475724_ma.jpg',
 },
-];
+]);
 
 export default meals;

@@ -1,4 +1,6 @@
-const MenuCategories = [
+import DummyModel from './dummyModel';
+
+const MenuCategories = new DummyModel([
   {
     id: 1,
     menuId: 2,
@@ -14,6 +16,6 @@ const MenuCategories = [
     menuId: 3,
     title: 'Tatalots',
   },
-];
+]);
 
 export default MenuCategories;

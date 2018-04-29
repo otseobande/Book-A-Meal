@@ -1,4 +1,4 @@
-import Meals from '../../dummy-models/meals';
+import meals from '../../dummy-models/meals';
 
 const updateMeal = (req, res) => {
   const { mealId } = req.params;
@@ -20,16 +20,9 @@ const updateMeal = (req, res) => {
     });
   }
 
-  const mealIndex = Meals.findIndex(meal => parseInt(meal.id, 10) === parseInt(mealId, 10));
-
-  if (mealIndex > -1) {
-    const meal = Meals[mealIndex];
-
-    Meals[mealIndex] = {
-      ...meal,
-      ...req.body,
-    };
-
+  const updatedMeal = meals.update(req.body, meal => parseInt(meal.id, 10) === parseInt(mealId, 10));
+ 
+  if (Object.keys(updatedMeal).length > 0 ){
     return res.status(202).json({
       status: 'success',
       message: 'Meal updated successfully',
@@ -40,6 +33,7 @@ const updateMeal = (req, res) => {
     status: 'error',
     message: 'Meal not found',
   });
+  
 };
 
 export default updateMeal;

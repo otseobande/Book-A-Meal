@@ -1,4 +1,6 @@
-const Notifications = [
+import DummyModel from './dummyModel';
+
+const Notifications = new DummyModel([
   {
     id: 1,
     userId: 2,
@@ -11,6 +13,6 @@ const Notifications = [
     info: 'Welcome',
     isRead: false,
   },
-];
+]);
 
 export default Notifications;
