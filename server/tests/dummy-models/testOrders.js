@@ -11,6 +11,7 @@ describe('Dummy orders data', () => {
     orderData.should.have.property('userId');
     orderData.should.have.property('mealId');
     orderData.should.have.property('quantity');
+    orderData.should.have.property('status');
     orderData.should.have.property('deliveryAddress');
   });
 });
