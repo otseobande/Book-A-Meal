@@ -3,7 +3,7 @@ import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 import { mockReq, mockRes } from 'sinon-express-mock';
 
-import OrderController from '../../../controllers/OrderController';
+import OrderController from '../../../controllers/orderController';
 import orders from '../../../dummy-models/orders';
 
 
@@ -25,7 +25,6 @@ const request = {
 
 const notFoundRequest = {
   body: {
-    id: 1,
     userId: 2,
     mealId: 2,
     quantity: 1,
