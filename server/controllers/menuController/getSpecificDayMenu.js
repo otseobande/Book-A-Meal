@@ -1,7 +1,7 @@
 import menus from '../../dummy-models/menus';
 import meals from '../../dummy-models/meals';
 import menuCategories from '../../dummy-models/menuCategories';
-import mealmenuCategories from '../../dummy-models/mealmenuCategories';
+import mealmenuCategories from '../../dummy-models/mealMenuCategories';
 
 const getSpecificDaymenu = (req, res) => {
   const { date } = req.params;
@@ -11,34 +11,34 @@ const getSpecificDaymenu = (req, res) => {
   if (Number.isNaN(jsDate.getTime())) {
     return res.status(400).json({
       status: 'error',
-      message: 'Date format should be DD-MM-YYYY',
+      message: 'Date format should be DD-MM-YYYY'
     });
   }
-  
+
   const foundMenu = menus.find(menu => (new Date(menu.date)).getTime() === jsDate.getTime());
 
   if (!foundMenu) {
     return res.status(404).json({
       status: 'error',
-      message: 'No Records Found',
+      message: 'No Records Found'
     });
   }
 
 
   const responseData = [];
   menus.data.forEach((menu) => {
-    if((new Date(menu.date)).getTime() === jsDate.getTime()){
+    if ((new Date(menu.date)).getTime() === jsDate.getTime()) {
       const data = {
         id: menu.id,
         title: menu.title,
-        date: menu.date,
+        date: menu.date
       };
       const categories = [];
       menuCategories.data.forEach((category) => {
         if (parseInt(category.menuId, 10) === parseInt(menu.id, 10)) {
           const categoryData = {
             id: category.menuId,
-            title: category.title,
+            title: category.title
           };
           const matchingMeals = [];
           mealmenuCategories.data.forEach((mealmenu) => {
@@ -61,7 +61,7 @@ const getSpecificDaymenu = (req, res) => {
 
   return res.status(200).json({
     status: 'success',
-    data: responseData,
+    data: responseData
   });
 };
 

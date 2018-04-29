@@ -8,25 +8,25 @@ const createMenu = (req, res) => {
   if (!title || !date || !categories) {
     return res.status(400).json({
       status: 'error',
-      message: 'Parameters supplied incorrectly',
+      message: 'Parameters supplied incorrectly'
     });
   }
 
   const menu = menus.create({
     userId: 2,
     title,
-    date,
+    date
   });
 
   categories.forEach((category) => {
     menuCategories.create({
       mealId: menu.id,
-      title: category.title,
+      title: category.title
     });
     category.mealIds.forEach((mealId) => {
       mealMenuCategories.create({
         menuCategoryId: menuCategories.data[menuCategories.data.length - 1].id + 1,
-        mealId,
+        mealId
       });
     });
   });
@@ -34,7 +34,7 @@ const createMenu = (req, res) => {
 
   return res.status(201).json({
     status: 'success',
-    message: 'Menu created successfully',
+    message: 'Menu created successfully'
   });
 };
 

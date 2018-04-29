@@ -12,13 +12,13 @@ const getAllorders = (req, res) => {
       quantity: order.quantity,
       deliveryAddress: order.deliveryAddress,
       user: linkedUser,
-      meal: linkedMeal,
+      meal: linkedMeal
     });
   });
 
   return res.status(200).json({
     status: 'success',
-    data: responseData,
+    data: responseData
   });
 };
 

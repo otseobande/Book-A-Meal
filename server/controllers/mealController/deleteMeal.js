@@ -5,16 +5,16 @@ const deleteMeal = (req, res) => {
 
   const deleted = meals.delete(meal => parseInt(meal.id, 10) === parseInt(mealId, 10));
 
-  if(deleted){
+  if (deleted) {
     return res.status(202).json({
       status: 'success',
-      message: 'Meal deleted successfully',
+      message: 'Meal deleted successfully'
     });
   }
 
   return res.status(404).json({
     status: 'error',
-    message: 'Meal not found',
+    message: 'Meal not found'
   });
 };
 

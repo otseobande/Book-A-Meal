@@ -5,13 +5,13 @@ const createMeal = (req, res) => {
     title,
     description,
     price,
-    img,
+    img
   } = req.body;
 
   if (!title || !description || !price) {
     return res.status(400).json({
       status: 'error',
-      message: 'Parameters supplied incorrectly',
+      message: 'Parameters supplied incorrectly'
     });
   }
 
@@ -20,12 +20,12 @@ const createMeal = (req, res) => {
     title,
     description,
     price,
-    img,
+    img
   });
 
   return res.status(201).json({
     status: 'success',
-    message: 'Meal created successfully',
+    message: 'Meal created successfully'
   });
 };
 
