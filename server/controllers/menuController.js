@@ -9,7 +9,7 @@ class MenuController {
 
     if (!title || !date || !categories) {
       return res.status(400).json({
-        status: 'error',
+        status: false,
         message: 'Parameters supplied incorrectly'
       });
     }
@@ -35,7 +35,7 @@ class MenuController {
 
 
     return res.status(201).json({
-      status: 'success',
+      status: true,
       message: 'Menu created successfully'
     });
   }
@@ -48,13 +48,13 @@ class MenuController {
 
     if (deleted) {
       return res.status(200).json({
-        status: 'success',
+        status: true,
         message: 'menu deleted successfully'
       });
     }
 
     return res.status(404).json({
-      status: 'error',
+      status: false,
       message: 'menu not found'
     });
   }
@@ -94,7 +94,7 @@ class MenuController {
     });
 
     res.status(200).json({
-      status: 'success',
+      status: true,
       data: responseData
     });
   }
@@ -106,7 +106,7 @@ class MenuController {
 
     if (Number.isNaN(jsDate.getTime())) {
       return res.status(400).json({
-        status: 'error',
+        status: false,
         message: 'Date format should be DD-MM-YYYY'
       });
     }
@@ -115,7 +115,7 @@ class MenuController {
 
     if (!foundMenu) {
       return res.status(404).json({
-        status: 'error',
+        status: false,
         message: 'No Records Found'
       });
     }
@@ -156,7 +156,7 @@ class MenuController {
     });
 
     return res.status(200).json({
-      status: 'success',
+      status: true,
       data: responseData
     });
   }
@@ -197,7 +197,7 @@ class MenuController {
     });
 
     res.status(200).json({
-      status: 'success',
+      status: true,
       data: responseData
     });
   }
@@ -208,7 +208,7 @@ class MenuController {
 
     if (!title || !categories) {
       return res.status(400).json({
-        status: 'error',
+        status: false,
         message: 'Parameters supplied incorrectly'
       });
     }
@@ -237,13 +237,13 @@ class MenuController {
 
     if (Object.keys(menu).length > 0) {
       return res.status(202).json({
-        status: 'success',
+        status: true,
         message: 'Menu updated successfully'
       });
     }
 
     return res.status(404).json({
-      status: 'error',
+      status: false,
       message: 'Menu not found'
     });
   }
