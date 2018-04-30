@@ -78,7 +78,7 @@ describe('updateMenu method', () => {
 
   it('respond with json message on success', () => {
 	  res.json.should.have.been.calledWith({ 
-        status: "success",
+        status: true,
         message: 'Menu updated successfully' 
       });
   });
@@ -111,7 +111,7 @@ describe('updateMenu method', () => {
   it('should respond with error message', function() {
     menuController.updateMenu(notFoundReq, res);
     res.json.should.have.been.calledWith({
-      status: "error",
+      status: false,
       message: "Menu not found",
     })
   });

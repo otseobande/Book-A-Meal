@@ -39,7 +39,7 @@ describe('getMeals method', () => {
   	MealController.getMeal(badReq, res);
 		res.status.should.have.been.calledWith(404);
 		res.json.should.have.been.calledWith({
-			status: 'error',
+			status: false,
 			message: 'Meal not found',
 		})
   });

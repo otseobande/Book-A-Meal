@@ -23,7 +23,7 @@ describe('GET /api/v1/menus', () => {
             const res = await chai.request(App)
                 .get('/api/v1/menus');
 
-            res.body.status.should.equal("success");
+            res.body.status.should.true;
             res.body.data.should.be.an('array');
             res.body.data[0].should.have.property('id');
             res.body.data[0].should.have.property('title');

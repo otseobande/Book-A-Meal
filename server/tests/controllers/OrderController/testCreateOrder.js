@@ -39,7 +39,7 @@ describe('createOrder method', () => {
     OrderController.createOrder(badReq, res);
     res.status.should.have.been.calledWith(400);
     res.json.should.have.been.calledWith({
-      status: 'error',
+      status: false,
       message: 'Parameters supplied incorrectly',
     });
   })
