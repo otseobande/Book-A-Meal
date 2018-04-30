@@ -36,7 +36,7 @@ class MealController {
     const deleted = meals.delete(meal => parseInt(meal.id, 10) === parseInt(mealId, 10));
 
     if (deleted) {
-      return res.status(202).json({
+      return res.status(200).json({
         status: 'success',
         message: 'Meal deleted successfully'
       });
