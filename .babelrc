@@ -1,0 +1,15 @@
+{
+	"presets": ["env"],
+	"plugins": [
+		"transform-object-rest-spread",
+		["transform-runtime", {
+			"polyfill": false,
+			"regenerator": true
+		}]
+  ],
+  "env": {
+    "test": {
+      "plugins": ["istanbul"]
+    }
+  }
+}
