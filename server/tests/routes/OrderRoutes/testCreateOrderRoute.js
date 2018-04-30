@@ -36,7 +36,7 @@ describe('POST /api/v1/orders', () => {
                     deliveryAddress: 'rahama road',
                 });
 
-            res.body.status.should.equal('success');
+            res.body.status.should.true;
             res.body.message.should.equal('Order created successfully');
         } catch (err) {
             throw err;

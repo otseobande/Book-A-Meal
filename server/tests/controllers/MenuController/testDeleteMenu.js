@@ -33,7 +33,7 @@ describe('deleteMenu method', () => {
 
   it('respond with json message on success', () => {
 	  res.json.should.have.been.calledWith({ 
-        status: "success",
+        status: true,
         message: 'menu deleted successfully' 
       });
   });
@@ -48,7 +48,7 @@ describe('deleteMenu method', () => {
   it('should respond with error message', function() {
     MenuController.deleteMenu(notFoundReq, res);
     res.json.should.have.been.calledWith({
-      status: "error",
+      status: false,
       message: "menu not found",
     })
   });

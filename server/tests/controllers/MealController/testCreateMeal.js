@@ -46,7 +46,7 @@ describe('createMeal method', () => {
 
   it('respond with json message on success', () => {
 	   res.json.should.have.been.calledWith({ 
-            status: 'success',
+            status: true,
             message: 'Meal created successfully' 
       });
   });
@@ -61,7 +61,7 @@ describe('createMeal method', () => {
     const badReq = mockReq(badRequest);
     MealController.createMeal(badReq, res);
     res.json.should.have.been.calledWith({
-      status: 'error',
+      status: false,
       message: 'Parameters supplied incorrectly',
     });
   });

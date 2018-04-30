@@ -14,7 +14,7 @@ describe('DELETE /api/v1/menus/:date', function() {
                 .delete('/api/v1/menus/05-22-2018')
 
             res.should.have.status(200)
-            res.body.status.should.be.equal('success');
+            res.body.status.should.be.true;
             res.body.message.should.be.equal('menu deleted successfully');
         } catch (err) {
             throw err;
@@ -27,7 +27,7 @@ describe('DELETE /api/v1/menus/:date', function() {
                 .delete('/api/v1/menus/20-12-2029')
 
             res.should.have.status(404);
-            res.body.status.should.be.equal('error');
+            res.body.status.should.be.false;
             res.body.message.should.be.equal('menu not found');
         } catch (err) {
             throw err;

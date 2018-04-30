@@ -12,7 +12,7 @@ class OrderController {
 
     if (!mealId || !quantity || !deliveryAddress) {
       return res.status(400).json({
-        status: 'error',
+        status: false,
         message: 'Parameters supplied incorrectly'
       });
     }
@@ -25,7 +25,7 @@ class OrderController {
     });
 
     return res.status(200).json({
-      status: 'success',
+      status: true,
       message: 'Order created successfully'
     });
   }
@@ -45,7 +45,7 @@ class OrderController {
     });
 
     return res.status(200).json({
-      status: 'success',
+      status: true,
       data: responseData
     });
   }
@@ -60,13 +60,13 @@ class OrderController {
 
     if (Object.keys(updatedOrder).length > 0) {
       return res.status(202).json({
-        status: 'success',
+        status: true,
         message: 'order updated successfully'
       });
     }
 
     return res.status(404).json({
-      status: 'error',
+      status: false,
       message: 'order not found'
     });
   }

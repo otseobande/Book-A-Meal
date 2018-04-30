@@ -31,14 +31,10 @@ before_script:
 
 script:
   - npm run lint:server
-  - npm run test:server
+  - npm run test-cov:server
 
 deploy:
   skip_cleanup: true
-
-branches:
-  except:
-  - master
 
 after_success:
   - npm run coverage
