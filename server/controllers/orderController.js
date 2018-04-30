@@ -2,7 +2,7 @@ import orders from '../dummy-models/orders';
 import users from '../dummy-models/users';
 import meals from '../dummy-models/meals';
 
-class OrderController{
+class OrderController {
   static createOrder(req, res) {
     const {
       mealId,
@@ -28,7 +28,7 @@ class OrderController{
       status: 'success',
       message: 'Order created successfully'
     });
-  };
+  }
 
   static getAllOrders(req, res) {
     const responseData = [];
@@ -48,7 +48,7 @@ class OrderController{
       status: 'success',
       data: responseData
     });
-  };
+  }
 
   static updateOrder(req, res) {
     const { orderId } = req.params;
@@ -69,7 +69,7 @@ class OrderController{
       status: 'error',
       message: 'order not found'
     });
-  };
+  }
 }
 
 export default OrderController;
