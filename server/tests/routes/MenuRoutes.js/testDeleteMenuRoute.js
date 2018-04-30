@@ -13,7 +13,7 @@ describe('DELETE /api/v1/menus/:date', function() {
             const res = await chai.request(App)
                 .delete('/api/v1/menus/05-22-2018')
 
-            res.should.have.status(202)
+            res.should.have.status(200)
             res.body.status.should.be.equal('success');
             res.body.message.should.be.equal('menu deleted successfully');
         } catch (err) {
