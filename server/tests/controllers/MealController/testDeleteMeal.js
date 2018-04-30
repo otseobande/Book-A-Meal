@@ -27,8 +27,8 @@ describe('deleteMeal method', () => {
     MealController.deleteMeal(req, res);
   });
 
-  it('should return 202 on success', () => {
-		res.status.should.have.been.calledWith(202);
+  it('should return 200 on success', () => {
+		res.status.should.have.been.calledWith(200);
   });
 
   it('respond with json message on success', () => {

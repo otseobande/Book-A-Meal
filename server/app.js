@@ -13,4 +13,6 @@ app.use(apiRoutes);
 
 app.listen(port);
 
+console.log(`Server started on localhost:${port}`);
+
 export default app;

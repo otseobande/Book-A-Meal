@@ -13,7 +13,7 @@ describe('DELETE /api/v1/meals/:mealId', function() {
             const res = await chai.request(App)
                 .delete('/api/v1/meals/4')
 
-            res.should.have.status(202)
+            res.should.have.status(200)
             res.body.status.should.be.equal('success');
             res.body.message.should.be.equal('Meal deleted successfully');
         } catch (err) {
