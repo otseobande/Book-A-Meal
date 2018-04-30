@@ -14,7 +14,7 @@ describe('DELETE /api/v1/meals/:mealId', function() {
                 .delete('/api/v1/meals/4')
 
             res.should.have.status(200)
-            res.body.status.should.be.equal('success');
+            res.body.status.should.be.true;
             res.body.message.should.be.equal('Meal deleted successfully');
         } catch (err) {
             throw err;
@@ -27,7 +27,7 @@ describe('DELETE /api/v1/meals/:mealId', function() {
                 .delete('/api/v1/meals/20')
 
             res.should.have.status(404);
-            res.body.status.should.be.equal('error');
+            res.body.status.should.be.false;
             res.body.message.should.be.equal('Meal not found');
         } catch (err) {
             throw err;

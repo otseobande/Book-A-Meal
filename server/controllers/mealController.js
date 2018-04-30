@@ -11,7 +11,7 @@ class MealController {
 
     if (!title || !description || !price) {
       return res.status(400).json({
-        status: 'error',
+        status: false,
         message: 'Parameters supplied incorrectly'
       });
     }
@@ -25,7 +25,7 @@ class MealController {
     });
 
     return res.status(201).json({
-      status: 'success',
+      status: true,
       message: 'Meal created successfully'
     });
   }
@@ -37,13 +37,13 @@ class MealController {
 
     if (deleted) {
       return res.status(200).json({
-        status: 'success',
+        status: true,
         message: 'Meal deleted successfully'
       });
     }
 
     return res.status(404).json({
-      status: 'error',
+      status: false,
       message: 'Meal not found'
     });
   }
@@ -55,19 +55,19 @@ class MealController {
 
     if (!foundMeal) {
       return res.status(404).json({
-        status: 'error',
+        status: false,
         message: 'Meal not found'
       });
     }
     return res.status(200).json({
-      status: 'success',
+      status: true,
       data: foundMeal
     });
   }
 
   static getMeals(req, res) {
     return res.status(200).json({
-      status: 'success',
+      status: true,
       data: meals.data
     });
   }

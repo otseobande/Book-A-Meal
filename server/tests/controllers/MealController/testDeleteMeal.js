@@ -33,7 +33,7 @@ describe('deleteMeal method', () => {
 
   it('respond with json message on success', () => {
 	  res.json.should.have.been.calledWith({ 
-        status: "success",
+        status: true,
         message: 'Meal deleted successfully' 
       });
   });
@@ -48,7 +48,7 @@ describe('deleteMeal method', () => {
   it('should respond with error message', function() {
     MealController.deleteMeal(notFoundReq, res);
     res.json.should.have.been.calledWith({
-      status: "error",
+      status: false,
       message: "Meal not found",
     })
   });

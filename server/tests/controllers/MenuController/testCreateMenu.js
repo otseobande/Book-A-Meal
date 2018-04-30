@@ -62,7 +62,7 @@ describe('createMenu method', () => {
 
   it('respond with json message on success', () => {
 	   res.json.should.have.been.calledWith({ 
-            status: 'success',
+            status: true,
             message: 'Menu created successfully' 
       });
   });
@@ -77,7 +77,7 @@ describe('createMenu method', () => {
     const badReq = mockReq(badRequest);
     MenuController.createMenu(badReq, res);
     res.json.should.have.been.calledWith({
-      status: 'error',
+      status: false,
       message: 'Parameters supplied incorrectly',
     });
   });

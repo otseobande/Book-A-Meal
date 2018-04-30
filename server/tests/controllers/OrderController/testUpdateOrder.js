@@ -50,7 +50,7 @@ describe('updateOrder method', () => {
 
   it('respond with json message on success', () => {
 	  res.json.should.have.been.calledWith({ 
-        status: "success",
+        status: true,
         message: 'order updated successfully' 
       });
   });
@@ -70,7 +70,7 @@ describe('updateOrder method', () => {
   it('should respond with error message', function() {
     OrderController.updateOrder(notFoundReq, res);
     res.json.should.have.been.calledWith({
-      status: "error",
+      status: false,
       message: "order not found",
     })
   });
