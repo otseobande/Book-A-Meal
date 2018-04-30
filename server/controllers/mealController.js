@@ -87,7 +87,7 @@ class MealController {
 
     if (wrongKeys) {
       return res.status(400).json({
-        status: 'error',
+        status: false,
         message: 'Wrong parameters supplied'
       });
     }
@@ -99,13 +99,13 @@ class MealController {
 
     if (Object.keys(updatedMeal).length > 0) {
       return res.status(202).json({
-        status: 'success',
+        status: true,
         message: 'Meal updated successfully'
       });
     }
 
     return res.status(404).json({
-      status: 'error',
+      status: false,
       message: 'Meal not found'
     });
   }
