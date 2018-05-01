@@ -1,7 +1,5 @@
-import trimStrings from './trimStrings';
+import TrimStrings from './trimStrings';
+import HandleErrors from './handleErrors';
 
-const middlewares = {
-	trimStrings
-}
-
-export default middlewares;
+export const trimStrings = TrimStrings;
+export const handleErrors = HandleErrors;

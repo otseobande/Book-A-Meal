@@ -31,8 +31,6 @@ describe('POST /api/v1/meals', function() {
                 .post('/api/v1/meals')
                 .send({
                     title: 'test meal',
-                    description: 'great meal',
-                    img: 'image_link',
                 });
 
             res.should.have.status(400);
