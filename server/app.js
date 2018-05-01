@@ -3,6 +3,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import { trimStrings, handleErrors } from './middlewares';
 import apiRoutes from './routes/api';
+import otherRoutes from './routes/others';
 
 dotenv.config();
 
@@ -14,11 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(trimStrings);
 app.use(apiRoutes);
-
-app.all('/*', (req, res) => res.status(404).json({
-  message: 'Route not found'
-}));
-
+app.use(otherRoutes);
 app.use(handleErrors);
 
 app.listen(port);

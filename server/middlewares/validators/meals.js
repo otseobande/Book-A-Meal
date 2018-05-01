@@ -1,30 +1,40 @@
 import Joi from 'joi';
 import validate from 'express-validation';
 
+const title = Joi.string()
+  .min(2)
+  .max(25);
+const description = Joi.string()
+  .min(4)
+  .max(50);
+const price = Joi.number().positive();
+const img = Joi.string();
+const mealId = Joi.number().integer().positive();
+
 export const validateCreate = validate({
   body: {
-    title: Joi.string().required(),
-    description: Joi.string().required(),
-    price: Joi.number().required(),
-    img: Joi.string()
+    title: title.required(),
+    description: description.required(),
+    price: price.required(),
+    img
   }
 });
 
 export const validateMealId = validate({
   params: {
-    mealId: Joi.number()
+    mealId
   }
 });
 
 export const validateUpdate = validate({
   params: {
-    mealId: Joi.number()
+    mealId
   },
 
   body: {
     title: Joi.string().required(),
-    description: Joi.string(),
-    price: Joi.number(),
-    img: Joi.any()
+    description,
+    price,
+    img
   }
 });
