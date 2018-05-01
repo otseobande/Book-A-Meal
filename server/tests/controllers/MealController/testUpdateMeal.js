@@ -59,7 +59,7 @@ describe('updateMeal method', () => {
 
   it('respond with json message on success', () => {
 	  res.json.should.have.been.calledWith({ 
-        status: "success",
+        status: true,
         message: 'Meal updated successfully' 
       });
   });
@@ -86,7 +86,7 @@ describe('updateMeal method', () => {
   it('should return error 404 if "id" is not found', function(){
     MealController.updateMeal(notFoundReq, res);
     res.json.should.have.been.calledWith({
-        status: 'error',
+        status: false,
         message: 'Wrong parameters supplied',
       });
   });
@@ -94,7 +94,7 @@ describe('updateMeal method', () => {
   it('should respond with error message', function() {
     MealController.updateMeal(notFoundReq, res);
     res.json.should.have.been.calledWith({
-      status: "error",
+      status: false,
       message: "Meal not found",
     })
   });
