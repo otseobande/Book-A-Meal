@@ -13,7 +13,6 @@ describe('POST /api/v1/orders', () => {
             const res = await chai.request(App)
                 .post('/api/v1/orders')
                 .send({
-                    userId: 2,
                     mealId: 1,
                     quantity: 3,
                     deliveryAddress: 'rahama road',
@@ -30,7 +29,6 @@ describe('POST /api/v1/orders', () => {
            const res = await chai.request(App)
                 .post('/api/v1/orders')
                 .send({
-                    userId: 2,
                     mealId: 1,
                     quantity: 3,
                     deliveryAddress: 'rahama road',

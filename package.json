@@ -8,7 +8,7 @@
     "start:dev": "nodemon --exec babel-node -- server/app.js",
     "test": "npm run test:server",
     "test:server": "cross-env NODE_ENV=test mocha server/tests --require babel-register --require regenerator-runtime/runtime --exit --recursive ",
-    "test-cov:server": "cross-env NODE_ENV=test nyc mocha server/tests --exit --recursive ",
+    "cov-test:server": "cross-env NODE_ENV=test nyc mocha server/tests --exit --recursive ",
     "lint:server": "eslint \"server/**/*.js\" app.js --fix",
     "lint-test:server": "concurrently \"npm run lint:server\" \"npm run test:server\"",
     "coverage": "nyc report --reporter=text-lcov | coveralls"

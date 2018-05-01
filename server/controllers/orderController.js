@@ -10,13 +10,6 @@ class OrderController {
       deliveryAddress
     } = req.body;
 
-    if (!mealId || !quantity || !deliveryAddress) {
-      return res.status(400).json({
-        status: false,
-        message: 'Parameters supplied incorrectly'
-      });
-    }
-
     orders.create({
       userId: 2,
       mealId,
