@@ -2,26 +2,9 @@ import meals from '../dummy-models/meals';
 
 class MealController {
   static createMeal(req, res) {
-    const {
-      title,
-      description,
-      price,
-      img
-    } = req.body;
-
-    if (!title || !description || !price) {
-      return res.status(400).json({
-        status: false,
-        message: 'Parameters supplied incorrectly'
-      });
-    }
-
     meals.create({
-      userId: 1,
-      title,
-      description,
-      price,
-      img
+      ...req.body,
+      userId: 2
     });
 
     return res.status(201).json({
@@ -50,8 +33,8 @@ class MealController {
 
   static getMeal(req, res) {
     const { mealId } = req.params;
-
-    const foundMeal = meals.find(meal => parseInt(meal.id, 10) === parseInt(mealId, 10));
+    const foundMeal = meals.find(meal => parseInt(meal.id, 10)
+                                    === parseInt(mealId, 10));
 
     if (!foundMeal) {
       return res.status(404).json({
@@ -74,24 +57,6 @@ class MealController {
 
   static updateMeal(req, res) {
     const { mealId } = req.params;
-
-    let wrongKeys = false;
-    Object.keys(req.body).forEach((key) => {
-      if (key !== 'title'
-        && key !== 'description'
-        && key !== 'price'
-        && key !== 'img') {
-        wrongKeys = true;
-      }
-    });
-
-    if (wrongKeys) {
-      return res.status(400).json({
-        status: false,
-        message: 'Wrong parameters supplied'
-      });
-    }
-
     const updatedMeal = meals.update(
       req.body,
       meal => parseInt(meal.id, 10) === parseInt(mealId, 10)
