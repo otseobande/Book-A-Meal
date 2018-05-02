@@ -1,4 +1,4 @@
-export default (sequelize, DataTypes) => {
+const order = (sequelize, DataTypes) => {
   const Order = sequelize.define('Order', {
     userId: DataTypes.INTEGER,
     mealId: DataTypes.INTEGER,
@@ -6,9 +6,11 @@ export default (sequelize, DataTypes) => {
     status: DataTypes.STRING,
     deliveryAddress: DataTypes.STRING
   }, {});
-  Order.associate = function (models) {
+  Order.associate = (models) => {
     Order.hasOne(models.User);
     Order.hasOne(models.Meal);
   };
   return Order;
 };
+
+export default order;

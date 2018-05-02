@@ -5,11 +5,11 @@ export default {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER.UNSIGNED
       },
       userId: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER.UNSIGNED,
         references: {
           model: 'Users',
           key: 'id'
@@ -17,7 +17,7 @@ export default {
       },
       mealId: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER.UNSIGNED,
         references: {
           model: 'Meals',
           key: 'id'
@@ -29,7 +29,8 @@ export default {
       },
       status: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.ENUM,
+        values: ['pending','delivered','cancelled']
       },
       deliveryAddress: {
         allowNull: false,
