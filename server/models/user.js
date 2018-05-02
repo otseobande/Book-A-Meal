@@ -5,9 +5,12 @@ export default (sequelize, DataTypes) => {
     email: DataTypes.STRING
   }, {});
 
-  User.associate = function(models) {
-    // associations can be defined here
+  User.associate = function (models) {
+    User.belongsToMany(models.Meal);
+    User.belongsToMany(models.Menu);
+    User.belongsToMany(models.Order);
+    User.belongsToMany(models.Notifications);
   };
-  
+
   return User;
 };

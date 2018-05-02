@@ -1,13 +1,11 @@
 export default (sequelize, DataTypes) => {
-  var Notification = sequelize.define('Notification', {
-    id: DataTypes.INT,
-    userId: DataTypes.INT,
-    mealId: DataTypes.INT,
+  const Notification = sequelize.define('Notification', {
+    userId: DataTypes.INTEGER,
     info: DataTypes.STRING,
-    isRead: DataTypes.BOOL
+    isRead: DataTypes.BOOLEAN
   }, {});
-  Notification.associate = function(models) {
-    // associations can be defined here
+  Notification.associate = function (models) {
+    Notification.hasOne(models.User);
   };
   return Notification;
 };

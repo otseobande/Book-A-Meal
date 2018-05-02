@@ -9,7 +9,11 @@ export default {
       },
       menuId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Menus',
+          key: 'id'
+        }
       },
       title: {
         allowNull: false,

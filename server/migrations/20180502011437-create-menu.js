@@ -7,13 +7,13 @@ export default {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id: {
-        allowNull: false,
-        type: Sequelize.INTEGER
-      },
       userId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id'
+        }
       },
       title: {
         allowNull: false,

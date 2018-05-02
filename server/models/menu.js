@@ -1,12 +1,12 @@
 export default (sequelize, DataTypes) => {
-  var Menu = sequelize.define('Menu', {
-    id: DataTypes.INT,
-    userId: DataTypes.INT,
+  const Menu = sequelize.define('Menu', {
+    userId: DataTypes.INTEGER,
     title: DataTypes.STRING,
     date: DataTypes.DATEONLY
   }, {});
-  Menu.associate = function(models) {
-    // associations can be defined here
+  Menu.associate = function (models) {
+    Menu.hasOne(models.User);
+    Menu.belongsToMany(models.MealMenuCategory);
   };
   return Menu;
 };

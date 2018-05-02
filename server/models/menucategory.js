@@ -1,11 +1,10 @@
 export default (sequelize, DataTypes) => {
-  var MenuCategory = sequelize.define('MenuCategory', {
-    id: DataTypes.INT,
-    menuId: DataTypes.INT,
+  const MenuCategory = sequelize.define('MenuCategory', {
+    menuId: DataTypes.INTEGER,
     title: DataTypes.STRING
   }, {});
-  MenuCategory.associate = function(models) {
-    // associations can be defined here
+  MenuCategory.associate = function (models) {
+    MenuCategory.hasMany(models.Menu);
   };
   return MenuCategory;
 };
