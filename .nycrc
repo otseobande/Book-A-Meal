@@ -14,7 +14,8 @@
     "**/tests/**",
     "**/coverage/**",
     "**/config/**",
-    "**/UI/**"
+    "**/UI/**",
+    "server/app.js"
   ],
   "include": [
     "**/server/**"

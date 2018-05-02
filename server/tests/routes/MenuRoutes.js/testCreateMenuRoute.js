@@ -9,7 +9,7 @@ describe('POST /api/v1/menus', function() {
     it('should return a success status', async function() {
         try {
             const res = await chai.request(App)
-                .post('/api/v1/menus')
+                .post('/api/v1/menu')
                 .send({
                     title: 'test menu',
                     date: '20-10-2019',
