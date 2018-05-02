@@ -5,11 +5,11 @@ export default {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER.UNSIGNED
       },
       userId: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER.UNSIGNED,
         references: {
           model: 'Users',
           key: 'id'

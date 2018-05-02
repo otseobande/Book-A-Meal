@@ -5,11 +5,11 @@ export default {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER.UNSIGNED
       },
       menuId: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER.UNSIGNED,
         references: {
           model: 'Menus',
           key: 'id'

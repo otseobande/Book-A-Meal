@@ -9,9 +9,9 @@ const envConfig = config[env];
 const db = {};
 
 const sequelize = new Sequelize(
-  envConfig.database, 
-  envConfig.username, 
-  envConfig.password, 
+  envConfig.database,
+  envConfig.username,
+  envConfig.password,
   envConfig
 );
 

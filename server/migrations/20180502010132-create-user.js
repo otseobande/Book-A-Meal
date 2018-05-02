@@ -5,7 +5,7 @@ export default {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER.UNSIGNED
       },
       fullName: {
         allowNull: false,
