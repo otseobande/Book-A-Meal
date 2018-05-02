@@ -5,7 +5,8 @@
 		["transform-runtime", {
 			"polyfill": false,
 			"regenerator": true
-		}]
+		}],
+		"add-module-exports"
   ],
   "env": {
     "test": {
