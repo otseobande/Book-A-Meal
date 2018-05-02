@@ -1,14 +1,14 @@
 export default (sequelize, DataTypes) => {
-  var Order = sequelize.define('Order', {
-    id: DataTypes.INT,
-    userId: DataTypes.INT,
-    mealId: DataTypes.INT,
-    quantity: DataTypes.INT,
+  const Order = sequelize.define('Order', {
+    userId: DataTypes.INTEGER,
+    mealId: DataTypes.INTEGER,
+    quantity: DataTypes.INTEGER,
     status: DataTypes.STRING,
     deliveryAddress: DataTypes.STRING
   }, {});
-  Order.associate = function(models) {
-    // associations can be defined here
+  Order.associate = function (models) {
+    Order.hasOne(models.User);
+    Order.hasOne(models.Meal);
   };
   return Order;
 };

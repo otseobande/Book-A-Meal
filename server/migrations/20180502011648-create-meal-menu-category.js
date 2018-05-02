@@ -9,11 +9,19 @@ export default {
       },
       menuId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Menus',
+          key: 'id'
+        }
       },
       menuCategoryId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'MenuCategories',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,
