@@ -31,7 +31,7 @@ before_script:
 
 script:
   - npm run lint:server
-  - npm run test-cov:server
+  - npm run cov-test:server
 
 deploy:
   skip_cleanup: true
