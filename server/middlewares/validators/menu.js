@@ -8,6 +8,10 @@ const categories = Joi.array();
 const date = Joi.string()
   .regex(/\d{1,2}-\d{1,2}-\d{4}/);
 
+/**
+ * Validation middleware
+ * @exports
+ */
 export const validateCreate = validate({
   body: {
     title: title.required(),
@@ -16,6 +20,10 @@ export const validateCreate = validate({
   }
 });
 
+/**
+ * Validation middleware
+ * @exports
+ */
 export const validateUpdate = validate({
   params: {
     date
@@ -26,6 +34,10 @@ export const validateUpdate = validate({
   }
 });
 
+/**
+ * Validation middleware
+ * @exports
+ */
 export const validateDate = validate({
   params: {
     date

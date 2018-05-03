@@ -1,7 +1,5 @@
-import chai from 'chai';
+import { chai } from '../setup';
 import notifications from '../../dummy-models/notifications';
-
-chai.should();
 
 describe('Dummy notifications data', () => {
 

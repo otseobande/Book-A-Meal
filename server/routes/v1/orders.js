@@ -1,11 +1,11 @@
-import express from 'express';
+import { Router } from 'express';
 import OrderController from '../../controllers/orderController';
 import {
   validateCreate,
   validateUpdate
 } from '../../middlewares/validators/orders';
 
-const router = express.Router();
+const router = Router();
 
 router.get('/', OrderController.getAllOrders);
 router.post('/', validateCreate, OrderController.createOrder);

@@ -1,16 +1,15 @@
-import chai from 'chai';
-import chaiHttp from 'chai-http';
-import App from "../../../app";
-
-chai.use(chaiHttp);
-chai.should();
-
+import {
+    chai,
+    App,
+    token
+} from '../../setup';
 
 describe('PUT /api/v1/menu/:date', function() {
     it('should return a success status 202', async function() {
         try {
             const res = await chai.request(App)
                 .put('/api/v1/menu/05-24-2018')
+                .set('Authorization',  `Bearer ${token}`)
                 .send({
                     title: 'test menu',
                     categories: [{

@@ -1,7 +1,5 @@
-import chai from 'chai';
+import { chai } from '../setup';
 import orders from '../../dummy-models/orders';
-
-chai.should();
 
 describe('Dummy orders data', () => {
 

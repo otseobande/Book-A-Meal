@@ -1,9 +1,8 @@
-import chai from 'chai';
-import chaiHttp from 'chai-http';
-import App from "../../app";
-
-chai.should();
-chai.use(chaiHttp);
+import {
+    chai,
+    App,
+    token
+} from '../setup';
 
 describe('unspecified routes', () => {
 	it('should return error 404', async () => {

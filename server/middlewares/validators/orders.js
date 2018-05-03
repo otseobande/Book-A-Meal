@@ -5,6 +5,10 @@ const mealId = Joi.number().integer().positive();
 const quantity = Joi.number().integer().positive();
 const deliveryAddress = Joi.string();
 
+/**
+ * Validation middleware
+ * @exports
+ */
 export const validateCreate = validate({
   body: {
     mealId: mealId.required(),
@@ -13,6 +17,10 @@ export const validateCreate = validate({
   }
 });
 
+/**
+ * Validation middleware
+ * @exports
+ */
 export const validateUpdate = validate({
   body: {
     mealId,

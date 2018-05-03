@@ -1,9 +1,9 @@
-import chai from 'chai';
+import {
+	chai,
+	assert
+} from '../setup';
 import DummyModel from '../../dummy-models/DummyModel';
 import mealMenuCategories from '../../dummy-models/mealMenuCategories';
-import assert from 'assert';
-
-chai.should();
 
 describe('Dummy mealMenuCategories data', () => {
   it('should have correct properties', () => {

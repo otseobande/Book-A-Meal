@@ -1,10 +1,8 @@
-import chai from 'chai';
-import chaiHttp from 'chai-http';
-import App from "../../../app";
-
-chai.use(chaiHttp);
-chai.should();
-
+import {
+    chai,
+    App,
+    token
+} from '../../setup';
 
 describe('POST /api/v1/orders', () => {
 
@@ -12,6 +10,7 @@ describe('POST /api/v1/orders', () => {
         try {
             const res = await chai.request(App)
                 .post('/api/v1/orders')
+                .set('Authorization',  `Bearer ${token}`)
                 .send({
                     mealId: 1,
                     quantity: 3,

@@ -5,10 +5,10 @@
   "main": "server/app.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production babel-node server/app.js",
-    "start:dev": "nodemon --exec babel-node -- server/app.js",
+    "start:dev": "cross-env NODE_ENV=development nodemon --exec babel-node -- server/app.js",
     "test": "npm run test:server",
-    "test:server": "cross-env NODE_ENV=test mocha server/tests --require babel-register --require regenerator-runtime/runtime --exit --recursive ",
-    "cov-test:server": "cross-env NODE_ENV=test nyc mocha server/tests --exit --recursive ",
+    "test:server": "cross-env NODE_ENV=test mocha server/tests",
+    "cov-test:server": "cross-env NODE_ENV=test nyc mocha server/tests",
     "lint:server": "eslint \"server/**/*.js\" app.js --fix",
     "lint-test:server": "concurrently \"npm run lint:server\" \"npm run test:server\"",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
@@ -33,6 +33,7 @@
     "express-validation": "^1.0.2",
     "joi": "^13.2.0",
     "jsonwebtoken": "^8.2.1",
+    "morgan": "^1.9.0",
     "pg": "^7.4.1",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.37.6"

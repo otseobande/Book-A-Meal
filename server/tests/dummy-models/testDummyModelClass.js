@@ -1,14 +1,16 @@
-import chai from 'chai';
+import { 
+	chai,
+	assert
+} from '../setup'
 import DummyModel from '../../dummy-models/DummyModel';
-import assert from 'assert';
 
-chai.should();
 const dummyModel = new DummyModel([
-											{
-												name: 'test',
-												description: 'wonderful test'
-											}
-								]);
+	{
+		name: 'test',
+		description: 'wonderful test'
+	}
+]);
+
 describe('Test DummyModel', () => {
 	it('should raise TypeError if constructor arg is not array', () =>{
 		(() => new DummyModel(3)).should.throw(TypeError);

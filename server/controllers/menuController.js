@@ -3,7 +3,19 @@ import menuCategories from '../dummy-models/menuCategories';
 import mealMenuCategories from '../dummy-models/mealMenuCategories';
 import menusGetter from '../helpers/menusGetter';
 
+/**
+ * @exports
+ * @class MenuController
+ */
 class MenuController {
+  /**
+   * Creates a new menu
+   *
+   * @staticmethod
+   * @param  {object} req - Request object
+   * @param {object} res - Response object
+   * @return {json} res.json
+   */
   static createMenu(req, res) {
     const { title, date, categories } = req.body;
 
@@ -33,6 +45,15 @@ class MenuController {
     });
   }
 
+
+  /**
+   * Deletes a menu
+   *
+   * @staticmethod
+   * @param  {object} req - Request object
+   * @param {object} res - Response object
+   * @return {json} res.json
+   */
   static deleteMenu(req, res) {
     const { date } = req.params;
 
@@ -52,6 +73,14 @@ class MenuController {
     });
   }
 
+  /**
+   * Gets all menus
+   *
+   * @staticmethod
+   * @param  {object} req - Request object
+   * @param {object} res - Response object
+   * @return {json} res.json
+   */
   static getMenus(req, res) {
     const responseData = menusGetter(() => true);
 
@@ -61,6 +90,15 @@ class MenuController {
     });
   }
 
+  /**
+   * Gets the menu for the date specified in
+   * the date param
+   *
+   * @staticmethod
+   * @param  {object} req - Request object
+   * @param {object} res - Response object
+   * @return {json} res.json
+   */
   static getSpecificDayMenu(req, res) {
     const { date } = req.params;
 
@@ -86,6 +124,13 @@ class MenuController {
     });
   }
 
+  /**
+   * Gets today's menu
+   * @staticmethod
+   * @param  {object} req - Request object
+   * @param {object} res - Response object
+   * @return {json} res.json
+   */
   static getTodaysMenu(req, res) {
     const responseData = menusGetter(menu =>
       (new Date(menu.date)).getTime() === (new Date()).getTime());
@@ -96,6 +141,13 @@ class MenuController {
     });
   }
 
+  /**
+   * Updates an exising menu
+   * @staticmethod
+   * @param  {object} req - Request object
+   * @param {object} res - Response object
+   * @return {json} res.json
+   */
   static updateMenu(req, res) {
     const { date } = req.params;
     const { title, categories } = req.body;
