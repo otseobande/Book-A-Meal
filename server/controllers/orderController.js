@@ -3,6 +3,14 @@ import users from '../dummy-models/users';
 import meals from '../dummy-models/meals';
 
 class OrderController {
+  /**
+   * Creates a new order
+   *
+   * @staticmethod
+   * @param  {object} req - Request object
+   * @param {object} res - Response object
+   * @return {json} res.json
+   */
   static createOrder(req, res) {
     const {
       mealId,
@@ -23,6 +31,14 @@ class OrderController {
     });
   }
 
+  /**
+   * Gets all orders
+   *
+   * @staticmethod
+   * @param  {object} req - Request object
+   * @param {object} res - Response object
+   * @return {json} res.json
+   */
   static getAllOrders(req, res) {
     const responseData = [];
     orders.data.forEach((order) => {
@@ -43,6 +59,13 @@ class OrderController {
     });
   }
 
+  /**
+   * Updates an existing order
+   * @staticmethod
+   * @param  {object} req - Request object
+   * @param {object} res - Response object
+   * @return {json} res.json
+   */
   static updateOrder(req, res) {
     const { orderId } = req.params;
 

@@ -1,15 +1,32 @@
+
+/**
+ * @model
+ * @param  {object} sequelize - Sequelize DB connection object
+ * @param  {object} Datatypes - Sequelize Datatypes
+ * @return {object} Sequelize Model
+ */
 const user = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     fullName: DataTypes.STRING,
     username: DataTypes.STRING,
-    email: DataTypes.STRING
+    email: DataTypes.STRING,
+    password: DataTypes.STRING,
+    role: DataTypes.ENUM('customer', 'caterer', 'admin'),
+    createdAt: {
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
+    },
+    updatedAt: {
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
+    },
   }, {});
 
   User.associate = (models) => {
-    User.belongsToMany(models.Meal);
-    User.belongsToMany(models.Menu);
-    User.belongsToMany(models.Order);
-    User.belongsToMany(models.Notifications);
+    User.hasMany(models.Meal);
+    User.hasMany(models.Menu);
+    User.hasMany(models.Order);
+    User.hasMany(models.Notification);
   };
 
   return User;

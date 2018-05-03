@@ -5,31 +5,25 @@ export default {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER.UNSIGNED
+        type: Sequelize.INTEGER
       },
-      menuId: {
+      mealId: {
         allowNull: false,
-        type: Sequelize.INTEGER.UNSIGNED,
-        references: {
-          model: 'Menus',
-          key: 'id'
-        }
+        type: Sequelize.INTEGER
       },
       menuCategoryId: {
         allowNull: false,
-        type: Sequelize.INTEGER.UNSIGNED,
-        references: {
-          model: 'MenuCategories',
-          key: 'id'
-        }
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
       }
     });
   },

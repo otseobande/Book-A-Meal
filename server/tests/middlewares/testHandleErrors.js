@@ -1,12 +1,10 @@
-import chai from 'chai';
-import sinon from 'sinon';
-import sinonChai from 'sinon-chai';
-import { mockReq, mockRes } from 'sinon-express-mock';
+import {
+  chai,
+  sinon,
+  mockReq,
+  mockRes
+} from '../setup';
 import handleErrors from '../../middlewares/handleErrors';
-
-chai.use(sinonChai);
-chai.should();
-
 
 const res = mockRes();
 

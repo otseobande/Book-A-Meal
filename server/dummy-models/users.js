@@ -3,21 +3,24 @@ import DummyModel from './DummyModel';
 const users = new DummyModel([
   {
     id: 1,
-    name: 'Otse Obande',
+    fullName: 'Otse Obande',
     email: 'otseobande@gmail.com',
+    username: 'otseobande',
     password: 'bookameal',
     role: 'caterer'
   },
   {
     id: 2,
-    name: 'John Ade',
+    fullName: 'John Ade',
     email: 'john@gmail.com',
+    username: 'john',
     password: 'bookameal',
     role: 'customer'
   },
   {
     id: 3,
-    name: 'Zappa Balami',
+    fullName: 'Zappa Balami',
+    username: 'zappa',
     email: 'zappabalami@gmail.com',
     password: 'bookameal',
     role: 'caterer'

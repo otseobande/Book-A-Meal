@@ -1,17 +1,18 @@
-import express from 'express';
+import { Router } from 'express';
 import MealController from '../../controllers/mealController';
 import {
   validateCreate,
   validateMealId,
   validateUpdate
 } from '../../middlewares/validators/meals';
+import { authorize } from '../../middlewares';
 
-const router = express.Router();
+const router = Router();
 
 router.get('/', MealController.getMeals);
-router.post('/', validateCreate, MealController.createMeal);
-router.get('/:mealId', validateMealId, MealController.getMeal);
-router.put('/:mealId', validateUpdate, MealController.updateMeal);
-router.delete('/:mealId', validateMealId, MealController.deleteMeal);
+router.post('/', [authorize('caterer'), validateCreate], MealController.create);
+router.get('/:mealId', validateMealId, MealController.get);
+router.put('/:mealId', authorize('caterer'), validateUpdate, MealController.update);
+router.delete('/:mealId', authorize('caterer'), validateMealId, MealController.delete);
 
 export default router;

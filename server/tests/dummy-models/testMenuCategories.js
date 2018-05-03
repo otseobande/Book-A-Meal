@@ -1,7 +1,5 @@
-import chai from 'chai';
+import { chai } from '../setup';
 import menuCategories from '../../dummy-models/menuCategories';
-
-chai.should();
 
 describe('Dummy menuCategories data', () => {
 

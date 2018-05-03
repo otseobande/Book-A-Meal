@@ -1,16 +1,15 @@
-import chai from 'chai';
-import chaiHttp from 'chai-http';
-import App from "../../../app";
-
-chai.use(chaiHttp);
-chai.should();
-
+import {
+    chai,
+    App,
+    token
+} from '../../setup';
 
 describe('GET /api/v1/menu/:date', () => {
     it('should return status 200', async function() {
         try {
             const res = await chai.request(App)
-                .get('/api/v1/menu/06-24-2018');
+                .get('/api/v1/menu/06-24-2018')
+                .set('Authorization',  `Bearer ${token}`);
             res.should.have.status(200);
         } catch (err) {
             throw err;

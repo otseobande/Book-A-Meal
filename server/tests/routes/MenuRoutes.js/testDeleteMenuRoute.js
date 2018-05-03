@@ -1,17 +1,15 @@
-import chai from 'chai';
-import chaiHttp from 'chai-http';
-import App from "../../../app";
-
-chai.use(chaiHttp);
-chai.should();
-
-
+import {
+    chai,
+    App,
+    token
+} from '../../setup';
 
 describe('DELETE /api/v1/menus/:date', function() {
     it('should return a success status code and message', async function() {
         try {
             const res = await chai.request(App)
                 .delete('/api/v1/menu/05-22-2018')
+                .set('Authorization',  `Bearer ${token}`);
 
             res.should.have.status(200)
             res.body.status.should.be.true;
