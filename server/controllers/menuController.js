@@ -2,6 +2,11 @@ import menus from '../dummy-models/menus';
 import menuCategories from '../dummy-models/menuCategories';
 import mealMenuCategories from '../dummy-models/mealMenuCategories';
 import menusGetter from '../helpers/menusGetter';
+import { 
+  Menu,
+  MenuCategory,
+  MealMenuCategory 
+} from '../models';
 
 /**
  * @exports
@@ -19,30 +24,42 @@ class MenuController {
   static createMenu(req, res) {
     const { title, date, categories } = req.body;
 
-    const menu = menus.create({
-      userId: 2,
+    Menu.create({
+      userId: req.user.id,
       title,
       date
+    }).then(meal => {
+      categories.forEach((category) =>{
+        MenuCategory.create({
+          mealId: menu.id,
+          title: category.title
+        }).then(menuCategory =>{
+          category.mealIds.forEach(mealId =>{
+            Meal.find({
+              where:{
+                id: mealId,
+              }
+            }).then(meal => {
+              menuCategory.addMeal(meal);
+            })
+            
+          })
+        })
+      })
     });
 
-    categories.forEach((category) => {
-      menuCategories.create({
-        mealId: menu.id,
-        title: category.title
-      });
-      category.mealIds.forEach((mealId) => {
-        mealMenuCategories.create({
-          menuCategoryId: menuCategories.data[menuCategories.data.length - 1].id + 1,
-          mealId
-        });
-      });
-    });
-
-
-    return res.status(201).json({
-      status: true,
-      message: 'Menu created successfully'
-    });
+    // categories.forEach((category) => {
+    //   menuCategories.create({
+    //     mealId: menu.id,
+    //     title: category.title
+    //   });
+    //   category.mealIds.forEach((mealId) => {
+    //     mealMenuCategories.create({
+    //       menuCategoryId: menuCategories.data[menuCategories.data.length - 1].id + 1,
+    //       mealId
+    //     });
+    //   });
+    // });
   }
 
 
