@@ -20,12 +20,10 @@ const menu = (sequelize, DataTypes) => {
     },
   }, {});
   Menu.associate = (models) => {
-    Menu.belongsTo(models.User, {
-      foreignKey: 'useId'
-    });
-    Menu.belongsToMany(models.MenuCategory, {
-      through: models.MealMenuCategory
-    });
+  
+    Menu.hasMany(models.MenuCategory, {
+      foreignKey: 'menuId'
+    })
   };
   return Menu;
 };

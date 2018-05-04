@@ -23,9 +23,9 @@ const meal = (sequelize, DataTypes) => {
   }, {});
 
   Meal.associate = (models) => {
-    Meal.belongsTo(models.User,{
-      foreignKey: 'userId',
-    });
+    Meal.belongsTo(models.User, {
+      foreignKey: 'userId'
+    })
     Meal.hasMany(models.Order,  { 
       foreignKey: 'mealId',
     })

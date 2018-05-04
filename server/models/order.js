@@ -22,7 +22,9 @@ const order = (sequelize, DataTypes) => {
     },
   }, {});
   Order.associate = (models) => {
-    Order.belongsTo(models.User);
+    Order.belongsTo(models.User, {
+      foreignKey: "userId"
+    });
     Order.belongsTo(models.Meal, {
       foriegnKey: 'mealId',
       onDelete: 'CASCADE'

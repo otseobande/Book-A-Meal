@@ -79,15 +79,23 @@ class MealController {
     const { mealId } = req.params;
 
     Meal.findById(mealId).then(meal => {
-      return res.status(200).json({
-        status: true,
-        data: meal
-      });
-    }).catch(err => {
+      if(meal){
+        return res.status(200).json({
+          status: true,
+          data: meal
+        });
+      } 
+
       return res.status(404).json({
         status: false,
-        message: 'Meal not found'
-      });
+        message: "Meal not found"
+      })
+      
+    }).catch(err => {
+      return res.status(500).json({
+        status: false,
+        error: err.message
+      })
     });
   }
 

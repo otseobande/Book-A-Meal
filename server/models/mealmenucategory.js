@@ -19,8 +19,12 @@ const mealMenuCategory = (sequelize, DataTypes) => {
     },
   }, {});
   MealMenuCategory.associate = (models) => {
-    MealMenuCategory.hasOne(models.Menu);
-    MealMenuCategory.hasOne(models.MenuCategory);
+    MealMenuCategory.belongsTo(models.Menu,{
+    	foreignKey: 'menuId'
+    });
+    MealMenuCategory.hasOne(models.MenuCategory,{
+    	foreignKey: 'menuCategoryId'
+    });
   };
   return MealMenuCategory;
 };
