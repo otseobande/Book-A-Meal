@@ -1,6 +1,5 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import users from '../dummy-models/users';
 import config from '../config';
 import { User } from '../models';
 
