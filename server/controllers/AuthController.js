@@ -1,9 +1,10 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import users from '../dummy-models/users';
+import config from '../config';
 import { User } from '../models';
 
-const secret = process.env.JWT_SECRET;
+const secret = config.jwtSecret;
 
 /**
  * @exports
@@ -51,7 +52,10 @@ class AuthController {
         message: 'Please check your credentails'
       })
     }).catch(err =>{
-      //
+      return res.status(500).json({
+        status: false,
+        error: err.stack
+      })
     })
   }
 

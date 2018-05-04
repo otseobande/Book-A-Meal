@@ -22,6 +22,9 @@ const menuCategory = (sequelize, DataTypes) => {
     MenuCategory.belongsTo(models.Menu,{
     	foreignKey: 'menuId'
     });
+    MenuCategory.hasMany(models.MealMenuCategory, {
+    	foreignKey: 'menuId'
+    })
   };
   return MenuCategory;
 };

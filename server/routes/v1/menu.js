@@ -5,7 +5,7 @@ import {
   validateUpdate,
   validateDate
 } from '../../middlewares/validators/menu';
-import { authorize } from '../../middlewares';
+import { authorize, guard } from '../../middlewares';
 
 const router = Router();
 
@@ -13,7 +13,9 @@ router.post('/', validateCreate, MenuController.createMenu);
 router.get('/', MenuController.getTodaysMenu);
 router.get('/all', MenuController.getMenus);
 router.get('/:date', validateDate, MenuController.getSpecificDayMenu);
-router.put('/:date', authorize('caterer'), validateUpdate, MenuController.updateMenu);
-router.delete('/:date',authorize('caterer'), validateDate, MenuController.deleteMenu);
+
+router.use(guard('caterer'));
+router.put('/:date', validateUpdate, MenuController.updateMenu);
+router.delete('/:date', validateDate, MenuController.deleteMenu);
 
 export default router;

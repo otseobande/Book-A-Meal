@@ -23,10 +23,18 @@ const user = (sequelize, DataTypes) => {
   }, {});
 
   User.associate = (models) => {
-    User.hasMany(models.Meal);
-    User.hasMany(models.Menu);
-    User.hasMany(models.Order);
-    User.hasMany(models.Notification);
+    User.hasMany(models.Meal, {
+    	foreignKey: "userId"
+    });
+    User.hasMany(models.Menu, {
+    	foreignKey: "userId"
+    });
+    User.hasMany(models.Order, {
+    	foreignKey: "userId"
+    });
+    User.hasMany(models.Notification, {
+    	foreignKey: "userId"
+    });
   };
 
   return User;
