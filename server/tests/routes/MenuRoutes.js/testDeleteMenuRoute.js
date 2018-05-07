@@ -4,11 +4,11 @@ import {
     token
 } from '../../setup';
 
-describe('DELETE /api/v1/menus/:date', function() {
+describe('DELETE /api/v1/menu/:date', function() {
     it('should return a success status code and message', async function() {
         try {
             const res = await chai.request(App)
-                .delete('/api/v1/menu/05-22-2018')
+                .delete('/api/v1/menu/2018-06-26')
                 .set('Authorization',  `Bearer ${token}`);
 
             res.should.have.status(200)
@@ -22,7 +22,8 @@ describe('DELETE /api/v1/menus/:date', function() {
     it('should return an error status code and message if not found', async function() {
         try {
             const res = await chai.request(App)
-                .delete('/api/v1/menu/20-12-2029')
+                .delete('/api/v1/menu/2029-05-05')
+                .set('Authorization',  `Bearer ${token}`)
 
             res.should.have.status(404);
             res.body.status.should.be.false;

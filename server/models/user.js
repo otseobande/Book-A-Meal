@@ -1,3 +1,4 @@
+import bcrypt from 'bcrypt';
 
 /**
  * @model
@@ -6,35 +7,36 @@
  * @return {object} Sequelize Model
  */
 const user = (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
-    fullName: DataTypes.STRING,
-    username: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
-    role: DataTypes.ENUM('customer', 'caterer', 'admin'),
-    createdAt: {
-      type: DataTypes.DATE(3),
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
+  const User = sequelize.define(
+    'user', {
+      fullName: DataTypes.STRING,
+      username: DataTypes.STRING,
+      email: DataTypes.STRING,
+      password: DataTypes.STRING,
+      role: DataTypes.ENUM('customer', 'caterer', 'admin'),
+      createdAt: DataTypes.DATE,
+      updatedAt: DataTypes.DATE
     },
-    updatedAt: {
-      type: DataTypes.DATE(3),
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
-    },
-  }, {});
+    {
+      hooks: {
+	    beforeCreate(user, options) {
+	      user.username = user.username.toLowerCase();
+	      user.email = user.email.toLowerCase();
+	      user.password = bcrypt.hashSync(user.password, 10);
+	    }
+	  }
+    }
+  );
+
+  User.prototype.validPassword = function (password) {
+    return bcrypt.compare(password, this.password);
+  };
 
   User.associate = (models) => {
-    User.hasMany(models.Meal, {
-    	foreignKey: "userId"
-    });
-    User.hasMany(models.Menu, {
-    	foreignKey: "userId"
-    });
-    User.hasMany(models.Order, {
-    	foreignKey: "userId"
-    });
-    User.hasMany(models.Notification, {
-    	foreignKey: "userId"
-    });
+    User.hasMany(models.meal);
+    User.hasMany(models.menu);
+    User.hasMany(models.order);
+    User.hasMany(models.notification);
   };
 
   return User;

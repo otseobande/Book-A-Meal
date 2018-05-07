@@ -2,6 +2,10 @@ import orders from '../dummy-models/orders';
 import users from '../dummy-models/users';
 import meals from '../dummy-models/meals';
 
+/**
+ * @exports
+ * @class OrderController
+ */
 class OrderController {
   /**
    * Creates a new order

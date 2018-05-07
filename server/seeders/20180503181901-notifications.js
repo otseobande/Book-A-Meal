@@ -1,20 +1,16 @@
 export default {
-  up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Notifications', [
-      {
-        userId: 2,
-        info: 'New meal',
-        isRead: true
-      },
-      {
-        userId: 1,
-        info: 'Welcome',
-        isRead: false
-      }
-    ], {});
-  },
+  up: (queryInterface, Sequelize) => queryInterface.bulkInsert('notifications', [
+    {
+      userId: 22,
+      info: 'New meal',
+      isRead: true
+    },
+    {
+      userId: 22,
+      info: 'Welcome',
+      isRead: false
+    }
+  ], {}),
 
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('Notifications', null, {});
-  }
+  down: (queryInterface, Sequelize) => queryInterface.bulkDelete('notifications', null, {})
 };

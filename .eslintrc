@@ -11,12 +11,26 @@
         "semi": 2,
         "import/no-unresolved": "off",
         "import/extensions": "off",
+        "consistent-return": "off",
         "comma-dangle": ["error", {
             "arrays": "never",
             "objects": "never",
             "imports": "never",
             "exports": "never",
             "functions": "ignore"
+        }],
+        "valid-jsdoc": ["error", {
+          "requireReturn": true,
+          "requireReturnType": true,
+          "requireParamDescription": false,
+          "requireReturnDescription": true
+        }],
+        "require-jsdoc": ["error", {
+            "require": {
+                "FunctionDeclaration": true,
+                "MethodDefinition": true,
+                "ClassDeclaration": true
+            }
         }]
     }
 }

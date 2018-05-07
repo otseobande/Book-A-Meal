@@ -1,6 +1,14 @@
 const addTimeStamps = Symbol('addTimeStamps');
 
+/**
+ * @exports
+ * @class  DummyModel
+ */
 class DummyModel {
+  /**
+   * Accepts an array of objects
+   * @param  {Array} data - Array of objects
+   */
   constructor(data) {
     if (Array.isArray(data)) {
       this.data = data;
@@ -10,13 +18,29 @@ class DummyModel {
     }
   }
 
+  /**
+   * Based on Array.prototype.find
+   * @param  {Function} callback
+   * @return {object|undefined} - Found Item
+   */
   find(callback) {
     return this.data.find(callback);
   }
 
+  /**
+   * Based on Array.prototype.filter
+   * @param  {Function} callback
+   * @return {object|undefined} - Found Items
+   */
   filter(callback) {
     return this.data.filter(callback);
   }
+
+  /**
+   * Deletes an Item
+   * @param  {Function} callback - function returning Boolean
+   * @return {Boolean} - status of operation
+   */
   delete(callback) {
     let deleted = false;
     this.data.every((item, index) => {
@@ -32,6 +56,11 @@ class DummyModel {
     return deleted;
   }
 
+  /**
+   * Creates a new entry
+   * @param  {object} data
+   * @return {object} - newly created object
+   */
   create(data) {
     this.data.push({
       ...data,
@@ -43,6 +72,13 @@ class DummyModel {
     return this.data[this.data.length - 1];
   }
 
+
+  /**
+   * Updates an existing item
+   * @param  {object} updateData
+   * @param  {Function} callback - conditional callback
+   * @return {Boolean} - Status of operation
+   */
   update(updateData, callback) {
     if (typeof (updateData) !== 'object') {
       throw new TypeError('Update data is expected to be an object');
@@ -67,6 +103,10 @@ class DummyModel {
     return updated;
   }
 
+  /**
+   * Adds timestamps to array items
+   * @return {object} - updated items
+   */
   [addTimeStamps]() {
     this.data = this.data.map((item) => {
       const updatedItem = {

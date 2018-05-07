@@ -1,13 +1,21 @@
-import menus from '../dummy-models/menus';
-import menuCategories from '../dummy-models/menuCategories';
-import mealMenuCategories from '../dummy-models/mealMenuCategories';
-import menusGetter from '../helpers/menusGetter';
-import { 
-  Menu,
-  MenuCategory,
-  MealMenuCategory 
+import moment from 'moment';
+import {
+  menu,
+  meal,
+  menuCategory
 } from '../models';
 
+const includeJoin = {
+  include: [{
+    model: menuCategory,
+    include: [{
+      model: meal,
+      through: {
+        attributes: []
+      }
+    }]
+  }]
+};
 /**
  * @exports
  * @class MenuController
@@ -19,75 +27,78 @@ class MenuController {
    * @staticmethod
    * @param  {object} req - Request object
    * @param {object} res - Response object
+   * @param {function} next - middleware next (for error handling)
    * @return {json} res.json
    */
-  static createMenu(req, res) {
-    const { title, date, categories } = req.body;
-
-    Menu.create({
-      userId: req.user.id,
-      title,
-      date
-    }).then(meal => {
-      categories.forEach((category) =>{
-        MenuCategory.create({
-          mealId: menu.id,
-          title: category.title
-        }).then(menuCategory =>{
-          category.mealIds.forEach(mealId =>{
-            Meal.find({
-              where:{
-                id: mealId,
-              }
-            }).then(meal => {
-              menuCategory.addMeal(meal);
-            })
-            
-          })
-        })
-      })
-    });
-
-    // categories.forEach((category) => {
-    //   menuCategories.create({
-    //     mealId: menu.id,
-    //     title: category.title
-    //   });
-    //   category.mealIds.forEach((mealId) => {
-    //     mealMenuCategories.create({
-    //       menuCategoryId: menuCategories.data[menuCategories.data.length - 1].id + 1,
-    //       mealId
-    //     });
-    //   });
-    // });
+  static createMenu(req, res, next) {
+    MenuController.createMenuHelper(req.body, req.user, next)
+      .then(() => res.status(201).json({
+        status: true,
+        message: 'Menu created successfully'
+      })).catch((err) => {
+        next(err);
+      });
   }
 
-
+  /**
+   * Abstracts the menu creation
+   * @param  {object}   data [description]
+   * @param  {object}   user [description]
+   * @param  {Function} next [description]
+   * @return {Promise} Promise for extending operation
+   */
+  static createMenuHelper(data, user, next) {
+    const { title, date, categories } = data;
+    return menu.create({
+      userId: user.id,
+      title,
+      date
+    }).then((m) => {
+      if (categories) {
+        categories.forEach((category) => {
+          menuCategory.create({
+            menuId: m.id,
+            title: category.title,
+            meals: category.mealId
+          }).then((mc) => {
+            mc.addMeal(category.mealIds);
+          }).catch(err => next(err));
+        });
+      }
+    });
+  }
   /**
    * Deletes a menu
    *
    * @staticmethod
    * @param  {object} req - Request object
    * @param {object} res - Response object
+   * @param {function} next - middleware next (for error handling)
    * @return {json} res.json
    */
-  static deleteMenu(req, res) {
+  static deleteMenu(req, res, next) {
     const { date } = req.params;
 
-    const deleted = menus.delete(menu => (new Date(date)).getTime()
-                                === (new Date(menu.date)).getTime());
+    const givenDate = moment(date);
 
-    if (deleted) {
-      return res.status(200).json({
-        status: true,
-        message: 'menu deleted successfully'
+    menu.destroy({
+      where: {
+        date: givenDate,
+        userId: req.user.id
+      }
+    }).then((rows) => {
+      if (rows > 0) {
+        return res.status(200).json({
+          status: true,
+          message: 'menu deleted successfully'
+        });
+      }
+
+      return res.status(404).json({
+        status: false,
+        message: 'menu not found'
       });
-    }
-
-    return res.status(404).json({
-      status: false,
-      message: 'menu not found'
-    });
+    }).catch(err => next(err));
   }
 
   /**
@@ -99,11 +110,11 @@ class MenuController {
    * @return {json} res.json
    */
   static getMenus(req, res) {
-    const responseData = menusGetter(() => true);
-
-    res.status(200).json({
-      status: true,
-      data: responseData
+    menu.findAll(includeJoin).then((m) => {
+      res.status(200).json({
+        status: true,
+        data: m
+      });
     });
   }
 
@@ -114,96 +125,66 @@ class MenuController {
    * @staticmethod
    * @param  {object} req - Request object
    * @param {object} res - Response object
+   * @param {function} next - middleware next (for error handling)
    * @return {json} res.json
    */
-  static getSpecificDayMenu(req, res) {
+  static getSpecificDayMenu(req, res, next) {
     const { date } = req.params;
 
-    const givenDate = new Date(date);
+    const givenDate = date
+      ? moment(date)
+      : moment();
+    menu.find({
+      where: {
+        date: givenDate
+      },
+      ...includeJoin
+    }).then((m) => {
+      if (m) {
+        return res.status(200).json({
+          status: true,
+          data: m
+        });
+      }
 
-
-    const foundMenu = menus.find(menu => (new Date(menu.date)).getTime() === givenDate.getTime());
-
-    if (!foundMenu) {
       return res.status(404).json({
         status: false,
         message: 'No Records Found'
       });
-    }
-
-
-    const responseData = menusGetter(menu =>
-      (new Date(menu.date)).getTime() === givenDate.getTime());
-
-    return res.status(200).json({
-      status: true,
-      data: responseData
-    });
+    }).catch(err => next(err));
   }
 
-  /**
-   * Gets today's menu
-   * @staticmethod
-   * @param  {object} req - Request object
-   * @param {object} res - Response object
-   * @return {json} res.json
-   */
-  static getTodaysMenu(req, res) {
-    const responseData = menusGetter(menu =>
-      (new Date(menu.date)).getTime() === (new Date()).getTime());
-
-    return res.status(200).json({
-      status: true,
-      data: responseData
-    });
-  }
 
   /**
    * Updates an exising menu
    * @staticmethod
    * @param  {object} req - Request object
    * @param {object} res - Response object
+   * @param {function} next - middleware next (for error handling)
    * @return {json} res.json
    */
-  static updateMenu(req, res) {
+  static updateMenu(req, res, next) {
     const { date } = req.params;
-    const { title, categories } = req.body;
+    const givenDate = moment(date);
 
-    const menu = menus.update(
-      { title, date },
-      m => (new Date(m.date)).getTime() === (new Date(date)).getTime()
-    );
+    menu.destroy({
+      where: {
+        date: givenDate,
+        userId: req.user.id
+      }
+    }).then((rows) => {
+      if (rows > 0) {
+        return MenuController.createMenuHelper({ date, ...req.body }, req.user, next);
+      }
 
-    menuCategories.delete(menuCategory => menuCategory.menuId === menu.id);
-
-    if (categories && categories.length > 0) {
-      categories.forEach((category) => {
-        menuCategories.delete(mc => mc.menuId === menu.id);
-        menuCategories.create({
-          mealId: menu.id,
-          title: category.title
-        });
-
-        category.mealIds.forEach((mealId) => {
-          mealMenuCategories.create({
-            menuCategoryId: menuCategories.data[menuCategories.data.length - 1].id + 1,
-            mealId
-          });
-        });
+      return res.status(404).json({
+        status: false,
+        message: 'Menu not found'
       });
-    }
-
-    if (Object.keys(menu).length > 0) {
-      return res.status(202).json({
-        status: true,
-        message: 'Menu updated successfully'
-      });
-    }
-
-    return res.status(404).json({
-      status: false,
-      message: 'Menu not found'
-    });
+    }).then(() => res.status(202).json({
+      status: true,
+      message: 'Menu updated successfully'
+    })).catch(err => next(err));
   }
 }
 

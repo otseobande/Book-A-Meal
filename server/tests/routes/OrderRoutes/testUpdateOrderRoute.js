@@ -28,6 +28,7 @@ describe('PUT /api/v1/orders/:orderId', function() {
         try {
             const res = await chai.request(App)
                 .put('/api/v1/orders/3090909')
+                .set('Authorization',  `Bearer ${token}`)
                 .send({
                     userId: 2,
                     mealId: 2,

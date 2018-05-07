@@ -6,23 +6,15 @@
  * @return {object} Sequelize Model
  */
 const notification = (sequelize, DataTypes) => {
-  const Notification = sequelize.define('Notification', {
+  const Notification = sequelize.define('notification', {
     userId: DataTypes.INTEGER,
     info: DataTypes.STRING,
     isRead: DataTypes.BOOLEAN,
-    createdAt: {
-      type: DataTypes.DATE(3),
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
-    },
-    updatedAt: {
-      type: DataTypes.DATE(3),
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
-    },
+    createdAt: DataTypes.DATE,
+    updatedAt: DataTypes.DATE
   }, {});
   Notification.associate = (models) => {
-    Notification.belongsTo(models.User,{
-      foreignKey: 'userId'
-    });
+    //
   };
   return Notification;
 };

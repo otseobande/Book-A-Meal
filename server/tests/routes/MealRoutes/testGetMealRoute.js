@@ -30,7 +30,7 @@ describe('GET /api/v1/meals/:mealId', () => {
     it('should return status 404 if not found', async () => {
         try {
             const res = await chai.request(App)
-                .get('/api/v1/meals/80')
+                .get('/api/v1/meals/9000')
                 .set('Authorization',  `Bearer ${token}`);
             res.should.have.status(404);
         } catch (err){

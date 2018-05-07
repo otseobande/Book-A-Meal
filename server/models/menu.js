@@ -6,24 +6,18 @@
  * @return {object} Sequelize Model
  */
 const menu = (sequelize, DataTypes) => {
-  const Menu = sequelize.define('Menu', {
+  const Menu = sequelize.define('menu', {
     userId: DataTypes.INTEGER,
     title: DataTypes.STRING,
     date: DataTypes.DATEONLY,
-    createdAt: {
-      type: DataTypes.DATE(3),
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
-    },
-    updatedAt: {
-      type: DataTypes.DATE(3),
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
-    },
+    createdAt: DataTypes.DATE,
+    updatedAt: DataTypes.DATE
   }, {});
   Menu.associate = (models) => {
-  
-    Menu.hasMany(models.MenuCategory, {
-      foreignKey: 'menuId'
-    })
+    Menu.hasMany(models.menuCategory, {
+      onDelete: 'CASCADE',
+      hooks: true
+    });
   };
   return Menu;
 };

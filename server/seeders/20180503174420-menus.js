@@ -1,31 +1,29 @@
+import moment from 'moment';
+
 export default {
-  up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Menus', [
-      {
-        userId: 2,
-        title: 'Italian cuisine',
-        date: '05-22-2018'
-      },
-      {
-        userId: 2,
-        title: 'Chinese menu',
-        date: '05-21-2018'
-      },
-      {
-        userId: 2,
-        title: 'Nigerian menu',
-        date: '05-24-2018'
-      },
-      {
-        userId: 2,
-        title: 'cameroon menu',
-        date: '06-24-2018'
-      }
+  up: (queryInterface, Sequelize) => queryInterface.bulkInsert('menus', [
+    {
+      userId: 22,
+      title: 'Italian cuisine',
+      date: '2018-06-24'
+    },
+    {
+      userId: 22,
+      title: 'Chinese menu',
+      date: '2018-06-25'
+    },
+    {
+      userId: 22,
+      title: 'Nigerian menu',
+      date: '2018-06-26'
+    },
+    {
+      userId: 22,
+      title: 'cameroon menu',
+      date: moment().format('YYYY-MM-DD')
+    }
 
-    ], {});
-  },
+  ], {}),
 
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('Menus', null, {});
-  }
+  down: (queryInterface, Sequelize) => queryInterface.bulkDelete('menus', null, {})
 };

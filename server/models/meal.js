@@ -6,32 +6,18 @@
  * @return {object} Sequelize Model
  */
 const meal = (sequelize, DataTypes) => {
-  const Meal = sequelize.define('Meal', {
+  const Meal = sequelize.define('meal', {
     userId: DataTypes.INTEGER,
     title: DataTypes.STRING,
     description: DataTypes.STRING,
     price: DataTypes.INTEGER,
     img: DataTypes.STRING,
-    createdAt: {
-      type: DataTypes.DATE(3),
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
-    },
-    updatedAt: {
-      type: DataTypes.DATE(3),
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
-    },
+    createdAt: DataTypes.DATE,
+    updatedAt: DataTypes.DATE
   }, {});
 
   Meal.associate = (models) => {
-    Meal.belongsTo(models.User, {
-      foreignKey: 'userId'
-    })
-    Meal.hasMany(models.Order,  { 
-      foreignKey: 'mealId',
-    })
-    Meal.belongsToMany(models.MenuCategory, {
-      through: models.MealMenuCategory
-    });
+    Meal.hasMany(models.order);
   };
 
   return Meal;
