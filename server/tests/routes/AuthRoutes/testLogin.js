@@ -26,7 +26,6 @@ describe('POST /api/v1/auth/login', function() {
                 .post('/api/v1/auth/login')
                 .send({
                     username: 'dogo',
-                    password: 'yaro',
                 });
 
             res.should.have.status(400);

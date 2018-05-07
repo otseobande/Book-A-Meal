@@ -1,3 +1,5 @@
 server/tests
 server/config
 server/migrations
+server/models
+server/seeders

@@ -1,11 +1,12 @@
 export default {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Notifications', {
+    return queryInterface.createTable('notifications', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        unique: true
       },
       userId: {
         allowNull: false,
@@ -33,6 +34,6 @@ export default {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Notifications');
+    return queryInterface.dropTable('notifications');
   }
 };

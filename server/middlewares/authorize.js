@@ -1,6 +1,5 @@
 /* eslint consistent-return: 0 */
 import jwt from 'jsonwebtoken';
-import users from '../dummy-models/users';
 import config from '../config';
 
 const secret = config.jwtSecret;
@@ -31,12 +30,12 @@ const getToken = (req) => {
  *
  * @param  {object} req - Request object
  * @param  {object} decoded - Decoded Token payload
- * @return {boolean}
+ * @return {boolean} status
  */
 const addUserToReqObj = (req, decoded) => {
   req.user = decoded;
+  //
   if (req.user) return true;
-  return false;
 };
 
 /**
@@ -44,13 +43,22 @@ const addUserToReqObj = (req, decoded) => {
  * @middleware
  * @param  {object} req - Request Object
  * @param {object} res - Response Object
- * @return {function|json} next() or res.json()
+ * @param {function} next - middleware next
+ * @return {function|json} next
  */
 const authorize = (req, res, next) => {
-  const token = getToken(req);
-  const decoded = jwt.verify(token, secret);
-  addUserToReqObj(req, decoded);
-  next();
+  try {
+    const token = getToken(req);
+    const decoded = jwt.verify(token, secret);
+    addUserToReqObj(req, decoded);
+  } catch (err) {
+    return res.status(401).json({
+      status: false,
+      message: 'Unauthorized'
+    });
+  }
+
+  return next();
 };
 
 export default authorize;

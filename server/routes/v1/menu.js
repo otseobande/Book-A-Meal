@@ -5,11 +5,11 @@ import {
   validateUpdate,
   validateDate
 } from '../../middlewares/validators/menu';
-import { authorize, guard } from '../../middlewares';
+import { guard } from '../../middlewares';
 
 const router = Router();
 
-router.get('/', MenuController.getTodaysMenu);
+router.get('/', MenuController.getSpecificDayMenu);
 router.get('/all', MenuController.getMenus);
 router.get('/:date', validateDate, MenuController.getSpecificDayMenu);
 

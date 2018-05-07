@@ -7,14 +7,14 @@ import {
 import handleErrors from '../../middlewares/handleErrors';
 
 const res = mockRes();
+const next = sinon.spy();
+const error = {
+  test: 'validation error',
+}
 
 describe('handleErrors middleware', () => {
   it('return errors as response', () => {
-    const error = {
-      test: 'validation error',
-    }
-
-    handleErrors(error, null, res);
+    handleErrors(error, null, res, next, 'test');
 
 		res.status.should.have.been.calledWith(400);
     res.json.should.have.been.calledWith({
@@ -25,9 +25,7 @@ describe('handleErrors middleware', () => {
   });
 
   it('should send descriptive server errors in non-prod environment', () => {
-    process.env.NODE_ENV = "test"
-
-    handleErrors({}, null, res);
+    handleErrors({}, null, res, next,'test');
 
     res.status.should.have.been.calledWith(500);
     res.json.should.have.been.calledWith({
@@ -38,14 +36,11 @@ describe('handleErrors middleware', () => {
   })
 
   it('should not send descriptive server errors in prod environment', () => {
-    process.env.NODE_ENV = "production";
-
-    handleErrors({}, null, res);
+    handleErrors({}, null, res, next, 'production');
 
     res.status.should.have.been.calledWith(500);
     res.json.should.have.been.calledWith({
       error: 'something went wrong'
     })
   })
-
 });

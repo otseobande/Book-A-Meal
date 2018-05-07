@@ -27,6 +27,7 @@ describe('POST /api/v1/orders', () => {
         try {
            const res = await chai.request(App)
                 .post('/api/v1/orders')
+                .set('Authorization',  `Bearer ${token}`)
                 .send({
                     mealId: 1,
                     quantity: 3,

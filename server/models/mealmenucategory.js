@@ -6,25 +6,16 @@
  * @return {object} Sequelize Model
  */
 const mealMenuCategory = (sequelize, DataTypes) => {
-  const MealMenuCategory = sequelize.define('MealMenuCategory', {
+  const MealMenuCategory = sequelize.define('mealMenuCategory', {
     mealId: DataTypes.INTEGER,
     menuCategoryId: DataTypes.INTEGER,
-    createdAt: {
-      type: DataTypes.DATE(3),
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
-    },
-    updatedAt: {
-      type: DataTypes.DATE(3),
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
-    },
-  }, {});
+    createdAt: DataTypes.DATE,
+    updatedAt: DataTypes.DATE
+  }, {
+    freeze: true
+  });
   MealMenuCategory.associate = (models) => {
-    MealMenuCategory.belongsTo(models.Menu,{
-    	foreignKey: 'menuId'
-    });
-    MealMenuCategory.hasOne(models.MenuCategory,{
-    	foreignKey: 'menuCategoryId'
-    });
+  	//
   };
   return MealMenuCategory;
 };

@@ -9,9 +9,9 @@ describe('POST /api/v1/auth/signup', function() {
             const res = await chai.request(App)
                 .post('/api/v1/auth/signup')
                 .send({
-                    username: 'otsde',
+                    username: 'cookie',
                     fullName: 'Sele Mege',
-                    email: 'sele@gmail.com',
+                    email: 'cookie@gmail.com',
                     password: 'bookameal',
                     role: 'customer',
                 });
@@ -37,4 +37,63 @@ describe('POST /api/v1/auth/signup', function() {
             throw err;
         }
     });
+
+    it('should return 400 with message if username is taken', async function() {
+        try{
+          const res = await chai.request(App)
+            .post('/api/v1/auth/signup')
+            .send({
+                    username: 'otseobande',
+                    fullName: 'Sele Mege',
+                    email: 'sfdele@gmail.com',
+                    password: 'bookameal',
+                    role: 'customer',
+                });
+            res.should.have.status(400);
+            res.body.message[0].should.be.equal('username "otseobande" is taken')
+        } catch(err) {
+          throw err;
+        }
+    })
+
+    it('should return 400 with message if email is taken', async function() {
+        try{
+          const res = await chai.request(App)
+            .post('/api/v1/auth/signup')
+            .send({
+                    username: 'otsande',
+                    fullName: 'Sele Mege',
+                    email: 'otseobande@gmail.com',
+                    password: 'bookameal',
+                    role: 'customer',
+                });
+            res.should.have.status(400);
+            res.body.message[0].should.be.equal('email "otseobande@gmail.com" is taken')
+        }catch(err){
+          throw err;
+        }
+    })
+
+     it('should return 400 with message if role doesnt exist', async function() {
+        try{
+          const res = await chai.request(App)
+            .post('/api/v1/auth/signup')
+            .send({
+                    username: 'otsade',
+                    fullName: 'Sele Mege',
+                    email: 'otseobae@gmail.com',
+                    password: 'bookameal',
+                    role: 'saler',
+                });
+            console.log(res.body);
+            res.should.have.status(400);
+            res.body.should.be.deep.equal({
+              status: false,
+              message: 'role does not exist'
+            })
+
+        }catch(err){
+          throw err;
+        }
+    })
 });

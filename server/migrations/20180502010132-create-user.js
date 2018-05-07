@@ -1,11 +1,12 @@
 export default {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Users', {
+    return queryInterface.createTable('users', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        unique: true
       },
       fullName: {
         allowNull: false,
@@ -13,11 +14,16 @@ export default {
       },
       username: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true
       },
       email: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true,
+        validate: {
+          isEmail: true
+        }
       },
       password: {
         allowNull: false,
@@ -41,6 +47,6 @@ export default {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Users');
+    return queryInterface.dropTable('users');
   }
 };

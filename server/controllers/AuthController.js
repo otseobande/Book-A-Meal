@@ -1,9 +1,8 @@
-import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import config from '../config';
-import { User } from '../models';
+import { user as User } from '../models';
 
-const secret = config.jwtSecret;
+const { jwtExpiry, jwtSecret } = config;
 
 /**
  * @exports
@@ -16,46 +15,36 @@ class AuthController {
    * @staticmethod
    * @param  {object} req - Request object
    * @param {object} res - Response object
+   * @param {function} next - middleware next (for error handling)
    * @return {json} res.json
    */
-  static login(req, res) {
+  static login(req, res, next) {
     const { username, password } = req.body;
 
-    const findUser = User.find({where: {
+    User.find({
+      where: {
         username
       }
-    })
-
-    const validatePassword = findUser.then(user => 
-                        bcrypt.compare(password, user.password));
-
-    Promise.all([findUser, validatePassword]).then(values =>{
-      const [user, passwordValid] = values;
-
-      if(user && passwordValid){
+    }).then((user) => {
+      if (user && user.validPassword(password)) {
         const token = jwt.sign({
-          fullName: user.fullName,
-          username: user.username,
-          email: user.email,
+          id: user.id,
           role: user.role
-        }, secret);
+        }, jwtSecret, {
+          expiresIn: `${jwtExpiry}h`
+        });
 
         return res.status(200).json({
           status: true,
           token
-        })
+        });
       }
-    }).then(()=>{
-      return res.status(400).json({
-        status: false,
-        message: 'Please check your credentails'
-      })
-    }).catch(err =>{
-      return res.status(500).json({
-        status: false,
-        error: err.stack
-      })
-    })
+    }).then(() => res.status(400).json({
+      status: false,
+      message: 'Please check your credentials'
+    })).catch((err) => {
+      next(err);
+    });
   }
 
   /**
@@ -64,33 +53,44 @@ class AuthController {
    * @staticmethod
    * @param  {object} req - Request object
    * @param {object} res - Response object
+   * @param {function} next - middleware next (for error handling)
    * @return {json} res.json
    */
-  static signup(req, res) {
+  static signup(req, res, next) {
     const {
-      fullName, 
-      username, 
-      email, 
+      fullName,
+      username,
+      email,
       password,
       role
     } = req.body;
-   
+
 
     User.create({
       fullName,
       username,
       email,
-      password: bcrypt.hashSync(password, 10),
+      password,
       role
-    }).then(user => {
-      return res.status(201).json({
-        status: true,
-        message: 'User signup successful'
-      });
-    }).catch(err =>{
-      //
-    })
+    }).then(() => res.status(201).json({
+      status: true,
+      message: 'User signup successful'
+    })).catch((err) => {
+      if (err.name === 'SequelizeUniqueConstraintError') {
+        const message = [];
 
+        err.errors.forEach((error) => {
+          message.push(`${error.path} "${error.value}" is taken`);
+        });
+
+        return res.status(400).json({
+          status: false,
+          message
+        });
+      }
+
+      next(err);
+    });
   }
 }
 

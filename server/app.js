@@ -1,6 +1,5 @@
 /* eslint no-console: 0 */
 import express from 'express';
-import dotenv from 'dotenv';
 import morgan from 'morgan';
 import {
   trimStrings,
@@ -8,12 +7,13 @@ import {
 } from './middlewares';
 import apiRoutes from './routes/api';
 import otherRoutes from './routes/others';
+import config from './config';
 
 const app = express();
 
 const port = process.env.PORT || 3000;
 
-if (process.env.NODE_ENV === 'development') {
+if (config.env === 'development') {
   app.use(morgan('combined'));
 }
 

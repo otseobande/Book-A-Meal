@@ -26,7 +26,7 @@ describe('PUT /api/v1/meals/:mealId', function() {
     it('should return an error 404 if not found', async function() {
         try {
             const res = await chai.request(App)
-                .put('/api/v1/meals/20')
+                .put('/api/v1/meals/9000')
                 .set('Authorization',  `Bearer ${token}`)
                 .send({
                     title: 'test meal',

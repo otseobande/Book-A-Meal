@@ -1,11 +1,12 @@
 export default {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('MealMenuCategories', {
+    return queryInterface.createTable('mealMenuCategories', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        unique: true,
       },
       mealId: {
         allowNull: false,
@@ -28,6 +29,6 @@ export default {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('MealMenuCategories');
+    return queryInterface.dropTable('mealMenuCategories');
   }
 };

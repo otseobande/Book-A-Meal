@@ -4,8 +4,8 @@ import authorize from './authorize';
 import guard from './guard';
 
 export {
-	trimStrings,
-	handleErrors,
-	authorize,
-	guard
-}
+  trimStrings,
+  handleErrors,
+  authorize,
+  guard
+};

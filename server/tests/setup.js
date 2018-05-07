@@ -10,8 +10,7 @@ chai.use(chaiHttp);
 chai.use(sinonChai);
 chai.should();
 
-const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsTmFtZSI6IlphcHBhIEJhbGFtaSIsInVzZXJuYW1lIjoiemFwcGEiLCJlbWFpbCI6InphcHBhYmFsYW1pQGdtYWlsLmNvbSIsInJvbGUiOiJjYXRlcmVyIiwiaWF0IjoxNTI1MzA4NTk1fQ.0yl7_Soe-lfeBFNxwh024SQXHXdF4GWhX6R05eYVmnk"
-
+const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjIsInJvbGUiOiJjYXRlcmVyIiwiaWF0IjoxNTI1NjI4MTQ4fQ.r939YKrMx3xWWjnles86x5ACI5ytwyJh3TpKWQsmFIk";
 export {
 	chai,
 	assert,
