@@ -14,15 +14,9 @@ class MealController {
    * @return {json} res.json
    */
   static create(req, res, next) {
-    const {
-      title, description, price, img
-    } = req.body;
     Meal.create({
       userId: req.user.id,
-      title,
-      description,
-      price,
-      img
+      ...req.body
     }).then(() => {
       res.status(201).json({
         status: true,
@@ -142,9 +136,7 @@ class MealController {
       }
     }).then((meal) => {
       if (meal) {
-        meal.updateAttributes({
-          ...req.body
-        });
+        meal.updateAttributes(req.body);
 
         return res.status(202).json({
           status: true,

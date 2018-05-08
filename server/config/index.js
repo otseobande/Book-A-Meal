@@ -19,7 +19,8 @@ const config = {
 		}
 	},
 	jwtSecret: process.env.JWT_SECRET,
-	jwtExpiry: process.env.JWT_EXPIRY,
+	jwtExpiry: process.env.JWT_EXPIRY || 24,
+	orderExpiry: process.env.ORDER_EXPIRY || 3
 
 }
 export default config;
