@@ -15,7 +15,7 @@ const trimStrings = (req, res, next) => {
     }
   });
 
-  next();
+  return next();
 };
 
 export default trimStrings;

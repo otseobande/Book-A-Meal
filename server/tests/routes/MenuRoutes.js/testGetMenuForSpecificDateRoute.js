@@ -13,7 +13,7 @@ describe('GET /api/v1/menu/:date', () => {
                 
             res.should.have.status(200);
         } catch (err) {
-            throw err;
+            console.log(err.stack);
         }
     });
     it('should return success message', async function() {
@@ -24,7 +24,7 @@ describe('GET /api/v1/menu/:date', () => {
             res.body.status.should.be.true;
             //res.body.data.should.be.an('array');
         } catch (err) {
-            throw err;
+            console.log(err.stack);
         }
     })
 
@@ -35,7 +35,7 @@ describe('GET /api/v1/menu/:date', () => {
                 .set('Authorization',  `Bearer ${token}`);
             res.should.have.status(400);
         } catch (err) {
-            throw err;
+            console.log(err.stack);
         }
     });
 
@@ -49,7 +49,7 @@ describe('GET /api/v1/menu/:date', () => {
             res.body.status.should.be.false;
             res.body.message.should.be.equal('No Records Found');
         } catch (err) {
-            throw err;
+            console.log(err.stack);
         }
     });
 });

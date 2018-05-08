@@ -12,7 +12,7 @@ describe('GET /api/v1/meals/:mealId', () => {
                 .set('Authorization',  `Bearer ${token}`);
             res.should.have.status(200);
         } catch (err) {
-            throw err;
+            console.log(err.stack);
         }
     })
     it('should return meal', async () => {
@@ -23,7 +23,7 @@ describe('GET /api/v1/meals/:mealId', () => {
             res.body.data.should.be.an('object');
             res.body.data.id.should.be.equal(1);
         } catch (err) {
-            throw err;
+            console.log(err.stack);
         }
     })
 
@@ -34,7 +34,7 @@ describe('GET /api/v1/meals/:mealId', () => {
                 .set('Authorization',  `Bearer ${token}`);
             res.should.have.status(404);
         } catch (err){
-            throw err;
+            console.log(err.stack);
         }
     })
 })

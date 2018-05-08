@@ -30,7 +30,7 @@ describe('POST /api/v1/menu', function() {
           "message": "Menu created successfully"
       })
     } catch (err) {
-        throw err;
+        console.log(err.stack)
     }
   });
 });

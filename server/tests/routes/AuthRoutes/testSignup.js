@@ -18,7 +18,7 @@ describe('POST /api/v1/auth/signup', function() {
 
             res.should.have.status(201);
         } catch (err) {
-            throw err;
+            console.log(err.stack);
         }
     });
 
@@ -34,7 +34,7 @@ describe('POST /api/v1/auth/signup', function() {
 
             res.should.have.status(400);
         } catch (err) {
-            throw err;
+           console.log(err.stack);
         }
     });
 
@@ -50,9 +50,9 @@ describe('POST /api/v1/auth/signup', function() {
                     role: 'customer',
                 });
             res.should.have.status(409);
-            res.body.message[0].should.be.equal('username "otseobande" is taken')
+            res.body.message[0].should.be.equal('username "otseobande" already exists')
         } catch(err) {
-          throw err;
+          console.log(err.stack);
         }
     })
 
@@ -68,9 +68,9 @@ describe('POST /api/v1/auth/signup', function() {
                     role: 'customer',
                 });
             res.should.have.status(409);
-            res.body.message[0].should.be.equal('email "otseobande@gmail.com" is taken')
+            res.body.message[0].should.be.equal('email "otseobande@gmail.com" already exists')
         }catch(err){
-          throw err;
+          console.log(err.stack);
         }
     })
 
@@ -93,7 +93,7 @@ describe('POST /api/v1/auth/signup', function() {
             })
 
         }catch(err){
-          throw err;
+          console.log(err.stack);
         }
     })
 });

@@ -14,7 +14,7 @@ describe('GET /api/v1/orders', () => {
             res.should.have.status(200);
 
         } catch (err) {
-            throw err;
+            console.log(err.stack)
         }
     });
     it('should have the right data structure', async function() {
@@ -26,7 +26,7 @@ describe('GET /api/v1/orders', () => {
             res.body.status.should.true;
             res.body.data.should.be.an('array');
         } catch (err) {
-            throw err;
+            console.log(err.stack)
         }
     });
 });

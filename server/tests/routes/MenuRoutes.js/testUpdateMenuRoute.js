@@ -26,7 +26,7 @@ describe('PUT /api/v1/menu/:date', function() {
             res.should.have.status(202);
             res.body.status.should.be.true;
         } catch (err) {
-            throw err;
+            console.log(err.stack);
         }
     });
 
@@ -42,7 +42,7 @@ describe('PUT /api/v1/menu/:date', function() {
             res.should.have.status(202);
             res.body.status.should.be.true;
         } catch (err) {
-            throw err;
+            console.log(err.stack);
         }
     });
 
@@ -67,7 +67,7 @@ describe('PUT /api/v1/menu/:date', function() {
             res.should.have.status(404);
             res.body.status.should.be.false;
         } catch (err) {
-            throw err;
+            console.log(err.stack);
         }
     });
 });

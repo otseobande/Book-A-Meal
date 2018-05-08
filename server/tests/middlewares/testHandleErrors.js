@@ -8,35 +8,36 @@ import handleErrors from '../../middlewares/handleErrors';
 
 const res = mockRes();
 const next = sinon.spy();
-const error = {
-  test: 'validation error',
+const validationError = {
+  statusText: "Bad Request",
 }
 
+const error = {
+  stack: 'stacktrace'
+}
 describe('handleErrors middleware', () => {
   it('return errors as response', () => {
-    handleErrors(error, null, res, next, 'test');
+    handleErrors(validationError, null, res, next, 'test');
 
 		res.status.should.have.been.calledWith(400);
     res.json.should.have.been.calledWith({
       error: {
-        test: 'validation error',
+        statusText: "Bad Request",
       }
     })
   });
 
   it('should send descriptive server errors in non-prod environment', () => {
-    handleErrors({}, null, res, next,'test');
+    handleErrors(error, null, res, next,'test');
 
     res.status.should.have.been.calledWith(500);
     res.json.should.have.been.calledWith({
-      error: {
-        test: 'validation error',
-      }
+      error: error.stack
     })
   })
 
   it('should not send descriptive server errors in prod environment', () => {
-    handleErrors({}, null, res, next, 'production');
+    handleErrors(error, null, res, next, 'production');
 
     res.status.should.have.been.calledWith(500);
     res.json.should.have.been.calledWith({
