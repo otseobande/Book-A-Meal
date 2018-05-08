@@ -110,10 +110,10 @@ class MenuController {
    * @return {json} res.json
    */
   static getMenus(req, res) {
-    menu.findAll(includeJoin).then((m) => {
+    menu.findAll(includeJoin).then((meals) => {
       res.status(200).json({
         status: true,
-        data: m
+        data: meals
       });
     });
   }

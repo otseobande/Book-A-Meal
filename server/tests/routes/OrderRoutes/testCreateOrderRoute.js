@@ -14,6 +14,7 @@ describe('POST /api/v1/orders', () => {
                 .send({
                     mealId: 1,
                     quantity: 3,
+                    status: 'pending',
                     deliveryAddress: 'rahama road',
                 });
 
@@ -31,6 +32,7 @@ describe('POST /api/v1/orders', () => {
                 .send({
                     mealId: 1,
                     quantity: 3,
+                    status: 'pending',
                     deliveryAddress: 'rahama road',
                 });
 
