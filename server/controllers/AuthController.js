@@ -83,7 +83,7 @@ class AuthController {
           message.push(`${error.path} "${error.value}" is taken`);
         });
 
-        return res.status(400).json({
+        return res.status(409).json({
           status: false,
           message
         });

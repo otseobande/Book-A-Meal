@@ -7,15 +7,15 @@ import {
 } from './middlewares';
 import apiRoutes from './routes/api';
 import otherRoutes from './routes/others';
-import config from './config';
 
 const app = express();
 
 const port = process.env.PORT || 3000;
 
-if (config.env === 'development') {
-  app.use(morgan('combined'));
+if (process.env.NODE_ENV !== 'test') {
+  app.use(morgan());
 }
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

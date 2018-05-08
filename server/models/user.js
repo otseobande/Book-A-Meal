@@ -6,7 +6,7 @@ import bcrypt from 'bcrypt';
  * @param  {object} Datatypes - Sequelize Datatypes
  * @return {object} Sequelize Model
  */
-const user = (sequelize, DataTypes) => {
+const user = (sequelize, DataTypes) =>  {
   const User = sequelize.define(
     'user', {
       fullName: DataTypes.STRING,

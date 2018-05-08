@@ -12,6 +12,7 @@
         "import/no-unresolved": "off",
         "import/extensions": "off",
         "consistent-return": "off",
+        "linebreak-style": "off",
         "comma-dangle": ["error", {
             "arrays": "never",
             "objects": "never",
