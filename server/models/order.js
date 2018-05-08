@@ -10,7 +10,7 @@ const order = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER,
     mealId: DataTypes.INTEGER,
     quantity: DataTypes.INTEGER,
-    status: DataTypes.STRING,
+    status: DataTypes.ENUM('pending','delivered','cancelled'),
     deliveryAddress: DataTypes.STRING,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE
