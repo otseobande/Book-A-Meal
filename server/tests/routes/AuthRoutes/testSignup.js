@@ -49,7 +49,7 @@ describe('POST /api/v1/auth/signup', function() {
                     password: 'bookameal',
                     role: 'customer',
                 });
-            res.should.have.status(400);
+            res.should.have.status(409);
             res.body.message[0].should.be.equal('username "otseobande" is taken')
         } catch(err) {
           throw err;
@@ -67,7 +67,7 @@ describe('POST /api/v1/auth/signup', function() {
                     password: 'bookameal',
                     role: 'customer',
                 });
-            res.should.have.status(400);
+            res.should.have.status(409);
             res.body.message[0].should.be.equal('email "otseobande@gmail.com" is taken')
         }catch(err){
           throw err;
