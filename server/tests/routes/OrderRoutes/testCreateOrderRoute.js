@@ -21,7 +21,7 @@ describe('POST /api/v1/orders', () => {
             res.should.have.status(200);
 
         } catch (err) {
-            throw err;
+           console.log(err.stack)
         }
     });
     it('should return success message', async function() {
@@ -39,7 +39,7 @@ describe('POST /api/v1/orders', () => {
             res.body.status.should.true;
             res.body.message.should.equal('Order created successfully');
         } catch (err) {
-            throw err;
+            console.log(err.stack)
         }
     });
 });

@@ -20,7 +20,7 @@ describe('PUT /api/v1/orders/:orderId', function() {
 
             res.should.have.status(202);
         } catch (err) {
-            throw err;
+           console.log(err.stack)
         }
     });
 
@@ -39,7 +39,7 @@ describe('PUT /api/v1/orders/:orderId', function() {
 
             res.should.have.status(404);
         } catch (err) {
-            throw err;
+            console.log(err.stack)
         }
     });
 });

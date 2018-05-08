@@ -15,7 +15,7 @@ describe('DELETE /api/v1/menu/:date', function() {
             res.body.status.should.be.true;
             res.body.message.should.be.equal('menu deleted successfully');
         } catch (err) {
-            throw err;
+            console.log(err.stack);
         }
     })
 
@@ -29,7 +29,7 @@ describe('DELETE /api/v1/menu/:date', function() {
             res.body.status.should.be.false;
             res.body.message.should.be.equal('menu not found');
         } catch (err) {
-            throw err;
+            console.log(err.stack);
         }
     })
 

@@ -15,7 +15,7 @@ describe('DELETE /api/v1/meals/:mealId', function() {
             res.body.status.should.be.true;
             res.body.message.should.be.equal('Meal deleted successfully');
         } catch (err) {
-            throw err;
+            console.log(err.stack);
         }
     })
 
@@ -29,7 +29,7 @@ describe('DELETE /api/v1/meals/:mealId', function() {
             res.body.status.should.be.false;
             res.body.message.should.be.equal('Meal not found');
         } catch (err) {
-            throw err;
+            console.log(err.stack);
         }
     })
 

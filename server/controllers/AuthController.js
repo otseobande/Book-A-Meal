@@ -21,11 +21,12 @@ class AuthController {
   static login(req, res, next) {
     const { username, password } = req.body;
 
-    User.find({
+    return User.find({
       where: {
         username
       }
-    }).then((user) => {
+    })
+    .then(user => {
       if (user && user.validPassword(password)) {
         const token = jwt.sign({
           id: user.id,
@@ -39,10 +40,12 @@ class AuthController {
           token
         });
       }
-    }).then(() => res.status(400).json({
+    })
+    .then(() => res.status(400).json({
       status: false,
       message: 'Please check your credentials'
-    })).catch((err) => {
+    }))
+    .catch((err) => {
       next(err);
     });
   }
@@ -65,30 +68,18 @@ class AuthController {
       role
     } = req.body;
 
-
-    User.create({
+    return User.create({
       fullName,
       username,
       email,
       password,
       role
-    }).then(() => res.status(201).json({
+    })
+    .then(() => res.status(201).json({
       status: true,
       message: 'User signup successful'
-    })).catch((err) => {
-      if (err.name === 'SequelizeUniqueConstraintError') {
-        const message = [];
-
-        err.errors.forEach((error) => {
-          message.push(`${error.path} "${error.value}" is taken`);
-        });
-
-        return res.status(409).json({
-          status: false,
-          message
-        });
-      }
-
+    }))
+    .catch((err) => {
       next(err);
     });
   }

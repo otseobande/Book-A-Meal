@@ -14,7 +14,7 @@ describe('GET /api/v1/menu', () => {
             res.should.have.status(200);
 
         } catch (err) {
-            throw err;
+            console.log(err.stack);
         }
     });
 });

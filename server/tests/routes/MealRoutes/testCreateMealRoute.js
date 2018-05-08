@@ -19,7 +19,7 @@ describe('POST /api/v1/meals', function() {
 
             res.should.have.status(201);
         } catch (err) {
-            throw err;
+            console.log(err.stack);
         }
     });
 
@@ -35,7 +35,7 @@ describe('POST /api/v1/meals', function() {
 
             res.should.have.status(400);
         } catch (err) {
-            throw err;
+            console.log(err.stack);
         }
     });
 });

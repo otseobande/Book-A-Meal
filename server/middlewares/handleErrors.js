@@ -14,9 +14,22 @@ import config from '../config';
  * @return {json} res.json
  */
 const handleErrors = (error, req, res, next, env = config.env) => {
-  if (Object.keys(error).length > 0) {
+  if (error.statusText && error.statusText === "Bad Request") {
     return res.status(400).json({
       error
+    });
+  }
+
+  if (error.name && error.name === 'SequelizeUniqueConstraintError') {
+    const message = [];
+
+    err.errors.forEach((error) => {
+      message.push(`${error.path} "${error.value}" already exists`);
+    });
+
+    return res.status(409).json({
+      status: false,
+      message
     });
   }
 
