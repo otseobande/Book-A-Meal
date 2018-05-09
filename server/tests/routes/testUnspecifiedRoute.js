@@ -5,7 +5,7 @@ import {
 } from '../setup';
 
 describe('unspecified routes', () => {
-	it('should send a welcome message at root', async () => {
+	it('should send a welcome message at /', async () => {
 		try {
 			const res = await chai.request(App)
 				.get('/');

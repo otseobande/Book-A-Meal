@@ -69,7 +69,11 @@ class MenuController {
               title: category.title,
               meals: category.mealId
             })
-            .then(createdMenuCategory => createdMenuCategory.addMeal(category.mealIds))
+            .then(createdMenuCategory => 
+              createdMenuCategory.setMeals(
+                [...(new Set(category.mealIds))]
+              )
+            )
           )
         })
       };
