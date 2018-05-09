@@ -1,6 +1,6 @@
 /* eslint no-console: 0 */
 import express from 'express';
-import morgan from 'morgan';
+import logger from 'morgan';
 import {
   trimStrings,
   handleErrors
@@ -12,10 +12,7 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
-// if (process.env.NODE_ENV !== 'test') {
-//   app.use(morgan());
-// }
-
+app.use(logger('dev'));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
