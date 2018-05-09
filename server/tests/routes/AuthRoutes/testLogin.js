@@ -28,7 +28,7 @@ describe('POST /api/v1/auth/login', function() {
             password: 'sdf'
         });
 
-      res.should.have.status(400);
+      res.should.have.status(422);
       res.message.should.be.equal('Please check your credentials');
     } catch (err) {
         console.log(err.stack);
@@ -43,7 +43,7 @@ describe('POST /api/v1/auth/login', function() {
               username: 'dogo',
           });
 
-        res.should.have.status(400);
+        res.should.have.status(422);
       } catch (err) {
         console.log(err.stack);
       }

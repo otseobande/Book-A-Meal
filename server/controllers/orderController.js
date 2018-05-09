@@ -16,13 +16,15 @@ class OrderController {
    * @return {json} res.json
    */
   static createOrder(req, res, next) {
-    order.create({
+    return order.create({
       userId: req.user.id,
       ...req.body
-    }).then(() => res.status(200).json({
+    })
+    .then(() => res.status(200).json({
       status: true,
       message: 'Order created successfully'
-    })).catch(err => next(err));
+    }))
+    .catch(err => next(err));
   }
 
   /**
@@ -34,15 +36,16 @@ class OrderController {
    * @return {json} res.json
    */
   static getAllOrders(req, res, next) {
-    const responseData = [];
-    order.findAll({
+    return order.findAll({
       where: {
         userId: req.user.id
       }
-    }).then(orders => res.status(200).json({
+    })
+    .then(orders => res.status(200).json({
       status: true,
       data: orders
-    })).catch(err => next(err));
+    }))
+    .catch(err => next(err));
   }
 
   /**
@@ -56,37 +59,37 @@ class OrderController {
   static updateOrder(req, res, next) {
     const { orderId } = req.params;
 
-    order.find({
+    return order.find({
       where: {
         id: orderId,
         userId: req.user.id
       }
     })
-      .then((foundOrder) => {
-        if (foundOrder) {
-          if (foundOrder.createdAt
-            .add(config.orderExpiry, 'hours')
-          > moment()) {
-            return res.status(400).json({
-              status: false,
-              message: 'order modification has expired'
-            });
-          }
-
-          foundOrder.updateAttributes(req.body);
-
-          return res.status(202).json({
-            status: true,
-            message: 'order updated successfully'
+    .then(foundOrder => {
+      if (foundOrder) {
+        if (foundOrder.createdAt
+          .add(config.orderExpiry, 'hours')
+        > moment()) {
+          return res.status(400).json({
+            status: false,
+            message: 'order modification has expired'
           });
         }
 
-        return res.status(404).json({
-          status: false,
-          message: 'order not found'
+        foundOrder.updateAttributes(req.body);
+
+        return res.status(202).json({
+          status: true,
+          message: 'order updated successfully'
         });
-      })
-      .catch(err => next(err));
+      }
+
+      return res.status(404).json({
+        status: false,
+        message: 'order not found'
+      });
+    })
+    .catch(err => next(err));
   }
 }
 

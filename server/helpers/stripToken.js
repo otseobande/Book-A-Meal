@@ -18,4 +18,4 @@ const stripToken = (req) => {
   }
 };
 
-export default getToken;
+export default stripToken;
