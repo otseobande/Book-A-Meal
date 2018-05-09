@@ -26,26 +26,26 @@ class AuthController {
         username
       }
     })
-    .then(user => {
-      if (user && user.validPassword(password)) {
-        const token = jwt.sign({
-          id: user.id,
-          role: user.role
-        }, jwtSecret, {
-          expiresIn: `${jwtExpiry}h`
-        });
+      .then((user) => {
+        if (user && user.validPassword(password)) {
+          const token = jwt.sign({
+            id: user.id,
+            role: user.role
+          }, jwtSecret, {
+            expiresIn: `${jwtExpiry}h`
+          });
 
-        return res.status(200).json({
-          status: true,
-          token
-        });
-      }
-    })
-    .then(() => res.status(422).json({
-      status: false,
-      message: 'Please check your credentials'
-    }))
-    .catch(err => next(err));
+          return res.status(200).json({
+            status: true,
+            token
+          });
+        }
+      })
+      .then(() => res.status(422).json({
+        status: false,
+        message: 'Please check your credentials'
+      }))
+      .catch(err => next(err));
   }
 
   /**
@@ -73,11 +73,11 @@ class AuthController {
       password,
       role
     })
-    .then(() => res.status(201).json({
-      status: true,
-      message: 'User signup successful'
-    }))
-    .catch(err => next(err));
+      .then(() => res.status(201).json({
+        status: true,
+        message: 'User signup successful'
+      }))
+      .catch(err => next(err));
   }
 }
 

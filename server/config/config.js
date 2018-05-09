@@ -22,6 +22,7 @@ export default {
     password: process.env.TEST_DB_PASS || '',
     database: process.env.TEST_DB_NAME || 'book_a_meal_test',
     host: process.env.TEST_DB_HOST || 'localhost',
-    dialect: 'postgres'
-  }
+    dialect: 'postgres',
+    logging: false
+  },
 }
