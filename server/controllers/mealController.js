@@ -14,17 +14,15 @@ class MealController {
    * @return {json} res.json
    */
   static create(req, res, next) {
-    Meal.create({
+    return Meal.create({
       userId: req.user.id,
       ...req.body
-    }).then(() => {
-      res.status(201).json({
-        status: true,
-        message: 'Meal created successfully'
-      });
-    }).catch((err) => {
-      next(err);
-    });
+    })
+    .then(() => res.status(201).json({
+      status: true,
+      message: 'Meal created successfully'
+    }))
+    .catch(err => next(err));
   }
 
   /**
@@ -39,12 +37,13 @@ class MealController {
   static delete(req, res, next) {
     const { mealId } = req.params;
 
-    Meal.destroy({
+    return Meal.destroy({
       where: {
         id: mealId,
         userId: req.user.id
       }
-    }).then((rows) => {
+    })
+    .then(rows => {
       if (rows > 0) {
         return res.status(200).json({
           status: true,
@@ -56,9 +55,8 @@ class MealController {
         status: false,
         message: 'Meal not found'
       });
-    }).catch((err) => {
-      next(err);
-    });
+    })
+    .catch(err => next(err));
   }
 
   /**
@@ -73,16 +71,17 @@ class MealController {
   static get(req, res, next) {
     const { mealId } = req.params;
 
-    Meal.find({
+    return Meal.find({
       where: {
         id: mealId,
         userId: req.user.id
       }
-    }).then((meal) => {
-      if (meal) {
+    })
+    .then(foundMeal => {
+      if (foundMeal) {
         return res.status(200).json({
           status: true,
-          data: meal
+          data: foundMeal
         });
       }
 
@@ -90,9 +89,8 @@ class MealController {
         status: false,
         message: 'Meal not found'
       });
-    }).catch((err) => {
-      next(err);
-    });
+    })
+    .catch(err => next(err));
   }
 
   /**
@@ -105,16 +103,16 @@ class MealController {
    * @return {json} res.json
    */
   static getMeals(req, res, next) {
-    Meal.findAll({
+    return Meal.findAll({
       where: {
         userId: req.user.id
       }
-    }).then(meals => res.status(200).json({
+    })
+    .then(meals => res.status(200).json({
       status: true,
       data: meals
-    })).catch((err) => {
-      next(err);
-    });
+    }))
+    .catch(err => next(err));
   }
 
   /**
@@ -129,14 +127,15 @@ class MealController {
   static update(req, res, next) {
     const { mealId } = req.params;
 
-    Meal.find({
+    return Meal.find({
       where: {
         id: mealId,
         userId: req.user.id
       }
-    }).then((meal) => {
-      if (meal) {
-        meal.updateAttributes(req.body);
+    })
+    .then(foundMeal => {
+      if (foundMeal) {
+        foundMeal.updateAttributes(req.body);
 
         return res.status(202).json({
           status: true,
@@ -147,9 +146,8 @@ class MealController {
         status: false,
         message: 'Meal not found'
       });
-    }).catch((err) => {
-      next(err);
-    });
+    })
+    .catch(err => next(err));
   }
 }
 

@@ -44,4 +44,22 @@ describe('handleErrors middleware', () => {
       error: 'something went wrong'
     })
   })
+
+  it('should return error 409 if a database conflict occurs', () => {
+    const errorMock = {
+      errors: [{
+          path: 'meal',
+          value: 1
+        }
+      ],
+      name: 'SequelizeUniqueConstraintError',
+    }
+    handleErrors(errorMock, null, res, next, 'production');
+
+    res.status.should.have.been.calledWith(409);
+    res.json.should.have.been.calledWith({
+      status: false,
+      message: ['meal "1" already exists']
+    })
+  })
 });

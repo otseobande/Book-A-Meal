@@ -23,8 +23,8 @@ const handleErrors = (error, req, res, next, env = config.env) => {
   if (error.name && error.name === 'SequelizeUniqueConstraintError') {
     const message = [];
 
-    err.errors.forEach((error) => {
-      message.push(`${error.path} "${error.value}" already exists`);
+    error.errors.forEach(err => {
+      message.push(`${err.path} "${err.value}" already exists`);
     });
 
     return res.status(409).json({

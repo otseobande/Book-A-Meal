@@ -41,13 +41,11 @@ class AuthController {
         });
       }
     })
-    .then(() => res.status(400).json({
+    .then(() => res.status(422).json({
       status: false,
       message: 'Please check your credentials'
     }))
-    .catch((err) => {
-      next(err);
-    });
+    .catch(err => next(err));
   }
 
   /**
@@ -79,9 +77,7 @@ class AuthController {
       status: true,
       message: 'User signup successful'
     }))
-    .catch((err) => {
-      next(err);
-    });
+    .catch(err => next(err));
   }
 }
 
