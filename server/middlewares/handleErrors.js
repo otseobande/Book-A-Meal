@@ -20,24 +20,12 @@ const handleErrors = (error, req, res, next, env = config.env) => {
     });
   }
 
-  if (error.name && error.name === 'SequelizeUniqueConstraintError') {
-    const message = [];
-
-    error.errors.forEach(err => {
-      message.push(`${err.path} "${err.value}" already exists`);
-    });
-
-    return res.status(409).json({
-      status: false,
-      message
-    });
-  }
 
   const errMsg = env === 'production'
     ? 'something went wrong'
     : error.stack;
 
-  return res.status(500).json({
+  return res.status(error.status || 500).json({
     error: errMsg
   });
 };
