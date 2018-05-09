@@ -1,4 +1,0 @@
---require babel-register 
---require regenerator-runtime/runtime 
---exit 
---recursive
