@@ -1,32 +1,36 @@
-import chai from 'chai';
-import chaiHttp from 'chai-http';
-import App from "../../../app";
+import {
+    chai,
+    App,
+    token
+} from '../../setup';
 
-chai.use(chaiHttp);
-chai.should();
-
-describe('POST /api/v1/menus', function() {
-    it('should return a success status', async function() {
-        try {
-            const res = await chai.request(App)
-                .post('/api/v1/menu')
-                .send({
-                    title: 'test menu',
-                    date: '20-10-2019',
-                    categories: [{
-                            title: "Benue style",
-                            mealIds: [1, 3]
-                        },
-                        {
-                            title: "Jacuzzi paruzi",
-                            mealIds: [2, 3]
-                        }
-                    ]
-                });
-
-            res.should.have.status(201);
-        } catch (err) {
-            throw err;
-        }
-    });
+describe('POST /api/v1/menu', function() {
+  it('should return a success status', async function() {
+    try {
+      const res = await chai.request(App)
+        .post('/api/v1/menu')
+        .set('Authorization',  `Bearer ${token}`)
+        .send({
+          title: 'test menu',
+          date: '2020-05-09',
+          categories: [{
+              title: 'Benue style',
+              mealIds: [1, 3]
+            },
+            {
+              title: 'Jacuzzi paruzi',
+              mealIds: [2, 3]
+            }
+          ]
+        });
+        
+      res.should.have.status(201);
+      res.body.should.be.deep.equal({
+          "status": true,
+          "message": "Menu created successfully"
+      })
+    } catch (err) {
+        console.log(err.stack)
+    }
+  });
 });

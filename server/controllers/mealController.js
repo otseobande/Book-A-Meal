@@ -1,78 +1,153 @@
-import meals from '../dummy-models/meals';
+import { meal as Meal } from '../models';
 
+/**
+ * @exports
+ * @class MealController
+ */
 class MealController {
-  static createMeal(req, res) {
-    meals.create({
-      ...req.body,
-      userId: 2
-    });
-
-    return res.status(201).json({
+  /**
+   * Creates a new meal
+   * @staticmethod
+   * @param  {object} req - Request object
+   * @param {object} res - Response object
+   * @param {function} next - middleware next (for error handling)
+   * @return {json} res.json
+   */
+  static create(req, res, next) {
+    return Meal.create({
+      userId: req.user.id,
+      ...req.body
+    })
+    .then(() => res.status(201).json({
       status: true,
       message: 'Meal created successfully'
-    });
+    }))
+    .catch(err => next(err));
   }
 
-  static deleteMeal(req, res) {
+  /**
+   * Deletes a meal
+   *
+   * @staticmethod
+   * @param  {object} req - Request object
+   * @param {object} res - Response object
+   * @param {function} next - middleware next (for error handling)
+   * @return {json} res.json
+   */
+  static delete(req, res, next) {
     const { mealId } = req.params;
 
-    const deleted = meals.delete(meal => parseInt(meal.id, 10) === parseInt(mealId, 10));
+    return Meal.destroy({
+      where: {
+        id: mealId,
+        userId: req.user.id
+      }
+    })
+    .then(rows => {
+      if (rows > 0) {
+        return res.status(200).json({
+          status: true,
+          message: 'Meal deleted successfully'
+        });
+      }
 
-    if (deleted) {
-      return res.status(200).json({
-        status: true,
-        message: 'Meal deleted successfully'
-      });
-    }
-
-    return res.status(404).json({
-      status: false,
-      message: 'Meal not found'
-    });
-  }
-
-  static getMeal(req, res) {
-    const { mealId } = req.params;
-    const foundMeal = meals.find(meal => parseInt(meal.id, 10)
-                                    === parseInt(mealId, 10));
-
-    if (!foundMeal) {
       return res.status(404).json({
         status: false,
         message: 'Meal not found'
       });
-    }
-    return res.status(200).json({
-      status: true,
-      data: foundMeal
-    });
+    })
+    .catch(err => next(err));
   }
 
-  static getMeals(req, res) {
-    return res.status(200).json({
-      status: true,
-      data: meals.data
-    });
-  }
-
-  static updateMeal(req, res) {
+  /**
+   * Return meal that match mealId
+   *
+   * @staticmethod
+   * @param  {object} req - Request object
+   * @param {object} res - Response object
+   * @param {function} next - middleware next (for error handling)
+   * @return {json} res.json
+   */
+  static get(req, res, next) {
     const { mealId } = req.params;
-    const updatedMeal = meals.update(
-      req.body,
-      meal => parseInt(meal.id, 10) === parseInt(mealId, 10)
-    );
 
-    if (Object.keys(updatedMeal).length > 0) {
-      return res.status(202).json({
-        status: true,
-        message: 'Meal updated successfully'
+    return Meal.find({
+      where: {
+        id: mealId,
+        userId: req.user.id
+      }
+    })
+    .then(foundMeal => {
+      if (foundMeal) {
+        return res.status(200).json({
+          status: true,
+          data: foundMeal
+        });
+      }
+
+      return res.status(404).json({
+        status: false,
+        message: 'Meal not found'
       });
-    }
+    })
+    .catch(err => next(err));
+  }
 
-    return res.status(404).json({
-      status: false,
-      message: 'Meal not found'
-    });
+  /**
+   * Get all meals
+   *
+   * @staticmethod
+   * @param  {object} req - Request object
+   * @param {object} res - Response object
+   * @param {function} next - middleware next (for error handling)
+   * @return {json} res.json
+   */
+  static getMeals(req, res, next) {
+    return Meal.findAll({
+      where: {
+        userId: req.user.id
+      }
+    })
+    .then(meals => res.status(200).json({
+      status: true,
+      data: meals
+    }))
+    .catch(err => next(err));
+  }
+
+  /**
+   * Update an existing meal
+   *
+   * @staticmethod
+   * @param  {object} req - Request object
+   * @param {object} res - Response object
+   * @param {function} next - middleware next (for error handling)
+   * @return {json} res.json
+   */
+  static update(req, res, next) {
+    const { mealId } = req.params;
+
+    return Meal.find({
+      where: {
+        id: mealId,
+        userId: req.user.id
+      }
+    })
+    .then(foundMeal => {
+      if (foundMeal) {
+        foundMeal.updateAttributes(req.body);
+
+        return res.status(202).json({
+          status: true,
+          message: 'Meal updated successfully'
+        });
+      }
+      return res.status(404).json({
+        status: false,
+        message: 'Meal not found'
+      });
+    })
+    .catch(err => next(err));
   }
 }
 

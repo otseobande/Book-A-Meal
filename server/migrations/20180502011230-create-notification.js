@@ -1,19 +1,16 @@
 export default {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Notifications', {
+    return queryInterface.createTable('notifications', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER.UNSIGNED
+        type: Sequelize.INTEGER,
+        unique: true
       },
       userId: {
         allowNull: false,
-        type: Sequelize.INTEGER.UNSIGNED,
-        references: {
-          model: 'Users',
-          key: 'id'
-        }
+        type: Sequelize.INTEGER
       },
       info: {
         allowNull: false,
@@ -26,15 +23,17 @@ export default {
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now') 
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now') 
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Notifications');
+    return queryInterface.dropTable('notifications');
   }
 };

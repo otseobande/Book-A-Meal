@@ -1,17 +1,20 @@
-import express from 'express';
+import { Router } from 'express';
 import MenuController from '../../controllers/menuController';
 import {
   validateCreate,
   validateUpdate,
   validateDate
 } from '../../middlewares/validators/menu';
+import { guard } from '../../middlewares';
 
-const router = express.Router();
+const router = Router();
 
-router.post('/', validateCreate, MenuController.createMenu);
-router.get('/', MenuController.getTodaysMenu);
+router.get('/', MenuController.getSpecificDayMenu);
 router.get('/all', MenuController.getMenus);
 router.get('/:date', validateDate, MenuController.getSpecificDayMenu);
+
+router.use(guard('caterer'));
+router.post('/', validateCreate, MenuController.createMenu);
 router.put('/:date', validateUpdate, MenuController.updateMenu);
 router.delete('/:date', validateDate, MenuController.deleteMenu);
 

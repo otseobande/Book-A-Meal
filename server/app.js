@@ -1,15 +1,18 @@
 /* eslint no-console: 0 */
 import express from 'express';
-import dotenv from 'dotenv';
-import { trimStrings, handleErrors } from './middlewares';
+import logger from 'morgan';
+import {
+  trimStrings,
+  handleErrors
+} from './middlewares';
 import apiRoutes from './routes/api';
 import otherRoutes from './routes/others';
-
-dotenv.config();
 
 const app = express();
 
 const port = process.env.PORT || 3000;
+
+app.use(logger('dev'));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

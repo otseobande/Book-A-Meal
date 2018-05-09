@@ -17,8 +17,7 @@ addons:
     - g++-5
 
 before_install:
-  - npm install -g node-gyp
-  - npm install -g node-pre-gyp
+  - npm install -g node-gyp node-pre-gyp
 
 install:
   - npm install
@@ -31,7 +30,7 @@ before_script:
 
 script:
   - npm run lint:server
-  - npm run cov-test:server
+  - npm run test:server
 
 deploy:
   skip_cleanup: true

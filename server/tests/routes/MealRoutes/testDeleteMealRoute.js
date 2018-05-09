@@ -1,23 +1,21 @@
-import chai from 'chai';
-import chaiHttp from 'chai-http';
-import App from "../../../app";
-
-chai.use(chaiHttp);
-chai.should();
-
-
+import {
+    chai,
+    App,
+    token
+} from '../../setup';
 
 describe('DELETE /api/v1/meals/:mealId', function() {
     it('should return a success status code and message', async function() {
         try {
             const res = await chai.request(App)
-                .delete('/api/v1/meals/4')
+                .delete('/api/v1/meals/2')
+                .set('Authorization',  `Bearer ${token}`)
 
             res.should.have.status(200)
             res.body.status.should.be.true;
             res.body.message.should.be.equal('Meal deleted successfully');
         } catch (err) {
-            throw err;
+            console.log(err.stack);
         }
     })
 
@@ -25,12 +23,13 @@ describe('DELETE /api/v1/meals/:mealId', function() {
         try {
             const res = await chai.request(App)
                 .delete('/api/v1/meals/20')
+                .set('Authorization',  `Bearer ${token}`)
 
             res.should.have.status(404);
             res.body.status.should.be.false;
             res.body.message.should.be.equal('Meal not found');
         } catch (err) {
-            throw err;
+            console.log(err.stack);
         }
     })
 

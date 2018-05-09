@@ -1,48 +1,43 @@
-import chai from 'chai';
-import sinon from 'sinon';
-import sinonChai from 'sinon-chai';
-import { mockReq, mockRes } from 'sinon-express-mock';
+import {
+  chai,
+  sinon,
+  mockReq,
+  mockRes
+} from '../setup';
 import handleErrors from '../../middlewares/handleErrors';
 
-chai.use(sinonChai);
-chai.should();
-
-
 const res = mockRes();
+const next = sinon.spy();
+const validationError = {
+  statusText: "Bad Request",
+}
 
+const error = {
+  stack: 'stacktrace'
+}
 describe('handleErrors middleware', () => {
   it('return errors as response', () => {
-    const error = {
-      test: 'validation error',
-    }
-
-    handleErrors(error, null, res);
+    handleErrors(validationError, null, res, next, 'test');
 
 		res.status.should.have.been.calledWith(400);
     res.json.should.have.been.calledWith({
       error: {
-        test: 'validation error',
+        statusText: "Bad Request",
       }
     })
   });
 
   it('should send descriptive server errors in non-prod environment', () => {
-    process.env.NODE_ENV = "test"
-
-    handleErrors({}, null, res);
+    handleErrors(error, null, res, next,'test');
 
     res.status.should.have.been.calledWith(500);
     res.json.should.have.been.calledWith({
-      error: {
-        test: 'validation error',
-      }
+      error: error.stack
     })
   })
 
   it('should not send descriptive server errors in prod environment', () => {
-    process.env.NODE_ENV = "production";
-
-    handleErrors({}, null, res);
+    handleErrors(error, null, res, next, 'production');
 
     res.status.should.have.been.calledWith(500);
     res.json.should.have.been.calledWith({
@@ -50,4 +45,21 @@ describe('handleErrors middleware', () => {
     })
   })
 
+  it('should return error 409 if a database conflict occurs', () => {
+    const errorMock = {
+      errors: [{
+          path: 'meal',
+          value: 1
+        }
+      ],
+      name: 'SequelizeUniqueConstraintError',
+    }
+    handleErrors(errorMock, null, res, next, 'production');
+
+    res.status.should.have.been.calledWith(409);
+    res.json.should.have.been.calledWith({
+      status: false,
+      message: ['meal "1" already exists']
+    })
+  })
 });

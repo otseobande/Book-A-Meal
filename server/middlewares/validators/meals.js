@@ -11,6 +11,10 @@ const price = Joi.number().positive();
 const img = Joi.string();
 const mealId = Joi.number().integer().positive();
 
+/**
+ * Validation middleware
+ * @exports
+ */
 export const validateCreate = validate({
   body: {
     title: title.required(),
@@ -20,12 +24,20 @@ export const validateCreate = validate({
   }
 });
 
+/**
+ * Validation middleware
+ * @exports
+ */
 export const validateMealId = validate({
   params: {
     mealId
   }
 });
 
+/**
+ * Validation middleware
+ * @exports
+ */
 export const validateUpdate = validate({
   params: {
     mealId

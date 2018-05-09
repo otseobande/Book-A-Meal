@@ -1,16 +1,15 @@
-import chai from 'chai';
-import chaiHttp from 'chai-http';
-import App from "../../../app";
-
-chai.use(chaiHttp);
-chai.should();
-
+import {
+    chai,
+    App,
+    token
+} from '../../setup';
 
 describe('PUT /api/v1/orders/:orderId', function() {
     it('should return a success status 202', async function() {
         try {
             const res = await chai.request(App)
                 .put('/api/v1/orders/1')
+                .set('Authorization',  `Bearer ${token}`)
                 .send({
                     userId: 2,
                     mealId: 2,
@@ -21,7 +20,7 @@ describe('PUT /api/v1/orders/:orderId', function() {
 
             res.should.have.status(202);
         } catch (err) {
-            throw err;
+           console.log(err.stack)
         }
     });
 
@@ -29,6 +28,7 @@ describe('PUT /api/v1/orders/:orderId', function() {
         try {
             const res = await chai.request(App)
                 .put('/api/v1/orders/3090909')
+                .set('Authorization',  `Bearer ${token}`)
                 .send({
                     userId: 2,
                     mealId: 2,
@@ -39,7 +39,7 @@ describe('PUT /api/v1/orders/:orderId', function() {
 
             res.should.have.status(404);
         } catch (err) {
-            throw err;
+            console.log(err.stack)
         }
     });
 });

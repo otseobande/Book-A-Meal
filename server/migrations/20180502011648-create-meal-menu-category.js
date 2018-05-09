@@ -1,39 +1,34 @@
 export default {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('MealMenuCategories', {
+    return queryInterface.createTable('mealMenuCategories', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER.UNSIGNED
+        type: Sequelize.INTEGER,
+        unique: true,
       },
-      menuId: {
+      mealId: {
         allowNull: false,
-        type: Sequelize.INTEGER.UNSIGNED,
-        references: {
-          model: 'Menus',
-          key: 'id'
-        }
+        type: Sequelize.INTEGER
       },
       menuCategoryId: {
         allowNull: false,
-        type: Sequelize.INTEGER.UNSIGNED,
-        references: {
-          model: 'MenuCategories',
-          key: 'id'
-        }
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('MealMenuCategories');
+    return queryInterface.dropTable('mealMenuCategories');
   }
 };
