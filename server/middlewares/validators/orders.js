@@ -15,7 +15,7 @@ export const validateCreate = validate({
     mealId: mealId.required(),
     quantity: quantity.required(),
     deliveryAddress: deliveryAddress.required(),
-    status: status.required(),
+    status: status.required()
   }
 });
 
