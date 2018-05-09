@@ -1,11 +1,12 @@
 export default {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Users', {
+    return queryInterface.createTable('users', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER.UNSIGNED
+        type: Sequelize.INTEGER,
+        unique: true
       },
       fullName: {
         allowNull: false,
@@ -13,23 +14,39 @@ export default {
       },
       username: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true
       },
       email: {
         allowNull: false,
+        type: Sequelize.STRING,
+        unique: true,
+        validate: {
+          isEmail: true
+        }
+      },
+      password: {
+        allowNull: false,
         type: Sequelize.STRING
+      },
+      role: {
+        allowNull: false,
+        type: Sequelize.ENUM,
+        values: ['customer','caterer','admin']
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now') 
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now') 
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Users');
+    return queryInterface.dropTable('users');
   }
 };

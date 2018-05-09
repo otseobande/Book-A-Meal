@@ -5,10 +5,11 @@
   "main": "server/app.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production babel-node server/app.js",
-    "start:dev": "nodemon --exec babel-node -- server/app.js",
+    "start:dev": "cross-env NODE_ENV=development nodemon --exec babel-node -- server/app.js",
     "test": "npm run test:server",
-    "test:server": "cross-env NODE_ENV=test mocha server/tests --require babel-register --require regenerator-runtime/runtime --exit --recursive ",
-    "cov-test:server": "cross-env NODE_ENV=test nyc mocha server/tests --exit --recursive ",
+    "pretest:server": "cd server & sequelize --env test db:migrate & sequelize --env test db:seed:all",
+    "cleanup": "cd server & sequelize --env test db:migrate:undo:all",
+    "test:server": "cross-env NODE_ENV=test nyc mocha server/tests || npm run cleanup",
     "lint:server": "eslint \"server/**/*.js\" app.js --fix",
     "lint-test:server": "concurrently \"npm run lint:server\" \"npm run test:server\"",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
@@ -25,14 +26,13 @@
   "homepage": "https://github.com/otseobande/Book-A-Meal#readme",
   "dependencies": {
     "bcrypt": "^2.0.1",
-    "body-parser": "^1.18.2",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
-    "express-jwt": "^5.3.1",
-    "express-jwt-permissions": "^1.1.0",
     "express-validation": "^1.0.2",
     "joi": "^13.2.0",
     "jsonwebtoken": "^8.2.1",
+    "moment": "^2.22.1",
+    "morgan": "^1.9.0",
     "pg": "^7.4.1",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.37.6"

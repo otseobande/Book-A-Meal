@@ -1,33 +1,32 @@
-import chai from 'chai';
-import chaiHttp from 'chai-http';
-import App from "../../../app";
-
-chai.use(chaiHttp);
-chai.should();
-
+import {
+    chai,
+    App,
+    token
+} from '../../setup';
 
 describe('GET /api/v1/orders', () => {
     it('should return a success status', async function() {
         try {
             const res = await chai.request(App)
-                .get('/api/v1/orders');
+                .get('/api/v1/orders')
+                .set('Authorization',  `Bearer ${token}`);
 
             res.should.have.status(200);
 
         } catch (err) {
-            throw err;
+            console.log(err.stack)
         }
     });
     it('should have the right data structure', async function() {
         try {
             const res = await chai.request(App)
-                .get('/api/v1/orders');
+                .get('/api/v1/orders')
+                .set('Authorization',  `Bearer ${token}`);
 
             res.body.status.should.true;
             res.body.data.should.be.an('array');
-            res.body.data[1].should.have.keys('id', 'quantity', 'deliveryAddress', 'user', 'meal');
         } catch (err) {
-            throw err;
+            console.log(err.stack)
         }
     });
 });

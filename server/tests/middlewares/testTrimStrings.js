@@ -1,10 +1,8 @@
-import chai from 'chai';
-import sinon from 'sinon';
-import sinonChai from 'sinon-chai';
+import {
+  chai,
+  sinon,
+} from '../setup';
 import trimStrings from '../../middlewares/trimStrings';
-
-chai.use(sinonChai);
-chai.should();
 
 const request = {
   body: {

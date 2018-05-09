@@ -1,16 +1,15 @@
-import chai from 'chai';
-import chaiHttp from 'chai-http';
-import App from "../../../app";
-
-chai.use(chaiHttp);
-chai.should();
-
+import {
+    chai,
+    App,
+    token
+} from '../../setup'
 
 describe('POST /api/v1/meals', function() {
     it('should return a success status', async function() {
         try {
             const res = await chai.request(App)
                 .post('/api/v1/meals')
+                .set('Authorization',  `Bearer ${token}`)
                 .send({
                     title: 'test meal',
                     description: 'great meal',
@@ -20,7 +19,7 @@ describe('POST /api/v1/meals', function() {
 
             res.should.have.status(201);
         } catch (err) {
-            throw err;
+            console.log(err.stack);
         }
     });
 
@@ -29,13 +28,14 @@ describe('POST /api/v1/meals', function() {
         try {
             const res = await chai.request(App)
                 .post('/api/v1/meals')
+                .set('Authorization',  `Bearer ${token}`)
                 .send({
                     title: 'test meal',
                 });
 
             res.should.have.status(400);
         } catch (err) {
-            throw err;
+            console.log(err.stack);
         }
     });
 });
