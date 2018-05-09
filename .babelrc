@@ -1,0 +1,16 @@
+{
+	"presets": ["env"],
+	"plugins": [
+		"transform-object-rest-spread",
+		["transform-runtime", {
+			"polyfill": false,
+			"regenerator": true
+		}],
+		"add-module-exports"
+  ],
+  "env": {
+    "test": {
+      "plugins": ["istanbul"]
+    }
+  }
+}
