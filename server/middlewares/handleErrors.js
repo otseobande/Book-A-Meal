@@ -46,9 +46,7 @@ const handleErrors = (error, req, res, next, env = config.env) => {
     });
   }
 
-  const errMsg = env === 'production'
-    ? 'something went wrong'
-    : error.stack;
+  const errMsg = error.stack;
 
   return res.status(error.status || 500).json({
     error: errMsg

@@ -4,8 +4,17 @@ dotenv.config();
 
 export default {
 	production:{
-    use_env_variable: 'postgres://bvhybfqjrocgck:c90f03cb3d1201a0a9f0058f85dfcf2a5d9c92135ffe29c584e5fa5b0cbb07ef@ec2-50-19-224-165.compute-1.amazonaws.com:5432/ddqk6bagksufkg',
-    dialect: 'postgres'
+    //use_env_variable: process.env.DATABASE_URL,
+    username: 'bvhybfqjrocgck',
+    password: 'c90f03cb3d1201a0a9f0058f85dfcf2a5d9c92135ffe29c584e5fa5b0cbb07ef',
+    database: 'ddqk6bagksufkg',
+    host: 'ec2-50-19-224-165.compute-1.amazonaws.com',
+    port: '5432',
+    dialect: 'postgres',
+    ssl: true,
+    dialectOptions: {
+      ssl: true
+    }
   },
   development: {
   	username: process.env.DB_USER,
