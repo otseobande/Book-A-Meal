@@ -11,10 +11,11 @@ const username = Joi.string()
 const password = Joi.string()
   .min(1);
 const role = Joi.string()
-  .min(1);
+  .min(1)
+  .valid(['caterer', 'customer', 'admin']);
 
 
-const validateSignUpReqBody = validate({
+const validateSignup = validate({
   body: {
     fullName: fullName.required(),
     email: email.required(),
@@ -24,19 +25,6 @@ const validateSignUpReqBody = validate({
   }
 });
 
-const validateRole = (req, res, next) => {
-  const roles = ['caterer', 'customer', 'admin'];
-
-  if (!roles.includes(req.body.role)) {
-    return res.status(400).json({
-      status: false,
-      message: 'role does not exist'
-    });
-  }
-
-  next();
-};
-
 const validateLogin = validate({
   body: {
     username: username.required(),
@@ -44,10 +32,6 @@ const validateLogin = validate({
   }
 });
 
-const validateSignup = [
-  validateSignUpReqBody,
-  validateRole
-];
 
 export {
   validateSignup,
