@@ -25,10 +25,8 @@ describe('POST /api/v1/menu', function() {
         });
         
       res.should.have.status(201);
-      res.body.should.be.deep.equal({
-          "status": true,
-          "message": "Menu created successfully"
-      })
+      res.body.status.should.be.equal(true);
+      res.body.message.should.be.equal('Menu created successfully')
     } catch (err) {
         console.log(err.stack)
     }
