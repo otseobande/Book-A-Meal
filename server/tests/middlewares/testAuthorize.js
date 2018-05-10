@@ -7,27 +7,26 @@ import {
 } from '../setup';
 import authorize from '../../middlewares/authorize';
 
-const req = mockReq({
-	headers: {
-		authorization: 'Bearer asdf;uwajkdsf'
-	}
-});
-const headerAuth = mockReq({
-	headers: {
-		authorization: `Bearer ${token}`
-	}
-})
-
-const queryAuth = mockReq({
-	query: {
-		token
-	},
-	headers:{}
-})
-
 const res = mockRes();
 
 describe('Authorize middleware', () => {
+	const req = mockReq({
+		headers: {
+			authorization: 'Bearer asdf;uwajkdsf'
+		}
+	});
+	const headerAuth = mockReq({
+		headers: {
+			authorization: `Bearer ${token}`
+		}
+	})
+
+	const queryAuth = mockReq({
+		query: {
+			token
+		},
+		headers:{}
+	})
 	
 	it('should add user object to req', () => {
 		const next = sinon.spy();

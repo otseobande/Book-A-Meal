@@ -10,6 +10,7 @@
     "pretest:server": "cd server & sequelize --env test db:migrate & sequelize --env test db:seed:all",
     "cleanup": "cd server & sequelize --env test db:migrate:undo:all",
     "test:server": "cross-env NODE_ENV=test nyc mocha server/tests || npm run cleanup",
+    "posttest:server": "npm run cleanup",
     "lint:server": "eslint \"server/**/*.js\" app.js --fix",
     "lint-test:server": "concurrently \"npm run lint:server\" \"npm run test:server\"",
     "coverage": "nyc report --reporter=text-lcov | coveralls"

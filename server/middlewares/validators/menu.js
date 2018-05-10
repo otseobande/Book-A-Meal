@@ -15,7 +15,7 @@ const date = Joi.string()
 export const validateCreate = validate({
   body: {
     title: title.required(),
-    date: date.required(),
+    date,
     categories: categories.required()
   }
 });
