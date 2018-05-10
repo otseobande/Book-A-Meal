@@ -7,12 +7,20 @@ import config from '../config';
 const env = config.env;
 const envConfig = sequelizeConfig[env];
 
-const sequelize = new Sequelize(
-  envConfig.database,
-  envConfig.username,
-  envConfig.password,
-  envConfig
-);
+
+let sequelize;
+
+if(env === 'production'){
+  sequelize = new Sequelize(envConfig.use_env_variable)
+}else{
+  sequelize = new Sequelize(
+    envConfig.database,
+    envConfig.username,
+    envConfig.password,
+    envConfig
+  );
+}
+
 
 const db = {
   sequelize,

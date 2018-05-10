@@ -5,12 +5,6 @@ import {
   menuCategory
 } from '../models';
 
-const includeJoin = {
-  include: [{
-    model: menuCategory,
-    include: [meal]
-  }]
-};
 /**
  * @exports
  * @class MenuController
@@ -133,7 +127,12 @@ class MenuController {
       where: {
         date: givenDate
       },
-      ...includeJoin
+      include: [{
+        model: menuCategory,
+        include: [{
+          model: meal
+        }]
+      }]
     })
       .then((foundMenu) => {
         if (foundMenu) {
@@ -184,7 +183,7 @@ class MenuController {
           message: 'Menu not found'
         });
       })
-      .then(() => res.status(202).json({
+      .then(() => res.status(200).json({
         status: true,
         message: 'Menu updated successfully'
       }))

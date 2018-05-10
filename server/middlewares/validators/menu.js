@@ -6,6 +6,7 @@ const title = Joi.string()
   .max(25);
 const categories = Joi.array();
 const date = Joi.string()
+  .min(1)
   .regex(/\d{4}-\d{1,2}-\d{1,2}/);
 
 /**

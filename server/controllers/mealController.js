@@ -128,9 +128,7 @@ class MealController {
     })
       .then(meals => res.status(200).json({
         status: true,
-        data: meals.length > 0
-          ? meals
-          : 'No meal found'
+        meals
       }))
       .catch(err => next(err));
   }
@@ -157,7 +155,7 @@ class MealController {
         if (foundMeal) {
           foundMeal.updateAttributes(req.body);
 
-          return res.status(202).json({
+          return res.status(200).json({
             status: true,
             message: 'Meal updated successfully',
             meal: foundMeal

@@ -5,7 +5,7 @@ import {
 } from '../../setup'
 
 describe('PUT /api/v1/meals/:mealId', function() {
-    it('should return a success status 202', async function() {
+    it('should return a success status 200', async function() {
         try {
             const res = await chai.request(App)
                 .put('/api/v1/meals/3')
@@ -17,7 +17,7 @@ describe('PUT /api/v1/meals/:mealId', function() {
                     img: 'image_link',
                 });
 
-            res.should.have.status(202);
+            res.should.have.status(200);
         } catch (err) {
             console.log(err.stack);
         }

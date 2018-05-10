@@ -27,8 +27,8 @@ const handleErrors = (error, req, res, next, env = config.env) => {
       status: false,
       statusText: error.statusText,
       errors: {
-        fields,
-        messages
+        messages,
+        fields
       }
     });
   }

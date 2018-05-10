@@ -18,6 +18,12 @@ const meal = (sequelize, DataTypes) => {
 
   Meal.associate = (models) => {
     Meal.hasMany(models.order);
+    Meal.belongsToMany(models.menuCategory, {
+      through: models.mealMenuCategory,
+      foreignKey: 'mealId',
+      onDelete: 'CASCADE',
+      hooks: true
+    });
   };
 
   return Meal;
