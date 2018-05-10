@@ -5,7 +5,7 @@ import {
 } from '../../setup';
 
 describe('PUT /api/v1/menu/:date', function() {
-    it('should return a success status 202', async function() {
+    it('should return a success status 200', async function() {
         try {
             const res = await chai.request(App)
                 .put('/api/v1/menu/2018-06-24')
@@ -23,14 +23,14 @@ describe('PUT /api/v1/menu/:date', function() {
                     ]
                 });
 
-            res.should.have.status(202);
+            res.should.have.status(200);
             res.body.status.should.be.true;
         } catch (err) {
             console.log(err.stack);
         }
     });
 
-    it('should return a success status 202 without categories', async function() {
+    it('should return a success status 200 without categories', async function() {
         try {
             const res = await chai.request(App)
                 .put('/api/v1/menu/2018-06-25')
@@ -39,7 +39,7 @@ describe('PUT /api/v1/menu/:date', function() {
                     title: 'test menu',
                 });
 
-            res.should.have.status(202);
+            res.should.have.status(200);
             res.body.status.should.be.true;
         } catch (err) {
             console.log(err.stack);

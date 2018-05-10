@@ -73,10 +73,20 @@ class AuthController {
       password,
       role
     })
-      .then(() => res.status(201).json({
-        status: true,
-        message: 'User signup successful'
-      }))
+      .then((user) => {
+        const token = jwt.sign({
+          id: user.id,
+          role: user.role
+        }, jwtSecret, {
+          expiresIn: `${jwtExpiry}h`
+        });
+
+        return res.status(201).json({
+          status: true,
+          message: 'User signup successful',
+          token
+        });
+      })
       .catch(err => next(err));
   }
 }
