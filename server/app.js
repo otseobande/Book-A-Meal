@@ -21,7 +21,7 @@ app.use(apiRoutes);
 app.use(otherRoutes);
 app.use(handleErrors);
 
-const server= app.listen(port, 'localhost', () => {
+const server= app.listen(port, () => {
 	console.log(`Server started on http://${server.address().address}:${server.address().port}`);
 });
 
