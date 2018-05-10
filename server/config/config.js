@@ -1,14 +1,10 @@
 import dotenv from 'dotenv';
 
-dotenv.config({path: '../.env'});
+dotenv.config();
 
 export default {
 	production:{
-    use_env_variable: process.env.DATABASE_URL,
-    username: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME,
-    host: process.env.DB_HOST,
+    use_env_variable: 'postgres://bvhybfqjrocgck:c90f03cb3d1201a0a9f0058f85dfcf2a5d9c92135ffe29c584e5fa5b0cbb07ef@ec2-50-19-224-165.compute-1.amazonaws.com:5432/ddqk6bagksufkg',
     dialect: 'postgres'
   },
   development: {
