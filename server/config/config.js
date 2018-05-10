@@ -1,8 +1,4 @@
-import dotenv from 'dotenv';
-
-dotenv.config();
-
-export default {
+const config = {
 	production:{
     //use_env_variable: process.env.DATABASE_URL,
     username: 'bvhybfqjrocgck',
@@ -32,3 +28,5 @@ export default {
     logging: false
   },
 }
+
+export default config;

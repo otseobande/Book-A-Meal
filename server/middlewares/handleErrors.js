@@ -19,7 +19,7 @@ const handleErrors = (error, req, res, next, env = config.env) => {
     let messages = [];
 
     error.errors.forEach((err) => {
-      messages = [...messages, ...err.messages];
+      messages = [...messages, ...err.messages ];
       fields = [...fields, ...err.field];
     });
 
@@ -46,7 +46,9 @@ const handleErrors = (error, req, res, next, env = config.env) => {
     });
   }
 
-  const errMsg = error.stack;
+  const errMsg = error.name == "SyntaxError" 
+                            ? "SyntaxError: Please check that your JSON is well formatted"
+                            : error.stack ;
 
   return res.status(error.status || 500).json({
     error: errMsg

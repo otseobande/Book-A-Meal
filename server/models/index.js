@@ -10,16 +10,17 @@ const envConfig = sequelizeConfig[env];
 
 let sequelize;
 
-// if(process.env.NODE_ENV === 'production'){
-//   sequelize = new Sequelize(envConfig.use_env_variable)
-// }else{
+if(envConfig.use_env_variable){
+  console.log(envConfig.use_env_variable)
+  sequelize = new Sequelize(envConfig.use_env_variable, envConfig)
+}else{
   sequelize = new Sequelize(
     envConfig.database,
     envConfig.username,
     envConfig.password,
     envConfig
   );
-//}
+}
 
 
 const db = {

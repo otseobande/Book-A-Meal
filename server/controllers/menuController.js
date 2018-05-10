@@ -21,14 +21,17 @@ class MenuController {
    */
   static createMenu(req, res, next) {
     return MenuController.createMenuHelper(
-      req.body,
-      req.user,
-      next
+      req,
+      res
     )
-      .then(() => res.status(201).json({
-        status: true,
-        message: 'Menu created successfully'
-      }))
+      .then(createdMenu => {
+        if(createdMenu){
+          res.status(201).json({
+            status: true,
+            message: 'Menu created successfully'
+          })
+        }
+      })
       .catch(err => next(err));
   }
 
@@ -39,36 +42,53 @@ class MenuController {
    * @param  {Function} next [description]
    * @return {Promise} Promise for extending operation
    */
-  static createMenuHelper(data, user) {
-    const { title, date, categories } = data;
+  static createMenuHelper(req, res) {
+    const { title, date, categories } = req.body;
 
-    return menu.create({
-      userId: user.id,
-      title,
-      date: date || moment()
-    })
-      .then((createdMenu) => {
-        const createCategoryPromises = [];
+    return menu.findOne({
+      where: {
+        date: moment(date)
+      }
+    }).then(foundMenu => {
+      if(foundMenu){
+        res.status(409).json({
+          status: 'error',
+          message: 'You have already set the menu for this day, you can only set one menu per day.'
+        })
+      }else{
+        return menu.create({
+          userId: req.user.id,
+          title,
+          date: date || moment()
+        })
+          .then((createdMenu) => {
+            const createCategoryPromises = [];
 
-        if (categories) {
-          categories.forEach((category) => {
-            createCategoryPromises.push(menuCategory.create({
-              menuId: createdMenu.id,
-              title: category.title,
-              meals: category.mealId
-            })
-              .then(createdMenuCategory =>
-                createdMenuCategory.setMeals([...(new Set(category.mealIds))])));
+            if (categories) {
+              categories.forEach((category) => {
+                createCategoryPromises.push(menuCategory.create({
+                  menuId: createdMenu.id,
+                  title: category.title,
+                  meals: category.mealId
+                })
+                  .then(createdMenuCategory =>
+                    createdMenuCategory.setMeals(category.mealIds)
+                    )
+                  );
+              });
+            }
+
+            return createCategoryPromises;
+          })
+          .then((createCategoryPromises) => {
+            if (createCategoryPromises.length > 0) {
+              return Promise.all(createCategoryPromises);
+            }
           });
-        }
+      }
+    })
 
-        return createCategoryPromises;
-      })
-      .then((createCategoryPromises) => {
-        if (createCategoryPromises.length > 0) {
-          return Promise.all(createCategoryPromises);
-        }
-      });
+   
   }
   /**
    * Deletes a menu
@@ -138,13 +158,13 @@ class MenuController {
         if (foundMenu) {
           return res.status(200).json({
             status: true,
-            data: foundMenu
+            menu: foundMenu
           });
         }
 
         return res.status(404).json({
           status: false,
-          message: 'No Records Found'
+          message: 'Menu not yet set for the day'
         });
       })
       .catch(err => next(err));
@@ -161,6 +181,7 @@ class MenuController {
    */
   static updateMenu(req, res, next) {
     const { date } = req.params;
+    req.date = date
     const givenDate = moment(date);
 
     return menu.destroy({
@@ -172,9 +193,8 @@ class MenuController {
       .then((rows) => {
         if (rows > 0) {
           return MenuController.createMenuHelper(
-            { date, ...req.body },
-            req.user,
-            next
+            req,
+            res
           );
         }
 

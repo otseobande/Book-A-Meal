@@ -4,10 +4,16 @@ import validate from 'express-validation';
 const title = Joi.string()
   .min(2)
   .max(25);
-const categories = Joi.array();
+const categories = Joi.array().items(
+  Joi.object().keys({
+    title: Joi.string().min(1).required(),
+    mealIds: Joi.array().unique().min(1).required()
+  })
+);
 const date = Joi.string()
   .min(1)
-  .regex(/\d{4}-\d{1,2}-\d{1,2}/);
+  .regex(/\d{4}-\d{1,2}-\d{1,2}/)
+  .error(() => 'Date format should be "YYYY-DD-MM"');
 
 /**
  * Validation middleware
