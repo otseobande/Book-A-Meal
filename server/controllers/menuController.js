@@ -8,12 +8,7 @@ import {
 const includeJoin = {
   include: [{
     model: menuCategory,
-    include: [{
-      model: meal,
-      through: {
-        attributes: []
-      }
-    }]
+    include: [meal]
   }]
 };
 /**
@@ -56,7 +51,7 @@ class MenuController {
     return menu.create({
       userId: user.id,
       title,
-      date
+      date: date || moment()
     })
       .then((createdMenu) => {
         const createCategoryPromises = [];

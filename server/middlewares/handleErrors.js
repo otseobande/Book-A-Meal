@@ -15,8 +15,21 @@ import config from '../config';
  */
 const handleErrors = (error, req, res, next, env = config.env) => {
   if (error.statusText && error.statusText === 'Bad Request') {
+    let fields = [];
+    let messages = [];
+
+    error.errors.forEach((err) => {
+      messages = [...messages, ...err.messages];
+      fields = [...fields, ...err.field];
+    });
+
     return res.status(400).json({
-      error
+      status: false,
+      statusText: error.statusText,
+      errors: {
+        fields,
+        messages
+      }
     });
   }
 

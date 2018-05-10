@@ -28,6 +28,6 @@ export const validateUpdate = validate({
     mealId,
     quantity,
     status,
-    deliveryAddress,
+    deliveryAddress
   }
 });

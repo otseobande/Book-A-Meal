@@ -90,7 +90,7 @@ class OrderController {
         if (foundOrder) {
           if (foundOrder.createdAt
             .add(config.orderExpiry, 'hours')
-        > moment()) {
+            < moment()) {
             return res.status(400).json({
               status: false,
               message: 'order modification has expired'
