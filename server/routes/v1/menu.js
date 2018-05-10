@@ -10,7 +10,6 @@ import { guard } from '../../middlewares';
 const router = Router();
 
 router.get('/', MenuController.getSpecificDayMenu);
-router.get('/all', MenuController.getMenus);
 router.get('/:date', validateDate, MenuController.getSpecificDayMenu);
 
 router.use(guard('caterer'));

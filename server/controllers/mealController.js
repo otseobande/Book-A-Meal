@@ -14,15 +14,33 @@ class MealController {
    * @return {json} res.json
    */
   static create(req, res, next) {
-    return Meal.create({
-      userId: req.user.id,
-      ...req.body
+    return Meal.find({
+      where: {
+        userId: req.user.id,
+        title: req.body.title
+      }
     })
-    .then(() => res.status(201).json({
-      status: true,
-      message: 'Meal created successfully'
-    }))
-    .catch(err => next(err));
+      .then((meal) => {
+        if (meal) {
+          return res.status(409).json({
+            status: false,
+            message: 'Meal already exists'
+          });
+        }
+        return Meal.create({
+          userId: req.user.id,
+          ...req.body
+        }).then((newMeal) => {
+          if (newMeal) {
+            return res.status(201).json({
+              status: true,
+              message: 'Meal created successfully',
+              meal: newMeal
+            });
+          }
+        });
+      })
+      .catch(err => next(err));
   }
 
   /**
@@ -43,20 +61,20 @@ class MealController {
         userId: req.user.id
       }
     })
-    .then(rows => {
-      if (rows > 0) {
-        return res.status(200).json({
-          status: true,
-          message: 'Meal deleted successfully'
-        });
-      }
+      .then((rows) => {
+        if (rows > 0) {
+          return res.status(200).json({
+            status: true,
+            message: 'Meal deleted successfully'
+          });
+        }
 
-      return res.status(404).json({
-        status: false,
-        message: 'Meal not found'
-      });
-    })
-    .catch(err => next(err));
+        return res.status(404).json({
+          status: false,
+          message: 'Meal not found'
+        });
+      })
+      .catch(err => next(err));
   }
 
   /**
@@ -77,20 +95,20 @@ class MealController {
         userId: req.user.id
       }
     })
-    .then(foundMeal => {
-      if (foundMeal) {
-        return res.status(200).json({
-          status: true,
-          data: foundMeal
-        });
-      }
+      .then((foundMeal) => {
+        if (foundMeal) {
+          return res.status(200).json({
+            status: true,
+            data: foundMeal
+          });
+        }
 
-      return res.status(404).json({
-        status: false,
-        message: 'Meal not found'
-      });
-    })
-    .catch(err => next(err));
+        return res.status(404).json({
+          status: false,
+          message: 'Meal not found'
+        });
+      })
+      .catch(err => next(err));
   }
 
   /**
@@ -108,11 +126,13 @@ class MealController {
         userId: req.user.id
       }
     })
-    .then(meals => res.status(200).json({
-      status: true,
-      data: meals
-    }))
-    .catch(err => next(err));
+      .then(meals => res.status(200).json({
+        status: true,
+        data: meals.length > 0
+          ? meals
+          : 'No meal found'
+      }))
+      .catch(err => next(err));
   }
 
   /**
@@ -133,21 +153,22 @@ class MealController {
         userId: req.user.id
       }
     })
-    .then(foundMeal => {
-      if (foundMeal) {
-        foundMeal.updateAttributes(req.body);
+      .then((foundMeal) => {
+        if (foundMeal) {
+          foundMeal.updateAttributes(req.body);
 
-        return res.status(202).json({
-          status: true,
-          message: 'Meal updated successfully'
+          return res.status(202).json({
+            status: true,
+            message: 'Meal updated successfully',
+            meal: foundMeal
+          });
+        }
+        return res.status(404).json({
+          status: false,
+          message: 'Meal not found'
         });
-      }
-      return res.status(404).json({
-        status: false,
-        message: 'Meal not found'
-      });
-    })
-    .catch(err => next(err));
+      })
+      .catch(err => next(err));
   }
 }
 

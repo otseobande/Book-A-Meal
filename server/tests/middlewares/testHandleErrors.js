@@ -10,6 +10,12 @@ const res = mockRes();
 const next = sinon.spy();
 const validationError = {
   statusText: "Bad Request",
+  errors: [
+    {
+      field: [],
+      messages: []
+    }
+  ]
 }
 
 const error = {
@@ -20,10 +26,10 @@ describe('handleErrors middleware', () => {
     handleErrors(validationError, null, res, next, 'test');
 
 		res.status.should.have.been.calledWith(400);
-    res.json.should.have.been.calledWith({
-      error: {
-        statusText: "Bad Request",
-      }
+    res.json.should.have.been.calledWith({ 
+      errors: { fields: [], messages: [] }, 
+      status: false, 
+      statusText: "Bad Request" 
     })
   });
 
