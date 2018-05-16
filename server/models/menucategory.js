@@ -14,7 +14,7 @@ const menuCategory = (sequelize, DataTypes) => {
   }, {});
   MenuCategory.associate = (models) => {
     MenuCategory.belongsToMany(models.meal, {
-    	through: models.mealMenuCategory,
+    	through: 'mealMenuCategory',
     	onDelete: 'CASCADE',
       hooks: true
     });

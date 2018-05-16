@@ -16,7 +16,13 @@ const order = (sequelize, DataTypes) => {
     updatedAt: DataTypes.DATE
   }, {});
   Order.associate = (models) => {
-    //
+    Order.belongsToMany(models.user, {
+      through: {
+        model: models.meal
+      },
+      as: 'catererOrders',
+      foreignKey: 'userId'
+    });
   };
   return Order;
 };

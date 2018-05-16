@@ -84,6 +84,13 @@ class AuthController {
         return res.status(201).json({
           status: true,
           message: 'User signup successful',
+          user: {
+            id: user.id,
+            fullName: user.fullName,
+            username: user.username,
+            email: user.email,
+            role: user.role
+          },
           token
         });
       })
