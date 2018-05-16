@@ -7,7 +7,14 @@
  */
 const menu = (sequelize, DataTypes) => {
   const Menu = sequelize.define('menu', {
-    userId: DataTypes.INTEGER,
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
+      unique: true,
+      primaryKey: true,
+    },
+    userId: DataTypes.UUID,
     title: DataTypes.STRING,
     date: DataTypes.DATEONLY,
     createdAt: DataTypes.DATE,

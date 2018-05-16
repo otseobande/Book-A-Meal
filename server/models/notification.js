@@ -7,7 +7,14 @@
  */
 const notification = (sequelize, DataTypes) => {
   const Notification = sequelize.define('notification', {
-    userId: DataTypes.INTEGER,
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
+      unique: true,
+      primaryKey: true,
+    },
+    userId: DataTypes.UUID,
     info: DataTypes.STRING,
     isRead: DataTypes.BOOLEAN,
     createdAt: DataTypes.DATE,

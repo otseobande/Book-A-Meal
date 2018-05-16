@@ -2,19 +2,19 @@ export default {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('mealMenuCategories', {
       id: {
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
         allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER,
         unique: true,
+        primaryKey: true,
       },
       mealId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID,
       },
       menuCategoryId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID,
       },
       createdAt: {
         allowNull: false,

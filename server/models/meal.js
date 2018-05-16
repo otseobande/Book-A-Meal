@@ -7,7 +7,14 @@
  */
 const meal = (sequelize, DataTypes) => {
   const Meal = sequelize.define('meal', {
-    userId: DataTypes.INTEGER,
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
+      unique: true,
+      primaryKey: true,
+    },
+    userId: DataTypes.UUID,
     title: DataTypes.STRING,
     description: DataTypes.STRING,
     price: DataTypes.INTEGER,
