@@ -150,7 +150,10 @@ class MenuController {
       include: [{
         model: menuCategory,
         include: [{
-          model: meal
+          model: meal,
+          through: {
+            attributes: []
+          },
         }]
       }]
     })
@@ -164,7 +167,7 @@ class MenuController {
 
         return res.status(404).json({
           status: false,
-          message: 'Menu not yet set for the day'
+          message: 'Menu not yet set for this day'
         });
       })
       .catch(err => next(err));
@@ -185,11 +188,11 @@ class MenuController {
     const givenDate = moment(date);
 
     return menu.destroy({
-      where: {
-        date: givenDate,
-        userId: req.user.id
-      }
-    })
+        where: {
+          date: givenDate,
+          userId: req.user.id
+        }
+      })
       .then((rows) => {
         if (rows > 0) {
           return MenuController.createMenuHelper(

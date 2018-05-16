@@ -74,24 +74,23 @@ class OrderController {
         }
       })
       .then((meals) => {
-        
-          const orders = [];
-          meals.forEach((currentMeal) => {
-            orders.push(currentMeal.getOrders()
+         const orders = meals.map(currentMeal => {
+           return currentMeal.getOrders()
               .then((foundOrders) => {
                 if (foundOrders.length > 0) {
                   return foundOrders;
                 }
-              }));
+              });
           });
 
           return Promise.all(orders);
       })
-      .then((foundOrders) => {
+      .then(foundOrders => {
+        const filteredOrders = foundOrders.filter(o => o);
         if (foundOrders) {
           res.status(200).json({
             status: true,
-            orders: deepFlatten(foundOrders)
+            orders: deepFlatten(filteredOrders)
           });
         }
       })
