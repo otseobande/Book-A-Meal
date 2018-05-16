@@ -2,15 +2,15 @@ export default {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('notifications', {
       id: {
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
         allowNull: false,
-        autoIncrement: true,
+        unique: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
-        unique: true
       },
       userId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID,
       },
       info: {
         allowNull: false,

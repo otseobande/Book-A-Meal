@@ -3,8 +3,10 @@ export default {
     return queryInterface.createTable('users', {
       id: {
         type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
         allowNull: false,
-        unique: true
+        unique: true,
+        primaryKey: true,
       },
       fullName: {
         allowNull: false,

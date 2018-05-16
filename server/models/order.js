@@ -7,8 +7,15 @@
  */
 const order = (sequelize, DataTypes) => {
   const Order = sequelize.define('order', {
-    userId: DataTypes.INTEGER,
-    mealId: DataTypes.INTEGER,
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
+      unique: true,
+      primaryKey: true,
+    },
+    userId: DataTypes.UUID,
+    mealId: DataTypes.UUID,
     quantity: DataTypes.INTEGER,
     status: DataTypes.ENUM('pending','delivered','cancelled'),
     deliveryAddress: DataTypes.STRING,

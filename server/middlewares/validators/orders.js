@@ -4,10 +4,8 @@ import validate from 'express-validation';
 import { order } from '../../models';
 import config from '../../config';
 
-const mealId = Joi.number()
-  .min(1)
-  .integer()
-  .positive();
+const mealId = Joi.string()
+  .min(1);
 const quantity = Joi.number()
   .min(1)
   .integer()

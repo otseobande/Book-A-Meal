@@ -2,15 +2,15 @@ export default {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('menuCategories', {
       id: {
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
         allowNull: false,
-        autoIncrement: true,
+        unique: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
-        unique: true
       },
       menuId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID,
       },
       title: {
         allowNull: false,

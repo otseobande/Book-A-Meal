@@ -7,8 +7,14 @@ import bcrypt from 'bcrypt';
  * @return {object} Sequelize Model
  */
 const user = (sequelize, DataTypes) =>  {
-  const User = sequelize.define(
-    'user', {
+  const User = sequelize.define('user', {
+      id: {
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+        allowNull: false,
+        unique: true,
+        primaryKey: true,
+      },
       fullName: DataTypes.STRING,
       username: DataTypes.STRING,
       email: DataTypes.STRING,

@@ -44,10 +44,18 @@ class MenuController {
    */
   static createMenuHelper(req, res) {
     const { title, date, categories } = req.body;
+    const specifiedDate = moment(date);
+
+    if(date && specifiedDate < moment()){
+      return res.status(400).json({
+        status: 'error',
+        message: 'You cannot set menu for a date in the past.'
+      })
+    }
 
     return menu.findOne({
       where: {
-        date: moment(date)
+        date: specifiedDate
       }
     }).then(foundMenu => {
       if(foundMenu){
@@ -59,7 +67,7 @@ class MenuController {
         return menu.create({
           userId: req.user.id,
           title,
-          date: date || moment()
+          date: specifiedDate || moment()
         })
           .then((createdMenu) => {
             const createCategoryPromises = [];
