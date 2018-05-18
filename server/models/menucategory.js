@@ -18,7 +18,23 @@ const menuCategory = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE
-  }, {});
+  }, {
+    paranoid: true,
+    defaultScope: {
+      attributes: { exclude: ['createdAt', 'updatedAt', 'deletedAt'] },
+    },
+  });
+
+  MenuCategory.prototype.toJSON = function () {
+    const values = {...this.get()};
+
+    delete values.createdAt;
+    delete values.updatedAt;
+    delete values.deletedAt;
+
+    return values;
+  }
+
   MenuCategory.associate = (models) => {
     MenuCategory.belongsToMany(models.meal, {
     	through: 'mealMenuCategory',

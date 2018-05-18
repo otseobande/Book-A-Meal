@@ -21,7 +21,23 @@ const order = (sequelize, DataTypes) => {
     deliveryAddress: DataTypes.STRING,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE
-  }, {});
+  }, {
+    paranoid: true,
+    defaultScope: {
+      attributes: { exclude: ['createdAt', 'updatedAt'] },
+    },
+  });
+
+  Order.prototype.toJSON = function () {
+    const values = {...this.get()};
+
+    delete values.createdAt;
+    delete values.updatedAt;
+    delete values.deletedAt;
+    
+    return values;
+  }
+
   Order.associate = (models) => {
     Order.belongsToMany(models.user, {
       through: {

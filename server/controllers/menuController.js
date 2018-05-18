@@ -20,14 +20,11 @@ class MenuController {
    * @return {json} res.json
    */
   static createMenu(req, res, next) {
-    return MenuController.createMenuHelper(
-      req,
-      res
-    )
+    return MenuController.createMenuHelper(req, res)
       .then(createdMenu => {
         if(createdMenu){
           res.status(201).json({
-            status: true,
+            status: 'success',
             message: 'Menu created successfully'
           })
         }
@@ -44,60 +41,48 @@ class MenuController {
    */
   static createMenuHelper(req, res) {
     const { title, date, categories } = req.body;
-    const specifiedDate = moment(date);
-
-    if(date && specifiedDate < moment()){
-      return res.status(400).json({
-        status: 'error',
-        message: 'You cannot set menu for a date in the past.'
-      })
-    }
+    const specifiedDate = date ? moment(date) : req.params.date;
 
     return menu.findOne({
-      where: {
-        date: specifiedDate
-      }
-    }).then(foundMenu => {
-      if(foundMenu){
-        res.status(409).json({
-          status: 'error',
-          message: 'You have already set the menu for this day, you can only set one menu per day.'
-        })
-      }else{
-        return menu.create({
-          userId: req.user.id,
-          title,
-          date: specifiedDate || moment()
-        })
-          .then((createdMenu) => {
-            const createCategoryPromises = [];
-
-            if (categories) {
-              categories.forEach((category) => {
-                createCategoryPromises.push(menuCategory.create({
-                  menuId: createdMenu.id,
-                  title: category.title,
-                  meals: category.mealId
-                })
-                  .then(createdMenuCategory =>
-                    createdMenuCategory.setMeals(category.mealIds)
-                    )
-                  );
-              });
-            }
-
-            return createCategoryPromises;
+        where: {
+          date: specifiedDate
+        }
+      })
+      .then(foundMenu => {
+        if(foundMenu){
+          res.status(409).json({
+            status: 'error',
+            message: 'You have already set the menu for this day, you can only set one menu per day.'
           })
-          .then((createCategoryPromises) => {
-            if (createCategoryPromises.length > 0) {
-              return Promise.all(createCategoryPromises);
-            }
-          });
-      }
-    })
-
-   
+        } else {
+          return menu.create({
+            userId: req.user.id,
+            title,
+            date: specifiedDate || moment()
+          })
+        }
+        
+      })
+      .then(createdMenu => {
+        if(createdMenu && categories){
+          return categories.map(category => menuCategory.create({
+              menuId: createdMenu.id,
+              title: category.title,
+              meals: category.mealId
+            })
+            .then(createdMenuCategory =>
+                createdMenuCategory.setMeals(category.mealIds))  
+          );
+        }
+        return [];
+      })
+      .then(createCategoryPromises => {
+        if (createCategoryPromises.length > 0) {
+          return Promise.all(createCategoryPromises);
+        }
+      });
   }
+
   /**
    * Deletes a menu
    *
@@ -113,21 +98,21 @@ class MenuController {
     const givenDate = moment(date);
 
     return menu.destroy({
-      where: {
-        date: givenDate,
-        userId: req.user.id
-      }
-    })
+        where: {
+          date: givenDate,
+          userId: req.user.id
+        }
+      })
       .then((rows) => {
         if (rows > 0) {
           return res.status(200).json({
-            status: true,
+            status: 'success',
             message: 'menu deleted successfully'
           });
         }
 
         return res.status(404).json({
-          status: false,
+          status: 'error',
           message: 'menu not found'
         });
       })
@@ -152,31 +137,31 @@ class MenuController {
       : moment();
 
     return menu.find({
-      where: {
-        date: givenDate
-      },
-      include: [{
-        model: menuCategory,
+        where: {
+          date: givenDate
+        },
         include: [{
-          model: meal,
-          through: {
-            attributes: []
-          },
+          model: menuCategory,
+          include: [{
+            model: meal,
+            through: {
+              attributes: []
+            },
+          }]
         }]
-      }]
-    })
+      })
       .then((foundMenu) => {
         if (foundMenu) {
           return res.status(200).json({
-            status: true,
+            status: 'success',
             menu: foundMenu
           });
         }
 
-        return res.status(404).json({
-          status: false,
+        return res.status(404).json(({
+          status: 'error',
           message: 'Menu not yet set for this day'
-        });
+        }));
       })
       .catch(err => next(err));
   }
@@ -195,7 +180,33 @@ class MenuController {
     req.date = date
     const givenDate = moment(date);
 
-    return menu.destroy({
+    if (!req.body.categories){
+      return menu.update(
+      { 
+        title: req.body.title 
+      },
+      {
+        where: {
+          date: givenDate,
+          userId: req.user.id
+        }
+      })
+      .then(updatedMenu => {
+        if(updatedMenu){
+          return res.status(200).json({
+            status: 'success',
+            message: 'Menu updated successfully'
+          })
+        }
+
+        res.status(404).json({
+          status: 'error',
+          message: 'Menu not found'
+        });
+      })
+      .catch(err => next(err))
+    } else {
+      return menu.destroy({
         where: {
           date: givenDate,
           userId: req.user.id
@@ -203,22 +214,26 @@ class MenuController {
       })
       .then((rows) => {
         if (rows > 0) {
-          return MenuController.createMenuHelper(
-            req,
-            res
-          );
+          return MenuController.createMenuHelper(req,res);
+        } else {
+          res.status(404).json({
+            status: 'error',
+            message: 'Menu not found'
+          });
         }
-
-        return res.status(404).json({
-          status: false,
-          message: 'Menu not found'
-        });
       })
-      .then(() => res.status(200).json({
-        status: true,
-        message: 'Menu updated successfully'
-      }))
+      .then(menuCreated => {
+        if(menuCreated){
+          res.status(200).json({
+            status: 'success',
+            message: 'Menu updated successfully'
+          })
+        }
+      })
       .catch(err => next(err));
+    }
+
+   
   }
 }
 

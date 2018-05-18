@@ -4,8 +4,12 @@ import validate from 'express-validation';
 import { order } from '../../models';
 import config from '../../config';
 
-const mealId = Joi.string()
-  .min(1);
+const mealId = Joi.string().guid({
+    version: [
+        'uuidv4',
+        'uuidv5'
+    ]
+});
 const quantity = Joi.number()
   .min(1)
   .integer()
@@ -15,39 +19,13 @@ const deliveryAddress = Joi.string()
 const status = Joi.string()
   .min(1);
 
+const orderId = Joi.string().guid({
+  version: [
+      'uuidv4',
+      'uuidv5'
+  ]
+});
 
-// const checkIfMealIsAvailable = (req, res, next) => menu.findAll({
-//   where: {
-//     date: moment().format('YYYY-MM-DD')
-//   }
-// })
-//   .then((foundMenus) => {
-//     if (foundMenus.length > 0) {
-//       return foundMenus.map(menu => menu.getMenuCategories());
-//     }
-//   })
-//   .then((menuCategories) => {
-//     if (menuCategories) {
-//       return menuCategories.map(menuCategory => menuCategory.getMeals());
-//     }
-//   })
-//   .then(meals => Promise.all(meals))
-//   .then((resolvedMeals) => {
-//     if (resolvedMeals) {
-//       const flatMeals = deepFlatten(resolvedMeals);
-//       flatMeals.forEach((meal) => {
-//         if (meal.id === mealId) {
-//           next();
-//         }
-//       });
-//     }
-
-//     return res.status(422).json({
-//       status: false,
-//       message: 'This meal does not appear in today\'s menus'
-//     });
-//   })
-//   .catch(err => next(err));
 
 export const validateReqBodyOnCreate = validate({
   body: {
@@ -59,6 +37,14 @@ export const validateReqBodyOnCreate = validate({
 });
 
 
+/**
+ * Check if the order is expired
+ * 
+ * @param  {object}   req  - Request Object
+ * @param  {object}   res  - Response Object
+ * @param  {Function} next - Middleware next
+ * @return {res| next}        
+ */
 const validateExpiry = (req, res, next) => {
   const { orderId } = req.params;
 
@@ -70,26 +56,29 @@ const validateExpiry = (req, res, next) => {
   })
     .then((foundOrder) => {
       if (foundOrder) {
-        if (moment(foundOrder.createdAt)
-          .add(config.orderExpiry, 'hours')
-            < moment()) {
+        if (moment(foundOrder.createdAt).add(config.orderExpiry, 'hours') < moment()) {
           return res.status(400).json({
-            status: false,
+            status: 'error',
             message: 'order modification has expired'
           });
+        } else {
+          req.order = foundOrder;
+          next();
         }
-        req.order = foundOrder;
-        next();
+      } else {
+        return res.status(404).json({
+          status: 'error',
+          message: 'order not found'
+        });
       }
-      return res.status(404).json({
-        status: false,
-        message: 'order not found'
-      });
     })
     .catch(err => next(err));
 };
 
 const validateUpdateReqBody = validate({
+  params: {
+    orderId
+  },
   body: {
     mealId,
     quantity,

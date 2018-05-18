@@ -27,7 +27,7 @@ describe('AuthController', () => {
         await AuthController.signup(req, res, next);
         next.should.have.been.called;
       } catch(err) {
-        console.log(err);
+        throw err
       }
     })
   })
@@ -45,7 +45,7 @@ describe('AuthController', () => {
         await AuthController.login(req, res, next);
         next.should.have.been.called;
       } catch(err) {
-        console.log(err);
+        throw err
       }
       
     })

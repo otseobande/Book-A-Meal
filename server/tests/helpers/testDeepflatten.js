@@ -1,4 +1,4 @@
-import deepFlatten from '../../helpers/deepflatten';
+import deepFlatten from '../../helpers/deepFlatten';
 import Chai from 'chai';
 
 Chai.should();

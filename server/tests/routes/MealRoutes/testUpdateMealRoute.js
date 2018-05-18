@@ -8,7 +8,7 @@ describe('PUT /api/v1/meals/:mealId', function() {
     it('should return a success status 200', async function() {
         try {
             const res = await chai.request(App)
-                .put('/api/v1/meals/3')
+                .put('/api/v1/meals/df12bd22-3326-4929-9cd6-a3805db52ca5')
                 .set('Authorization',  `Bearer ${token}`)
                 .send({
                     title: 'test meal',
@@ -19,14 +19,14 @@ describe('PUT /api/v1/meals/:mealId', function() {
 
             res.should.have.status(200);
         } catch (err) {
-            console.log(err.stack);
+            throw err;
         }
     });
 
     it('should return an error 404 if not found', async function() {
         try {
             const res = await chai.request(App)
-                .put('/api/v1/meals/9000')
+                .put('/api/v1/meals/d161e8e8-eed0-4869-bcf1-4679289d940c')
                 .set('Authorization',  `Bearer ${token}`)
                 .send({
                     title: 'test meal',
@@ -36,8 +36,12 @@ describe('PUT /api/v1/meals/:mealId', function() {
                 });
 
             res.should.have.status(404);
+            res.body.should.be.deep.equal({
+              status: 'error',
+              message: 'Meal not found'
+            });
         } catch (err) {
-            console.log(err.stack);
+            throw err;
         }
     });
 });

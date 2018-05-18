@@ -24,27 +24,26 @@ class OrderController {
     } = req.body;
 
     return meal.findOne({
-      where:{
-        id: mealId,
-        userId: req.user.id
-      }
-    })
-    .then(meal => {
-      if(meal){
-        return order.create({
-          userId: req.user.id,
-          mealId,
-          quantity,
-          deliveryAddress,
-          status: 'pending'
-        })
-      }else{
-        res.status(404).json({
-          status: 'error',
-          message: 'Meal does not exist'
-        })
-      } 
-    })
+        where:{
+          id: mealId
+        }
+      })
+      .then(meal => {
+        if(meal){
+          return order.create({
+            userId: req.user.id,
+            mealId,
+            quantity,
+            deliveryAddress,
+            status: 'pending'
+          })
+        }else{
+          res.status(404).json({
+            status: 'error',
+            message: 'Meal does not exist'
+          })
+        } 
+      })
       .then(createdOrder => {
         if(createdOrder){
           res.status(200).json({
@@ -68,42 +67,42 @@ class OrderController {
    */
   static getAllOrders(req, res, next) {
     if (req.user.role === 'caterer') {
-      meal.findAll({
+      return meal.findAll({
         where: {
           userId: req.user.id
         }
       })
-      .then((meals) => {
-         const orders = meals.map(currentMeal => {
-           return currentMeal.getOrders()
-              .then((foundOrders) => {
-                if (foundOrders.length > 0) {
-                  return foundOrders;
-                }
-              });
-          });
+      .then(meals => {
+        const orders = meals.map(currentMeal => {
+          return currentMeal.getOrders()
+            .then((foundOrders) => {
+              if (foundOrders.length > 0) {
+                return foundOrders;
+              }
+            });
+        });
 
-          return Promise.all(orders);
+        return Promise.all(orders);
       })
       .then(foundOrders => {
-        const filteredOrders = foundOrders.filter(o => o);
         if (foundOrders) {
+          const filteredOrders = foundOrders.filter(foundOrder => foundOrder);
           res.status(200).json({
-            status: true,
+            status: 'success',
             orders: deepFlatten(filteredOrders)
           });
         }
       })
       .catch(err => next(err));
     } else {
-      order.findAll({
+      return order.findAll({
         where: {
           userId: req.user.id
         }
       })
       .then(orders => res.status(200).json({
-        status: true,
-        data: orders
+        status: 'success',
+        orders
       }))
       .catch(err => next(err));
     }
@@ -112,23 +111,26 @@ class OrderController {
 
   /**
    * Updates an existing order
+   * 
    * @staticmethod
+   * 
    * @param  {object} req - Request object
    * @param {object} res - Response object
    * @param {Function} next - Middleware next
    * @return {json} res.json
    */
   static updateOrder(req, res, next) {
-    try {
-      req.order.updateAttributes(req.body);
-      return res.status(200).json({
-        status: true,
-        message: 'order updated successfully',
-        order: req.order
-      });
-    } catch (err) {
-      next(err);
-    }
+    return req.order.updateAttributes(req.body)
+        .then(updatedOrder => {
+          if(updatedOrder) {
+            res.status(200).json({
+              status: 'success',
+              message: 'order updated successfully',
+              order: updatedOrder
+            });
+          }
+        })
+        .catch(err => next(err))
   }
 }
 

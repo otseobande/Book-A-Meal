@@ -56,11 +56,11 @@ class MealController {
     const { mealId } = req.params;
 
     return Meal.destroy({
-      where: {
-        id: mealId,
-        userId: req.user.id
-      }
-    })
+        where: {
+          id: mealId,
+          userId: req.user.id
+        }
+      })
       .then((rows) => {
         if (rows > 0) {
           return res.status(200).json({
@@ -90,16 +90,16 @@ class MealController {
     const { mealId } = req.params;
 
     return Meal.find({
-      where: {
-        id: mealId,
-        userId: req.user.id
-      }
-    })
+        where: {
+          id: mealId,
+          userId: req.user.id
+        }
+      })
       .then((foundMeal) => {
         if (foundMeal) {
           return res.status(200).json({
             status: true,
-            data: foundMeal
+            meal: foundMeal
           });
         }
 
@@ -146,25 +146,29 @@ class MealController {
     const { mealId } = req.params;
 
     return Meal.find({
-      where: {
-        id: mealId,
-        userId: req.user.id
-      }
-    })
-      .then((foundMeal) => {
-        if (foundMeal) {
-          foundMeal.updateAttributes(req.body);
-
-          return res.status(200).json({
-            status: true,
-            message: 'Meal updated successfully',
-            meal: foundMeal
-          });
+        where: {
+          id: mealId,
+          userId: req.user.id
         }
-        return res.status(404).json({
-          status: false,
+      })
+    .then(foundMeal => {
+      if (foundMeal) {
+        return foundMeal.updateAttributes(req.body)
+      } else {
+        res.status(404).json({
+          status: 'error',
           message: 'Meal not found'
         });
+      }
+    })
+      .then(updatedMeal => {
+        if (updatedMeal) {
+          return res.status(200).json({
+            status: 'success',
+            message: 'Meal updated successfully',
+            meal: updatedMeal
+          });
+        }
       })
       .catch(err => next(err));
   }

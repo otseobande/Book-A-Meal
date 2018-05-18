@@ -28,7 +28,7 @@ describe('handleErrors middleware', () => {
 		res.status.should.have.been.calledWith(400);
     res.json.should.have.been.calledWith({ 
       errors: { fields: [], messages: [] }, 
-      status: false, 
+      status: 'error', 
       statusText: "Bad Request" 
     })
   });
@@ -64,7 +64,7 @@ describe('handleErrors middleware', () => {
 
     res.status.should.have.been.calledWith(409);
     res.json.should.have.been.calledWith({
-      status: false,
+      status: 'error',
       message: ['meal "1" already exists']
     })
   })

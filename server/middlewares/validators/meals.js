@@ -12,10 +12,12 @@ const price = Joi.number()
   .positive();
 const img = Joi.string()
   .min(1);
-const mealId = Joi.number()
-  .integer()
-  .min(1)
-  .positive();
+const mealId = Joi.string().guid({
+    version: [
+        'uuidv4',
+        'uuidv5'
+    ]
+});
 
 /**
  * Validation middleware

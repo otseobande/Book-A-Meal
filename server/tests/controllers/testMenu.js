@@ -9,7 +9,7 @@ import MenuController from '../../controllers/menuController';
 
 const res = mockRes();
 
-describe('MealController', () => {
+describe('MenuController', () => {
   describe('create method', () => {
     const next = sinon.spy();
     const req = mockReq({
@@ -26,7 +26,7 @@ describe('MealController', () => {
         await MenuController.createMenu(req, res, next);
         next.should.have.been.called;
       } catch(err) {
-        console.log(err);
+        throw err
       }
     })
   })
@@ -47,7 +47,7 @@ describe('MealController', () => {
         await MenuController.deleteMenu(req, res, next);
         next.should.have.been.called;
       } catch(err) {
-        console.log(err);
+        throw err
       }
       
     })
@@ -69,7 +69,7 @@ describe('MealController', () => {
         await MenuController.getSpecificDayMenu(req, res, next);
         next.should.have.been.called;
       } catch(err) {
-        console.log(err);
+        throw err
       }
       
     })
@@ -91,7 +91,7 @@ describe('MealController', () => {
         await MenuController.updateMenu(req, res, next);
         next.should.have.been.called;
       } catch(err) {
-        console.log(err);
+        throw err
       }
       
     })
