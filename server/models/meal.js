@@ -21,8 +21,23 @@ const meal = (sequelize, DataTypes) => {
     img: DataTypes.STRING,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE
-  }, {});
+  }, {
+    paranoid: true,
+    defaultScope: {
+      attributes: { exclude: ['createdAt', 'updatedAt', 'deletedAt'] },
+    },
+  });
 
+  Meal.prototype.toJSON = function () {
+    const values = {...this.get()};
+
+    delete values.createdAt;
+    delete values.updatedAt;
+    delete values.deletedAt;
+
+    return values;
+  }
+  
   Meal.associate = (models) => {
     Meal.hasMany(models.order);
     Meal.belongsToMany(models.menuCategory, {

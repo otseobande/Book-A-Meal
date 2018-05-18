@@ -19,7 +19,22 @@ const menu = (sequelize, DataTypes) => {
     date: DataTypes.DATEONLY,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE
-  }, {});
+  }, {
+    defaultScope: {
+      attributes: { exclude: ['createdAt', 'updatedAt', 'deletedAt'] },
+    },
+  });
+
+  Menu.prototype.toJSON = function () {
+    const values = {...this.get()};
+
+    delete values.createdAt;
+    delete values.updatedAt;
+    delete values.deletedAt;
+
+    return values;
+  }
+
   Menu.associate = (models) => {
     Menu.hasMany(models.menuCategory, {
       onDelete: 'CASCADE',

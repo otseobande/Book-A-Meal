@@ -21,13 +21,21 @@ class AuthController {
   static login(req, res, next) {
     const { username, password } = req.body;
 
-    return User.find({
+    const user = User.find({
       where: {
         username
       }
-    })
-      .then((user) => {
-        if (user && user.validPassword(password)) {
+    });
+
+    const passwordIsValid = user.then(foundUser => {
+      if(foundUser){
+        return foundUser.validPassword(password)
+      }
+    });
+
+    return Promise.all([user, passwordIsValid])
+      .then(([user, passwordIsValid]) => {
+        if(passwordIsValid){
           const token = jwt.sign({
             id: user.id,
             role: user.role
@@ -41,11 +49,15 @@ class AuthController {
           });
         }
       })
-      .then(() => res.status(422).json({
-        status: false,
-        message: 'Please check your credentials'
-      }))
-      .catch(err => next(err));
+      .then(responseSent => {
+        if(!responseSent){
+          res.status(400).json({
+            status: 'error',
+            message: 'Please check your credentials'
+          })
+        }
+      })
+      .catch(err => next(err));    
   }
 
   /**
@@ -67,12 +79,12 @@ class AuthController {
     } = req.body;
 
     return User.create({
-      fullName,
-      username,
-      email,
-      password,
-      role
-    })
+        fullName,
+        username,
+        email,
+        password,
+        role
+      })
       .then((user) => {
         const token = jwt.sign({
           id: user.id,
@@ -82,15 +94,9 @@ class AuthController {
         });
 
         return res.status(201).json({
-          status: true,
+          status: 'success',
           message: 'User signup successful',
-          user: {
-            id: user.id,
-            fullName: user.fullName,
-            username: user.username,
-            email: user.email,
-            role: user.role
-          },
+          user,
           token
         });
       })

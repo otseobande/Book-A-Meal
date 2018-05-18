@@ -1,3 +1,7 @@
+import dotenv from 'dotenv'; 
+
+dotenv.config({path: '../.env'});
+
 const config = {
 	production:{
     //use_env_variable: process.env.DATABASE_URL,

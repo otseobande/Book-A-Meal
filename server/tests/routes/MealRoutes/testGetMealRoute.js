@@ -8,33 +8,23 @@ describe('GET /api/v1/meals/:mealId', () => {
     it('should return a success status 200', async () => {
         try {
             const res = await chai.request(App)
-                .get('/api/v1/meals/1')
+                .get('/api/v1/meals/64c45c00-ed18-44b7-862a-f12d0481696c')
                 .set('Authorization',  `Bearer ${token}`);
             res.should.have.status(200);
+            res.body.meal.should.be.an('object');
         } catch (err) {
-            console.log(err.stack);
-        }
-    })
-    it('should return meal', async () => {
-        try {
-            const res = await chai.request(App)
-                .get('/api/v1/meals/1')
-                .set('Authorization',  `Bearer ${token}`);
-            res.body.data.should.be.an('object');
-            res.body.data.id.should.be.equal(1);
-        } catch (err) {
-            console.log(err.stack);
+           throw err;
         }
     })
 
     it('should return status 404 if not found', async () => {
         try {
             const res = await chai.request(App)
-                .get('/api/v1/meals/9000')
+                .get('/api/v1/meals/df12bd22-3326-4929-9cd6-a3805db52ca8')
                 .set('Authorization',  `Bearer ${token}`);
             res.should.have.status(404);
         } catch (err){
-            console.log(err.stack);
+           throw err;
         }
     })
 })

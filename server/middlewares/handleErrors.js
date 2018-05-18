@@ -24,7 +24,7 @@ const handleErrors = (error, req, res, next, env = config.env) => {
     });
 
     return res.status(400).json({
-      status: false,
+      status: 'error',
       statusText: error.statusText,
       errors: {
         messages,
@@ -34,20 +34,19 @@ const handleErrors = (error, req, res, next, env = config.env) => {
   }
 
   if (error.name && error.name === 'SequelizeUniqueConstraintError') {
-    const message = [];
 
-    error.errors.forEach((err) => {
-      message.push(`${err.path} "${err.value}" already exists`);
+    const message = error.errors.map((err) => {
+      return `${err.path} "${err.value}" already exists`;
     });
 
     return res.status(409).json({
-      status: false,
+      status: 'error',
       message
     });
   }
 
-  const errMsg = error.name == "SyntaxError" 
-                            ? "SyntaxError: Please check that your JSON is well formatted"
+  const errMsg = env === 'production'
+                            ? 'something went wrong'
                             : error.stack ;
 
   return res.status(error.status || 500).json({

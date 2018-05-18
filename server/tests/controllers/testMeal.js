@@ -26,7 +26,7 @@ describe('MealController', () => {
         await MealController.create(req, res, next);
         next.should.have.been.called;
       } catch(err) {
-        console.log(err);
+        throw err
       }
     })
   })
@@ -47,7 +47,7 @@ describe('MealController', () => {
         await MealController.delete(req, res, next);
         next.should.have.been.called;
       } catch(err) {
-        console.log(err);
+        throw err
       }
       
     })
@@ -69,7 +69,7 @@ describe('MealController', () => {
         await MealController.get(req, res, next);
         next.should.have.been.called;
       } catch(err) {
-        console.log(err);
+        throw err
       }
       
     })
@@ -90,7 +90,7 @@ describe('MealController', () => {
         await MealController.getMeals(req, res, next);
         next.should.have.been.called;
       } catch(err) {
-        console.log(err);
+        throw err
       }
       
     })
@@ -113,7 +113,7 @@ describe('MealController', () => {
         await MealController.update(req, res, next);
         next.should.have.been.called;
       } catch(err) {
-        console.log(err);
+        throw err
       }
       
     })
