@@ -20,6 +20,8 @@ const date = Joi.string()
   .regex(/\d{4}-\d{1,2}-\d{1,2}/)
   .error(() => 'Date format should be "YYYY-DD-MM"');
 
+const token = Joi.string().token();
+
 /**
  * Checks date and ensures date is valid
  *
@@ -65,7 +67,8 @@ const validateFieldsForCreate = validate({
   body: {
     title: title.required(),
     date,
-    categories: categories.required()
+    categories: categories.required(),
+    token
   }
 });
 
@@ -90,7 +93,8 @@ const validateUpdate = validate({
   },
   body: {
     title: title.required(),
-    categories
+    categories,
+    token
   }
 });
 
@@ -100,6 +104,9 @@ const validateUpdate = validate({
 const validateDate = validate({
   params: {
     date
+  },
+  body: {
+    token
   }
 });
 

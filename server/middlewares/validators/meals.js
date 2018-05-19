@@ -12,6 +12,7 @@ const price = Joi.number()
   .positive();
 const img = Joi.string()
   .min(1);
+const token = Joi.string().token();
 const mealId = Joi.string().guid({
   version: [
     'uuidv4',
@@ -28,7 +29,8 @@ export const validateCreate = validate({
     title: title.required(),
     description: description.required(),
     price: price.required(),
-    img
+    img,
+    token
   }
 });
 
@@ -39,6 +41,9 @@ export const validateCreate = validate({
 export const validateMealId = validate({
   params: {
     mealId
+  },
+  body: {
+    token
   }
 });
 
@@ -55,6 +60,7 @@ export const validateUpdate = validate({
     title: Joi.string().required(),
     description,
     price,
-    img
+    img,
+    token
   }
 });

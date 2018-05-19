@@ -26,13 +26,16 @@ const orderId = Joi.string().guid({
   ]
 });
 
+const token = Joi.string().token();
+
 
 export const validateReqBodyOnCreate = validate({
   body: {
     mealId: mealId.required(),
     quantity: quantity.required(),
     deliveryAddress: deliveryAddress.required(),
-    status
+    status,
+    token
   }
 });
 
@@ -79,7 +82,8 @@ const validateUpdateReqBody = validate({
     mealId,
     quantity,
     status,
-    deliveryAddress
+    deliveryAddress,
+    token
   }
 });
 
@@ -90,5 +94,4 @@ export const validateUpdate = [
 
 export const validateCreate = [
   validateReqBodyOnCreate
-  // checkIfMealIsAvailable
 ];
