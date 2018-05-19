@@ -40,7 +40,6 @@ before_script:
   - ./cc-test-reporter before-build
 
 script:
-  - npm run lint:server
   - npm run test:server
 
 deploy:
