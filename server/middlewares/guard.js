@@ -15,7 +15,7 @@ const guard = role => (req, res, next) => {
   }
 
   return res.status(403).json({
-    status: false,
+    status: 'error',
     message: 'Forbidden'
   });
 };
