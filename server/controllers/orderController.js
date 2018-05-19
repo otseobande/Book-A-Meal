@@ -71,7 +71,7 @@ class OrderController {
           userId: req.user.id
         }
       })
-        .then(meals => {
+        .then((meals) => {
           const orders = meals.map(currentMeal => currentMeal.getOrders()
             .then((foundOrders) => {
               if (foundOrders.length > 0) {
@@ -114,7 +114,7 @@ class OrderController {
    */
   static updateOrder(req, res, next) {
     return req.order.updateAttributes(req.body)
-      .then(updatedOrder => {
+      .then((updatedOrder) => {
         res.status(200).json({
           status: 'success',
           message: 'order updated successfully',
