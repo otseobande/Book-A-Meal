@@ -18,7 +18,7 @@ describe('PUT /api/v1/orders/:orderId', function() {
         status: 'pending',
         deliveryAddress: 'bajiki close'
       });
-    console.log(res.body);
+      
     res.should.have.status(200);
   });
 
