@@ -3,8 +3,8 @@ import {
   chai
 } from '../../setup';
 
-describe('POST /api/v1/auth/login', function() {
-  it('should return a success status', async function() {
+describe('POST /api/v1/auth/login', () => {
+  it('should return a success status', async () => {
     const res = await chai.request(App)
       .post('/api/v1/auth/login')
       .send({
@@ -15,36 +15,28 @@ describe('POST /api/v1/auth/login', function() {
     res.should.have.status(200);
   });
 
-  it('should return error if credentials are wrong', async function() {
-    try {
-      const res = await chai.request(App)
-        .post('/api/v1/auth/login')
-        .send({
-            username: 'otseobnde',
-            password: 'sdf'
-        });
-
-      res.should.have.status(400);
-      res.body.should.be.deep.equal({
-        status: 'error',
-        message: 'Please check your credentials'
+  it('should return error if credentials are wrong', async () => {
+    const res = await chai.request(App)
+      .post('/api/v1/auth/login')
+      .send({
+          username: 'otseobnde',
+          password: 'sdf'
       });
-    } catch (err) {
-        throw err;
-    }
+
+    res.should.have.status(400);
+    res.body.should.be.deep.equal({
+      status: 'error',
+      message: 'Please check your credentials'
+    });
   });
 
-  it('malformed request should return error 400', async function() {
-      try {
-        const res = await chai.request(App)
-          .post('/api/v1/auth/login')
-          .send({
-              username: 'dogo',
-          });
+  it('malformed request should return error 400', async () => {
+    const res = await chai.request(App)
+      .post('/api/v1/auth/login')
+      .send({
+          username: 'dogo',
+      });
 
-        res.should.have.status(400);
-      } catch (err) {
-        throw err;
-      }
+    res.should.have.status(400);
   });
 });
