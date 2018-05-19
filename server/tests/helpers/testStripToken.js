@@ -7,25 +7,36 @@ import {
 } from '../setup';
 import stripToken from '../../helpers/stripToken';
 
-const headerAuthReq = mockReq({
+const tokenInHeaderReq = mockReq({
 	headers: {
 		authorization: `Bearer ${token}`
 	}
-})
+});
 
-const queryAuthReq = mockReq({
+const tokenInQueryReq = mockReq({
 	headers: {},
 	query: {
 		token
 	}
-})
+});
+
+const tokenInBodyReq = mockReq({
+	headers: {},
+	body: {
+		token
+	}
+});
 
 describe('strip token function', () => {
 	it('should get token from header', () => {
-		stripToken(headerAuthReq).should.be.equal(token);
-	})
+		stripToken(tokenInHeaderReq).should.be.equal(token);
+	});
 
 	it('should get token from query', () => {
-		stripToken(queryAuthReq).should.be.equal(token);
-	})
+		stripToken(tokenInQueryReq).should.be.equal(token);
+	});
+
+	it('should get token from body', () => {
+		stripToken(tokenInBodyReq).should.be.equal(token);
+	});
 })

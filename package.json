@@ -7,8 +7,12 @@
     "start": "cross-env NODE_ENV=production babel-node server/app.js",
     "start:dev": "cross-env NODE_ENV=development nodemon --exec babel-node -- server/app.js",
     "test": "npm run test:server",
-    "pretest:server": "sequelize --env test db:migrate:undo:all && sequelize --env test db:migrate && sequelize --env test db:seed:all",
+    "pretest:server": "concurrently \"npm run lint:server\" \"npm run migrate:test && npm run seed:test\"",
     "test:server": "cross-env NODE_ENV=test nyc mocha server/tests",
+    "migrate": "sequelize db:migrate:undo:all && sequelize db:migrate",
+    "migrate:test": "sequelize --env test db:migrate:undo:all && sequelize --env test db:migrate",
+    "seed": "sequelize db:seed:all",
+    "seed:test": "sequelize --env test db:seed:all",
     "lint:server": "eslint \"server/**/*.js\" app.js --fix",
     "lint-test:server": "concurrently \"npm run lint:server\" \"npm run test:server\"",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
