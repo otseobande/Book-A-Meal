@@ -51,7 +51,7 @@ describe('Authorize middleware', () => {
 		authorize(req, res);
 		res.status.should.have.been.calledWith(401);
 		res.json.should.have.been.calledWith({
-			status: false,
+			status: 'error',
 			message: 'Unauthorized'
 		});
 	})
