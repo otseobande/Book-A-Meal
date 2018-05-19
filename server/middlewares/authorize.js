@@ -23,7 +23,8 @@ const authorize = (req, res, next) => {
   } catch (err) {
     return res.status(401).json({
       status: 'error',
-      message: 'Unauthorized'
+      message: `You are not authorized to access this route. 
+      Please ensure that a correct authorization token is sent with the request`
     });
   }
 };
