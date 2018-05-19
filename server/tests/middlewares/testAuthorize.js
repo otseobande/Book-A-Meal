@@ -51,8 +51,9 @@ describe('Authorize middleware', () => {
 		authorize(req, res);
 		res.status.should.have.been.calledWith(401);
 		res.json.should.have.been.calledWith({
-			status: 'error',
-			message: 'Unauthorized'
-		});
+      status: 'error',
+      message: `You are not authorized to access this route. 
+      Please ensure that a correct authorization token is sent with the request`
+    });
 	})
 })
