@@ -23,7 +23,7 @@ class MealController {
       .then((meal) => {
         if (meal) {
           return res.status(409).json({
-            status: false,
+            status: 'error',
             message: 'Meal already exists'
           });
         }
@@ -31,7 +31,7 @@ class MealController {
           userId: req.user.id,
           ...req.body
         }).then(newMeal => res.status(201).json({
-          status: true,
+          status: 'success',
           message: 'Meal created successfully',
           meal: newMeal
         }));
@@ -60,13 +60,13 @@ class MealController {
       .then((rows) => {
         if (rows > 0) {
           return res.status(200).json({
-            status: true,
+            status: 'success',
             message: 'Meal deleted successfully'
           });
         }
 
         return res.status(404).json({
-          status: false,
+          status: 'error',
           message: 'Meal not found'
         });
       })
@@ -82,7 +82,7 @@ class MealController {
    * @param {function} next - middleware next (for error handling)
    * @return {json} res.json
    */
-  static get(req, res, next) {
+  static getMeal(req, res, next) {
     const { mealId } = req.params;
 
     return Meal.find({
@@ -94,13 +94,13 @@ class MealController {
       .then((foundMeal) => {
         if (foundMeal) {
           return res.status(200).json({
-            status: true,
+            status: 'success',
             meal: foundMeal
           });
         }
 
         return res.status(404).json({
-          status: false,
+          status: 'error',
           message: 'Meal not found'
         });
       })
@@ -123,7 +123,7 @@ class MealController {
       }
     })
       .then(meals => res.status(200).json({
-        status: true,
+        status: 'success',
         meals
       }))
       .catch(err => next(err));

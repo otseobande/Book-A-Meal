@@ -53,7 +53,7 @@ describe('MealController', () => {
     })
   })
 
-  describe('get method', () => {
+  describe('getMeal method', () => {
     const next = sinon.spy();
     const req = mockReq({
       params: {
@@ -66,7 +66,7 @@ describe('MealController', () => {
 
     it('method calls next function on err', async () => {
       try{
-        await MealController.get(req, res, next);
+        await MealController.getMeal(req, res, next);
         next.should.have.been.called;
       } catch(err) {
         throw err

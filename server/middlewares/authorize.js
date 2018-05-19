@@ -22,7 +22,7 @@ const authorize = (req, res, next) => {
     return next();
   } catch (err) {
     return res.status(401).json({
-      status: false,
+      status: 'error',
       message: 'Unauthorized'
     });
   }
