@@ -37,7 +37,7 @@ describe('guard middleware', () => {
 		guard('customer')(catererReq, res, next);
 		res.status.should.have.been.calledWith(403);
 		res.json.should.have.been.calledWith({
-			status: false,
+			status: 'error',
 			message: 'Forbidden'
 		});
 	})
