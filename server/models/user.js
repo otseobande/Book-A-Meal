@@ -57,7 +57,6 @@ const user = (sequelize, DataTypes) =>  {
     User.hasMany(models.meal);
     User.hasMany(models.menu);
     User.hasMany(models.order);
-    User.hasMany(models.notification);
     // 
   };
 

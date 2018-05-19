@@ -59,7 +59,7 @@ describe('PUT /api/v1/menu/:date', function() {
                 .set('Authorization',  `Bearer ${token}`)
                 .send({
                     title: 'test menu',
-                   categories: [{
+                    categories: [{
                       title: 'Benue style',
                       mealIds: ['e20ac257-86cc-4a6f-a619-0249a201c475', 'ba8e1fd3-926f-44c9-a7b3-218aedab8c12']
                     },
@@ -68,6 +68,24 @@ describe('PUT /api/v1/menu/:date', function() {
                       mealIds: ['ba8e1fd3-926f-44c9-a7b3-218aedab8c12', 'fa56c9e7-e5f4-4086-b7e9-db581201b71f']
                     }
                   ]
+                });
+
+            res.should.have.status(404);
+            res.body.should.deep.equal({
+              status: 'error',
+              message: 'Menu not found'
+            })
+        } catch (err) {
+            throw err;
+        }
+    });
+     it('should return an error 404 if not found without categories', async function() {
+        try {
+            const res = await chai.request(App)
+                .put('/api/v1/menu/2050-01-24')
+                .set('Authorization',  `Bearer ${token}`)
+                .send({
+                    title: 'test menu',
                 });
 
             res.should.have.status(404);

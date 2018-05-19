@@ -1,3 +1,6 @@
+import moment from 'moment';
+// const fiveHoursFromNow = moment().subtract(5, 'hours').format('YYYY-MM-DD hh:mm:ss');
+// console.log(fiveHoursFromNow)
 export default {
   up: (queryInterface, Sequelize) => queryInterface.bulkInsert('orders', [
     {
@@ -23,6 +26,14 @@ export default {
       quantity: 1,
       status: 'pending',
       deliveryAddress: 'Irepodun street'
+    },
+    {
+      id: 'd162e8e8-eed0-4869-bcf1-4679289d940c',
+      userId: 'e20ac257-86cc-4a6f-a619-0249a201c475',
+      mealId: '64c45c00-ed18-44b7-862a-f12d0481696c',
+      quantity: 1,
+      status: 'pending',
+      deliveryAddress: 'Irepodun street',
     }
   ], {}),
 

@@ -13,10 +13,10 @@ const price = Joi.number()
 const img = Joi.string()
   .min(1);
 const mealId = Joi.string().guid({
-    version: [
-        'uuidv4',
-        'uuidv5'
-    ]
+  version: [
+    'uuidv4',
+    'uuidv5'
+  ]
 });
 
 /**

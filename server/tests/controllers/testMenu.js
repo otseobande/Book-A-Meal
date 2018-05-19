@@ -96,5 +96,30 @@ describe('MenuController', () => {
       
     })
   })
+
+  describe('update method with categories', () => {
+    const next = sinon.spy();
+    const req = mockReq({
+      params: {
+        mealId: 'asdf',
+      },
+      body: {
+        categories: {}
+      },
+      user:{
+        id:'asdf'
+      }
+    });
+
+    it('method calls next function on err', async () => {
+      try{
+        await MenuController.updateMenu(req, res, next);
+        next.should.have.been.called;
+      } catch(err) {
+        throw err
+      }
+      
+    })
+  })
   
 }) 

@@ -10,9 +10,8 @@ const envConfig = sequelizeConfig[env];
 
 let sequelize;
 
-if(envConfig.use_env_variable){
-  console.log(envConfig.use_env_variable)
-  sequelize = new Sequelize(envConfig.use_env_variable, envConfig)
+if(envConfig.url){
+  sequelize = new Sequelize(envConfig.url, envConfig)
 }else{
   sequelize = new Sequelize(
     envConfig.database,

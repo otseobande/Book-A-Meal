@@ -21,7 +21,7 @@ const config = {
   },
   jwtSecret: process.env.JWT_SECRET,
   jwtExpiry: process.env.JWT_EXPIRY || 24,
-  orderExpiry: process.env.ORDER_EXPIRY || 3,
+  orderExpiry: process.env.ORDER_EXPIRY,
   openTime: process.env.OPEN_TIME || 6,
   closeTime: process.env.CLOSE_TIME || 8
 }

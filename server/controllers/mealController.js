@@ -30,15 +30,11 @@ class MealController {
         return Meal.create({
           userId: req.user.id,
           ...req.body
-        }).then((newMeal) => {
-          if (newMeal) {
-            return res.status(201).json({
-              status: true,
-              message: 'Meal created successfully',
-              meal: newMeal
-            });
-          }
-        });
+        }).then(newMeal => res.status(201).json({
+          status: true,
+          message: 'Meal created successfully',
+          meal: newMeal
+        }));
       })
       .catch(err => next(err));
   }
@@ -56,11 +52,11 @@ class MealController {
     const { mealId } = req.params;
 
     return Meal.destroy({
-        where: {
-          id: mealId,
-          userId: req.user.id
-        }
-      })
+      where: {
+        id: mealId,
+        userId: req.user.id
+      }
+    })
       .then((rows) => {
         if (rows > 0) {
           return res.status(200).json({
@@ -90,11 +86,11 @@ class MealController {
     const { mealId } = req.params;
 
     return Meal.find({
-        where: {
-          id: mealId,
-          userId: req.user.id
-        }
-      })
+      where: {
+        id: mealId,
+        userId: req.user.id
+      }
+    })
       .then((foundMeal) => {
         if (foundMeal) {
           return res.status(200).json({
@@ -146,22 +142,21 @@ class MealController {
     const { mealId } = req.params;
 
     return Meal.find({
-        where: {
-          id: mealId,
-          userId: req.user.id
+      where: {
+        id: mealId,
+        userId: req.user.id
+      }
+    })
+      .then((foundMeal) => {
+        if (foundMeal) {
+          return foundMeal.updateAttributes(req.body);
         }
-      })
-    .then(foundMeal => {
-      if (foundMeal) {
-        return foundMeal.updateAttributes(req.body)
-      } else {
         res.status(404).json({
           status: 'error',
           message: 'Meal not found'
         });
-      }
-    })
-      .then(updatedMeal => {
+      })
+      .then((updatedMeal) => {
         if (updatedMeal) {
           return res.status(200).json({
             status: 'success',
