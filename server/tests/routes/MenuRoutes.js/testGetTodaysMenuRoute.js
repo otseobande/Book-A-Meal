@@ -1,20 +1,15 @@
 import {
-    chai,
-    App,
-    token
+  chai,
+  App,
+  token
 } from '../../setup';
 
 describe('GET /api/v1/menu', () => {
-    it('should return a success status', async function() {
-        try {
-            const res = await chai.request(App)
-                .get('/api/v1/menu')
-                .set('Authorization',  `Bearer ${token}`);
+  it('should return a success status', async function() {
+    const res = await chai.request(App)
+      .get('/api/v1/menu')
+      .set('Authorization',  `Bearer ${token}`);
 
-            res.should.have.status(200);
-
-        } catch (err) {
-            throw err;
-        }
-    });
+    res.should.have.status(200);
+  });
 });
