@@ -5,10 +5,11 @@ import {
   validateMealId,
   validateUpdate
 } from '../../middlewares/validators/meals';
-import { guard } from '../../middlewares';
+import { guard, authorize } from '../../middlewares';
 
 const router = Router();
 
+router.use(authorize);
 router.use(guard('caterer'));
 router.post('/', validateCreate, MealController.create);
 router.get('/', MealController.getMeals);

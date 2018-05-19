@@ -8,8 +8,6 @@ import { authorize } from '../../middlewares';
 const router = Router();
 
 router.use('/v1/auth', AuthRoutes);
-
-router.use(authorize);
 router.use('/v1/menu', MenuRoutes);
 router.use('/v1/meals', MealsRoutes);
 router.use('/v1/orders', OrderRoutes);
