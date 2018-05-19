@@ -1,29 +1,79 @@
+import moment from 'moment';
 import Joi from 'joi';
 import validate from 'express-validation';
+import { order } from '../../models';
+import config from '../../config';
 
-const mealId = Joi.number().integer().positive();
-const quantity = Joi.number().integer().positive();
-const deliveryAddress = Joi.string();
-const status = Joi.string();
+const mealId = Joi.string().guid({
+  version: [
+    'uuidv4',
+    'uuidv5'
+  ]
+});
+const quantity = Joi.number()
+  .min(1)
+  .integer()
+  .positive();
+const deliveryAddress = Joi.string()
+  .min(1);
+const status = Joi.string()
+  .min(1);
 
-/**
- * Validation middleware
- * @exports
- */
-export const validateCreate = validate({
+const orderId = Joi.string().guid({
+  version: [
+    'uuidv4',
+    'uuidv5'
+  ]
+});
+
+
+export const validateReqBodyOnCreate = validate({
   body: {
     mealId: mealId.required(),
     quantity: quantity.required(),
     deliveryAddress: deliveryAddress.required(),
-    status: status.required()
+    status
   }
 });
 
+
 /**
- * Validation middleware
- * @exports
+ * Check if the order is expired
+ *
+ * @param  {object}   req  - Request Object
+ * @param  {object}   res  - Response Object
+ * @param  {Function} next - Middleware next
+ * @return {res| next} response or calls next function
  */
-export const validateUpdate = validate({
+const validateExpiry = (req, res, next) => order.find({
+  where: {
+    id: req.params.orderId,
+    userId: req.user.id
+  }
+})
+  .then((foundOrder) => {
+    if (foundOrder) {
+      if (moment(foundOrder.createdAt).add(config.orderExpiry, 'hours') < moment()) {
+        return res.status(400).json({
+          status: 'error',
+          message: 'order modification has expired'
+        });
+      }
+      req.order = foundOrder;
+      next();
+    } else {
+      return res.status(404).json({
+        status: 'error',
+        message: 'order not found'
+      });
+    }
+  })
+  .catch(err => next(err));
+
+const validateUpdateReqBody = validate({
+  params: {
+    orderId
+  },
   body: {
     mealId,
     quantity,
@@ -31,3 +81,13 @@ export const validateUpdate = validate({
     deliveryAddress
   }
 });
+
+export const validateUpdate = [
+  validateUpdateReqBody,
+  validateExpiry
+];
+
+export const validateCreate = [
+  validateReqBodyOnCreate
+  // checkIfMealIsAvailable
+];

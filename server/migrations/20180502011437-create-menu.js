@@ -2,15 +2,15 @@ export default {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('menus', {
       id: {
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
         allowNull: false,
-        autoIncrement: true,
+        unique: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
-        unique: true
       },
       userId: {
-        allowNull: false,
-        type: Sequelize.INTEGER
+        allowNull: false, 
+        type: Sequelize.UUID,
       },
       title: {
         allowNull: false,
@@ -29,6 +29,9 @@ export default {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn('now')
+      },
+      deletedAt: {
+        type: Sequelize.DATE,
       }
     });
   },

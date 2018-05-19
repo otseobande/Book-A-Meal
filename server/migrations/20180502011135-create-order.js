@@ -2,19 +2,19 @@ export default {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('orders', {
       id: {
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
         allowNull: false,
-        autoIncrement: true,
+        unique: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
-        unique: true
       },
       userId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID,
       },
       mealId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID
       },
       quantity: {
         allowNull: false,
@@ -38,6 +38,9 @@ export default {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn('now') 
+      },
+      deletedAt: {
+        type: Sequelize.DATE,
       }
     });
   },

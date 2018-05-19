@@ -7,8 +7,15 @@
  */
 const mealMenuCategory = (sequelize, DataTypes) => {
   const MealMenuCategory = sequelize.define('mealMenuCategory', {
-    mealId: DataTypes.INTEGER,
-    menuCategoryId: DataTypes.INTEGER,
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
+      unique: true,
+      primaryKey: true,
+    },
+    mealId: DataTypes.UUID,
+    menuCategoryId: DataTypes.UUID,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE
   }, {

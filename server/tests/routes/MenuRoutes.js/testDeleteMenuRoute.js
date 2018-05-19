@@ -11,11 +11,13 @@ describe('DELETE /api/v1/menu/:date', function() {
                 .delete('/api/v1/menu/2018-06-26')
                 .set('Authorization',  `Bearer ${token}`);
 
-            res.should.have.status(200)
-            res.body.status.should.be.true;
-            res.body.message.should.be.equal('menu deleted successfully');
+            res.should.have.status(200);
+            res.body.should.deep.equal({
+                status: 'success',
+                message: 'menu deleted successfully'
+              })
         } catch (err) {
-            console.log(err.stack);
+            throw err;
         }
     })
 
@@ -26,10 +28,12 @@ describe('DELETE /api/v1/menu/:date', function() {
                 .set('Authorization',  `Bearer ${token}`)
 
             res.should.have.status(404);
-            res.body.status.should.be.false;
-            res.body.message.should.be.equal('menu not found');
+            res.body.should.deep.equal({
+              status: 'error',
+              message: 'menu not found'
+            })
         } catch (err) {
-            console.log(err.stack);
+            throw err;
         }
     })
 

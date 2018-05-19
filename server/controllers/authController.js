@@ -21,16 +21,24 @@ class AuthController {
   static login(req, res, next) {
     const { username, password } = req.body;
 
-    return User.find({
+    const user = User.find({
       where: {
         username
       }
-    })
-      .then((user) => {
-        if (user && user.validPassword(password)) {
+    });
+
+    const passwordIsValid = user.then((foundUser) => {
+      if (foundUser) {
+        return foundUser.validPassword(password);
+      }
+    });
+
+    return Promise.all([user, passwordIsValid])
+      .then(([foundUser, givenPasswordIsValid]) => {
+        if (givenPasswordIsValid) {
           const token = jwt.sign({
-            id: user.id,
-            role: user.role
+            id: foundUser.id,
+            role: foundUser.role
           }, jwtSecret, {
             expiresIn: `${jwtExpiry}h`
           });
@@ -41,10 +49,14 @@ class AuthController {
           });
         }
       })
-      .then(() => res.status(422).json({
-        status: false,
-        message: 'Please check your credentials'
-      }))
+      .then((responseSent) => {
+        if (!responseSent) {
+          res.status(400).json({
+            status: 'error',
+            message: 'Please check your credentials'
+          });
+        }
+      })
       .catch(err => next(err));
   }
 
@@ -73,10 +85,21 @@ class AuthController {
       password,
       role
     })
-      .then(() => res.status(201).json({
-        status: true,
-        message: 'User signup successful'
-      }))
+      .then((user) => {
+        const token = jwt.sign({
+          id: user.id,
+          role: user.role
+        }, jwtSecret, {
+          expiresIn: `${jwtExpiry}h`
+        });
+
+        return res.status(201).json({
+          status: 'success',
+          message: 'User signup successful',
+          user,
+          token
+        });
+      })
       .catch(err => next(err));
   }
 }

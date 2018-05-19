@@ -5,12 +5,6 @@ import {
   menuCategory
 } from '../models';
 
-const includeJoin = {
-  include: [{
-    model: menuCategory,
-    include: [meal]
-  }]
-};
 /**
  * @exports
  * @class MenuController
@@ -26,48 +20,57 @@ class MenuController {
    * @return {json} res.json
    */
   static createMenu(req, res, next) {
-    return MenuController.createMenuHelper(
-      req.body,
-      req.user,
-      next
-    )
-      .then(() => res.status(201).json({
-        status: true,
-        message: 'Menu created successfully'
-      }))
+    return MenuController.createMenuHelper(req, res)
+      .then((createdMenu) => {
+        if (createdMenu) {
+          res.status(201).json({
+            status: 'success',
+            message: 'Menu created successfully'
+          });
+        }
+      })
       .catch(err => next(err));
   }
 
   /**
    * Abstracts the menu creation
-   * @param  {object}   data [description]
-   * @param  {object}   user [description]
-   * @param  {Function} next [description]
+   * @param  {object}   req - Request Object
+   * @param  {object}   res - Response Object
    * @return {Promise} Promise for extending operation
    */
-  static createMenuHelper(data, user) {
-    const { title, date, categories } = data;
+  static createMenuHelper(req, res) {
+    const { title, date, categories } = req.body;
 
-    return menu.create({
-      userId: user.id,
-      title,
-      date: date || moment()
+    return menu.findOne({
+      where: {
+        date
+      }
     })
-      .then((createdMenu) => {
-        const createCategoryPromises = [];
-
-        if (categories) {
-          categories.forEach((category) => {
-            createCategoryPromises.push(menuCategory.create({
-              menuId: createdMenu.id,
-              title: category.title,
-              meals: category.mealId
-            })
-              .then(createdMenuCategory =>
-                createdMenuCategory.setMeals([...(new Set(category.mealIds))])));
+      .then((foundMenu) => {
+        if (foundMenu) {
+          res.status(409).json({
+            status: 'error',
+            message: 'You have already set the menu for this day, you can only set one menu per day.'
+          });
+        } else {
+          return menu.create({
+            userId: req.user.id,
+            title,
+            date: date || moment()
           });
         }
-
+      })
+      .then((createdMenu) => {
+        let createCategoryPromises = [];
+        if (createdMenu && categories) {
+          createCategoryPromises = categories.map(category => menuCategory.create({
+            menuId: createdMenu.id,
+            title: category.title,
+            meals: category.mealId
+          })
+            .then(createdMenuCategory =>
+              createdMenuCategory.setMeals(category.mealIds)));
+        }
         return createCategoryPromises;
       })
       .then((createCategoryPromises) => {
@@ -76,6 +79,7 @@ class MenuController {
         }
       });
   }
+
   /**
    * Deletes a menu
    *
@@ -99,13 +103,13 @@ class MenuController {
       .then((rows) => {
         if (rows > 0) {
           return res.status(200).json({
-            status: true,
+            status: 'success',
             message: 'menu deleted successfully'
           });
         }
 
         return res.status(404).json({
-          status: false,
+          status: 'error',
           message: 'menu not found'
         });
       })
@@ -133,20 +137,28 @@ class MenuController {
       where: {
         date: givenDate
       },
-      ...includeJoin
+      include: [{
+        model: menuCategory,
+        include: [{
+          model: meal,
+          through: {
+            attributes: []
+          }
+        }]
+      }]
     })
       .then((foundMenu) => {
         if (foundMenu) {
           return res.status(200).json({
-            status: true,
-            data: foundMenu
+            status: 'success',
+            menu: foundMenu
           });
         }
 
-        return res.status(404).json({
-          status: false,
-          message: 'No Records Found'
-        });
+        return res.status(404).json(({
+          status: 'error',
+          message: 'Menu not yet set for this day'
+        }));
       })
       .catch(err => next(err));
   }
@@ -162,32 +174,57 @@ class MenuController {
    */
   static updateMenu(req, res, next) {
     const { date } = req.params;
+    req.date = date;
     const givenDate = moment(date);
-
-    return menu.destroy({
+    const findMenu = menu.find({
       where: {
         date: givenDate,
         userId: req.user.id
       }
-    })
-      .then((rows) => {
-        if (rows > 0) {
-          return MenuController.createMenuHelper(
-            { date, ...req.body },
-            req.user,
-            next
-          );
+    });
+
+    if (!req.body.categories) {
+      return findMenu
+        .then((foundMenu) => {
+          if (foundMenu) {
+            foundMenu.updateAttributes(req.body);
+            return res.status(200).json({
+              status: 'success',
+              message: 'Menu updated successfully'
+            });
+          }
+
+          res.status(404).json({
+            status: 'error',
+            message: 'Menu not found'
+          });
+        })
+        .catch(err => next(err));
+    }
+    return findMenu
+      .then((foundMenu) => {
+        if (foundMenu) {
+          return foundMenu.destroy();
         }
 
-        return res.status(404).json({
-          status: false,
+        res.status(404).json({
+          status: 'error',
           message: 'Menu not found'
         });
       })
-      .then(() => res.status(202).json({
-        status: true,
-        message: 'Menu updated successfully'
-      }))
+      .then((rows) => {
+        if (rows) {
+          return MenuController.createMenuHelper(req, res);
+        }
+      })
+      .then((menuCreated) => {
+        if (menuCreated) {
+          return res.status(200).json({
+            status: 'success',
+            message: 'Menu updated successfully'
+          });
+        }
+      })
       .catch(err => next(err));
   }
 }

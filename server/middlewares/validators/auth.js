@@ -1,14 +1,21 @@
 import Joi from 'joi';
 import validate from 'express-validation';
 
-const fullName = Joi.string();
-const email = Joi.string().email();
-const username = Joi.string();
-const password = Joi.string();
-const role = Joi.string();
+const fullName = Joi.string()
+  .min(1);
+const email = Joi.string()
+  .min(1)
+  .email();
+const username = Joi.string()
+  .min(1);
+const password = Joi.string()
+  .min(1);
+const role = Joi.string()
+  .min(1)
+  .valid(['caterer', 'customer', 'admin']);
 
 
-const validateSignUpReqBody = validate({
+const validateSignup = validate({
   body: {
     fullName: fullName.required(),
     email: email.required(),
@@ -18,19 +25,6 @@ const validateSignUpReqBody = validate({
   }
 });
 
-const validateRole = (req, res, next) => {
-  const roles = ['caterer', 'customer', 'admin'];
-
-  if (!roles.includes(req.body.role)) {
-    return res.status(400).json({
-      status: false,
-      message: 'role does not exist'
-    });
-  }
-
-  next();
-};
-
 const validateLogin = validate({
   body: {
     username: username.required(),
@@ -38,10 +32,6 @@ const validateLogin = validate({
   }
 });
 
-const validateSignup = [
-  validateSignUpReqBody,
-  validateRole
-];
 
 export {
   validateSignup,

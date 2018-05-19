@@ -19,7 +19,7 @@ describe('POST /api/v1/meals', function() {
 
             res.should.have.status(201);
         } catch (err) {
-            console.log(err.stack);
+            throw err;
         }
     });
 
@@ -41,7 +41,7 @@ describe('POST /api/v1/meals', function() {
                 message: "Meal already exists"
             })
         } catch (err) {
-            console.log(err.stack);
+            throw err;
         }
     });
 
@@ -57,7 +57,7 @@ describe('POST /api/v1/meals', function() {
 
             res.should.have.status(400);
         } catch (err) {
-            console.log(err.stack);
+            throw err;
         }
     });
 });

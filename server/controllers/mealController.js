@@ -30,15 +30,11 @@ class MealController {
         return Meal.create({
           userId: req.user.id,
           ...req.body
-        }).then((newMeal) => {
-          if (newMeal) {
-            return res.status(201).json({
-              status: true,
-              message: 'Meal created successfully',
-              meal: newMeal
-            });
-          }
-        });
+        }).then(newMeal => res.status(201).json({
+          status: true,
+          message: 'Meal created successfully',
+          meal: newMeal
+        }));
       })
       .catch(err => next(err));
   }
@@ -99,7 +95,7 @@ class MealController {
         if (foundMeal) {
           return res.status(200).json({
             status: true,
-            data: foundMeal
+            meal: foundMeal
           });
         }
 
@@ -128,9 +124,7 @@ class MealController {
     })
       .then(meals => res.status(200).json({
         status: true,
-        data: meals.length > 0
-          ? meals
-          : 'No meal found'
+        meals
       }))
       .catch(err => next(err));
   }
@@ -155,18 +149,21 @@ class MealController {
     })
       .then((foundMeal) => {
         if (foundMeal) {
-          foundMeal.updateAttributes(req.body);
-
-          return res.status(202).json({
-            status: true,
-            message: 'Meal updated successfully',
-            meal: foundMeal
-          });
+          return foundMeal.updateAttributes(req.body);
         }
-        return res.status(404).json({
-          status: false,
+        res.status(404).json({
+          status: 'error',
           message: 'Meal not found'
         });
+      })
+      .then((updatedMeal) => {
+        if (updatedMeal) {
+          return res.status(200).json({
+            status: 'success',
+            message: 'Meal updated successfully',
+            meal: updatedMeal
+          });
+        }
       })
       .catch(err => next(err));
   }

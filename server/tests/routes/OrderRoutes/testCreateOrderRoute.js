@@ -6,40 +6,45 @@ import {
 
 describe('POST /api/v1/orders', () => {
 
-    it('should return a status 200', async function() {
+    it('should return a status 200 and success message', async function() {
         try {
             const res = await chai.request(App)
                 .post('/api/v1/orders')
                 .set('Authorization',  `Bearer ${token}`)
                 .send({
-                    mealId: 1,
+                    mealId: '64c45c00-ed18-44b7-862a-f12d0481696c',
                     quantity: 3,
                     status: 'pending',
                     deliveryAddress: 'rahama road',
                 });
 
             res.should.have.status(200);
-
+            res.body.should.have.property('status');
+            res.body.should.have.property('message');
         } catch (err) {
-           console.log(err.stack)
+           throw err
         }
     });
-    it('should return success message', async function() {
+
+    it('should return a status 400 and error message if meal not found', async function() {
         try {
-           const res = await chai.request(App)
+            const res = await chai.request(App)
                 .post('/api/v1/orders')
                 .set('Authorization',  `Bearer ${token}`)
                 .send({
-                    mealId: 1,
+                    mealId: '64c49c00-ed18-44b7-862a-f12d0481696c',
                     quantity: 3,
                     status: 'pending',
                     deliveryAddress: 'rahama road',
                 });
 
-            res.body.status.should.true;
-            res.body.message.should.equal('Order created successfully');
+            res.should.have.status(404);
+            res.body.should.be.deep.equal({
+                status: 'error',
+                message: 'Meal does not exist'
+              })
         } catch (err) {
-            console.log(err.stack)
+           throw err
         }
     });
 });
