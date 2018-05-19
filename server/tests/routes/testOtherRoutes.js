@@ -14,7 +14,7 @@ describe('unspecified routes', () => {
 		})
 		
 	})
-	it('should return error 404', async () => {
+	it('should return error 404 if route not found', async () => {
 		const res = await chai.request(App)
 			.get('/kangaroo');
 		res.should.have.status(404);
