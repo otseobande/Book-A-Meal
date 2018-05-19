@@ -3,7 +3,6 @@ import MenuRoutes from './menu';
 import MealsRoutes from './meals';
 import OrderRoutes from './orders';
 import AuthRoutes from './auth';
-import { authorize } from '../../middlewares';
 
 const router = Router();
 
