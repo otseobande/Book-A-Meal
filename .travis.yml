@@ -9,10 +9,12 @@ env:
     - CXX=g++-5
     - NODE_ENV=test
     - JWT_SECRET=secret
+    - JWT_EXPIRY=24
     - TEST_DB_USER=postgres
     - TEST_DB_PASS=
     - TEST_DB_NAME=book_a_meal_test
     - TEST_DB_HOST=localhost
+    - ORDER_EXPIRY=3
 
 addons:
   apt:
