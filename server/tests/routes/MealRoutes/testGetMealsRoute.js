@@ -11,7 +11,7 @@ describe('GET /api/v1/meals', function() {
 														.set('Authorization',  `Bearer ${token}`);
 			res.should.have.status(200);
 		} catch(err) {
-			console.log(err.stack);
+			throw err;
 		}	
 	})
 });

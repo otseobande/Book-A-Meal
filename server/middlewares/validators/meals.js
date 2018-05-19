@@ -7,9 +7,17 @@ const title = Joi.string()
 const description = Joi.string()
   .min(4)
   .max(50);
-const price = Joi.number().positive();
-const img = Joi.string();
-const mealId = Joi.number().integer().positive();
+const price = Joi.number()
+  .min(1)
+  .positive();
+const img = Joi.string()
+  .min(1);
+const mealId = Joi.string().guid({
+  version: [
+    'uuidv4',
+    'uuidv5'
+  ]
+});
 
 /**
  * Validation middleware

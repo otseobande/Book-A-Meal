@@ -7,12 +7,20 @@ import config from '../config';
 const env = config.env;
 const envConfig = sequelizeConfig[env];
 
-const sequelize = new Sequelize(
-  envConfig.database,
-  envConfig.username,
-  envConfig.password,
-  envConfig
-);
+
+let sequelize;
+
+if(envConfig.url){
+  sequelize = new Sequelize(envConfig.url, envConfig)
+}else{
+  sequelize = new Sequelize(
+    envConfig.database,
+    envConfig.username,
+    envConfig.password,
+    envConfig
+  );
+}
+
 
 const db = {
   sequelize,

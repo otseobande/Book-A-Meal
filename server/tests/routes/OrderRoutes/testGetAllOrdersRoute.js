@@ -1,7 +1,8 @@
 import {
     chai,
     App,
-    token
+    token,
+    customerToken
 } from '../../setup';
 
 describe('GET /api/v1/orders', () => {
@@ -14,19 +15,20 @@ describe('GET /api/v1/orders', () => {
             res.should.have.status(200);
 
         } catch (err) {
-            console.log(err.stack)
+            throw err
         }
     });
-    it('should have the right data structure', async function() {
+
+     it('should return a success status as customer', async function() {
         try {
             const res = await chai.request(App)
                 .get('/api/v1/orders')
-                .set('Authorization',  `Bearer ${token}`);
+                .set('Authorization',  `Bearer ${customerToken}`);
 
-            res.body.status.should.true;
-            res.body.data.should.be.an('array');
+            res.should.have.status(200);
+
         } catch (err) {
-            console.log(err.stack)
+            throw err
         }
     });
 });
