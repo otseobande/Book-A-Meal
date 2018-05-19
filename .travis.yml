@@ -4,9 +4,15 @@ node_js:
   - "9"
 
 env:
-  - CC_TEST_REPORTER_ID=1c4feae9a685078726b61358fc7145f29761f877f1a8e5f2538d593dea207a89
-  - CXX=g++-5
-  - NODE_ENV=test
+  global:
+    - CC_TEST_REPORTER_ID=1c4feae9a685078726b61358fc7145f29761f877f1a8e5f2538d593dea207a89
+    - CXX=g++-5
+    - NODE_ENV=test
+    - JWT_SECRET=secret
+    - TEST_DB_USER=postgres
+    - TEST_DB_PASS=
+    - TEST_DB_NAME=book_a_meal_test
+    - TEST_DB_HOST=localhost
 
 addons:
   apt:
