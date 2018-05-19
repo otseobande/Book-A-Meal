@@ -4,12 +4,11 @@ dotenv.config({path: '../.env'});
 
 const config = {
 	production:{
-    //use_env_variable: process.env.DATABASE_URL,
-    username: 'bvhybfqjrocgck',
-    password: 'c90f03cb3d1201a0a9f0058f85dfcf2a5d9c92135ffe29c584e5fa5b0cbb07ef',
-    database: 'ddqk6bagksufkg',
-    host: 'ec2-50-19-224-165.compute-1.amazonaws.com',
-    port: '5432',
+    url: process.env.DATABASE_URL,
+    username: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
+    host: process.env.DB_HOST,
     dialect: 'postgres',
     ssl: true,
     dialectOptions: {

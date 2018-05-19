@@ -27,18 +27,18 @@ class AuthController {
       }
     });
 
-    const passwordIsValid = user.then(foundUser => {
-      if(foundUser){
-        return foundUser.validPassword(password)
+    const passwordIsValid = user.then((foundUser) => {
+      if (foundUser) {
+        return foundUser.validPassword(password);
       }
     });
 
     return Promise.all([user, passwordIsValid])
-      .then(([user, passwordIsValid]) => {
-        if(passwordIsValid){
+      .then(([foundUser, givenPasswordIsValid]) => {
+        if (givenPasswordIsValid) {
           const token = jwt.sign({
-            id: user.id,
-            role: user.role
+            id: foundUser.id,
+            role: foundUser.role
           }, jwtSecret, {
             expiresIn: `${jwtExpiry}h`
           });
@@ -49,15 +49,15 @@ class AuthController {
           });
         }
       })
-      .then(responseSent => {
-        if(!responseSent){
+      .then((responseSent) => {
+        if (!responseSent) {
           res.status(400).json({
             status: 'error',
             message: 'Please check your credentials'
-          })
+          });
         }
       })
-      .catch(err => next(err));    
+      .catch(err => next(err));
   }
 
   /**
@@ -79,12 +79,12 @@ class AuthController {
     } = req.body;
 
     return User.create({
-        fullName,
-        username,
-        email,
-        password,
-        role
-      })
+      fullName,
+      username,
+      email,
+      password,
+      role
+    })
       .then((user) => {
         const token = jwt.sign({
           id: user.id,

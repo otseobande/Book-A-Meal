@@ -5,10 +5,10 @@ import { order } from '../../models';
 import config from '../../config';
 
 const mealId = Joi.string().guid({
-    version: [
-        'uuidv4',
-        'uuidv5'
-    ]
+  version: [
+    'uuidv4',
+    'uuidv5'
+  ]
 });
 const quantity = Joi.number()
   .min(1)
@@ -21,8 +21,8 @@ const status = Joi.string()
 
 const orderId = Joi.string().guid({
   version: [
-      'uuidv4',
-      'uuidv5'
+    'uuidv4',
+    'uuidv5'
   ]
 });
 
@@ -39,41 +39,36 @@ export const validateReqBodyOnCreate = validate({
 
 /**
  * Check if the order is expired
- * 
+ *
  * @param  {object}   req  - Request Object
  * @param  {object}   res  - Response Object
  * @param  {Function} next - Middleware next
- * @return {res| next}        
+ * @return {res| next} response or calls next function
  */
-const validateExpiry = (req, res, next) => {
-  const { orderId } = req.params;
-
-  return order.find({
-    where: {
-      id: orderId,
-      userId: req.user.id
-    }
-  })
-    .then((foundOrder) => {
-      if (foundOrder) {
-        if (moment(foundOrder.createdAt).add(config.orderExpiry, 'hours') < moment()) {
-          return res.status(400).json({
-            status: 'error',
-            message: 'order modification has expired'
-          });
-        } else {
-          req.order = foundOrder;
-          next();
-        }
-      } else {
-        return res.status(404).json({
+const validateExpiry = (req, res, next) => order.find({
+  where: {
+    id: req.params.orderId,
+    userId: req.user.id
+  }
+})
+  .then((foundOrder) => {
+    if (foundOrder) {
+      if (moment(foundOrder.createdAt).add(config.orderExpiry, 'hours') < moment()) {
+        return res.status(400).json({
           status: 'error',
-          message: 'order not found'
+          message: 'order modification has expired'
         });
       }
-    })
-    .catch(err => next(err));
-};
+      req.order = foundOrder;
+      next();
+    } else {
+      return res.status(404).json({
+        status: 'error',
+        message: 'order not found'
+      });
+    }
+  })
+  .catch(err => next(err));
 
 const validateUpdateReqBody = validate({
   params: {

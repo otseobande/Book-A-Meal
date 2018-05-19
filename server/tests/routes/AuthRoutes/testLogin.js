@@ -5,18 +5,14 @@ import {
 
 describe('POST /api/v1/auth/login', function() {
   it('should return a success status', async function() {
-    try {
-      const res = await chai.request(App)
-        .post('/api/v1/auth/login')
-        .send({
-            username: 'otseobande',
-            password: 'bookameal'
-        });
+    const res = await chai.request(App)
+      .post('/api/v1/auth/login')
+      .send({
+          username: 'otseobande',
+          password: 'bookameal'
+      });
 
-      res.should.have.status(200);
-    } catch (err) {
-        throw err;
-    }
+    res.should.have.status(200);
   });
 
   it('should return error if credentials are wrong', async function() {

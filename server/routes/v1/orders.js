@@ -4,7 +4,6 @@ import {
   validateCreate,
   validateUpdate
 } from '../../middlewares/validators/orders';
-import { guard } from '../../middlewares';
 
 const router = Router();
 

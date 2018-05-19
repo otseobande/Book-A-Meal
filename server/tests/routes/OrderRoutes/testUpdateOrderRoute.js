@@ -4,6 +4,8 @@ import {
     token
 } from '../../setup';
 
+import {order} from '../../../models';
+
 describe('PUT /api/v1/orders/:orderId', function() {
     it('should return a success status 200', async function() {
         try {
@@ -23,6 +25,7 @@ describe('PUT /api/v1/orders/:orderId', function() {
            throw err
         }
     });
+
 
     it('should return an error 404 if not found', async function() {
         try {
