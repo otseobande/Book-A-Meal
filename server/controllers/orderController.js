@@ -71,7 +71,7 @@ class OrderController {
           userId: req.user.id
         }
       })
-        .then((meals) => {
+        .then(meals => {
           const orders = meals.map(currentMeal => currentMeal.getOrders()
             .then((foundOrders) => {
               if (foundOrders.length > 0) {
@@ -82,13 +82,11 @@ class OrderController {
           return Promise.all(orders);
         })
         .then((foundOrders) => {
-          if (foundOrders) {
-            const filteredOrders = foundOrders.filter(foundOrder => foundOrder);
-            res.status(200).json({
-              status: 'success',
-              orders: deepFlatten(filteredOrders)
-            });
-          }
+          const filteredOrders = foundOrders.filter(foundOrder => foundOrder);
+          res.status(200).json({
+            status: 'success',
+            orders: deepFlatten(filteredOrders)
+          });
         })
         .catch(err => next(err));
     }
@@ -116,14 +114,12 @@ class OrderController {
    */
   static updateOrder(req, res, next) {
     return req.order.updateAttributes(req.body)
-      .then((updatedOrder) => {
-        if (updatedOrder) {
-          res.status(200).json({
-            status: 'success',
-            message: 'order updated successfully',
-            order: updatedOrder
-          });
-        }
+      .then(updatedOrder => {
+        res.status(200).json({
+          status: 'success',
+          message: 'order updated successfully',
+          order: updatedOrder
+        });
       })
       .catch(err => next(err));
   }
