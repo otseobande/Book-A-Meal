@@ -22,7 +22,7 @@ const deliveryAddress = Joi.string()
 const status = Joi.string()
   .min(1);
 const phoneNumber = extendedJoi.string()
-  .min(13)
+  .min(11)
   .phoneNumber({ defaultCountry: 'NG', format: 'international' });
 const orderId = Joi.string().guid({
   version: [

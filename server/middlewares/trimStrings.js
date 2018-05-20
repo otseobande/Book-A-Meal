@@ -8,7 +8,7 @@
  * @return {function} next - passes control to the application
  */
 const trimStrings = (req, res, next) => {
-  Object.keys(req.body).forEach(key => {
+  Object.keys(req.body).forEach((key) => {
     if (typeof req.body[key] === 'string') {
       req.body[key] = req.body[key]
         .replace(/  +/g, ' ')

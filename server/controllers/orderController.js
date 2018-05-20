@@ -23,13 +23,13 @@ class OrderController {
       deliveryAddress,
       phoneNumber
     } = req.body;
-    
+
     return meal.findOne({
-        where: {
-          id: mealId
-        }
-      })
-      .then(foundMeal => {
+      where: {
+        id: mealId
+      }
+    })
+      .then((foundMeal) => {
         if (foundMeal) {
           return order.create({
             userId: req.user.id,
