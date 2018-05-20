@@ -1,8 +1,11 @@
 import moment from 'moment';
 import Joi from 'joi';
+import JoiPhoneNumber from 'joi-phone-number';
 import validate from 'express-validation';
 import { order } from '../../models';
 import config from '../../config';
+
+const extendedJoi = Joi.extend(JoiPhoneNumber);
 
 const mealId = Joi.string().guid({
   version: [
@@ -18,7 +21,9 @@ const deliveryAddress = Joi.string()
   .min(1);
 const status = Joi.string()
   .min(1);
-
+const phoneNumber = extendedJoi.string()
+  .min(11)
+  .phoneNumber({ defaultCountry: 'NG', format: 'international' });
 const orderId = Joi.string().guid({
   version: [
     'uuidv4',
@@ -26,13 +31,17 @@ const orderId = Joi.string().guid({
   ]
 });
 
+const token = Joi.string().token();
+
 
 export const validateReqBodyOnCreate = validate({
   body: {
     mealId: mealId.required(),
     quantity: quantity.required(),
     deliveryAddress: deliveryAddress.required(),
-    status
+    phoneNumber: phoneNumber.required(),
+    status,
+    token
   }
 });
 
@@ -55,7 +64,7 @@ const validateExpiry = (req, res, next) =>
     .then((foundOrder) => {
       if (foundOrder) {
         if (moment(foundOrder.createdAt).add(config.orderExpiry, 'hours') < moment()) {
-          return res.status(400).json({
+          return res.status(422).json({
             status: 'error',
             message: 'order modification has expired'
           });
@@ -79,7 +88,8 @@ const validateUpdateReqBody = validate({
     mealId,
     quantity,
     status,
-    deliveryAddress
+    deliveryAddress,
+    token
   }
 });
 
@@ -90,5 +100,4 @@ export const validateUpdate = [
 
 export const validateCreate = [
   validateReqBodyOnCreate
-  // checkIfMealIsAvailable
 ];

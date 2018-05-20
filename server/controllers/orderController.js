@@ -20,7 +20,8 @@ class OrderController {
     const {
       mealId,
       quantity,
-      deliveryAddress
+      deliveryAddress,
+      phoneNumber
     } = req.body;
 
     return meal.findOne({
@@ -35,6 +36,7 @@ class OrderController {
             mealId,
             quantity,
             deliveryAddress,
+            phoneNumber,
             status: 'pending'
           });
         }

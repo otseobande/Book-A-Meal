@@ -17,6 +17,7 @@
     "**/UI/**",
     "**/config/**",
     "server/migrations",
+    "server/models/index.js",
     "server/app.js"
   ],
   "include": [

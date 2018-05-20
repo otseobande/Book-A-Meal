@@ -1,6 +1,5 @@
 import moment from 'moment';
-// const fiveHoursFromNow = moment().subtract(5, 'hours').format('YYYY-MM-DD hh:mm:ss');
-// console.log(fiveHoursFromNow)
+
 export default {
   up: (queryInterface, Sequelize) => queryInterface.bulkInsert('orders', [
     {
@@ -8,16 +7,20 @@ export default {
       userId: 'e20ac257-86cc-4a6f-a619-0249a201c475',
       mealId: '64c45c00-ed18-44b7-862a-f12d0481696c',
       quantity: 1,
+      phoneNumber: '+2348131928452',
       status: 'pending',
-      deliveryAddress: 'bajiki close'
+      deliveryAddress: 'bajiki close',
+      createdAt: moment().format()
     },
     {
       id: '95d84610-4e59-430c-9ab0-116bba424582',
       userId: 'e20ac257-86cc-4a6f-a619-0249a201c475',
       mealId: '64c45c00-ed18-44b7-862a-f12d0481696c',
       quantity: 1,
+      phoneNumber: '+2348131928452',
       status: 'delivered',
-      deliveryAddress: 'bajiki close'
+      deliveryAddress: 'bajiki close',
+      createdAt: moment().format()
     },
     {
       id: 'd161e8e8-eed0-4869-bcf1-4679289d940c',
@@ -25,15 +28,19 @@ export default {
       mealId: '64c45c00-ed18-44b7-862a-f12d0481696c',
       quantity: 1,
       status: 'pending',
-      deliveryAddress: 'Irepodun street'
+      phoneNumber: '+2348131928452',
+      deliveryAddress: 'Irepodun street',
+      createdAt: moment().format()
     },
     {
-      id: 'd162e8e8-eed0-4869-bcf1-4679289d940c',
+      id: 'fdc2ea34-ff16-4658-971d-8fb6132f6dfd',
       userId: 'e20ac257-86cc-4a6f-a619-0249a201c475',
       mealId: '64c45c00-ed18-44b7-862a-f12d0481696c',
       quantity: 1,
+      phoneNumber: '+2348131928452',
       status: 'pending',
       deliveryAddress: 'Irepodun street',
+      createdAt: moment().subtract(5, 'hours').format()
     }
   ], {}),
 

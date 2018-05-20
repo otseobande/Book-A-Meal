@@ -39,8 +39,8 @@ describe('guard middleware', () => {
 
 		res.status.should.have.been.calledWith(403);
 		res.json.should.have.been.calledWith({
-	    status: 'error',
-	    message: "You don't have the right privileges to access this route"
-	  });
+			status: 'error',
+			message: "You don't have the right privileges to access this route."
+		});
 	})
 })

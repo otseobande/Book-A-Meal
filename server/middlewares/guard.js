@@ -16,7 +16,7 @@ const guard = role => (req, res, next) => {
 
   return res.status(403).json({
     status: 'error',
-    message: "You don't have the right privileges to access this route"
+    message: "You don't have the right privileges to access this route."
   });
 };
 

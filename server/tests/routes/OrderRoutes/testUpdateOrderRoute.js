@@ -22,6 +22,23 @@ describe('PUT /api/v1/orders/:orderId', function() {
     res.should.have.status(200);
   });
 
+  it('should return error 422 if order is expired', async () => {
+    const res = await chai.request(App)
+      .put('/api/v1/orders/fdc2ea34-ff16-4658-971d-8fb6132f6dfd')
+      .set('Authorization',  `Bearer ${token}`)
+      .send({
+        mealId: '64c45c00-ed18-44b7-862a-f12d0481696c',
+        quantity: 1,
+        status: 'pending',
+        deliveryAddress: 'bajiki close'
+      });
+
+    res.should.have.status(422);
+    res.body.should.deep.equal({
+      status: 'error',
+      message: 'order modification has expired'
+    })
+  })
 
   it('should return an error 404 if not found', async function() {
     const res = await chai.request(App)

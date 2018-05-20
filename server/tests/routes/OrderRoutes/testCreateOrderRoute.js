@@ -13,6 +13,7 @@ describe('POST /api/v1/orders', () => {
           mealId: '64c45c00-ed18-44b7-862a-f12d0481696c',
           quantity: 3,
           status: 'pending',
+          phoneNumber: '08131928452',
           deliveryAddress: 'rahama road',
       });
 
@@ -29,6 +30,7 @@ describe('POST /api/v1/orders', () => {
         mealId: '64c49c00-ed18-44b7-862a-f12d0481696c',
         quantity: 3,
         status: 'pending',
+        phoneNumber: '08131928452',
         deliveryAddress: 'rahama road',
       });
 
