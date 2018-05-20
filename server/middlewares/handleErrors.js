@@ -15,21 +15,14 @@ import config from '../config';
  */
 const handleErrors = (error, req, res, next, env = config.env) => {
   if (error.statusText && error.statusText === 'Bad Request') {
-    let fields = [];
-    let messages = [];
 
-    error.errors.forEach((err) => {
-      messages = [...messages, ...err.messages];
-      fields = [...fields, ...err.field];
-    });
+    const message = error.errors.reduce((acc, err) => {
+      return acc.concat(err.messages)
+    }, []);
 
     return res.status(400).json({
       status: 'error',
-      statusText: error.statusText,
-      errors: {
-        messages,
-        fields
-      }
+      message
     });
   }
 
@@ -47,7 +40,8 @@ const handleErrors = (error, req, res, next, env = config.env) => {
     : error.stack;
 
   return res.status(error.status || 500).json({
-    error: errMsg
+    status: 'error',
+    message: errMsg
   });
 };
 
