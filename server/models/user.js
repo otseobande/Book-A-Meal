@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
-import { jwtExpiry, jwtSecret } from '../config'
+import jwt from 'jsonwebtoken';
+import { jwtExpiry, jwtSecret } from '../config';
 
 /**
  * @model

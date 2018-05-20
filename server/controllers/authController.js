@@ -35,7 +35,7 @@ class AuthController {
           const token = foundUser.generateToken();
 
           return res.status(200).json({
-            status: true,
+            status: 'success',
             token
           });
         }
