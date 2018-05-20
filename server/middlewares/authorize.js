@@ -23,7 +23,7 @@ const authorize = (req, res, next) => {
   } catch (err) {
     return res.status(401).json({
       status: 'error',
-      message: 'Unauthorized'
+      message: 'Token is invalid or not provided'
     });
   }
 };

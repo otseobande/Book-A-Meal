@@ -1,8 +1,11 @@
 import moment from 'moment';
 import Joi from 'joi';
+import JoiPhoneNumber from 'joi-phone-number';
 import validate from 'express-validation';
 import { order } from '../../models';
 import config from '../../config';
+
+const extendedJoi = Joi.extend(JoiPhoneNumber);
 
 const mealId = Joi.string().guid({
   version: [
@@ -18,7 +21,8 @@ const deliveryAddress = Joi.string()
   .min(1);
 const status = Joi.string()
   .min(1);
-
+const phoneNumber = extendedJoi.string()
+  .phoneNumber({ defaultCountry: 'NGN'});
 const orderId = Joi.string().guid({
   version: [
     'uuidv4',
@@ -34,6 +38,7 @@ export const validateReqBodyOnCreate = validate({
     mealId: mealId.required(),
     quantity: quantity.required(),
     deliveryAddress: deliveryAddress.required(),
+    phoneNumber: phoneNumber.required(),
     status,
     token
   }
