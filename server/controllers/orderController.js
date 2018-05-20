@@ -20,21 +20,23 @@ class OrderController {
     const {
       mealId,
       quantity,
-      deliveryAddress
+      deliveryAddress,
+      phoneNumber
     } = req.body;
-
+    
     return meal.findOne({
-      where: {
-        id: mealId
-      }
-    })
-      .then((foundMeal) => {
+        where: {
+          id: mealId
+        }
+      })
+      .then(foundMeal => {
         if (foundMeal) {
           return order.create({
             userId: req.user.id,
             mealId,
             quantity,
             deliveryAddress,
+            phoneNumber,
             status: 'pending'
           });
         }

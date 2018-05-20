@@ -19,6 +19,7 @@ const order = (sequelize, DataTypes) => {
     quantity: DataTypes.INTEGER,
     status: DataTypes.ENUM('pending','delivered','cancelled'),
     deliveryAddress: DataTypes.STRING,
+    phoneNumber: DataTypes.STRING,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE
   }, {
