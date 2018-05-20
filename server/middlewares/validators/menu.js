@@ -20,7 +20,7 @@ const date = Joi.string()
   .regex(/\d{4}-\d{1,2}-\d{1,2}/)
   .error(() => 'Date format should be "YYYY-DD-MM"');
 
-const token = Joi.string().token();
+const token = Joi.string();
 
 /**
  * Checks date and ensures date is valid

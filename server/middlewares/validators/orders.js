@@ -31,7 +31,7 @@ const orderId = Joi.string().guid({
   ]
 });
 
-const token = Joi.string().token();
+const token = Joi.string();
 
 
 export const validateReqBodyOnCreate = validate({

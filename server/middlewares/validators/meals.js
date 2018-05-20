@@ -12,7 +12,7 @@ const price = Joi.number()
   .positive();
 const img = Joi.string()
   .min(1);
-const token = Joi.string().token();
+const token = Joi.string();
 const mealId = Joi.string().guid({
   version: [
     'uuidv4',
