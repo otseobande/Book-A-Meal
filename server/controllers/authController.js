@@ -1,8 +1,4 @@
-import jwt from 'jsonwebtoken';
-import config from '../config';
 import { user as User } from '../models';
-
-const { jwtExpiry, jwtSecret } = config;
 
 /**
  * @exports
@@ -36,12 +32,7 @@ class AuthController {
     return Promise.all([user, passwordIsValid])
       .then(([foundUser, givenPasswordIsValid]) => {
         if (givenPasswordIsValid) {
-          const token = jwt.sign({
-            id: foundUser.id,
-            role: foundUser.role
-          }, jwtSecret, {
-            expiresIn: `${jwtExpiry}h`
-          });
+          const token = foundUser.generateToken();
 
           return res.status(200).json({
             status: true,
@@ -86,12 +77,7 @@ class AuthController {
       role
     })
       .then((user) => {
-        const token = jwt.sign({
-          id: user.id,
-          role: user.role
-        }, jwtSecret, {
-          expiresIn: `${jwtExpiry}h`
-        });
+        const token = user.generateToken();
 
         return res.status(201).json({
           status: 'success',

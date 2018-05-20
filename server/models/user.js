@@ -1,4 +1,5 @@
 import bcrypt from 'bcrypt';
+import { jwtExpiry, jwtSecret } from '../config'
 
 /**
  * @model
@@ -51,6 +52,16 @@ const user = (sequelize, DataTypes) =>  {
 
   User.prototype.validPassword = function (password) {
     return bcrypt.compare(password, this.password);
+  };
+
+  User.prototype.generateToken = function (password) {
+    return jwt.sign({
+      id: this.id,
+      role: this.role
+    }, jwtSecret, {
+      expiresIn: `${jwtExpiry}h`
+    });
+
   };
 
   User.associate = (models) => {

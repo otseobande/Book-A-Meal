@@ -18,8 +18,13 @@ export default {
       },
       quantity: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        defaultValue: 1
       },
+      phoneNumber: {
+        allowNull: false,
+        type: Sequelize.STRING
+      }
       status: {
         allowNull: false,
         type: Sequelize.ENUM,

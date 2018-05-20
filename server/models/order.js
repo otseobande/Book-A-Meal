@@ -24,14 +24,13 @@ const order = (sequelize, DataTypes) => {
   }, {
     paranoid: true,
     defaultScope: {
-      attributes: { exclude: ['createdAt', 'updatedAt'] },
+      attributes: { exclude: ['deletedAt', 'updatedAt'] },
     },
   });
 
   Order.prototype.toJSON = function () {
     const values = {...this.get()};
 
-    delete values.createdAt;
     delete values.updatedAt;
     delete values.deletedAt;
     

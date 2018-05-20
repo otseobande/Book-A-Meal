@@ -17,9 +17,6 @@ export default {
         type: Sequelize.STRING,
         unique: true
       },
-      phoneNumber: {
-        type: Sequelize.STRING
-      },
       email: {
         allowNull: false,
         type: Sequelize.STRING,
