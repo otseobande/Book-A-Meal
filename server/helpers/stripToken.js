@@ -12,7 +12,7 @@ const stripToken = (req) => {
 
     return token;
   }
-  
+
   if (req.query && req.query.token) {
     return req.query.token;
   }

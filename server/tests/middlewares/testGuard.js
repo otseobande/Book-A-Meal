@@ -18,6 +18,12 @@ const customerReq = mockReq({
 	}
 });
 
+const adminReq = mockReq({
+	user: {
+		role: 'admin'
+	}
+})
+
 const res = mockRes();
 
 describe('guard middleware', () => {
@@ -31,6 +37,12 @@ describe('guard middleware', () => {
 	it('should call next if role is right', () => {
 		guard('customer')(customerReq, res, next);
 		
+		next.should.have.been.called;
+	})
+
+	it('admin should be able to access routes despite guard', () => {
+		guard('customer')(adminReq, res, next);
+
 		next.should.have.been.called;
 	})
 

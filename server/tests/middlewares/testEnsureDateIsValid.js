@@ -16,7 +16,7 @@ const req = mockReq({
 
 const res = mockRes();
 
-describe('guard middleware', () => {
+describe('ensureDateIsValid middleware', () => {
 	const next = sinon.spy();
 	
 	it('should return error message if date is invalid', () => {
