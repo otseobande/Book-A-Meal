@@ -36,6 +36,7 @@ class AuthController {
 
           return res.status(200).json({
             status: 'success',
+            user: foundUser,
             token
           });
         }
@@ -81,7 +82,6 @@ class AuthController {
 
         return res.status(201).json({
           status: 'success',
-          message: 'User signup successful',
           user,
           token
         });
