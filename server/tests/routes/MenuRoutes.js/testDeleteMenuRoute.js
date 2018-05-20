@@ -25,7 +25,7 @@ describe('DELETE /api/v1/menu/:date', function() {
     res.should.have.status(404);
     res.body.should.deep.equal({
       status: 'error',
-      message: 'menu not found'
+      message: 'Menu not set for this day'
     })
   })
 

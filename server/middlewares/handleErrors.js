@@ -15,10 +15,7 @@ import config from '../config';
  */
 const handleErrors = (error, req, res, next, env = config.env) => {
   if (error.statusText && error.statusText === 'Bad Request') {
-
-    const message = error.errors.reduce((acc, err) => {
-      return acc.concat(err.messages)
-    }, []);
+    const message = error.errors.reduce((acc, err) => acc.concat(err.messages), []);
 
     return res.status(400).json({
       status: 'error',

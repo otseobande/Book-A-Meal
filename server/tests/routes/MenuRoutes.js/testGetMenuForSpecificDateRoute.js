@@ -30,7 +30,7 @@ describe('GET /api/v1/menu/:date', () => {
     res.should.have.status(404);
     res.body.should.deep.equal({
       status: 'error',
-      message: 'Menu not yet set for this day'
+      message: 'Menu not set for this day'
     })
   });
 });

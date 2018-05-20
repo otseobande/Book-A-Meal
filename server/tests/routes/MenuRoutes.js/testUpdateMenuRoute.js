@@ -64,7 +64,7 @@ describe('PUT /api/v1/menu/:date', function() {
     res.should.have.status(404);
     res.body.should.deep.equal({
       status: 'error',
-      message: 'Menu not found'
+      message: 'Menu not set for this day'
     })
   });
   it('should return an error 404 if not found without categories', async function() {
@@ -78,7 +78,7 @@ describe('PUT /api/v1/menu/:date', function() {
     res.should.have.status(404);
     res.body.should.deep.equal({
       status: 'error',
-      message: 'Menu not found'
+      message: 'Menu not set for this day'
     })
   });
 });

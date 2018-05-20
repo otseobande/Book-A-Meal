@@ -110,7 +110,7 @@ class MenuController {
 
         return res.status(404).json({
           status: 'error',
-          message: 'menu not found'
+          message: 'Menu not set for this day'
         });
       })
       .catch(err => next(err));
@@ -157,7 +157,7 @@ class MenuController {
 
         return res.status(404).json(({
           status: 'error',
-          message: 'Menu not yet set for this day'
+          message: 'Menu not set for this day'
         }));
       })
       .catch(err => next(err));
@@ -196,7 +196,7 @@ class MenuController {
 
           res.status(404).json({
             status: 'error',
-            message: 'Menu not found'
+            message: 'Menu not set for this day'
           });
         })
         .catch(err => next(err));
@@ -209,7 +209,7 @@ class MenuController {
 
         res.status(404).json({
           status: 'error',
-          message: 'Menu not found'
+          message: 'Menu not set for this day'
         });
       })
       .then((rows) => {
