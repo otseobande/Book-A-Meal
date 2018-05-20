@@ -30,11 +30,13 @@ describe('guard middleware', () => {
 	})
 	it('should call next if role is right', () => {
 		guard('customer')(customerReq, res, next);
+		
 		next.should.have.been.called;
 	})
 
 	it('should return error 403 if role is wrong', () => {
 		guard('customer')(catererReq, res, next);
+
 		res.status.should.have.been.calledWith(403);
 		res.json.should.have.been.calledWith({
 			status: 'error',
