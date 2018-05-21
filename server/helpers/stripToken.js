@@ -13,6 +13,14 @@ const stripToken = (req) => {
     return token;
   }
 
+  if (req.headers.authorization) {
+    return req.headers.authorization;
+  }
+
+  if (req.headers.token) {
+    return req.headers.token;
+  }
+
   if (req.query && req.query.token) {
     return req.query.token;
   }
@@ -20,6 +28,8 @@ const stripToken = (req) => {
   if (req.body && req.body.token) {
     return req.body.token;
   }
+
+  return '';
 };
 
 export default stripToken;
