@@ -4,9 +4,14 @@
 Book-A-Meal is an application that allows customers to make food orders and helps the food
 vendor know what the customers want to eat.
 
+## Documentation
+
+Find API endpoint documentation here https://meal-booking.herokuapp.com/api/v1/docs
+
 ## Features
 
 ### Required features
+
 * Users can create an account and log in.
 * Admin (Caterer) should be able to manage (i.e: add, modify and delete) meal options in
   the application. Examples of meal options are: Beef with rice, Beef with fries etc.
@@ -19,6 +24,7 @@ vendor know what the customers want to eat.
 * Admin should be able to see amount of money made by end of day.
 
 ### Extra Features
+
 * Authenticated users (customers) should be able to see their order history.
 * Authenticated users (customers) should be able to get notifications when the menu for
   the day has been set.
