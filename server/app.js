@@ -13,13 +13,13 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(
-	logger('dev'),
-	cors(),
-	express.urlencoded({ extended: true }),
-	express.json(),
-	trimStrings,
-	apiRoutes, otherRoutes, 
-	handleErrors
+  logger('dev'),
+  cors(),
+  express.urlencoded({ extended: true }),
+  express.json(),
+  trimStrings,
+  apiRoutes, otherRoutes,
+  handleErrors
 );
 
 const server = app.listen(port, () => {

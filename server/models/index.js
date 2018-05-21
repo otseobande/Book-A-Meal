@@ -3,6 +3,7 @@ import path from 'path';
 import Sequelize from 'sequelize';
 import sequelizeConfig from '../config/config';
 import config from '../config';
+import addScopes from '../helpers/addScopes';
 
 const env = config.env;
 const envConfig = sequelizeConfig[env];
@@ -43,21 +44,6 @@ Object.keys(db).forEach((modelName) => {
   }
 });
 
-db.order.addScope('defaultScope', {
-  include: [{model: db.user}, {model: db.meal}],
-  attributes: { exclude: ['deletedAt'] },
-}, {override: true});
-
-db.menu.addScope('defaultScope', {
-  include: [{
-    model: db.menuCategory,
-    include: [{
-      model: db.meal,
-      through: {
-        attributes: []
-      }
-    }]
-  }]
-}, {override: true})
+addScopes(db);
 
 export default db;

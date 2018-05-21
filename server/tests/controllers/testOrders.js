@@ -71,7 +71,7 @@ describe('Order Controller', () => {
         const next = sinon.spy();
         const req = mockReq({
           body: {
-            userId: 'asdfas'
+            mealId: 'asdfas'
           }
         });
         req.order = await order.find({

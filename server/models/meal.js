@@ -40,6 +40,10 @@ const meal = (sequelize, DataTypes) => {
   
   Meal.associate = (models) => {
     Meal.hasMany(models.order);
+    Meal.belongsTo(models.user, {
+      as: 'caterer',
+      foreignKey: 'userId'
+    });
     Meal.belongsToMany(models.menuCategory, {
       through: 'mealMenuCategory',
       foreignKey: 'mealId',

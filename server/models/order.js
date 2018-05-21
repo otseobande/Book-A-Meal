@@ -36,7 +36,10 @@ const order = (sequelize, DataTypes) => {
   }
 
   Order.associate = (models) => {
-    Order.belongsTo(models.user);
+    Order.belongsTo(models.user,{
+      as: 'customer',
+      foreignKey: 'userId'
+    });
     Order.belongsTo(models.meal);
   };
   return Order;

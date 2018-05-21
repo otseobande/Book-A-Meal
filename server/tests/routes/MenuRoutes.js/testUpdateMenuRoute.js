@@ -23,11 +23,10 @@ describe('PUT /api/v1/menu/:date', function() {
       });
 
     res.should.have.status(200);
-    res.body.should.deep.equal({
-      status: 'success',
-      message: 'Menu updated successfully'
-    })
-  });
+    res.body.status.should.be.equal('success');
+    res.body.message.should.be.equal('Menu updated successfully');
+    res.body.menu.should.be.an(object);
+  }).timeout(5000);
 
   it('should return a success status 200 without categories', async function() {
     const res = await chai.request(App)

@@ -61,34 +61,7 @@ class OrderController {
       })
       .catch(err => next(err));
   }
-  /**
-   * Gets orders for a caterer
-   *
-   * @param  {object} req - Request object
-   * @return {Promise} orders - Promise resolving with caterers orders
-   */
-  static getCaterersOrders(req) {
-    return meals.findAll({
-      where: {
-        userId: req.user.id
-      }
-    })
-      .then((caterersMeals) => {
-        const foundOrders = caterersMeals.map(currentMeal => currentMeal.getOrders()
-          .then((mealOrders) => {
-            if (foundOrders.length > 0) {
-              return mealOrders;
-            }
-          }));
-
-        return Promise.all(foundOrders);
-      })
-      .then((foundOrders) => {
-        const filteredOrders = foundOrders.filter(foundOrder => foundOrder);
-
-        return deepFlatten(filteredOrders);
-      });
-  }
+  
   /**
    * Gets all orders
    *
@@ -99,21 +72,22 @@ class OrderController {
    * @return {json} res.json
    */
   static getAllOrders(req, res, next) {
-    if (req.user.role === 'caterer') {
-      return OrderController.getCaterersOrders(req)
-        .then((caterersOrders) => {
-          res.status(200).json({
-            status: 'success',
-            orders: caterersOrders
-          });
-        })
-        .catch(err => next(err));
+    let findOrders = orders.findAll();
+    switch(req.user.role){
+      case 'caterer': 
+        findOrders = orders.scope({method: ['caterer', req.user.id]})
+        .findAll();
+        break;
+      case 'customer':
+        findOrders = orders.findAll({
+          where: {
+            userId: req.user.id
+          }
+        });
+        break;
     }
-    return orders.findAll({
-      where: {
-        userId: req.user.id
-      }
-    })
+    
+    return findOrders
       .then(customersOrders => res.status(200).json({
         status: 'success',
         orders: customersOrders
@@ -169,7 +143,8 @@ class OrderController {
   static deliverOrder(req, res, next) {
     const { orderId } = req.params;
 
-    return OrderController.getCaterersOrders(req)
+    return orders.scope({method: ['caterer', req.user.id]})
+      .findAll()
       .then(mealOrders => mealOrders.find(order => order.id === orderId))
       .then((order) => {
         if (order) {

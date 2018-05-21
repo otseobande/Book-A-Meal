@@ -34,7 +34,8 @@ const menu = (sequelize, DataTypes) => {
   Menu.associate = (models) => {
     Menu.hasMany(models.menuCategory, {
       onDelete: 'CASCADE',
-      hooks: true
+      hooks: true,
+      as: 'categories'
     });
   };
   return Menu;
