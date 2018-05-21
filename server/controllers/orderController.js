@@ -81,7 +81,7 @@ class OrderController {
             }
           }));
 
-        return Promise.all(orders);
+        return Promise.all(foundOrders);
       })
       .then((foundOrders) => {
         const filteredOrders = foundOrders.filter(foundOrder => foundOrder);

@@ -8,8 +8,7 @@ import docRoutes from './docs';
 const router = Router();
 
 
-router.use(
-  '/api/v1',
+router.use('/api/v1',
   docRoutes,
   authRoutes,
   orderRoutes,
