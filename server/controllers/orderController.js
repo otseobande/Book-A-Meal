@@ -29,7 +29,7 @@ class OrderController {
         id: mealId
       }
     })
-      .then(foundMeal => {
+      .then((foundMeal) => {
         if (foundMeal) {
           return order.create({
             userId: req.user.id,
@@ -44,6 +44,11 @@ class OrderController {
           status: 'error',
           message: 'Meal does not exist'
         });
+      })
+      .then(createdOrder => {
+        if(createdOrder){
+          return createdOrder.reload()
+        }
       })
       .then(createdOrder => {
         if (createdOrder) {
@@ -69,13 +74,13 @@ class OrderController {
   static getAllOrders(req, res, next) {
     if (req.user.role === 'caterer') {
       return meal.findAll({
-          where: {
-            userId: req.user.id
-          }
-        })
-        .then(meals => {
+        where: {
+          userId: req.user.id
+        }
+      })
+        .then((meals) => {
           const orders = meals.map(currentMeal => currentMeal.getOrders()
-            .then(foundOrders => {
+            .then((foundOrders) => {
               if (foundOrders.length > 0) {
                 return foundOrders;
               }
@@ -83,7 +88,7 @@ class OrderController {
 
           return Promise.all(orders);
         })
-        .then(foundOrders => {
+        .then((foundOrders) => {
           const filteredOrders = foundOrders.filter(foundOrder => foundOrder);
           res.status(200).json({
             status: 'success',
@@ -116,7 +121,7 @@ class OrderController {
    */
   static updateOrder(req, res, next) {
     return req.order.updateAttributes(req.body)
-      .then((updatedOrder) => {
+      .then(updatedOrder => {
         res.status(200).json({
           status: 'success',
           message: 'order updated successfully',
