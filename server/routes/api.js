@@ -3,12 +3,14 @@ import authRoutes from './auth';
 import mealRoutes from './meals';
 import menuRoutes from './menu';
 import orderRoutes from './orders';
+import docRoutes from './docs';
 
 const router = Router();
 
 
 router.use(
   '/api/v1',
+  docRoutes,
   authRoutes,
   orderRoutes,
   menuRoutes,
