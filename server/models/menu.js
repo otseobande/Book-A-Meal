@@ -1,7 +1,3 @@
-import {
-  meal,
-  menuCategory
-} from './index';
 /**
  * @model
  * @param  {object} sequelize - Sequelize DB connection object
@@ -23,10 +19,6 @@ const menu = (sequelize, DataTypes) => {
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE
   }, {
-    defaultScope: {
-     
-      attributes: { exclude: ['createdAt', 'updatedAt', 'deletedAt'] },
-    },
   });
 
   Menu.prototype.toJSON = function () {

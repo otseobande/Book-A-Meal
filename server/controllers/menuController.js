@@ -136,16 +136,7 @@ class MenuController {
     return menu.find({
       where: {
         date: givenDate
-      },
-      include: [{
-        model: menuCategory,
-        include: [{
-          model: meal,
-          through: {
-            attributes: []
-          }
-        }]
-      }]
+      }
     })
       .then((foundMenu) => {
         if (foundMenu) {
