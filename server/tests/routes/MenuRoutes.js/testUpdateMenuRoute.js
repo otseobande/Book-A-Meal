@@ -38,10 +38,6 @@ describe('PUT /api/v1/menu/:date', function() {
       });
 
     res.should.have.status(200);
-    res.body.should.deep.equal({
-      status: 'success',
-      message: 'Menu updated successfully'
-    })
   });
 
   it('should return an error 404 if not found', async function() {

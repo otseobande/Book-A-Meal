@@ -45,7 +45,6 @@ export const validateReqBodyOnCreate = validate({
   }
 });
 
-
 /**
  * Check if the order is expired
  *
@@ -90,6 +89,12 @@ const validateUpdateReqBody = validate({
     status,
     deliveryAddress,
     token
+  }
+});
+
+export const validateOrderId = validate({
+  params: {
+    orderId
   }
 });
 

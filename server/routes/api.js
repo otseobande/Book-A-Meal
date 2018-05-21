@@ -7,6 +7,12 @@ import orderRoutes from './orders';
 const router = Router();
 
 
-router.use('/api/v1', authRoutes, orderRoutes, menuRoutes, mealRoutes);
+router.use(
+  '/api/v1',
+  authRoutes,
+  orderRoutes,
+  menuRoutes,
+  mealRoutes
+);
 
 export default router;

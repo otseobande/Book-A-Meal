@@ -24,10 +24,9 @@ describe('POST /api/v1/menu', function() {
       });
       
     res.should.have.status(201);
-    res.body.should.be.deep.equal({
-      status: 'success',
-      message: 'Menu created successfully'
-    });
+    res.body.status.should.be.equal('success');
+    res.body.message.should.be.equal('Menu created successfully');
+    res.body.menu.should.be.an('object')
   });
   it('should return a conflict status if menu is already set for a day', async function() {
     const res = await chai.request(App)
@@ -48,10 +47,9 @@ describe('POST /api/v1/menu', function() {
       });
       
     res.should.have.status(409);
-    res.body.should.be.deep.equal({
-      status: 'error',
-      message: 'You have already set the menu for this day, you can only set one menu per day.'
-    });
+    res.body.status.should.be.equal('error');
+    res.body.message.should.be.equal('You have already set the menu for this day, you can only set one menu per day.');
+    res.body.menu.should.be.an('object');
   });
   
   it('should not be able to create for a past date', async function() {

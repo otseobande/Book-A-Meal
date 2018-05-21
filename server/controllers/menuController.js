@@ -20,7 +20,7 @@ class MenuController {
    */
   static createMenu(req, res, next) {
     return MenuController.createMenuHelper(req, res)
-      .then(createdMenu => {
+      .then((createdMenu) => {
         if (createdMenu) {
           res.status(201).json({
             status: 'success',
@@ -42,12 +42,12 @@ class MenuController {
     const { title, date, categories } = req.body;
 
     return menu.findOne({
-        where: {
-          date,
-          userId: req.user.id
-        }
-      })
-      .then(foundMenu => {
+      where: {
+        date,
+        userId: req.user.id
+      }
+    })
+      .then((foundMenu) => {
         if (foundMenu) {
           res.status(409).json({
             status: 'error',
@@ -62,18 +62,18 @@ class MenuController {
           });
         }
       })
-      .then(createdMenu => {
+      .then((createdMenu) => {
         if (createdMenu && categories) {
           const createCategoryPromises = categories.map(category => menuCategory.create({
-              menuId: createdMenu.id,
-              title: category.title,
-              meals: category.mealId
-            })
+            menuId: createdMenu.id,
+            title: category.title,
+            meals: category.mealId
+          })
             .then(createdMenuCategory => createdMenuCategory.setMeals(category.mealIds)));
           return createCategoryPromises;
         }
       })
-      .then(createCategoryPromises => {
+      .then((createCategoryPromises) => {
         if (createCategoryPromises && createCategoryPromises.length > 0) {
           return Promise.all(createCategoryPromises);
         }
@@ -137,10 +137,10 @@ class MenuController {
       : moment();
 
     return menu.find({
-        where: {
-          date: givenDate
-        }
-      })
+      where: {
+        date: givenDate
+      }
+    })
       .then((foundMenu) => {
         if (foundMenu) {
           return res.status(200).json({
@@ -176,7 +176,7 @@ class MenuController {
 
     if (!req.body.categories) {
       return findMenu
-        .then(foundMenu => {
+        .then((foundMenu) => {
           if (foundMenu) {
             foundMenu.updateAttributes(req.body);
             return res.status(200).json({
@@ -192,7 +192,7 @@ class MenuController {
     }
 
     return findMenu
-      .then(foundMenu => {
+      .then((foundMenu) => {
         if (foundMenu) {
           return foundMenu.destroy();
         }
@@ -204,11 +204,12 @@ class MenuController {
           return MenuController.createMenuHelper(req, res);
         }
       })
-      .then((menuCreated) => {
-        if (menuCreated) {
+      .then((updatedMenu) => {
+        if (updatedMenu) {
           return res.status(200).json({
             status: 'success',
-            message: 'Menu updated successfully'
+            message: 'Menu updated successfully',
+            menu: updatedMenu
           });
         }
       })
@@ -217,7 +218,7 @@ class MenuController {
 
   /**
    * helper function to send a not found response
-   * 
+   *
    * @param  {object} res - Response object
    * @return {object} res - Response object
    */
