@@ -39,12 +39,8 @@ const order = (sequelize, DataTypes) => {
   }
 
   Order.associate = (models) => {
-    Order.belongsToMany(models.user, {
-      through: {
-        model: models.meal
-      },
-      as: 'catererOrders',
-      foreignKey: 'userId'
+    Order.belongsTo(models.user, {
+      foreignKey: 'userId',
     });
   };
   return Order;

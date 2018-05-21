@@ -1,4 +1,7 @@
-
+import {
+  meal,
+  menuCategory
+} from './index';
 /**
  * @model
  * @param  {object} sequelize - Sequelize DB connection object
@@ -21,6 +24,7 @@ const menu = (sequelize, DataTypes) => {
     updatedAt: DataTypes.DATE
   }, {
     defaultScope: {
+     
       attributes: { exclude: ['createdAt', 'updatedAt', 'deletedAt'] },
     },
   });

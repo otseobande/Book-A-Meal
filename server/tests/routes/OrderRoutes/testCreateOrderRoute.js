@@ -17,7 +17,7 @@ describe('POST /api/v1/orders', () => {
           deliveryAddress: 'rahama road',
       });
 
-    res.should.have.status(200);
+    res.should.have.status(201);
     res.body.should.have.property('status');
     res.body.should.have.property('message');
   });
