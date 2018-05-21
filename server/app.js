@@ -5,6 +5,7 @@ import {
   trimStrings,
   handleErrors
 } from './middlewares';
+import setEventListeners from './events/setEventListeners';
 import apiRoutes from './routes/api';
 import otherRoutes from './routes/others';
 
@@ -14,6 +15,7 @@ const port = process.env.PORT || 3000;
 app.use(logger('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+setEventListeners(app);
 app.use(trimStrings, apiRoutes, otherRoutes, handleErrors);
 
 const server = app.listen(port, () => {
