@@ -2,8 +2,7 @@ import {
   chai,
   sinon,
   mockReq,
-  mockRes,
-  token
+  mockRes
 } from '../setup';
 import { validateUpdate } from '../../middlewares/validators/orders';
 

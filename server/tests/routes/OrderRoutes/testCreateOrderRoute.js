@@ -1,14 +1,14 @@
 import {
   chai,
   App,
-  token
+  adminToken
 } from '../../setup';
 
 describe('POST /api/v1/orders', () => {
   it('should return a status 200 and success message', async function() {
     const res = await chai.request(App)
       .post('/api/v1/orders')
-      .set('Authorization',  `Bearer ${token}`)
+      .set('Authorization',  `Bearer ${adminToken}`)
       .send({
           mealId: '64c45c00-ed18-44b7-862a-f12d0481696c',
           quantity: 3,
@@ -25,7 +25,7 @@ describe('POST /api/v1/orders', () => {
   it('should return a status 400 and error message if meal not found', async function() {
     const res = await chai.request(App)
       .post('/api/v1/orders')
-      .set('Authorization',  `Bearer ${token}`)
+      .set('Authorization',  `Bearer ${adminToken}`)
       .send({
         mealId: '64c49c00-ed18-44b7-862a-f12d0481696c',
         quantity: 3,

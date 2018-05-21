@@ -32,7 +32,7 @@ describe('Order Controller', () => {
       } 
 		})
 	})
-	describe('getAllOrders as caterer method', () => {
+	describe('getAllOrders method as caterer', () => {
 		it('should call next on err', async () => {
 			 try{
         const next = sinon.spy();
@@ -49,13 +49,14 @@ describe('Order Controller', () => {
       } 
 		})
 	})
-  describe('getAllOrders method', () => {
+  describe('getAllOrders method as customer', () => {
     it('should call next on err', async () => {
        try{
         const next = sinon.spy();
         const req = mockReq({
           user: {
             id: 47345654353534,
+            role: 'customer'
            }
         });
         await OrderController.getAllOrders(req, res, next);
@@ -71,7 +72,10 @@ describe('Order Controller', () => {
         const next = sinon.spy();
         const req = mockReq({
           body: {
-            mealId: 'asdfas'
+            mealId: 'asdfsaf',
+            quantity: 'asdfasdf',
+            deliveryAddress: 2342,
+            phoneNumber: 23423
           }
         });
         req.order = await order.find({

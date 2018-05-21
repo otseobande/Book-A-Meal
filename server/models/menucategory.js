@@ -28,6 +28,7 @@ const menuCategory = (sequelize, DataTypes) => {
   MenuCategory.prototype.toJSON = function () {
     const values = {...this.get()};
 
+    delete values.menuId;
     delete values.createdAt;
     delete values.updatedAt;
     delete values.deletedAt;

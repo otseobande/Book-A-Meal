@@ -3,7 +3,7 @@ import {
   sinon,
   mockReq,
   mockRes,
-  token
+  adminToken as token
 } from '../setup';
 import stripToken from '../../helpers/stripToken';
 

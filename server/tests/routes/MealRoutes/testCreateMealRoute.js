@@ -1,14 +1,14 @@
 import {
   chai,
   App,
-  token
+  adminToken
 } from '../../setup'
 
 describe('POST /api/v1/meals', function() {
   it('should return a success status', async function() {
     const res = await chai.request(App)
       .post('/api/v1/meals')
-      .set('Authorization',  `Bearer ${token}`)
+      .set('Authorization',  `Bearer ${adminToken}`)
       .send({
           title: 'test meal',
           description: 'great meal',
@@ -23,7 +23,7 @@ describe('POST /api/v1/meals', function() {
   it('should return an if a user tries creating a meal twice', async function() {
     const res = await chai.request(App)
       .post('/api/v1/meals')
-      .set('Authorization',  `Bearer ${token}`)
+      .set('Authorization',  `Bearer ${adminToken}`)
       .send({
           title: 'test meal',
           description: 'great meal',
@@ -42,7 +42,7 @@ describe('POST /api/v1/meals', function() {
   it('malformed request should return error 400', async function() {
     const res = await chai.request(App)
         .post('/api/v1/meals')
-        .set('Authorization',  `Bearer ${token}`)
+        .set('Authorization',  `Bearer ${adminToken}`)
         .send({
             title: 'test meal',
         });

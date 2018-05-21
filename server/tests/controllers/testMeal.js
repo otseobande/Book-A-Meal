@@ -3,7 +3,6 @@ import {
   sinon,
   mockReq,
   mockRes,
-  token
 } from '../setup';
 import MealController from '../../controllers/mealController';
 

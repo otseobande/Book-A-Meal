@@ -1,6 +1,4 @@
 import { order as orders, meal as meals } from '../models';
-import deepFlatten from '../helpers/deepFlatten';
-
 
 /**
  * @exports
@@ -61,7 +59,7 @@ class OrderController {
       })
       .catch(err => next(err));
   }
-  
+
   /**
    * Gets all orders
    *
@@ -73,10 +71,10 @@ class OrderController {
    */
   static getAllOrders(req, res, next) {
     let findOrders = orders.findAll();
-    switch(req.user.role){
-      case 'caterer': 
-        findOrders = orders.scope({method: ['caterer', req.user.id]})
-        .findAll();
+    switch (req.user.role) {
+      case 'caterer':
+        findOrders = orders.scope({ method: ['caterer', req.user.id] })
+          .findAll();
         break;
       case 'customer':
         findOrders = orders.findAll({
@@ -85,12 +83,14 @@ class OrderController {
           }
         });
         break;
+      default:
+        break;
     }
-    
+
     return findOrders
-      .then(customersOrders => res.status(200).json({
+      .then(foundOrders => res.status(200).json({
         status: 'success',
-        orders: customersOrders
+        orders: foundOrders
       }))
       .catch(err => next(err));
   }
@@ -143,7 +143,7 @@ class OrderController {
   static deliverOrder(req, res, next) {
     const { orderId } = req.params;
 
-    return orders.scope({method: ['caterer', req.user.id]})
+    return orders.scope({ method: ['caterer', req.user.id] })
       .findAll()
       .then(mealOrders => mealOrders.find(order => order.id === orderId))
       .then((order) => {

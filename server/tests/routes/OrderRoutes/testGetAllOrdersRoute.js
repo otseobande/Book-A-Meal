@@ -1,7 +1,7 @@
 import {
   chai,
   App,
-  token,
+  catererToken,
   customerToken
 } from '../../setup';
 
@@ -9,7 +9,7 @@ describe('GET /api/v1/orders', () => {
   it('should return a success status', async function() {
     const res = await chai.request(App)
       .get('/api/v1/orders')
-      .set('Authorization',  `Bearer ${token}`);
+      .set('Authorization',  `Bearer ${catererToken}`);
 
     res.should.have.status(200);
   });

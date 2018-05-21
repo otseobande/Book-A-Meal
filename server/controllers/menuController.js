@@ -58,32 +58,32 @@ class MenuController {
           return menu.create({
             userId: req.user.id,
             title,
-            date: date || moment()
-          });
-        }
-      })
-      .then((createdMenu) => {
-        if (createdMenu && categories) {
-          const createCategoryPromises = categories.map(category => menuCategory.create({
-            menuId: createdMenu.id,
-            title: category.title,
-            meals: category.mealId
+            date: date || req.params.date || moment(),
+            categories
+          }, {
+            include: [{
+              model: menuCategory,
+              as: 'categories'
+            }]
           })
-            .then(createdMenuCategory => createdMenuCategory.setMeals(category.mealIds)));
-          return createCategoryPromises;
+            .then(newMenu => newMenu.getCategories())
+            .then((menuCategories) => {
+              const setMeals = menuCategories.map((category) => {
+                const { meals } = categories
+                  .find(reqCategory => reqCategory.title === category.title);
+
+                return category.setMeals(meals);
+              });
+              return Promise.all(setMeals);
+            })
+            .then(() => menu.findOne({
+              where: {
+                date: date || req.params.date || moment(),
+                userId: req.user.id
+              }
+            }));
         }
-      })
-      .then((createCategoryPromises) => {
-        if (createCategoryPromises && createCategoryPromises.length > 0) {
-          return Promise.all(createCategoryPromises);
-        }
-      })
-      .then(() => menu.findOne({
-        where: {
-          date,
-          userId: req.user.id
-        }
-      }));
+      });
   }
 
   /**
@@ -165,7 +165,7 @@ class MenuController {
    */
   static updateMenu(req, res, next) {
     const { date } = req.params;
-    req.date = date;
+
     const givenDate = moment(date);
     const findMenu = menu.find({
       where: {
@@ -174,36 +174,34 @@ class MenuController {
       }
     });
 
-    if (!req.body.categories) {
-      return findMenu
+    let updateMenu = {};
+
+    if (req.body.categories) {
+      updateMenu = findMenu
         .then((foundMenu) => {
           if (foundMenu) {
-            foundMenu.updateAttributes(req.body);
-            return res.status(200).json({
-              status: 'success',
-              message: 'Menu updated successfully',
-              menu: foundMenu
-            });
+            return foundMenu.destroy();
           }
 
           MenuController.sendNotFoundResponse(res);
         })
-        .catch(err => next(err));
+        .then((rows) => {
+          if (rows) {
+            return MenuController.createMenuHelper(req, res);
+          }
+        });
+    } else {
+      updateMenu = findMenu
+        .then((foundMenu) => {
+          if (foundMenu) {
+            return foundMenu.updateAttributes(req.body);
+          }
+
+          MenuController.sendNotFoundResponse(res);
+        });
     }
 
-    return findMenu
-      .then((foundMenu) => {
-        if (foundMenu) {
-          return foundMenu.destroy();
-        }
-
-        MenuController.sendNotFoundResponse(res);
-      })
-      .then((rows) => {
-        if (rows) {
-          return MenuController.createMenuHelper(req, res);
-        }
-      })
+    return updateMenu
       .then((updatedMenu) => {
         if (updatedMenu) {
           return res.status(200).json({

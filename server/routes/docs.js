@@ -13,10 +13,10 @@ const options = {
       background-color: #e54310;
     }
     .swagger-ui .topbar .download-url-wrapper .download-url-button {
-      background-color: #952d26;
+      background-color: #8b2809;
     }
     .swagger-ui .topbar .download-url-wrapper input[type=text]{
-      border-color: #952d26;
+      border-color: #8b2809;
     }
   `
 };

@@ -24,6 +24,7 @@ const menu = (sequelize, DataTypes) => {
   Menu.prototype.toJSON = function () {
     const values = {...this.get()};
 
+    delete values.userId;
     delete values.createdAt;
     delete values.updatedAt;
     delete values.deletedAt;
@@ -37,6 +38,10 @@ const menu = (sequelize, DataTypes) => {
       hooks: true,
       as: 'categories'
     });
+    Menu.belongsTo(models.user, {
+      as: 'caterer',
+      foreignKey: 'userId'
+    })
   };
   return Menu;
 };
