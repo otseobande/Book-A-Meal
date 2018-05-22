@@ -23,6 +23,19 @@ const config = {
   jwtExpiry: process.env.JWT_EXPIRY,
   orderExpiry: process.env.ORDER_EXPIRY,
   openTime: process.env.OPEN_TIME,
-  closeTime: process.env.CLOSE_TIME
+  closeTime: process.env.CLOSE_TIME,
+
+  mail: {
+    smtpConfig: {
+      host: process.env.MAIL_HOST,
+      port: process.env.MAIL_PORT,
+      secure: false,
+      auth: {
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS
+      }
+    }
+  }
+ 
 }
 export default config;

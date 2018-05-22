@@ -1,5 +1,5 @@
-import OrderCreated from './OrderCreated';
+import SendOrderCreatedNotifications from './SendOrderCreatedNotifications';
 
 export default {
-  OrderCreated
+  SendOrderCreatedNotifications
 };

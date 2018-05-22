@@ -12,8 +12,7 @@ const categories = Joi.array().items(Joi.object().keys({
       'uuidv4',
       'uuidv5'
     ]
-  })).unique().min(1)
-    .required()
+  })).unique().min(1).required()
 }));
 const date = Joi.string()
   .min(1)

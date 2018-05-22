@@ -1,14 +1,21 @@
-import { notification } from '../../models';
+import Notifier from '../../helpers/notifier';
 
-const OrderCreated = async (order) => {
+const SendOrderCreatedNotifications = async (order) => {
 	const meal = await order.getMeal();
-	const customerNotification = await notification.create({
+	const subject = 'Order Placed'
+	const customerNotifier = new Notifier({
 		userId: order.userId,
+		subject,
 		info: `Your order for "${meal.title}" was placed successfully and would be delivered within the next few minutes.`
-	});
+	})
+
+	await customerNotifier.saveToDb();
+	await customerNotifier.sendMail();
+
 	const customer = await order.getCustomer();
-	const catererNotification = await notification.create({
+	const catererNotifier = new Notifier({
 		userId: meal.userId,
+		subject,
 		info: `An order for "${meal.title}" was just made. Order details are:
 			- Quantity: ${order.quantity}
 			- Delivery Address: ${order.deliveryAddress}
@@ -17,6 +24,9 @@ const OrderCreated = async (order) => {
 			- Customer Email: ${customer.email}
 		`
 	});
+
+	await catererNotifier.saveToDb();
+	await catererNotifier.sendMail();
 };
 
-export default OrderCreated;
+export default SendOrderCreatedNotifications;

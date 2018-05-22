@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import Sequelize from 'sequelize';
-import sequelizeConfig from '../config/config';
+import sequelizeConfig from '../config/dbConfig';
 import config from '../config';
 import addScopes from '../helpers/addScopes';
 
