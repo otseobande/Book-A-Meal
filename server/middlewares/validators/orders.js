@@ -62,7 +62,7 @@ const validateExpiry = (req, res, next) =>
   })
     .then((foundOrder) => {
       if (foundOrder) {
-        if (moment(foundOrder.createdAt).add(config.orderExpiry, 'hours') < moment()) {
+        if (moment(foundOrder.createdAt).add(config.orderExpiry, 'minutes') < moment()) {
           return res.status(422).json({
             status: 'error',
             message: 'order modification has expired'
