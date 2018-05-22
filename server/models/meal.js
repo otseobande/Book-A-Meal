@@ -31,6 +31,7 @@ const meal = (sequelize, DataTypes) => {
   Meal.prototype.toJSON = function () {
     const values = {...this.get()};
 
+    delete values.userId;
     delete values.createdAt;
     delete values.updatedAt;
     delete values.deletedAt;
@@ -40,6 +41,10 @@ const meal = (sequelize, DataTypes) => {
   
   Meal.associate = (models) => {
     Meal.hasMany(models.order);
+    Meal.belongsTo(models.user, {
+      as: 'caterer',
+      foreignKey: 'userId'
+    });
     Meal.belongsToMany(models.menuCategory, {
       through: 'mealMenuCategory',
       foreignKey: 'mealId',

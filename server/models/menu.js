@@ -1,4 +1,3 @@
-
 /**
  * @model
  * @param  {object} sequelize - Sequelize DB connection object
@@ -20,14 +19,12 @@ const menu = (sequelize, DataTypes) => {
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE
   }, {
-    defaultScope: {
-      attributes: { exclude: ['createdAt', 'updatedAt', 'deletedAt'] },
-    },
   });
 
   Menu.prototype.toJSON = function () {
     const values = {...this.get()};
 
+    delete values.userId;
     delete values.createdAt;
     delete values.updatedAt;
     delete values.deletedAt;
@@ -38,8 +35,13 @@ const menu = (sequelize, DataTypes) => {
   Menu.associate = (models) => {
     Menu.hasMany(models.menuCategory, {
       onDelete: 'CASCADE',
-      hooks: true
+      hooks: true,
+      as: 'categories'
     });
+    Menu.belongsTo(models.user, {
+      as: 'caterer',
+      foreignKey: 'userId'
+    })
   };
   return Menu;
 };

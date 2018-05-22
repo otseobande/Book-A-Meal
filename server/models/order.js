@@ -1,4 +1,3 @@
-
 /**
  * @model
  * @param  {object} sequelize - Sequelize DB connection object
@@ -24,28 +23,24 @@ const order = (sequelize, DataTypes) => {
     updatedAt: DataTypes.DATE
   }, {
     paranoid: true,
-    defaultScope: {
-      attributes: { exclude: ['deletedAt', 'updatedAt'] },
-    },
   });
 
   Order.prototype.toJSON = function () {
     const values = {...this.get()};
 
-    delete values.updatedAt;
+    delete values.mealId;
+    delete values.userId;
     delete values.deletedAt;
     
     return values;
   }
 
   Order.associate = (models) => {
-    Order.belongsToMany(models.user, {
-      through: {
-        model: models.meal
-      },
-      as: 'catererOrders',
+    Order.belongsTo(models.user,{
+      as: 'customer',
       foreignKey: 'userId'
     });
+    Order.belongsTo(models.meal);
   };
   return Order;
 };

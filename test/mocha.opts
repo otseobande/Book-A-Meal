@@ -2,3 +2,4 @@
 --require regenerator-runtime/runtime 
 --exit 
 --recursive
+--timeout 10000

@@ -10,6 +10,7 @@ describe('unspecified routes', () => {
 			.get('/');
 		res.should.have.status(200);
 		res.body.should.be.deep.equal({
+			status: 'success',
 		  message: 'Welcome to Book-A-Meal'
 		})
 		
@@ -19,6 +20,7 @@ describe('unspecified routes', () => {
 			.get('/kangaroo');
 		res.should.have.status(404);
 		res.body.should.be.deep.equal({
+			status: 'error',
 		  message: 'Route not found'
 		})
 	})

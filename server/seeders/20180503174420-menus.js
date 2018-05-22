@@ -21,6 +21,12 @@ export default {
       date: '2018-06-26'
     },
     {
+      id: '2a19ef38-856c-403b-8726-229e47beef37',
+      userId: 'e20ac257-86cc-4a6f-a619-0249a201c475',
+      title: 'Nigerian menu',
+      date: '2018-07-26'
+    },
+    {
       id: 'cdf0351d-d2c9-4303-a56f-fd33bb437491',
       userId: 'e20ac257-86cc-4a6f-a619-0249a201c475',
       title: 'cameroon menu',

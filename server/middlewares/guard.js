@@ -10,7 +10,7 @@ const guard = role => (req, res, next) => {
     throw TypeError('Please pass a string as a role');
   }
 
-  if (req.user.role === role) {
+  if (req.user.role === role || req.user.role === 'admin') {
     return next();
   }
 

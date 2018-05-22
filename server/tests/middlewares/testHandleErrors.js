@@ -12,7 +12,6 @@ const validationError = {
   statusText: "Bad Request",
   errors: [
     {
-      field: [],
       messages: []
     }
   ]
@@ -27,9 +26,8 @@ describe('handleErrors middleware', () => {
 
 		res.status.should.have.been.calledWith(400);
     res.json.should.have.been.calledWith({ 
-      errors: { fields: [], messages: [] }, 
+      message: [], 
       status: 'error', 
-      statusText: "Bad Request" 
     })
   });
 
@@ -38,7 +36,8 @@ describe('handleErrors middleware', () => {
 
     res.status.should.have.been.calledWith(500);
     res.json.should.have.been.calledWith({
-      error: error.stack
+      status: 'error',
+      message: error.stack
     })
   })
 
@@ -47,7 +46,8 @@ describe('handleErrors middleware', () => {
 
     res.status.should.have.been.calledWith(500);
     res.json.should.have.been.calledWith({
-      error: 'something went wrong'
+      status: 'error',
+      message: 'something went wrong'
     })
   })
 

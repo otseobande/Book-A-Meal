@@ -1,0 +1,1492 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Book-A-Meal is an application that allows customers to make food orders and helps the food vendor know what the customers want to eat. You can view the repo at [http://github.com/otseobande/Book-A-Meal](http://github.com/otseobande/Book-A-Meal).",
+    "version" : "1.0",
+    "title" : "Book-A-Meal"
+  },
+  "host" : "meal-booking.herokuapp.com",
+  "basePath" : "/api/v1",
+  "tags" : [ {
+    "name" : "Authentication",
+    "description" : "Login and signup operations"
+  }, {
+    "name" : "Meals",
+    "description" : "Operations on meals"
+  }, {
+    "name" : "Menu",
+    "description" : "Operations on menus"
+  }, {
+    "name" : "Orders",
+    "description" : "Operations on orders"
+  } ],
+  "schemes" : [ "https" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/auth/login" : {
+      "post" : {
+        "tags" : [ "Authentication" ],
+        "summary" : "Creates a token and gets user object for a registered user",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/UserLogin"
+          },
+          "x-examples" : {
+            "application/json" : "{\r\n\t\"username\": \"otseobande\",\r\n\t\"password\": \"bookameal\"\r\n}"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "login successful",
+            "schema" : {
+              "$ref" : "#/definitions/AuthResponse"
+            }
+          },
+          "400" : {
+            "description" : "Please check your credentials",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          }
+        }
+      }
+    },
+    "/auth/signup" : {
+      "post" : {
+        "tags" : [ "Authentication" ],
+        "summary" : "Registers a new user and creates a token for that user",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/NewUser"
+          },
+          "x-examples" : {
+            "application/json" : "{\n  \"username\": \"cookie\",\n  \"fullName\": \"Sele Mege\",\n  \"email\": \"cookie@gmail.com\",\n  \"password\": \"bookameal\",\n  \"role\": \"customer\"\n}"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "User signed up successfully",
+            "schema" : {
+              "$ref" : "#/definitions/AuthResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "409" : {
+            "description" : "Username or email is already in use.",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          }
+        }
+      }
+    },
+    "/meals" : {
+      "get" : {
+        "tags" : [ "Meals" ],
+        "summary" : "Gets all meals (caterer)",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200"
+            }
+          },
+          "401" : {
+            "description" : "Token is invalid or not provided",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "403" : {
+            "description" : "You don't have the right privileges to access this route.",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "AuthorizationHeader" : [ ]
+        }, {
+          "tokenInHeader" : [ ]
+        }, {
+          "tokenInQuery" : [ ]
+        } ]
+      },
+      "post" : {
+        "tags" : [ "Meals" ],
+        "summary" : "Creates a meal (caterer)",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/CreateMeal"
+          },
+          "x-examples" : {
+            "application/json" : "{\n  \"title\": \"Amazing meal\",\n  \"description\": \"Made with the finest ingredients\",\n  \"price\": 1500,\n  \"img\": \"http://asdffs.com/dsf.jpg\"\n}"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Created",
+            "schema" : {
+              "$ref" : "#/definitions/MealResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "401" : {
+            "description" : "Token is invalid or not provided",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "403" : {
+            "description" : "You don't have the right privileges to access this route.",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "409" : {
+            "description" : "Meal already exists.",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "AuthorizationHeader" : [ ]
+        }, {
+          "tokenInHeader" : [ ]
+        }, {
+          "tokenInQuery" : [ ]
+        } ]
+      }
+    },
+    "/meal/{mealId}" : {
+      "get" : {
+        "tags" : [ "Meals" ],
+        "summary" : "Gets a meal by id (caterer)",
+        "parameters" : [ {
+          "name" : "mealId",
+          "in" : "path",
+          "description" : "meal id (UUID)",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_1"
+            }
+          },
+          "400" : {
+            "description" : "Bad request (check that UUID is valid)",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "401" : {
+            "description" : "Token is invalid or not provided",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "403" : {
+            "description" : "You don't have the right privileges to access this route.",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "404" : {
+            "description" : "Meal not found",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "AuthorizationHeader" : [ ]
+        }, {
+          "tokenInHeader" : [ ]
+        }, {
+          "tokenInQuery" : [ ]
+        } ]
+      },
+      "put" : {
+        "tags" : [ "Meals" ],
+        "summary" : "Edits/updates a meal (caterer)",
+        "parameters" : [ {
+          "name" : "mealId",
+          "in" : "path",
+          "description" : "meal id (UUID)",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Provide at least one field",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/CreateMeal"
+          },
+          "x-examples" : {
+            "application/json" : "{\n  \"title\": \"Amazing meal\",\n  \"description\": \"Made with the finest ingredients\",\n  \"price\": 1500,\n  \"img\": \"http://asdffs.com/dsf.jpg\"\n}"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful",
+            "schema" : {
+              "$ref" : "#/definitions/MealResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "401" : {
+            "description" : "Token is invalid or not provided",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "403" : {
+            "description" : "You don't have the right privileges to access this route.",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "404" : {
+            "description" : "Meal not found",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "AuthorizationHeader" : [ ]
+        } ]
+      },
+      "delete" : {
+        "tags" : [ "Meals" ],
+        "summary" : "Gets a meal by id (caterer)",
+        "parameters" : [ {
+          "name" : "mealId",
+          "in" : "path",
+          "description" : "meal id (UUID)",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad request (check that UUID is valid)",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "401" : {
+            "description" : "Token is invalid or not provided",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "403" : {
+            "description" : "You don't have the right privileges to access this route.",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "404" : {
+            "description" : "Meal not found",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "AuthorizationHeader" : [ ]
+        }, {
+          "tokenInHeader" : [ ]
+        }, {
+          "tokenInQuery" : [ ]
+        } ]
+      }
+    },
+    "/menu" : {
+      "get" : {
+        "tags" : [ "Menu" ],
+        "summary" : "Gets menu for today",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "successful",
+            "schema" : {
+              "$ref" : "#/definitions/MenuResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad request",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "401" : {
+            "description" : "Token is invalid or not provided",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "404" : {
+            "description" : "Menu not yet set for this day",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "AuthorizationHeader" : [ ]
+        }, {
+          "tokenInHeader" : [ ]
+        }, {
+          "tokenInQuery" : [ ]
+        } ]
+      },
+      "post" : {
+        "tags" : [ "Menu" ],
+        "summary" : "Creates a menu (caterer)",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Omit the date field to create menu for the day",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/CreateMenuRequest"
+          },
+          "x-examples" : {
+            "application/json" : "{\r\n    \"title\": \"test menu\",\r\n    \"date\": \"2020-05-09\",\r\n    \"categories\": [{\r\n        \"title\": \"Benue style\",\r\n        \"mealIds\": [\"e20ac257-86cc-4a6f-a619-0249a201c475\", \"ba8e1fd3-926f-44c9-a7b3-218aedab8c12\"]\r\n      },\r\n      { \r\n        \"title\": \"Jacuzzi paruzi\",\r\n        \"mealIds\": [\"ba8e1fd3-926f-44c9-a7b3-218aedab8c12\", \"fa56c9e7-e5f4-4086-b7e9-db581201b71f\"]\r\n      }\r\n    ]\r\n  }"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Menu created successfully",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad request",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "401" : {
+            "description" : "Token is invalid or not provided",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "403" : {
+            "description" : "You don't have the right privileges to access this route.",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "AuthorizationHeader" : [ ]
+        }, {
+          "tokenInHeader" : [ ]
+        }, {
+          "tokenInQuery" : [ ]
+        } ]
+      }
+    },
+    "/menu/{date}" : {
+      "get" : {
+        "tags" : [ "Menu" ],
+        "summary" : "Gets menu for a specific day",
+        "parameters" : [ {
+          "name" : "date",
+          "in" : "path",
+          "description" : "menu date (YYYY-MM-DD)",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful",
+            "schema" : {
+              "$ref" : "#/definitions/MenuResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad request",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "401" : {
+            "description" : "Token is invalid or not provided",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "404" : {
+            "description" : "Menu not set for this day",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "AuthorizationHeader" : [ ]
+        }, {
+          "tokenInHeader" : [ ]
+        }, {
+          "tokenInQuery" : [ ]
+        } ]
+      },
+      "put" : {
+        "tags" : [ "Menu" ],
+        "summary" : "Edits/updates a menu",
+        "parameters" : [ {
+          "name" : "date",
+          "in" : "path",
+          "description" : "menu date (YYYY-MM-DD)",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Provide at least one field",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/CreateMenuRequest"
+          },
+          "x-examples" : {
+            "application/json" : "{\r\n    \"title\": \"test menu\",\r\n    \"date\": \"2020-05-09\",\r\n    \"categories\": [{\r\n        \"title\": \"Benue style\",\r\n        \"meals\": [\"e20ac257-86cc-4a6f-a619-0249a201c475\", \"ba8e1fd3-926f-44c9-a7b3-218aedab8c12\"]\r\n      },\r\n      { \r\n        \"title\": \"Jacuzzi paruzi\",\r\n        \"mealIds\": [\"ba8e1fd3-926f-44c9-a7b3-218aedab8c12\", \"fa56c9e7-e5f4-4086-b7e9-db581201b71f\"]\r\n      }\r\n    ]\r\n  }"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful",
+            "schema" : {
+              "$ref" : "#/definitions/MenuResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad request",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "401" : {
+            "description" : "Token is invalid or not provided",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "403" : {
+            "description" : "You don't have the right privileges to access this route.",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "404" : {
+            "description" : "Menu not set for this day",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "AuthorizationHeader" : [ ]
+        }, {
+          "tokenInHeader" : [ ]
+        }, {
+          "tokenInQuery" : [ ]
+        } ]
+      },
+      "delete" : {
+        "tags" : [ "Menu" ],
+        "summary" : "Deletes for a specific day",
+        "parameters" : [ {
+          "name" : "date",
+          "in" : "path",
+          "description" : "menu date (YYYY-MM-DD)",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad request",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "401" : {
+            "description" : "Token is invalid or not provided",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "404" : {
+            "description" : "Menu not set for this day",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "AuthorizationHeader" : [ ]
+        }, {
+          "tokenInHeader" : [ ]
+        }, {
+          "tokenInQuery" : [ ]
+        } ]
+      }
+    },
+    "/orders" : {
+      "get" : {
+        "tags" : [ "Orders" ],
+        "summary" : "Gets all orders made if user is a customer and gets all orders made by customers if user is a caterer",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "successful",
+            "schema" : {
+              "$ref" : "#/definitions/Orders"
+            }
+          },
+          "401" : {
+            "description" : "Token is invalid or not provided",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "AuthorizationHeader" : [ ]
+        }, {
+          "tokenInHeader" : [ ]
+        }, {
+          "tokenInQuery" : [ ]
+        } ]
+      },
+      "post" : {
+        "tags" : [ "Orders" ],
+        "summary" : "Creates a new order",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/OrderRequest"
+          },
+          "x-examples" : {
+            "application/json" : "{\r\n  \"mealId\": \"64c45c00-ed18-44b7-862a-f12d0481696c\",\r\n  \"quantity\": 3,\r\n  \"phoneNumber\": \"08131928452\",\r\n  \"deliveryAddress\": \"rahama road\"\r\n}"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Order created successfully",
+            "schema" : {
+              "$ref" : "#/definitions/OrderResponse"
+            }
+          },
+          "401" : {
+            "description" : "Token is invalid or not provided",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "AuthorizationHeader" : [ ]
+        }, {
+          "tokenInHeader" : [ ]
+        }, {
+          "tokenInQuery" : [ ]
+        } ]
+      }
+    },
+    "/order/{orderId}" : {
+      "put" : {
+        "tags" : [ "Orders" ],
+        "summary" : "Edit/updates an order",
+        "parameters" : [ {
+          "name" : "orderId",
+          "in" : "path",
+          "description" : "order id (UUID)",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Order modification is only available for 3 hours after order has been made",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/OrderRequest"
+          },
+          "x-examples" : {
+            "application/json" : "{\r\n  \"mealId\": \"64c45c00-ed18-44b7-862a-f12d0481696c\",\r\n  \"quantity\": 3,\r\n  \"phoneNumber\": \"08131928452\",\r\n  \"deliveryAddress\": \"rahama road\"\r\n}"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Order created successfully",
+            "schema" : {
+              "$ref" : "#/definitions/OrderResponse"
+            }
+          },
+          "401" : {
+            "description" : "Token is invalid or not provided",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "404" : {
+            "description" : "Order not found",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "AuthorizationHeader" : [ ]
+        }, {
+          "tokenInHeader" : [ ]
+        }, {
+          "tokenInQuery" : [ ]
+        } ]
+      }
+    },
+    "/order/{orderId}/deliver" : {
+      "put" : {
+        "tags" : [ "Orders" ],
+        "summary" : "Marks an order as delivered",
+        "parameters" : [ {
+          "name" : "orderId",
+          "in" : "path",
+          "description" : "order id (UUID)",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Order delivered successfully",
+            "schema" : {
+              "$ref" : "#/definitions/OrderResponse"
+            }
+          },
+          "401" : {
+            "description" : "Token is invalid or not provided",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "404" : {
+            "description" : "Order not found",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "AuthorizationHeader" : [ ]
+        }, {
+          "tokenInHeader" : [ ]
+        }, {
+          "tokenInQuery" : [ ]
+        } ]
+      }
+    }
+  },
+  "securityDefinitions" : {
+    "AuthorizationHeader" : {
+      "type" : "apiKey",
+      "name" : "Authorization",
+      "in" : "header"
+    },
+    "tokenInHeader" : {
+      "type" : "apiKey",
+      "name" : "token",
+      "in" : "header"
+    },
+    "tokenInQuery" : {
+      "type" : "apiKey",
+      "name" : "token",
+      "in" : "query"
+    }
+  },
+  "definitions" : {
+    "User" : {
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "fullName" : {
+          "type" : "string"
+        },
+        "username" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "role" : {
+          "type" : "string",
+          "enum" : [ "caterer", "customer", "admin" ]
+        }
+      },
+      "example" : {
+        "role" : "caterer",
+        "fullName" : "fullName",
+        "id" : "id",
+        "email" : "email",
+        "username" : "username"
+      }
+    },
+    "UserLogin" : {
+      "properties" : {
+        "username" : {
+          "type" : "string"
+        },
+        "password" : {
+          "type" : "string"
+        }
+      },
+      "example" : {
+        "password" : "password",
+        "username" : "username"
+      }
+    },
+    "NewUser" : {
+      "properties" : {
+        "username" : {
+          "type" : "string"
+        },
+        "fullName" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "password" : {
+          "type" : "string"
+        },
+        "role" : {
+          "type" : "string",
+          "enum" : [ "caterer", "customer", "admin" ]
+        }
+      },
+      "example" : {
+        "password" : "password",
+        "role" : "caterer",
+        "fullName" : "fullName",
+        "email" : "email",
+        "username" : "username"
+      }
+    },
+    "Meal" : {
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "title" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "price" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "img" : {
+          "type" : "string"
+        },
+        "caterer" : {
+          "$ref" : "#/definitions/User"
+        }
+      },
+      "example" : {
+        "caterer" : {
+          "role" : "caterer",
+          "fullName" : "fullName",
+          "id" : "id",
+          "email" : "email",
+          "username" : "username"
+        },
+        "img" : "img",
+        "price" : 0,
+        "description" : "description",
+        "id" : "id",
+        "title" : "title"
+      }
+    },
+    "MealResponse" : {
+      "properties" : {
+        "status" : {
+          "type" : "string"
+        },
+        "message" : {
+          "type" : "string"
+        },
+        "meal" : {
+          "$ref" : "#/definitions/Meal"
+        }
+      },
+      "example" : {
+        "meal" : {
+          "caterer" : {
+            "role" : "caterer",
+            "fullName" : "fullName",
+            "id" : "id",
+            "email" : "email",
+            "username" : "username"
+          },
+          "img" : "img",
+          "price" : 0,
+          "description" : "description",
+          "id" : "id",
+          "title" : "title"
+        },
+        "message" : "message",
+        "status" : "status"
+      }
+    },
+    "Menu" : {
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "title" : {
+          "type" : "string"
+        },
+        "date" : {
+          "type" : "string"
+        },
+        "categories" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/MenuCategories"
+          }
+        },
+        "caterer" : {
+          "$ref" : "#/definitions/User"
+        }
+      },
+      "example" : {
+        "date" : "date",
+        "caterer" : {
+          "role" : "caterer",
+          "fullName" : "fullName",
+          "id" : "id",
+          "email" : "email",
+          "username" : "username"
+        },
+        "id" : "id",
+        "categories" : [ {
+          "id" : "id",
+          "title" : "title",
+          "meals" : [ {
+            "img" : "img",
+            "price" : 0,
+            "description" : "description",
+            "id" : "id",
+            "title" : "title",
+            "userId" : "userId"
+          }, {
+            "img" : "img",
+            "price" : 0,
+            "description" : "description",
+            "id" : "id",
+            "title" : "title",
+            "userId" : "userId"
+          } ]
+        }, {
+          "id" : "id",
+          "title" : "title",
+          "meals" : [ {
+            "img" : "img",
+            "price" : 0,
+            "description" : "description",
+            "id" : "id",
+            "title" : "title",
+            "userId" : "userId"
+          }, {
+            "img" : "img",
+            "price" : 0,
+            "description" : "description",
+            "id" : "id",
+            "title" : "title",
+            "userId" : "userId"
+          } ]
+        } ],
+        "title" : "title"
+      }
+    },
+    "Meals" : {
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "userId" : {
+          "type" : "string"
+        },
+        "title" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "price" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "img" : {
+          "type" : "string"
+        }
+      },
+      "example" : {
+        "img" : "img",
+        "price" : 0,
+        "description" : "description",
+        "id" : "id",
+        "title" : "title",
+        "userId" : "userId"
+      }
+    },
+    "Order" : {
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "customer" : {
+          "$ref" : "#/definitions/User"
+        },
+        "meal" : {
+          "$ref" : "#/definitions/Meal"
+        },
+        "quantity" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "status" : {
+          "type" : "string"
+        },
+        "deliveryAddress" : {
+          "type" : "string"
+        },
+        "phoneNumber" : {
+          "type" : "string"
+        },
+        "createdAt" : {
+          "type" : "string"
+        },
+        "updatedAt" : {
+          "type" : "string"
+        }
+      },
+      "example" : {
+        "meal" : {
+          "caterer" : {
+            "role" : "caterer",
+            "fullName" : "fullName",
+            "id" : "id",
+            "email" : "email",
+            "username" : "username"
+          },
+          "img" : "img",
+          "price" : 0,
+          "description" : "description",
+          "id" : "id",
+          "title" : "title"
+        },
+        "createdAt" : "createdAt",
+        "quantity" : 0,
+        "phoneNumber" : "phoneNumber",
+        "deliveryAddress" : "deliveryAddress",
+        "id" : "id",
+        "customer" : {
+          "role" : "caterer",
+          "fullName" : "fullName",
+          "id" : "id",
+          "email" : "email",
+          "username" : "username"
+        },
+        "status" : "status",
+        "updatedAt" : "updatedAt"
+      }
+    },
+    "MenuCategories" : {
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "title" : {
+          "type" : "string"
+        },
+        "meals" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Meals"
+          }
+        }
+      },
+      "example" : {
+        "id" : "id",
+        "title" : "title",
+        "meals" : [ {
+          "img" : "img",
+          "price" : 0,
+          "description" : "description",
+          "id" : "id",
+          "title" : "title",
+          "userId" : "userId"
+        }, {
+          "img" : "img",
+          "price" : 0,
+          "description" : "description",
+          "id" : "id",
+          "title" : "title",
+          "userId" : "userId"
+        } ]
+      }
+    },
+    "Categories" : {
+      "properties" : {
+        "title" : {
+          "type" : "string"
+        },
+        "meals" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      },
+      "example" : {
+        "title" : "title",
+        "meals" : [ "meals", "meals" ]
+      }
+    },
+    "DefaultResponse" : {
+      "properties" : {
+        "status" : {
+          "type" : "string"
+        },
+        "message" : {
+          "type" : "string"
+        }
+      },
+      "example" : {
+        "message" : "message",
+        "status" : "status"
+      }
+    },
+    "MenuResponse" : {
+      "properties" : {
+        "status" : {
+          "type" : "string"
+        },
+        "message" : {
+          "type" : "string"
+        },
+        "menu" : {
+          "$ref" : "#/definitions/Menu"
+        }
+      },
+      "example" : {
+        "message" : "message",
+        "menu" : {
+          "date" : "date",
+          "caterer" : {
+            "role" : "caterer",
+            "fullName" : "fullName",
+            "id" : "id",
+            "email" : "email",
+            "username" : "username"
+          },
+          "id" : "id",
+          "categories" : [ {
+            "id" : "id",
+            "title" : "title",
+            "meals" : [ {
+              "img" : "img",
+              "price" : 0,
+              "description" : "description",
+              "id" : "id",
+              "title" : "title",
+              "userId" : "userId"
+            }, {
+              "img" : "img",
+              "price" : 0,
+              "description" : "description",
+              "id" : "id",
+              "title" : "title",
+              "userId" : "userId"
+            } ]
+          }, {
+            "id" : "id",
+            "title" : "title",
+            "meals" : [ {
+              "img" : "img",
+              "price" : 0,
+              "description" : "description",
+              "id" : "id",
+              "title" : "title",
+              "userId" : "userId"
+            }, {
+              "img" : "img",
+              "price" : 0,
+              "description" : "description",
+              "id" : "id",
+              "title" : "title",
+              "userId" : "userId"
+            } ]
+          } ],
+          "title" : "title"
+        },
+        "status" : "status"
+      }
+    },
+    "OrderResponse" : {
+      "properties" : {
+        "status" : {
+          "type" : "string"
+        },
+        "message" : {
+          "type" : "string"
+        },
+        "order" : {
+          "$ref" : "#/definitions/Order"
+        }
+      },
+      "example" : {
+        "message" : "message",
+        "status" : "status",
+        "order" : {
+          "meal" : {
+            "caterer" : {
+              "role" : "caterer",
+              "fullName" : "fullName",
+              "id" : "id",
+              "email" : "email",
+              "username" : "username"
+            },
+            "img" : "img",
+            "price" : 0,
+            "description" : "description",
+            "id" : "id",
+            "title" : "title"
+          },
+          "createdAt" : "createdAt",
+          "quantity" : 0,
+          "phoneNumber" : "phoneNumber",
+          "deliveryAddress" : "deliveryAddress",
+          "id" : "id",
+          "customer" : {
+            "role" : "caterer",
+            "fullName" : "fullName",
+            "id" : "id",
+            "email" : "email",
+            "username" : "username"
+          },
+          "status" : "status",
+          "updatedAt" : "updatedAt"
+        }
+      }
+    },
+    "AuthResponse" : {
+      "properties" : {
+        "status" : {
+          "type" : "string"
+        },
+        "user" : {
+          "$ref" : "#/definitions/User"
+        },
+        "token" : {
+          "type" : "string"
+        }
+      },
+      "example" : {
+        "user" : {
+          "role" : "caterer",
+          "fullName" : "fullName",
+          "id" : "id",
+          "email" : "email",
+          "username" : "username"
+        },
+        "status" : "status",
+        "token" : "token"
+      }
+    },
+    "Orders" : {
+      "properties" : {
+        "status" : {
+          "type" : "string"
+        },
+        "orders" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Order"
+          }
+        }
+      },
+      "example" : {
+        "orders" : [ {
+          "meal" : {
+            "caterer" : {
+              "role" : "caterer",
+              "fullName" : "fullName",
+              "id" : "id",
+              "email" : "email",
+              "username" : "username"
+            },
+            "img" : "img",
+            "price" : 0,
+            "description" : "description",
+            "id" : "id",
+            "title" : "title"
+          },
+          "createdAt" : "createdAt",
+          "quantity" : 0,
+          "phoneNumber" : "phoneNumber",
+          "deliveryAddress" : "deliveryAddress",
+          "id" : "id",
+          "customer" : {
+            "role" : "caterer",
+            "fullName" : "fullName",
+            "id" : "id",
+            "email" : "email",
+            "username" : "username"
+          },
+          "status" : "status",
+          "updatedAt" : "updatedAt"
+        }, {
+          "meal" : {
+            "caterer" : {
+              "role" : "caterer",
+              "fullName" : "fullName",
+              "id" : "id",
+              "email" : "email",
+              "username" : "username"
+            },
+            "img" : "img",
+            "price" : 0,
+            "description" : "description",
+            "id" : "id",
+            "title" : "title"
+          },
+          "createdAt" : "createdAt",
+          "quantity" : 0,
+          "phoneNumber" : "phoneNumber",
+          "deliveryAddress" : "deliveryAddress",
+          "id" : "id",
+          "customer" : {
+            "role" : "caterer",
+            "fullName" : "fullName",
+            "id" : "id",
+            "email" : "email",
+            "username" : "username"
+          },
+          "status" : "status",
+          "updatedAt" : "updatedAt"
+        } ],
+        "status" : "status"
+      }
+    },
+    "CreateMenuRequest" : {
+      "properties" : {
+        "title" : {
+          "type" : "string"
+        },
+        "date" : {
+          "type" : "string"
+        },
+        "categories" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Categories"
+          }
+        },
+        "token" : {
+          "type" : "string"
+        }
+      },
+      "example" : {
+        "date" : "date",
+        "categories" : [ {
+          "title" : "title",
+          "meals" : [ "meals", "meals" ]
+        }, {
+          "title" : "title",
+          "meals" : [ "meals", "meals" ]
+        } ],
+        "title" : "title",
+        "token" : "token"
+      }
+    },
+    "CreateMeal" : {
+      "properties" : {
+        "title" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "price" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "img" : {
+          "type" : "string"
+        },
+        "token" : {
+          "type" : "string"
+        }
+      },
+      "example" : {
+        "img" : "img",
+        "price" : 0,
+        "description" : "description",
+        "title" : "title",
+        "token" : "token"
+      }
+    },
+    "OrderRequest" : {
+      "properties" : {
+        "mealId" : {
+          "type" : "string"
+        },
+        "quantity" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "status" : {
+          "type" : "string"
+        },
+        "deliveryAddress" : {
+          "type" : "string"
+        },
+        "phoneNumber" : {
+          "type" : "string"
+        }
+      },
+      "example" : {
+        "mealId" : "mealId",
+        "quantity" : 0,
+        "phoneNumber" : "phoneNumber",
+        "deliveryAddress" : "deliveryAddress",
+        "status" : "status"
+      }
+    },
+    "inline_response_200" : {
+      "properties" : {
+        "status" : {
+          "type" : "string"
+        },
+        "meals" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Meal"
+          }
+        }
+      },
+      "example" : {
+        "status" : "status",
+        "meals" : [ {
+          "caterer" : {
+            "role" : "caterer",
+            "fullName" : "fullName",
+            "id" : "id",
+            "email" : "email",
+            "username" : "username"
+          },
+          "img" : "img",
+          "price" : 0,
+          "description" : "description",
+          "id" : "id",
+          "title" : "title"
+        }, {
+          "caterer" : {
+            "role" : "caterer",
+            "fullName" : "fullName",
+            "id" : "id",
+            "email" : "email",
+            "username" : "username"
+          },
+          "img" : "img",
+          "price" : 0,
+          "description" : "description",
+          "id" : "id",
+          "title" : "title"
+        } ]
+      }
+    },
+    "inline_response_200_1" : {
+      "properties" : {
+        "status" : {
+          "type" : "string"
+        },
+        "meal" : {
+          "$ref" : "#/definitions/Meal"
+        }
+      },
+      "example" : {
+        "meal" : {
+          "caterer" : {
+            "role" : "caterer",
+            "fullName" : "fullName",
+            "id" : "id",
+            "email" : "email",
+            "username" : "username"
+          },
+          "img" : "img",
+          "price" : 0,
+          "description" : "description",
+          "id" : "id",
+          "title" : "title"
+        },
+        "status" : "status"
+      }
+    }
+  }
+}

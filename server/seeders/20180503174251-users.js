@@ -8,7 +8,7 @@ export default {
       email: 'otseobande@gmail.com',
       username: 'otseobande',
       password: bcrypt.hashSync('bookameal', 10),
-      role: 'caterer'
+      role: 'admin'
     },
     {
       id: 'ba8e1fd3-926f-44c9-a7b3-218aedab8c12',

@@ -7,12 +7,12 @@ export default {
     },
     {
       id: '3e34854f-cb7d-4b68-989a-8eb5e0ca3211',
-      menuCategoryId: 'a7166d2c-3af2-438e-ba70-aa02d1a72fb5',
+      menuCategoryId: '36102abb-0f2b-4c35-8a1a-e0c32cf9d921',
       mealId: 'df12bd22-3326-4929-9cd6-a3805db52ca5'
     },
     {
       id: '4cbc7439-c5c6-4a2d-9f85-4b55714af4c0',
-      menuCategoryId: 'a7166d2c-3af2-438e-ba70-aa02d1a72fb5',
+      menuCategoryId: '36102abb-0f2b-4c35-8a1a-e0c32cf9d921',
       mealId: 'dd72bc9b-beb0-49c6-be7b-20106e8aa3d0'
     },
     {

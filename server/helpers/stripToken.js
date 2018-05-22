@@ -6,11 +6,12 @@
  * @return {string} token - Token gotten from req
  */
 const stripToken = (req) => {
-  if (req.headers.authorization &&
-    req.headers.authorization.split(' ')[0] === 'Bearer') {
-    const [, token] = req.headers.authorization.split(' ');
+  if (req.headers.authorization) {
+    return req.headers.authorization.replace('Bearer ', '');
+  }
 
-    return token;
+  if (req.headers.token) {
+    return req.headers.token;
   }
 
   if (req.query && req.query.token) {
@@ -20,6 +21,8 @@ const stripToken = (req) => {
   if (req.body && req.body.token) {
     return req.body.token;
   }
+
+  return '';
 };
 
 export default stripToken;

@@ -31,7 +31,7 @@ const orderId = Joi.string().guid({
   ]
 });
 
-const token = Joi.string().token();
+const token = Joi.string();
 
 
 export const validateReqBodyOnCreate = validate({
@@ -44,7 +44,6 @@ export const validateReqBodyOnCreate = validate({
     token
   }
 });
-
 
 /**
  * Check if the order is expired
@@ -90,6 +89,12 @@ const validateUpdateReqBody = validate({
     status,
     deliveryAddress,
     token
+  }
+});
+
+export const validateOrderId = validate({
+  params: {
+    orderId
   }
 });
 

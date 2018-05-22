@@ -3,6 +3,7 @@ import path from 'path';
 import Sequelize from 'sequelize';
 import sequelizeConfig from '../config/config';
 import config from '../config';
+import addScopes from '../helpers/addScopes';
 
 const env = config.env;
 const envConfig = sequelizeConfig[env];
@@ -42,5 +43,7 @@ Object.keys(db).forEach((modelName) => {
     db[modelName].associate(db);
   }
 });
+
+addScopes(db);
 
 export default db;

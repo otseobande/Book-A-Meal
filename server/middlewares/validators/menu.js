@@ -7,7 +7,7 @@ const title = Joi.string()
   .max(25);
 const categories = Joi.array().items(Joi.object().keys({
   title: Joi.string().min(1).required(),
-  mealIds: Joi.array().items(Joi.string().guid({
+  meals: Joi.array().items(Joi.string().guid({
     version: [
       'uuidv4',
       'uuidv5'
@@ -20,7 +20,7 @@ const date = Joi.string()
   .regex(/\d{4}-\d{1,2}-\d{1,2}/)
   .error(() => 'Date format should be "YYYY-DD-MM"');
 
-const token = Joi.string().token();
+const token = Joi.string();
 
 /**
  * Checks date and ensures date is valid

@@ -12,7 +12,7 @@ export default {
     },
     {
       id: '36102abb-0f2b-4c35-8a1a-e0c32cf9d921',
-      menuId: '0b0df326-6161-4c97-b5f3-8fa0384ac5cd',
+      menuId: 'cdf0351d-d2c9-4303-a56f-fd33bb437491',
       title: 'Tatalots'
     }
   ], {}),
