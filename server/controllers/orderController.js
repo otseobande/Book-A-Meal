@@ -155,7 +155,6 @@ class OrderController {
         }
       })
       .then((updatedOrder) => {
-        console.log(updatedOrder);
         if (updatedOrder) {
           return res.status(200).json({
             status: 'success',
