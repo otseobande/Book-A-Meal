@@ -160,11 +160,11 @@ class OrderController {
       .then((deliveredOrder) => {
         if (deliveredOrder) {
           req.app.emit('OrderDelivered', deliveredOrder);
-          
+
           return res.status(200).json({
             status: 'success',
             message: 'Order delivered successfully',
-            order: updatedOrder
+            order: deliveredOrder
           });
         }
 

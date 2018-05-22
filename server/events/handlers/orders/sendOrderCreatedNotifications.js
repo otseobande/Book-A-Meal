@@ -1,6 +1,6 @@
-import Notifier from '../../helpers/notifier';
+import Notifier from '../../../helpers/notifier';
 
-const SendOrderCreatedNotifications = async (order) => {
+const sendOrderCreatedNotifications = async (order) => {
 	const meal = await order.getMeal();
 	const subject = 'New Order'
 	const customerNotifier = new Notifier({
@@ -27,4 +27,4 @@ const SendOrderCreatedNotifications = async (order) => {
 	await catererNotifier.notify();
 };
 
-export default SendOrderCreatedNotifications;
+export default sendOrderCreatedNotifications;
