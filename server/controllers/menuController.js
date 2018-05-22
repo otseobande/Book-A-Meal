@@ -22,6 +22,14 @@ class MenuController {
     return MenuController.createMenuHelper(req, res)
       .then((createdMenu) => {
         if (createdMenu) {
+          const menuDate = moment(createdMenu.date);
+
+          if (menuDate.format('YYYY-MM-DD') === moment().format('YYYY-MM-DD')){
+            req.app.emit('MenuCreatedForToday', createdMenu);
+          } else {
+            req.app.emit('MenuCreated', createdMenu);
+          }
+
           res.status(201).json({
             status: 'success',
             message: 'Menu created successfully',
@@ -109,6 +117,8 @@ class MenuController {
     })
       .then((rows) => {
         if (rows > 0) {
+          req.app.emit('MenuDeleted', req.user.id);
+
           return res.status(200).json({
             status: 'success',
             message: 'menu deleted successfully'
@@ -205,6 +215,8 @@ class MenuController {
     return updateMenu
       .then((updatedMenu) => {
         if (updatedMenu) {
+          req.app.emit('MenuUpdated', updatedMenu);
+          
           return res.status(200).json({
             status: 'success',
             message: 'Menu updated successfully',

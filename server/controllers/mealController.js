@@ -40,11 +40,18 @@ class MealController {
           description,
           price,
           img
-        }).then(newMeal => res.status(201).json({
-          status: 'success',
-          message: 'Meal created successfully',
-          meal: newMeal
-        }));
+        })
+        .then(newMeal => {
+          if(newMeal){
+            req.app.emit('MealCreated', newMeal);
+
+            res.status(201).json({
+              status: 'success',
+              message: 'Meal created successfully',
+              meal: newMeal
+            })
+          }
+        });
       })
       .catch(err => next(err));
   }
@@ -69,6 +76,7 @@ class MealController {
     })
       .then((rows) => {
         if (rows > 0) {
+          req.app.emit('MealDeleted', req.user.id);
           return res.status(200).json({
             status: 'success',
             message: 'Meal deleted successfully'
@@ -168,6 +176,7 @@ class MealController {
       })
       .then((updatedMeal) => {
         if (updatedMeal) {
+          req.app.emit('MealUpdated', updatedMeal);
           return res.status(200).json({
             status: 'success',
             message: 'Meal updated successfully',
