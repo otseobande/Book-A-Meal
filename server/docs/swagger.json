@@ -1,7 +1,7 @@
 {
   "swagger" : "2.0",
   "info" : {
-    "description" : "Book-A-Meal is an application that allows customers to make food orders and helps the food vendor know what the customers want to eat",
+    "description" : "Book-A-Meal is an application that allows customers to make food orders and helps the food vendor know what the customers want to eat. You can view the repo at [http://github.com/otseobande/Book-A-Meal](http://github.com/otseobande/Book-A-Meal).",
     "version" : "1.0",
     "title" : "Book-A-Meal"
   },
@@ -21,13 +21,13 @@
     "description" : "Operations on orders"
   } ],
   "schemes" : [ "https" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
   "paths" : {
     "/auth/login" : {
       "post" : {
         "tags" : [ "Authentication" ],
         "summary" : "Creates a token and gets user object for a registered user",
-        "consumes" : [ "application/json" ],
-        "produces" : [ "application/json" ],
         "parameters" : [ {
           "in" : "body",
           "name" : "body",
@@ -59,8 +59,6 @@
       "post" : {
         "tags" : [ "Authentication" ],
         "summary" : "Registers a new user and creates a token for that user",
-        "consumes" : [ "application/json" ],
-        "produces" : [ "application/json" ],
         "parameters" : [ {
           "in" : "body",
           "name" : "body",
@@ -98,14 +96,7 @@
       "get" : {
         "tags" : [ "Meals" ],
         "summary" : "Gets all meals (caterer)",
-        "produces" : [ "application/json" ],
-        "parameters" : [ {
-          "name" : "token",
-          "in" : "query",
-          "description" : "jwt token",
-          "required" : false,
-          "type" : "string"
-        } ],
+        "parameters" : [ ],
         "responses" : {
           "200" : {
             "description" : "Successful",
@@ -128,20 +119,16 @@
         },
         "security" : [ {
           "AuthorizationHeader" : [ ]
+        }, {
+          "tokenInHeader" : [ ]
+        }, {
+          "tokenInQuery" : [ ]
         } ]
       },
       "post" : {
         "tags" : [ "Meals" ],
         "summary" : "Creates a meal (caterer)",
-        "consumes" : [ "application/json" ],
-        "produces" : [ "application/json" ],
         "parameters" : [ {
-          "name" : "token",
-          "in" : "query",
-          "description" : "jwt token",
-          "required" : false,
-          "type" : "string"
-        }, {
           "in" : "body",
           "name" : "body",
           "required" : true,
@@ -186,6 +173,10 @@
         },
         "security" : [ {
           "AuthorizationHeader" : [ ]
+        }, {
+          "tokenInHeader" : [ ]
+        }, {
+          "tokenInQuery" : [ ]
         } ]
       }
     },
@@ -193,18 +184,11 @@
       "get" : {
         "tags" : [ "Meals" ],
         "summary" : "Gets a meal by id (caterer)",
-        "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "mealId",
           "in" : "path",
           "description" : "meal id (UUID)",
           "required" : true,
-          "type" : "string"
-        }, {
-          "name" : "token",
-          "in" : "query",
-          "description" : "jwt token",
-          "required" : false,
           "type" : "string"
         } ],
         "responses" : {
@@ -241,24 +225,20 @@
         },
         "security" : [ {
           "AuthorizationHeader" : [ ]
+        }, {
+          "tokenInHeader" : [ ]
+        }, {
+          "tokenInQuery" : [ ]
         } ]
       },
       "put" : {
         "tags" : [ "Meals" ],
         "summary" : "Edits/updates a meal (caterer)",
-        "consumes" : [ "application/json" ],
-        "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "mealId",
           "in" : "path",
           "description" : "meal id (UUID)",
           "required" : true,
-          "type" : "string"
-        }, {
-          "name" : "token",
-          "in" : "query",
-          "description" : "jwt token",
-          "required" : false,
           "type" : "string"
         }, {
           "in" : "body",
@@ -311,18 +291,11 @@
       "delete" : {
         "tags" : [ "Meals" ],
         "summary" : "Gets a meal by id (caterer)",
-        "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "mealId",
           "in" : "path",
           "description" : "meal id (UUID)",
           "required" : true,
-          "type" : "string"
-        }, {
-          "name" : "token",
-          "in" : "query",
-          "description" : "jwt token",
-          "required" : false,
           "type" : "string"
         } ],
         "responses" : {
@@ -359,6 +332,10 @@
         },
         "security" : [ {
           "AuthorizationHeader" : [ ]
+        }, {
+          "tokenInHeader" : [ ]
+        }, {
+          "tokenInQuery" : [ ]
         } ]
       }
     },
@@ -366,14 +343,7 @@
       "get" : {
         "tags" : [ "Menu" ],
         "summary" : "Gets menu for today",
-        "produces" : [ "application/json" ],
-        "parameters" : [ {
-          "name" : "token",
-          "in" : "query",
-          "description" : "jwt token",
-          "required" : false,
-          "type" : "string"
-        } ],
+        "parameters" : [ ],
         "responses" : {
           "200" : {
             "description" : "successful",
@@ -402,6 +372,10 @@
         },
         "security" : [ {
           "AuthorizationHeader" : [ ]
+        }, {
+          "tokenInHeader" : [ ]
+        }, {
+          "tokenInQuery" : [ ]
         } ]
       },
       "post" : {
@@ -410,12 +384,6 @@
         "consumes" : [ "application/json" ],
         "produces" : [ "application/json" ],
         "parameters" : [ {
-          "name" : "token",
-          "in" : "query",
-          "description" : "jwt token",
-          "required" : false,
-          "type" : "string"
-        }, {
           "in" : "body",
           "name" : "body",
           "description" : "Omit the date field to create menu for the day",
@@ -455,6 +423,10 @@
         },
         "security" : [ {
           "AuthorizationHeader" : [ ]
+        }, {
+          "tokenInHeader" : [ ]
+        }, {
+          "tokenInQuery" : [ ]
         } ]
       }
     },
@@ -462,18 +434,11 @@
       "get" : {
         "tags" : [ "Menu" ],
         "summary" : "Gets menu for a specific day",
-        "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "date",
           "in" : "path",
           "description" : "menu date (YYYY-MM-DD)",
           "required" : true,
-          "type" : "string"
-        }, {
-          "name" : "token",
-          "in" : "query",
-          "description" : "jwt token",
-          "required" : false,
           "type" : "string"
         } ],
         "responses" : {
@@ -504,24 +469,20 @@
         },
         "security" : [ {
           "AuthorizationHeader" : [ ]
+        }, {
+          "tokenInHeader" : [ ]
+        }, {
+          "tokenInQuery" : [ ]
         } ]
       },
       "put" : {
         "tags" : [ "Menu" ],
         "summary" : "Edits/updates a menu",
-        "consumes" : [ "application/json" ],
-        "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "date",
           "in" : "path",
           "description" : "menu date (YYYY-MM-DD)",
           "required" : true,
-          "type" : "string"
-        }, {
-          "name" : "token",
-          "in" : "query",
-          "description" : "jwt token",
-          "required" : false,
           "type" : "string"
         }, {
           "in" : "body",
@@ -532,7 +493,7 @@
             "$ref" : "#/definitions/CreateMenuRequest"
           },
           "x-examples" : {
-            "application/json" : "{\r\n    \"title\": \"test menu\",\r\n    \"date\": \"2020-05-09\",\r\n    \"categories\": [{\r\n        \"title\": \"Benue style\",\r\n        \"mealIds\": [\"e20ac257-86cc-4a6f-a619-0249a201c475\", \"ba8e1fd3-926f-44c9-a7b3-218aedab8c12\"]\r\n      },\r\n      { \r\n        \"title\": \"Jacuzzi paruzi\",\r\n        \"mealIds\": [\"ba8e1fd3-926f-44c9-a7b3-218aedab8c12\", \"fa56c9e7-e5f4-4086-b7e9-db581201b71f\"]\r\n      }\r\n    ]\r\n  }"
+            "application/json" : "{\r\n    \"title\": \"test menu\",\r\n    \"date\": \"2020-05-09\",\r\n    \"categories\": [{\r\n        \"title\": \"Benue style\",\r\n        \"meals\": [\"e20ac257-86cc-4a6f-a619-0249a201c475\", \"ba8e1fd3-926f-44c9-a7b3-218aedab8c12\"]\r\n      },\r\n      { \r\n        \"title\": \"Jacuzzi paruzi\",\r\n        \"mealIds\": [\"ba8e1fd3-926f-44c9-a7b3-218aedab8c12\", \"fa56c9e7-e5f4-4086-b7e9-db581201b71f\"]\r\n      }\r\n    ]\r\n  }"
           }
         } ],
         "responses" : {
@@ -569,23 +530,20 @@
         },
         "security" : [ {
           "AuthorizationHeader" : [ ]
+        }, {
+          "tokenInHeader" : [ ]
+        }, {
+          "tokenInQuery" : [ ]
         } ]
       },
       "delete" : {
         "tags" : [ "Menu" ],
         "summary" : "Deletes for a specific day",
-        "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "date",
           "in" : "path",
           "description" : "menu date (YYYY-MM-DD)",
           "required" : true,
-          "type" : "string"
-        }, {
-          "name" : "token",
-          "in" : "query",
-          "description" : "jwt token",
-          "required" : false,
           "type" : "string"
         } ],
         "responses" : {
@@ -616,6 +574,10 @@
         },
         "security" : [ {
           "AuthorizationHeader" : [ ]
+        }, {
+          "tokenInHeader" : [ ]
+        }, {
+          "tokenInQuery" : [ ]
         } ]
       }
     },
@@ -623,14 +585,7 @@
       "get" : {
         "tags" : [ "Orders" ],
         "summary" : "Gets all orders made if user is a customer and gets all orders made by customers if user is a caterer",
-        "produces" : [ "application/json" ],
-        "parameters" : [ {
-          "name" : "token",
-          "in" : "query",
-          "description" : "jwt token",
-          "required" : false,
-          "type" : "string"
-        } ],
+        "parameters" : [ ],
         "responses" : {
           "200" : {
             "description" : "successful",
@@ -647,20 +602,16 @@
         },
         "security" : [ {
           "AuthorizationHeader" : [ ]
+        }, {
+          "tokenInHeader" : [ ]
+        }, {
+          "tokenInQuery" : [ ]
         } ]
       },
       "post" : {
         "tags" : [ "Orders" ],
         "summary" : "Creates a new order",
-        "consumes" : [ "application/json" ],
-        "produces" : [ "application/json" ],
         "parameters" : [ {
-          "name" : "token",
-          "in" : "query",
-          "description" : "jwt token",
-          "required" : false,
-          "type" : "string"
-        }, {
           "in" : "body",
           "name" : "body",
           "required" : false,
@@ -687,6 +638,10 @@
         },
         "security" : [ {
           "AuthorizationHeader" : [ ]
+        }, {
+          "tokenInHeader" : [ ]
+        }, {
+          "tokenInQuery" : [ ]
         } ]
       }
     },
@@ -694,19 +649,11 @@
       "put" : {
         "tags" : [ "Orders" ],
         "summary" : "Edit/updates an order",
-        "consumes" : [ "application/json" ],
-        "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "orderId",
           "in" : "path",
           "description" : "order id (UUID)",
           "required" : true,
-          "type" : "string"
-        }, {
-          "name" : "token",
-          "in" : "query",
-          "description" : "jwt token",
-          "required" : false,
           "type" : "string"
         }, {
           "in" : "body",
@@ -742,6 +689,10 @@
         },
         "security" : [ {
           "AuthorizationHeader" : [ ]
+        }, {
+          "tokenInHeader" : [ ]
+        }, {
+          "tokenInQuery" : [ ]
         } ]
       }
     },
@@ -749,19 +700,11 @@
       "put" : {
         "tags" : [ "Orders" ],
         "summary" : "Marks an order as delivered",
-        "consumes" : [ "application/json" ],
-        "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "orderId",
           "in" : "path",
           "description" : "order id (UUID)",
           "required" : true,
-          "type" : "string"
-        }, {
-          "name" : "token",
-          "in" : "query",
-          "description" : "jwt token",
-          "required" : false,
           "type" : "string"
         } ],
         "responses" : {
@@ -786,6 +729,10 @@
         },
         "security" : [ {
           "AuthorizationHeader" : [ ]
+        }, {
+          "tokenInHeader" : [ ]
+        }, {
+          "tokenInQuery" : [ ]
         } ]
       }
     }
@@ -795,6 +742,16 @@
       "type" : "apiKey",
       "name" : "Authorization",
       "in" : "header"
+    },
+    "tokenInHeader" : {
+      "type" : "apiKey",
+      "name" : "token",
+      "in" : "header"
+    },
+    "tokenInQuery" : {
+      "type" : "apiKey",
+      "name" : "token",
+      "in" : "query"
     }
   },
   "definitions" : {
@@ -871,9 +828,6 @@
         "id" : {
           "type" : "string"
         },
-        "userId" : {
-          "type" : "string"
-        },
         "title" : {
           "type" : "string"
         },
@@ -886,15 +840,24 @@
         },
         "img" : {
           "type" : "string"
+        },
+        "caterer" : {
+          "$ref" : "#/definitions/User"
         }
       },
       "example" : {
+        "caterer" : {
+          "role" : "caterer",
+          "fullName" : "fullName",
+          "id" : "id",
+          "email" : "email",
+          "username" : "username"
+        },
         "img" : "img",
         "price" : 0,
         "description" : "description",
         "id" : "id",
-        "title" : "title",
-        "userId" : "userId"
+        "title" : "title"
       }
     },
     "MealResponse" : {
@@ -911,65 +874,26 @@
       },
       "example" : {
         "meal" : {
+          "caterer" : {
+            "role" : "caterer",
+            "fullName" : "fullName",
+            "id" : "id",
+            "email" : "email",
+            "username" : "username"
+          },
           "img" : "img",
           "price" : 0,
           "description" : "description",
           "id" : "id",
-          "title" : "title",
-          "userId" : "userId"
+          "title" : "title"
         },
         "message" : "message",
         "status" : "status"
       }
     },
-    "MenuResponse_Menu_MenuCategories_Meals" : {
-      "properties" : {
-        "id" : {
-          "type" : "string"
-        },
-        "userId" : {
-          "type" : "string"
-        },
-        "title" : {
-          "type" : "string"
-        },
-        "description" : {
-          "type" : "string"
-        },
-        "price" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
-        "img" : {
-          "type" : "string"
-        }
-      }
-    },
-    "MenuResponse_Menu_MenuCategories" : {
-      "properties" : {
-        "id" : {
-          "type" : "string"
-        },
-        "menuId" : {
-          "type" : "string"
-        },
-        "title" : {
-          "type" : "string"
-        },
-        "meals" : {
-          "type" : "array",
-          "items" : {
-            "$ref" : "#/definitions/MenuResponse_Menu_MenuCategories_Meals"
-          }
-        }
-      }
-    },
     "Menu" : {
       "properties" : {
         "id" : {
-          "type" : "string"
-        },
-        "userId" : {
           "type" : "string"
         },
         "title" : {
@@ -978,20 +902,27 @@
         "date" : {
           "type" : "string"
         },
-        "menuCategories" : {
+        "categories" : {
           "type" : "array",
           "items" : {
             "$ref" : "#/definitions/MenuCategories"
           }
+        },
+        "caterer" : {
+          "$ref" : "#/definitions/User"
         }
       },
       "example" : {
         "date" : "date",
+        "caterer" : {
+          "role" : "caterer",
+          "fullName" : "fullName",
+          "id" : "id",
+          "email" : "email",
+          "username" : "username"
+        },
         "id" : "id",
-        "title" : "title",
-        "userId" : "userId",
-        "menuCategories" : [ {
-          "menuId" : "menuId",
+        "categories" : [ {
           "id" : "id",
           "title" : "title",
           "meals" : [ {
@@ -1010,7 +941,6 @@
             "userId" : "userId"
           } ]
         }, {
-          "menuId" : "menuId",
           "id" : "id",
           "title" : "title",
           "meals" : [ {
@@ -1028,7 +958,8 @@
             "title" : "title",
             "userId" : "userId"
           } ]
-        } ]
+        } ],
+        "title" : "title"
       }
     },
     "Meals" : {
@@ -1067,7 +998,7 @@
         "id" : {
           "type" : "string"
         },
-        "user" : {
+        "customer" : {
           "$ref" : "#/definitions/User"
         },
         "meal" : {
@@ -1095,19 +1026,25 @@
       },
       "example" : {
         "meal" : {
+          "caterer" : {
+            "role" : "caterer",
+            "fullName" : "fullName",
+            "id" : "id",
+            "email" : "email",
+            "username" : "username"
+          },
           "img" : "img",
           "price" : 0,
           "description" : "description",
           "id" : "id",
-          "title" : "title",
-          "userId" : "userId"
+          "title" : "title"
         },
         "createdAt" : "createdAt",
         "quantity" : 0,
         "phoneNumber" : "phoneNumber",
         "deliveryAddress" : "deliveryAddress",
         "id" : "id",
-        "user" : {
+        "customer" : {
           "role" : "caterer",
           "fullName" : "fullName",
           "id" : "id",
@@ -1123,9 +1060,6 @@
         "id" : {
           "type" : "string"
         },
-        "menuId" : {
-          "type" : "string"
-        },
         "title" : {
           "type" : "string"
         },
@@ -1137,7 +1071,6 @@
         }
       },
       "example" : {
-        "menuId" : "menuId",
         "id" : "id",
         "title" : "title",
         "meals" : [ {
@@ -1162,7 +1095,7 @@
         "title" : {
           "type" : "string"
         },
-        "mealIds" : {
+        "meals" : {
           "type" : "array",
           "items" : {
             "type" : "string"
@@ -1171,7 +1104,7 @@
       },
       "example" : {
         "title" : "title",
-        "mealIds" : [ "mealIds", "mealIds" ]
+        "meals" : [ "meals", "meals" ]
       }
     },
     "DefaultResponse" : {
@@ -1204,11 +1137,15 @@
         "message" : "message",
         "menu" : {
           "date" : "date",
+          "caterer" : {
+            "role" : "caterer",
+            "fullName" : "fullName",
+            "id" : "id",
+            "email" : "email",
+            "username" : "username"
+          },
           "id" : "id",
-          "title" : "title",
-          "userId" : "userId",
-          "menuCategories" : [ {
-            "menuId" : "menuId",
+          "categories" : [ {
             "id" : "id",
             "title" : "title",
             "meals" : [ {
@@ -1227,7 +1164,6 @@
               "userId" : "userId"
             } ]
           }, {
-            "menuId" : "menuId",
             "id" : "id",
             "title" : "title",
             "meals" : [ {
@@ -1245,7 +1181,8 @@
               "title" : "title",
               "userId" : "userId"
             } ]
-          } ]
+          } ],
+          "title" : "title"
         },
         "status" : "status"
       }
@@ -1267,19 +1204,25 @@
         "status" : "status",
         "order" : {
           "meal" : {
+            "caterer" : {
+              "role" : "caterer",
+              "fullName" : "fullName",
+              "id" : "id",
+              "email" : "email",
+              "username" : "username"
+            },
             "img" : "img",
             "price" : 0,
             "description" : "description",
             "id" : "id",
-            "title" : "title",
-            "userId" : "userId"
+            "title" : "title"
           },
           "createdAt" : "createdAt",
           "quantity" : 0,
           "phoneNumber" : "phoneNumber",
           "deliveryAddress" : "deliveryAddress",
           "id" : "id",
-          "user" : {
+          "customer" : {
             "role" : "caterer",
             "fullName" : "fullName",
             "id" : "id",
@@ -1330,19 +1273,25 @@
       "example" : {
         "orders" : [ {
           "meal" : {
+            "caterer" : {
+              "role" : "caterer",
+              "fullName" : "fullName",
+              "id" : "id",
+              "email" : "email",
+              "username" : "username"
+            },
             "img" : "img",
             "price" : 0,
             "description" : "description",
             "id" : "id",
-            "title" : "title",
-            "userId" : "userId"
+            "title" : "title"
           },
           "createdAt" : "createdAt",
           "quantity" : 0,
           "phoneNumber" : "phoneNumber",
           "deliveryAddress" : "deliveryAddress",
           "id" : "id",
-          "user" : {
+          "customer" : {
             "role" : "caterer",
             "fullName" : "fullName",
             "id" : "id",
@@ -1353,19 +1302,25 @@
           "updatedAt" : "updatedAt"
         }, {
           "meal" : {
+            "caterer" : {
+              "role" : "caterer",
+              "fullName" : "fullName",
+              "id" : "id",
+              "email" : "email",
+              "username" : "username"
+            },
             "img" : "img",
             "price" : 0,
             "description" : "description",
             "id" : "id",
-            "title" : "title",
-            "userId" : "userId"
+            "title" : "title"
           },
           "createdAt" : "createdAt",
           "quantity" : 0,
           "phoneNumber" : "phoneNumber",
           "deliveryAddress" : "deliveryAddress",
           "id" : "id",
-          "user" : {
+          "customer" : {
             "role" : "caterer",
             "fullName" : "fullName",
             "id" : "id",
@@ -1400,10 +1355,10 @@
         "date" : "date",
         "categories" : [ {
           "title" : "title",
-          "mealIds" : [ "mealIds", "mealIds" ]
+          "meals" : [ "meals", "meals" ]
         }, {
           "title" : "title",
-          "mealIds" : [ "mealIds", "mealIds" ]
+          "meals" : [ "meals", "meals" ]
         } ],
         "title" : "title",
         "token" : "token"
@@ -1478,19 +1433,31 @@
       "example" : {
         "status" : "status",
         "meals" : [ {
+          "caterer" : {
+            "role" : "caterer",
+            "fullName" : "fullName",
+            "id" : "id",
+            "email" : "email",
+            "username" : "username"
+          },
           "img" : "img",
           "price" : 0,
           "description" : "description",
           "id" : "id",
-          "title" : "title",
-          "userId" : "userId"
+          "title" : "title"
         }, {
+          "caterer" : {
+            "role" : "caterer",
+            "fullName" : "fullName",
+            "id" : "id",
+            "email" : "email",
+            "username" : "username"
+          },
           "img" : "img",
           "price" : 0,
           "description" : "description",
           "id" : "id",
-          "title" : "title",
-          "userId" : "userId"
+          "title" : "title"
         } ]
       }
     },
@@ -1505,12 +1472,18 @@
       },
       "example" : {
         "meal" : {
+          "caterer" : {
+            "role" : "caterer",
+            "fullName" : "fullName",
+            "id" : "id",
+            "email" : "email",
+            "username" : "username"
+          },
           "img" : "img",
           "price" : 0,
           "description" : "description",
           "id" : "id",
-          "title" : "title",
-          "userId" : "userId"
+          "title" : "title"
         },
         "status" : "status"
       }
