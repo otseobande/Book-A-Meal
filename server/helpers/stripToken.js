@@ -6,15 +6,8 @@
  * @return {string} token - Token gotten from req
  */
 const stripToken = (req) => {
-  if (req.headers.authorization &&
-    req.headers.authorization.split(' ')[0] === 'Bearer') {
-    const [, token] = req.headers.authorization.split(' ');
-
-    return token;
-  }
-
   if (req.headers.authorization) {
-    return req.headers.authorization;
+    return req.headers.authorization.replace('Bearer ','');
   }
 
   if (req.headers.token) {
