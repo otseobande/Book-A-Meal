@@ -31,6 +31,7 @@ const meal = (sequelize, DataTypes) => {
   Meal.prototype.toJSON = function () {
     const values = {...this.get()};
 
+    delete values.userId;
     delete values.createdAt;
     delete values.updatedAt;
     delete values.deletedAt;
