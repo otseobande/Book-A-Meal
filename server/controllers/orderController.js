@@ -55,7 +55,7 @@ class OrderController {
             message: 'Order created successfully',
             order: createdOrder
           });
-          req.app.emit('OrderCreated');
+          req.app.emit('OrderCreated', createdOrder);
         }
       })
       .catch(err => next(err));
