@@ -155,6 +155,7 @@ class OrderController {
         }
       })
       .then((updatedOrder) => {
+        console.log(updatedOrder);
         if (updatedOrder) {
           return res.status(200).json({
             status: 'success',
@@ -165,7 +166,7 @@ class OrderController {
 
         res.status(404).json({
           status: 'error',
-          message: 'order not found'
+          message: 'Order not found'
         });
       })
       .catch(err => next(err));

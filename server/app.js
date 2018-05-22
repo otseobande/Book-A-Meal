@@ -13,6 +13,8 @@ import otherRoutes from './routes/others';
 const app = express();
 const port = process.env.PORT || 3000;
 
+setEventListeners(app);
+
 app.use(
   logger('dev'),
   cors(),

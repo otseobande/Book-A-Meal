@@ -39,7 +39,8 @@ class MenuController {
    * @return {Promise} Promise for extending operation
    */
   static createMenuHelper(req, res) {
-    const { title, date, categories } = req.body;
+    const { title, categories } = req.body;
+    const date = req.body.date || req.params.date || moment();
 
     return menu.findOne({
       where: {
@@ -58,7 +59,7 @@ class MenuController {
           return menu.create({
             userId: req.user.id,
             title,
-            date: date || req.params.date || moment(),
+            date,
             categories
           }, {
             include: [{
@@ -78,7 +79,7 @@ class MenuController {
             })
             .then(() => menu.findOne({
               where: {
-                date: date || req.params.date || moment(),
+                date,
                 userId: req.user.id
               }
             }));

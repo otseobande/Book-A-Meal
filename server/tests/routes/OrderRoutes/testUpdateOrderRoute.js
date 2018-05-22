@@ -22,6 +22,15 @@ describe('PUT /api/v1/orders/:orderId', function() {
     res.should.have.status(200);
   });
 
+  it('should return a success status 200 if body is empty', async function() {
+    const res = await chai.request(App)
+      .put('/api/v1/orders/d161e8e8-eed0-4869-bcf1-4679289d940c')
+      .set('Authorization',  `Bearer ${adminToken}`)
+      .send({});
+      
+    res.should.have.status(200);
+  });
+
   it('should return error 422 if order is expired', async () => {
     const res = await chai.request(App)
       .put('/api/v1/orders/fdc2ea34-ff16-4658-971d-8fb6132f6dfd')

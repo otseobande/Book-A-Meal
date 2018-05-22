@@ -66,6 +66,25 @@ describe('Order Controller', () => {
       } 
     })
   })
+
+  describe('deliverOrder method', () => {
+    it('should call next on err', async () => {
+       try{
+        const next = sinon.spy();
+        const req = mockReq({
+          user: {
+            id: 47345654353534,
+            role: 'customer'
+           }
+        });
+        await OrderController.deliverOrder(req, res, next);
+        next.should.have.been.called;
+      } catch(err) {
+        throw err
+      } 
+    })
+  })
+
 	describe('updateOrder method', () => {
 		it('should call next on err', async () => {
 			 try{

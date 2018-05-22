@@ -7,7 +7,7 @@
  */
 const stripToken = (req) => {
   if (req.headers.authorization) {
-    return req.headers.authorization.replace('Bearer ','');
+    return req.headers.authorization.replace('Bearer ', '');
   }
 
   if (req.headers.token) {
