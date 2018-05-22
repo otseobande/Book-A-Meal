@@ -31,10 +31,7 @@ const addScopes = (db) => {
 
   db.menu.addScope('defaultScope', {
     include: [
-      {
-        model: db.user,
-        as: 'caterer'
-      },
+      { model: db.user, as: 'caterer' },
       {
         model: db.menuCategory,
         as: 'categories',

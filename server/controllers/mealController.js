@@ -14,6 +14,13 @@ class MealController {
    * @return {json} res.json
    */
   static create(req, res, next) {
+    const {
+      title,
+      description,
+      price,
+      img
+    } = req.body;
+
     return Meal.find({
       where: {
         userId: req.user.id,
@@ -29,7 +36,10 @@ class MealController {
         }
         return Meal.create({
           userId: req.user.id,
-          ...req.body
+          title,
+          description,
+          price,
+          img
         }).then(newMeal => res.status(201).json({
           status: 'success',
           message: 'Meal created successfully',

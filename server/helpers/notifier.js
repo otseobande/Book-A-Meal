@@ -28,6 +28,11 @@ class Notifier{
 
 		return this;
 	}
+
+	async notify() {
+		await this.saveToDb();
+		await this.sendMail();
+	}
 }
 
 export default Notifier;
