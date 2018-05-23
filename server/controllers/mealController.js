@@ -14,6 +14,13 @@ class MealController {
    * @return {json} res.json
    */
   static create(req, res, next) {
+    const {
+      title,
+      description,
+      price,
+      img
+    } = req.body;
+
     return Meal.find({
       where: {
         userId: req.user.id,
@@ -22,19 +29,30 @@ class MealController {
     })
       .then((meal) => {
         if (meal) {
-          return res.status(409).json({
+          res.status(409).json({
             status: 'error',
             message: 'Meal already exists'
           });
+        } else {
+          return Meal.create({
+            userId: req.user.id,
+            title,
+            description,
+            price,
+            img
+          });
         }
-        return Meal.create({
-          userId: req.user.id,
-          ...req.body
-        }).then(newMeal => res.status(201).json({
-          status: 'success',
-          message: 'Meal created successfully',
-          meal: newMeal
-        }));
+      })
+      .then((newMeal) => {
+        if (newMeal) {
+          req.app.emit('MealCreated', newMeal);
+
+          res.status(201).json({
+            status: 'success',
+            message: 'Meal created successfully',
+            meal: newMeal
+          });
+        }
       })
       .catch(err => next(err));
   }
@@ -59,6 +77,8 @@ class MealController {
     })
       .then((rows) => {
         if (rows > 0) {
+          req.app.emit('MealDeleted', req.user.id);
+
           return res.status(200).json({
             status: 'success',
             message: 'Meal deleted successfully'
@@ -158,6 +178,8 @@ class MealController {
       })
       .then((updatedMeal) => {
         if (updatedMeal) {
+          req.app.emit('MealUpdated', updatedMeal);
+
           return res.status(200).json({
             status: 'success',
             message: 'Meal updated successfully',

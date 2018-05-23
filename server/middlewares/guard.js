@@ -1,4 +1,3 @@
-
 /**
  * Guard middleware
  * @middleware

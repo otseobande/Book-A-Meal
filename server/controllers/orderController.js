@@ -50,12 +50,13 @@ class OrderController {
       })
       .then((createdOrder) => {
         if (createdOrder) {
+          req.app.emit('OrderCreated', createdOrder);
+
           res.status(201).json({
             status: 'success',
             message: 'Order created successfully',
             order: createdOrder
           });
-          req.app.emit('OrderCreated');
         }
       })
       .catch(err => next(err));
@@ -122,6 +123,8 @@ class OrderController {
       phoneNumber: phoneNumber || order.phoneNumber
     })
       .then((updatedOrder) => {
+        req.app.emit('OrderUpdated', updatedOrder);
+
         res.status(200).json({
           status: 'success',
           message: 'order updated successfully',
@@ -154,12 +157,14 @@ class OrderController {
           });
         }
       })
-      .then((updatedOrder) => {
-        if (updatedOrder) {
+      .then((deliveredOrder) => {
+        if (deliveredOrder) {
+          req.app.emit('OrderDelivered', deliveredOrder);
+
           return res.status(200).json({
             status: 'success',
             message: 'Order delivered successfully',
-            order: updatedOrder
+            order: deliveredOrder
           });
         }
 

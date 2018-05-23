@@ -14,6 +14,13 @@ import config from '../config';
  * @return {json} res.json
  */
 const handleErrors = (error, req, res, next, env = config.env) => {
+  if (error instanceof SyntaxError && error.status === 400) {
+    return res.status(400).json({
+      status: 'error',
+      message: 'The JSON in your request seems to be invalid.'
+    });
+  }
+
   if (error.statusText && error.statusText === 'Bad Request') {
     const message = error.errors.reduce((acc, err) => acc.concat(err.messages), []);
 

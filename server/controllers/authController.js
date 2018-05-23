@@ -34,6 +34,7 @@ class AuthController {
         if (givenPasswordIsValid) {
           const token = foundUser.generateToken();
 
+          req.app.emit('UserLogin', foundUser);
           return res.status(200).json({
             status: 'success',
             user: foundUser,
@@ -80,6 +81,7 @@ class AuthController {
       .then((user) => {
         const token = user.generateToken();
 
+        req.app.emit('UserSignup', user);
         return res.status(201).json({
           status: 'success',
           user,

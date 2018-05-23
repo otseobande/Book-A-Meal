@@ -1,7 +1,8 @@
 import moment from 'moment';
 import {
   menu,
-  menuCategory
+  menuCategory,
+  mealMenuCategory
 } from '../models';
 
 /**
@@ -22,6 +23,14 @@ class MenuController {
     return MenuController.createMenuHelper(req, res)
       .then((createdMenu) => {
         if (createdMenu) {
+          const menuDate = moment(createdMenu.date);
+
+          if (menuDate.format('YYYY-MM-DD') === moment().format('YYYY-MM-DD')) {
+            req.app.emit('MenuCreatedForToday', createdMenu);
+          } else {
+            req.app.emit('MenuCreated', createdMenu);
+          }
+
           res.status(201).json({
             status: 'success',
             message: 'Menu created successfully',
@@ -66,23 +75,34 @@ class MenuController {
               model: menuCategory,
               as: 'categories'
             }]
-          })
-            .then(newMenu => newMenu.getCategories())
-            .then((menuCategories) => {
-              const setMeals = menuCategories.map((category) => {
-                const { meals } = categories
-                  .find(reqCategory => reqCategory.title === category.title);
+          });
+        }
+      })
+      .then((newMenu) => {
+        if (newMenu) {
+          return newMenu.getCategories();
+        }
+      })
+      .then((menuCategories) => {
+        if (menuCategories) {
+          const setMeals = menuCategories.map((category) => {
+            const { meals } = categories.find(reqCategory => reqCategory.title === category.title);
 
-                return category.setMeals(meals);
-              });
-              return Promise.all(setMeals);
-            })
-            .then(() => menu.findOne({
-              where: {
-                date,
-                userId: req.user.id
-              }
-            }));
+            return category.setMeals(meals, {
+              through: mealMenuCategory
+            });
+          });
+          return Promise.all(setMeals);
+        }
+      })
+      .then((mealsSet) => {
+        if (mealsSet) {
+          return menu.findOne({
+            where: {
+              date,
+              userId: req.user.id
+            }
+          });
         }
       });
   }
@@ -109,6 +129,8 @@ class MenuController {
     })
       .then((rows) => {
         if (rows > 0) {
+          req.app.emit('MenuDeleted', req.user.id);
+
           return res.status(200).json({
             status: 'success',
             message: 'menu deleted successfully'
@@ -205,6 +227,8 @@ class MenuController {
     return updateMenu
       .then((updatedMenu) => {
         if (updatedMenu) {
+          req.app.emit('MenuUpdated', updatedMenu);
+
           return res.status(200).json({
             status: 'success',
             message: 'Menu updated successfully',
