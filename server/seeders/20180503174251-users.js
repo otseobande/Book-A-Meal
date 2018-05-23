@@ -13,7 +13,7 @@ export default {
     {
       id: 'ba8e1fd3-926f-44c9-a7b3-218aedab8c12',
       fullName: 'John Ade',
-      email: 'john@gmail.com',
+      email: 'mealbooker@gmail.com',
       username: 'john',
       password: bcrypt.hashSync('bookameal', 10),
       role: 'customer'

@@ -3,7 +3,7 @@ import path from 'path';
 import Sequelize from 'sequelize';
 import sequelizeConfig from '../config/dbConfig';
 import config from '../config';
-import addScopes from '../helpers/addScopes';
+import addScopes from '../utils/addScopes';
 
 const env = config.env;
 const envConfig = sequelizeConfig[env];

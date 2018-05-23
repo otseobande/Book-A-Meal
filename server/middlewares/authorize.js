@@ -1,6 +1,6 @@
 /* eslint consistent-return: 0 */
 import jwt from 'jsonwebtoken';
-import stripToken from '../helpers/stripToken';
+import stripToken from '../utils/stripToken';
 import config from '../config';
 
 const secret = config.jwtSecret;

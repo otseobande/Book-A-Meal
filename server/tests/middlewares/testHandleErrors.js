@@ -8,6 +8,13 @@ import handleErrors from '../../middlewares/handleErrors';
 
 const res = mockRes();
 const next = sinon.spy();
+const jsonSyntaxError = () => {
+  const err = new SyntaxError();
+  err.status = 400;
+
+  return err;
+};
+
 const validationError = {
   statusText: "Bad Request",
   errors: [
@@ -21,13 +28,23 @@ const error = {
   stack: 'stacktrace'
 }
 describe('handleErrors middleware', () => {
-  it('return errors as response', () => {
+  it('handles validation error', () => {
     handleErrors(validationError, null, res, next, 'test');
 
 		res.status.should.have.been.calledWith(400);
     res.json.should.have.been.calledWith({ 
       message: [], 
       status: 'error', 
+    })
+  });
+
+  it('handles JSON syntaxError from body-parser', () => {
+    handleErrors(jsonSyntaxError(), null, res, next, 'test');
+
+    res.status.should.have.been.calledWith(400);
+    res.json.should.have.been.calledWith({
+      status: 'error',
+      message: 'The JSON in your request seems to be invalid.'
     })
   });
 
