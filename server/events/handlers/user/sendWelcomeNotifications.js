@@ -11,6 +11,7 @@ const sendWelcomeNotifications = async (user) => {
     userId: user.id,
     subject: 'Welcome to Book-A-Meal',
     info: dedent`
+    
     Welcome to Book-A-Meal,
     we are excited to have you create an account with us and we look forward to serving you
     the best quality.
