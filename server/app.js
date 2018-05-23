@@ -1,6 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
+import fs from 'fs';
 import logger from './utils/logger';
 import { trimStrings, handleErrors } from './middlewares';
 import setEventListeners from './events/setListeners';
@@ -15,8 +16,10 @@ app.config = config;
 
 setEventListeners(app);
 
+const accessLogStream = fs.createWriteStream(`${process.cwd()}\\logs\\access.log`, {flags: 'a'})
+
 app.use(
-  morgan('dev'),
+  morgan('combined', { stream: accessLogStream}),
   cors(),
   express.urlencoded({ extended: true }),
   express.json(),

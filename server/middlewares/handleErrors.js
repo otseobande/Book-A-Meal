@@ -1,5 +1,6 @@
 /* eslint no-unused-vars: 0 */
 import config from '../config';
+import logger from '../utils/logger';
 /**
  * Handles both validation and application errors
  * and sends a stack trace as a response in non-
@@ -38,6 +39,8 @@ const handleErrors = (error, req, res, next, env = config.env) => {
       message
     });
   }
+
+  logger.error(error.stack);
 
   const errMsg = env === 'production'
     ? 'something went wrong'
