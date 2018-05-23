@@ -2,16 +2,16 @@
 import express from 'express';
 import logger from 'morgan';
 import cors from 'cors';
-import {
-  trimStrings,
-  handleErrors
-} from './middlewares';
-import setEventListeners from './events/setEventListeners';
+import { trimStrings, handleErrors } from './middlewares';
+import setEventListeners from './events/setListeners';
 import apiRoutes from './routes/api';
 import otherRoutes from './routes/others';
+import config from './config';
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+app.config = config;
 
 setEventListeners(app);
 

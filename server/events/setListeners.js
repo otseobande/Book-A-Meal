@@ -1,5 +1,6 @@
 import orderHandler from './handlers/orders';
 import menuHandler from './handlers/menu';
+import userHandler from './handlers/user';
 
 /**
  * Sets event listners on express app
@@ -7,7 +8,7 @@ import menuHandler from './handlers/menu';
  * @param  {object} app - Express application
  * @return {undefined}
  */
-const setEventListeners = (app) => {
+const setListeners = (app) => {
   // Order events
   app.on('OrderCreated', orderHandler.sendOrderCreatedNotifications);
   app.on('OrderUpdated', orderHandler.sendOrderUpdatedNotifications);
@@ -15,6 +16,9 @@ const setEventListeners = (app) => {
 
   // Menu events
   app.on('MenuCreatedForToday', menuHandler.sendNotificationsForTodaysMenu);
+
+  // User events
+  app.on('UserSignup', userHandler.sendWelcomeNotifications);
 };
 
-export default setEventListeners;
+export default setListeners;
