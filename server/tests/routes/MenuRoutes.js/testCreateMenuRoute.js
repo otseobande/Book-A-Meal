@@ -38,11 +38,11 @@ describe('POST /api/v1/menu', function() {
         title: 'test menu',
         categories: [{
             title: 'Benue style',
-            meals: ['e20ac257-86cc-4a6f-a619-0249a201c475', 'ba8e1fd3-926f-44c9-a7b3-218aedab8c12']
+            meals: ['dd72bc9b-beb0-49c6-be7b-20106e8aa3d0']
           },
           { 
             title: 'Jacuzzi paruzi',
-            meals: ['ba8e1fd3-926f-44c9-a7b3-218aedab8c12', 'fa56c9e7-e5f4-4086-b7e9-db581201b71f']
+            meals: ['64c45c00-ed18-44b7-862a-f12d0481696c', 'df12bd22-3326-4929-9cd6-a3805db52ca5']
           }
         ]
       });

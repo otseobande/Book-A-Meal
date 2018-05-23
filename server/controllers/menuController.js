@@ -87,8 +87,8 @@ class MenuController {
         if (menuCategories) {
           const setMeals = menuCategories.map((category) => {
             const { meals } = categories.find(reqCategory => reqCategory.title === category.title);
-            console.log(meals)
-            return category.setMeals(meals,{
+
+            return category.setMeals(meals, {
               through: mealMenuCategory
             });
           });
