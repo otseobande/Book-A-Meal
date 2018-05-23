@@ -1,6 +1,6 @@
 import orderHandler from './handlers/orders';
 import menuHandler from './handlers/menu';
-import userHander from './handlers/user';
+import userHandler from './handlers/user';
 
 /**
  * Sets event listners on express app
@@ -17,8 +17,8 @@ const setListeners = (app) => {
   // Menu events
   app.on('MenuCreatedForToday', menuHandler.sendNotificationsForTodaysMenu);
 
-  //User events
-  app.on('UserSignup', userHandler.sendWelcomeNotifications)
+  // User events
+  app.on('UserSignup', userHandler.sendWelcomeNotifications);
 };
 
 export default setListeners;

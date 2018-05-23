@@ -7,7 +7,6 @@ import Notifier from '../../../utils/notifier';
  * @return {Promise}  Promise resolving with a boolean
  */
 const sendWelcomeNotifications = async (user) => {
-
   const newUserNotifier = new Notifier({
     userId: user.id,
     subject: 'Welcome to Book-A-Meal',
@@ -20,7 +19,7 @@ const sendWelcomeNotifications = async (user) => {
     The Book-A-Meal team.`
   });
 
-  await customerNotifier.notify();
+  await newUserNotifier.notify();
 
   return true;
 };

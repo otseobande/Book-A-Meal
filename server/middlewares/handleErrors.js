@@ -50,3 +50,4 @@ const handleErrors = (error, req, res, next, env = config.env) => {
 };
 
 export default handleErrors;
+ 
