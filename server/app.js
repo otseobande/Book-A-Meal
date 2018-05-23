@@ -6,7 +6,7 @@ import {
   trimStrings,
   handleErrors
 } from './middlewares';
-import setEventListeners from './events/setEventListeners';
+import setEventListeners from './events/setListeners';
 import apiRoutes from './routes/api';
 import otherRoutes from './routes/others';
 
