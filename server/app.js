@@ -1,7 +1,7 @@
-/* eslint no-console: 0 */
 import express from 'express';
-import logger from 'morgan';
+import morgan from 'morgan';
 import cors from 'cors';
+import logger from './utils/logger';
 import { trimStrings, handleErrors } from './middlewares';
 import setEventListeners from './events/setListeners';
 import apiRoutes from './routes/api';
@@ -16,7 +16,7 @@ app.config = config;
 setEventListeners(app);
 
 app.use(
-  logger('dev'),
+  morgan('dev'),
   cors(),
   express.urlencoded({ extended: true }),
   express.json(),
@@ -26,7 +26,7 @@ app.use(
 );
 
 const server = app.listen(port, () => {
-  console.log(`Server started on port ${server.address().port}`);
+  logger.info(`Server started on port ${server.address().port}`);
 });
 
 export default app;
