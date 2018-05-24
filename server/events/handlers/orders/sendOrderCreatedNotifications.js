@@ -1,4 +1,5 @@
 import dedent from 'dedent';
+import logger from '../../../utils/logger';
 import Notifier from '../../../utils/notifier';
 
 /**
@@ -7,33 +8,37 @@ import Notifier from '../../../utils/notifier';
  * @return {Promise}  Promise resolving with a boolean
  */
 const sendOrderCreatedNotifications = async (order) => {
-  const meal = await order.getMeal();
-  const subject = 'New Order';
-  const customerNotifier = new Notifier({
-    userId: order.userId,
-    subject,
-    info: `Your order for "${meal.title}" was placed successfully and would be delivered within the next few minutes.`
-  });
+  try {
+    const meal = await order.getMeal();
+    const subject = 'New Order';
+    const customerNotifier = new Notifier({
+      userId: order.userId,
+      subject,
+      info: `Your order for "${meal.title}" was placed successfully and would be delivered within the next few minutes.`
+    });
 
-  await customerNotifier.notify();
+    await customerNotifier.notify();
 
-  const customer = await order.getCustomer();
-  const catererNotifier = new Notifier({
-    userId: meal.userId,
-    subject,
-    info: dedent`
-      An order for "${meal.title}" was just made. Order details are:
-      - Quantity: ${order.quantity}
-      - Delivery Address: ${order.deliveryAddress}
-      - Phone Number: ${order.phoneNumber}
-      - Customer Name: ${customer.fullName}
-      - Customer Email: ${customer.email}
-    `
-  });
+    const customer = await order.getCustomer();
+    const catererNotifier = new Notifier({
+      userId: meal.userId,
+      subject,
+      info: dedent`
+        An order for "${meal.title}" was just made. Order details are:
+        - Quantity: ${order.quantity}
+        - Delivery Address: ${order.deliveryAddress}
+        - Phone Number: ${order.phoneNumber}
+        - Customer Name: ${customer.fullName}
+        - Customer Email: ${customer.email}
+      `
+    });
 
-  await catererNotifier.notify();
+    await catererNotifier.notify();
 
-  return true;
+    return true;
+  } catch (err) {
+    logger.error(err.stack);
+  }
 };
 
 export default sendOrderCreatedNotifications;

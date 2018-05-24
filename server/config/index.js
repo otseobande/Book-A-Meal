@@ -9,7 +9,6 @@ const config = {
   orderExpiry: process.env.ORDER_EXPIRY,
   openTime: process.env.OPEN_TIME,
   closeTime: process.env.CLOSE_TIME,
-
   mail: {
     smtpConfig: {
       host: process.env.MAIL_HOST,
@@ -20,7 +19,7 @@ const config = {
         pass: process.env.MAIL_PASS
       }
     }
-  }
- 
+  },
+  adminEmail: process.env.ADMIN_EMAIL,
 }
 export default config;
