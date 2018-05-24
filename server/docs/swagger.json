@@ -19,6 +19,9 @@
   }, {
     "name" : "Orders",
     "description" : "Operations on orders"
+  }, {
+    "name" : "Logging",
+    "description" : "Client Logging operations"
   } ],
   "schemes" : [ "https" ],
   "consumes" : [ "application/json" ],
@@ -120,8 +123,6 @@
         "security" : [ {
           "AuthorizationHeader" : [ ]
         }, {
-          "tokenInHeader" : [ ]
-        }, {
           "tokenInQuery" : [ ]
         } ]
       },
@@ -174,8 +175,6 @@
         "security" : [ {
           "AuthorizationHeader" : [ ]
         }, {
-          "tokenInHeader" : [ ]
-        }, {
           "tokenInQuery" : [ ]
         } ]
       }
@@ -225,8 +224,6 @@
         },
         "security" : [ {
           "AuthorizationHeader" : [ ]
-        }, {
-          "tokenInHeader" : [ ]
         }, {
           "tokenInQuery" : [ ]
         } ]
@@ -333,8 +330,6 @@
         "security" : [ {
           "AuthorizationHeader" : [ ]
         }, {
-          "tokenInHeader" : [ ]
-        }, {
           "tokenInQuery" : [ ]
         } ]
       }
@@ -372,8 +367,6 @@
         },
         "security" : [ {
           "AuthorizationHeader" : [ ]
-        }, {
-          "tokenInHeader" : [ ]
         }, {
           "tokenInQuery" : [ ]
         } ]
@@ -424,8 +417,6 @@
         "security" : [ {
           "AuthorizationHeader" : [ ]
         }, {
-          "tokenInHeader" : [ ]
-        }, {
           "tokenInQuery" : [ ]
         } ]
       }
@@ -469,8 +460,6 @@
         },
         "security" : [ {
           "AuthorizationHeader" : [ ]
-        }, {
-          "tokenInHeader" : [ ]
         }, {
           "tokenInQuery" : [ ]
         } ]
@@ -531,8 +520,6 @@
         "security" : [ {
           "AuthorizationHeader" : [ ]
         }, {
-          "tokenInHeader" : [ ]
-        }, {
           "tokenInQuery" : [ ]
         } ]
       },
@@ -575,8 +562,6 @@
         "security" : [ {
           "AuthorizationHeader" : [ ]
         }, {
-          "tokenInHeader" : [ ]
-        }, {
           "tokenInQuery" : [ ]
         } ]
       }
@@ -602,8 +587,6 @@
         },
         "security" : [ {
           "AuthorizationHeader" : [ ]
-        }, {
-          "tokenInHeader" : [ ]
         }, {
           "tokenInQuery" : [ ]
         } ]
@@ -639,8 +622,6 @@
         "security" : [ {
           "AuthorizationHeader" : [ ]
         }, {
-          "tokenInHeader" : [ ]
-        }, {
           "tokenInQuery" : [ ]
         } ]
       }
@@ -658,7 +639,7 @@
         }, {
           "in" : "body",
           "name" : "body",
-          "description" : "Order modification is only available for 3 hours after order has been made",
+          "description" : "Order modification is only available for 30 minutes after order has been made",
           "required" : false,
           "schema" : {
             "$ref" : "#/definitions/OrderRequest"
@@ -690,8 +671,6 @@
         "security" : [ {
           "AuthorizationHeader" : [ ]
         }, {
-          "tokenInHeader" : [ ]
-        }, {
           "tokenInQuery" : [ ]
         } ]
       }
@@ -699,7 +678,7 @@
     "/order/{orderId}/deliver" : {
       "put" : {
         "tags" : [ "Orders" ],
-        "summary" : "Marks an order as delivered",
+        "summary" : "Marks an order as delivered (caterer)",
         "parameters" : [ {
           "name" : "orderId",
           "in" : "path",
@@ -730,10 +709,37 @@
         "security" : [ {
           "AuthorizationHeader" : [ ]
         }, {
-          "tokenInHeader" : [ ]
-        }, {
           "tokenInQuery" : [ ]
         } ]
+      }
+    },
+    "/log" : {
+      "post" : {
+        "tags" : [ "Logging" ],
+        "summary" : "Logs data from client to server",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Order modification is only available for 3 hours after order has been made",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/body"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "success",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad request",
+            "schema" : {
+              "$ref" : "#/definitions/DefaultResponse"
+            }
+          }
+        }
       }
     }
   },
@@ -741,11 +747,6 @@
     "AuthorizationHeader" : {
       "type" : "apiKey",
       "name" : "Authorization",
-      "in" : "header"
-    },
-    "tokenInHeader" : {
-      "type" : "apiKey",
-      "name" : "token",
       "in" : "header"
     },
     "tokenInQuery" : {
@@ -1486,6 +1487,14 @@
           "title" : "title"
         },
         "status" : "status"
+      }
+    },
+    "body" : {
+      "properties" : {
+        "data" : {
+          "type" : "object",
+          "properties" : { }
+        }
       }
     }
   }
