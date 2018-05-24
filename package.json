@@ -28,6 +28,9 @@
   },
   "homepage": "https://github.com/otseobande/Book-A-Meal#readme",
   "dependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
     "bcrypt": "^2.0.1",
     "cors": "^2.8.4",
     "coveralls": "^3.0.0",
@@ -53,9 +56,6 @@
     "winston-nodemailer": "0.0.5"
   },
   "devDependencies": {
-    "babel": "^6.23.0",
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-istanbul": "^4.1.6",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
