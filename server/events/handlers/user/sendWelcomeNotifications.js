@@ -28,7 +28,6 @@ const sendWelcomeNotifications = async (user) => {
   } catch (err) {
     logger.error(err.stack);
   }
- 
 };
 
 export default sendWelcomeNotifications;

@@ -21,7 +21,6 @@ const sendOrderDeliveredNotifications = async (order) => {
   } catch (err) {
     logger.error(err.stack);
   }
-  
 };
 
 export default sendOrderDeliveredNotifications;

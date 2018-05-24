@@ -8,7 +8,7 @@ import Notifier from '../../../utils/notifier';
  * @return {Promise}  Promise resolving with a boolean
  */
 const sendNotificationsForTodaysMenu = async (menu) => {
-  try{
+  try {
     const { categories, caterer } = menu;
     const meals = categories
       .reduce((acc, category) => acc.concat(category.meals.map(meal => meal.title)), []);
@@ -29,7 +29,6 @@ const sendNotificationsForTodaysMenu = async (menu) => {
   } catch (err) {
     logger.error(err.stack);
   }
-  
 };
 
 export default sendNotificationsForTodaysMenu;

@@ -48,7 +48,9 @@
     "sequelize": "^4.37.6",
     "sequelize-cli": "^4.0.0",
     "swagger-ui-express": "^3.0.9",
-    "winston": "^3.0.0-rc5"
+    "winston": "^3.0.0-rc5",
+    "winston-mail": "^1.5.1",
+    "winston-nodemailer": "0.0.5"
   },
   "devDependencies": {
     "babel": "^6.23.0",

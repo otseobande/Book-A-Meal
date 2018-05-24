@@ -8,7 +8,7 @@ import Notifier from '../../../utils/notifier';
  * @return {Promise}  Promise resolving with a boolean
  */
 const sendOrderCreatedNotifications = async (order) => {
-  try{
+  try {
     const meal = await order.getMeal();
     const subject = 'New Order';
     const customerNotifier = new Notifier({
@@ -39,7 +39,6 @@ const sendOrderCreatedNotifications = async (order) => {
   } catch (err) {
     logger.error(err.stack);
   }
-  
 };
 
 export default sendOrderCreatedNotifications;
