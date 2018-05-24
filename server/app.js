@@ -16,10 +16,10 @@ app.config = config;
 
 setEventListeners(app);
 
-const accessLogStream = fs.createWriteStream(`${process.cwd()}\\logs\\access.log`, { flags: 'a' });
+//const accessLogStream = fs.createWriteStream(`${process.cwd()}\\logs\\access.log`, { flags: 'a' });
 
 app.use(
-  morgan('combined', { stream: accessLogStream }),
+  morgan('combined'),
   cors(),
   express.urlencoded({ extended: true }),
   express.json(),
