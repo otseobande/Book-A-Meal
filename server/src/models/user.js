@@ -8,14 +8,15 @@ import { jwtExpiry, jwtSecret } from '../config';
  * @param  {object} Datatypes - Sequelize Datatypes
  * @return {object} Sequelize Model
  */
-const user = (sequelize, DataTypes) =>  {
-  const User = sequelize.define('user', {
+const user = (sequelize, DataTypes) => {
+  const User = sequelize.define(
+    'user', {
       id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         allowNull: false,
         unique: true,
-        primaryKey: true,
+        primaryKey: true
       },
       fullName: DataTypes.STRING,
       username: DataTypes.STRING,
@@ -28,7 +29,7 @@ const user = (sequelize, DataTypes) =>  {
     {
       paranoid: true,
       defaultScope: {
-        attributes: { exclude: ['createdAt', 'updatedAt', 'deletedAt'] },
+        attributes: { exclude: ['createdAt', 'updatedAt', 'deletedAt'] }
       },
       hooks: {
   	    beforeCreate(user, options) {
@@ -41,7 +42,7 @@ const user = (sequelize, DataTypes) =>  {
   );
 
   User.prototype.toJSON = function () {
-    const values = {...this.get()};
+    const values = { ...this.get() };
 
     delete values.password;
     delete values.createdAt;
@@ -49,7 +50,7 @@ const user = (sequelize, DataTypes) =>  {
     delete values.deletedAt;
 
     return values;
-  }
+  };
 
   User.prototype.validPassword = function (password) {
     return bcrypt.compare(password, this.password);
@@ -62,14 +63,13 @@ const user = (sequelize, DataTypes) =>  {
     }, jwtSecret, {
       expiresIn: `${jwtExpiry}h`
     });
-
   };
 
   User.associate = (models) => {
     User.hasMany(models.meal);
     User.hasMany(models.menu);
     User.hasMany(models.order);
-    User.hasMany(models.notification); 
+    User.hasMany(models.notification);
   };
 
   return User;

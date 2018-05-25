@@ -1,10 +1,10 @@
 import dotenv from 'dotenv';
 import logger from '../utils/logger';
 
-dotenv.config({path: '../.env'});
+dotenv.config({ path: '../.env' });
 
 const config = {
-	production:{
+  production: {
     url: process.env.DATABASE_URL,
     username: process.env.DB_USER,
     password: process.env.DB_PASS,
@@ -15,24 +15,24 @@ const config = {
     dialectOptions: {
       ssl: true
     },
-    logging: (msg) => logger.info(msg)
+    logging: msg => logger.info(msg)
   },
   development: {
-  	username: process.env.DB_USER,
+    username: process.env.DB_USER,
     password: process.env.DB_PASS,
     database: process.env.DB_NAME,
     host: process.env.DB_HOST,
     dialect: 'postgres',
-    logging: (msg) => logger.info(msg)
+    logging: msg => logger.info(msg)
   },
   test: {
-  	username: process.env.TEST_DB_USER,
+    username: process.env.TEST_DB_USER,
     password: process.env.TEST_DB_PASS,
     database: process.env.TEST_DB_NAME,
     host: process.env.TEST_DB_HOST,
     dialect: 'postgres',
     logging: false
-  },
-}
+  }
+};
 
 export default config;

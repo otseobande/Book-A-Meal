@@ -16,26 +16,26 @@ const jsonSyntaxError = () => {
 };
 
 const validationError = {
-  statusText: "Bad Request",
+  statusText: 'Bad Request',
   errors: [
     {
       messages: []
     }
   ]
-}
+};
 
 const error = {
   stack: 'stacktrace'
-}
+};
 describe('handleErrors middleware', () => {
   it('handles validation error', () => {
     handleErrors(validationError, null, res, next, 'test');
 
-		res.status.should.have.been.calledWith(400);
-    res.json.should.have.been.calledWith({ 
-      message: [], 
-      status: 'error', 
-    })
+    res.status.should.have.been.calledWith(400);
+    res.json.should.have.been.calledWith({
+      message: [],
+      status: 'error'
+    });
   });
 
   it('handles JSON syntaxError from body-parser', () => {
@@ -45,18 +45,18 @@ describe('handleErrors middleware', () => {
     res.json.should.have.been.calledWith({
       status: 'error',
       message: 'The JSON in your request seems to be invalid.'
-    })
+    });
   });
 
   it('should send descriptive server errors in non-prod environment', () => {
-    handleErrors(error, null, res, next,'test');
+    handleErrors(error, null, res, next, 'test');
 
     res.status.should.have.been.calledWith(500);
     res.json.should.have.been.calledWith({
       status: 'error',
       message: error.stack
-    })
-  })
+    });
+  });
 
   it('should not send descriptive server errors in prod environment', () => {
     handleErrors(error, null, res, next, 'production');
@@ -65,24 +65,24 @@ describe('handleErrors middleware', () => {
     res.json.should.have.been.calledWith({
       status: 'error',
       message: 'something went wrong'
-    })
-  })
+    });
+  });
 
   it('should return error 409 if a database conflict occurs', () => {
     const errorMock = {
       errors: [{
-          path: 'meal',
-          value: 1
-        }
+        path: 'meal',
+        value: 1
+      }
       ],
-      name: 'SequelizeUniqueConstraintError',
-    }
+      name: 'SequelizeUniqueConstraintError'
+    };
     handleErrors(errorMock, null, res, next, 'production');
 
     res.status.should.have.been.calledWith(409);
     res.json.should.have.been.calledWith({
       status: 'error',
       message: ['meal "1" already exists']
-    })
-  })
+    });
+  });
 });

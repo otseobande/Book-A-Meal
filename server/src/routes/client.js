@@ -11,8 +11,8 @@ if (process.env.NODE_ENV === 'development') {
   const compiler = webpack(webpackConfig);
 
   router.use(webpackDevMiddleware(compiler, {
-    noInfo: true, 
-    publicPath: webpackConfig.output.publicPath, 
+    noInfo: true,
+    publicPath: webpackConfig.output.publicPath,
     stats: { colors: true }
   }));
 
@@ -27,7 +27,7 @@ router.get('*', (req, res) => res.sendFile(path.join(__dirname, '../../../client
 router.all('*', (req, res) => res.status(404).json({
   status: 'error',
   message: 'Route not found'
-}))
+}));
 
 
 export default router;

@@ -8,8 +8,8 @@ describe('POST /api/v1/auth/login', () => {
     const res = await chai.request(App)
       .post('/api/v1/auth/login')
       .send({
-          username: 'otseobande',
-          password: 'bookameal'
+        username: 'otseobande',
+        password: 'bookameal'
       });
 
     res.should.have.status(200);
@@ -19,8 +19,8 @@ describe('POST /api/v1/auth/login', () => {
     const res = await chai.request(App)
       .post('/api/v1/auth/login')
       .send({
-          username: 'otseobnde',
-          password: 'sdf'
+        username: 'otseobnde',
+        password: 'sdf'
       });
 
     res.should.have.status(400);
@@ -34,7 +34,7 @@ describe('POST /api/v1/auth/login', () => {
     const res = await chai.request(App)
       .post('/api/v1/auth/login')
       .send({
-          username: 'dogo',
+        username: 'dogo'
       });
 
     res.should.have.status(400);

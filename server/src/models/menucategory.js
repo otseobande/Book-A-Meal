@@ -12,7 +12,7 @@ const menuCategory = (sequelize, DataTypes) => {
       defaultValue: DataTypes.UUIDV4,
       allowNull: false,
       unique: true,
-      primaryKey: true,
+      primaryKey: true
     },
     menuId: DataTypes.UUID,
     title: DataTypes.STRING,
@@ -21,12 +21,12 @@ const menuCategory = (sequelize, DataTypes) => {
   }, {
     paranoid: true,
     defaultScope: {
-      attributes: { exclude: ['createdAt', 'updatedAt', 'deletedAt'] },
-    },
+      attributes: { exclude: ['createdAt', 'updatedAt', 'deletedAt'] }
+    }
   });
 
   MenuCategory.prototype.toJSON = function () {
-    const values = {...this.get()};
+    const values = { ...this.get() };
 
     delete values.menuId;
     delete values.createdAt;
@@ -34,7 +34,7 @@ const menuCategory = (sequelize, DataTypes) => {
     delete values.deletedAt;
 
     return values;
-  }
+  };
 
   MenuCategory.associate = (models) => {
     MenuCategory.belongsToMany(models.meal, {

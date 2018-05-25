@@ -20,6 +20,6 @@ const config = {
       }
     }
   },
-  adminEmail: process.env.ADMIN_EMAIL,
-}
+  adminEmail: process.env.ADMIN_EMAIL
+};
 export default config;

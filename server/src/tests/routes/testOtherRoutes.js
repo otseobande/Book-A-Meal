@@ -5,23 +5,18 @@ import {
 } from '../setup';
 
 describe('unspecified routes', () => {
-	it('should send a welcome message at /', async () => {
-		const res = await chai.request(App)
-			.get('/');
-		res.should.have.status(200);
-		res.body.should.be.deep.equal({
-			status: 'success',
-		  message: 'Welcome to Book-A-Meal'
-		})
-		
-	})
-	it('should return error 404 if route not found', async () => {
-		const res = await chai.request(App)
-			.get('/kangaroo');
-		res.should.have.status(404);
-		res.body.should.be.deep.equal({
-			status: 'error',
+  it('should send a welcome message at /', async () => {
+    const res = await chai.request(App)
+      .get('/');
+    res.should.have.status(200);
+  });
+  it('should return error 404 if api route not found', async () => {
+    const res = await chai.request(App)
+      .get('/api/v1/kangaroo');
+    res.should.have.status(404);
+    res.body.should.be.deep.equal({
+      status: 'error',
 		  message: 'Route not found'
-		})
-	})
-})
+    });
+  });
+});

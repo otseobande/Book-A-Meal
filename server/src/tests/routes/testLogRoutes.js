@@ -10,19 +10,19 @@ describe('/api/v1/logs', () => {
       .post('/api/v1/log')
       .send({
         data: 'test log data'
-      })
+      });
 
     res.should.have.status(200);
     res.body.should.deep.equal({
       status: 'success',
       message: 'Log saved successfully'
     });
-  })
+  });
   it('should return status 400 if data is not provided', async () => {
     const res = await chai.request(App)
       .post('/api/v1/log')
-      .send({})
+      .send({});
 
     res.should.have.status(400);
-  })
-})
+  });
+});

@@ -11,7 +11,7 @@ const menu = (sequelize, DataTypes) => {
       defaultValue: DataTypes.UUIDV4,
       allowNull: false,
       unique: true,
-      primaryKey: true,
+      primaryKey: true
     },
     userId: DataTypes.UUID,
     title: DataTypes.STRING,
@@ -22,7 +22,7 @@ const menu = (sequelize, DataTypes) => {
   });
 
   Menu.prototype.toJSON = function () {
-    const values = {...this.get()};
+    const values = { ...this.get() };
 
     delete values.userId;
     delete values.createdAt;
@@ -30,7 +30,7 @@ const menu = (sequelize, DataTypes) => {
     delete values.deletedAt;
 
     return values;
-  }
+  };
 
   Menu.associate = (models) => {
     Menu.hasMany(models.menuCategory, {
@@ -41,7 +41,7 @@ const menu = (sequelize, DataTypes) => {
     Menu.belongsTo(models.user, {
       as: 'caterer',
       foreignKey: 'userId'
-    })
+    });
   };
   return Menu;
 };

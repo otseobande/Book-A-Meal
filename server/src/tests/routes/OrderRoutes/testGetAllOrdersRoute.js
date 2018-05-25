@@ -7,26 +7,26 @@ import {
 } from '../../setup';
 
 describe('GET /api/v1/orders', () => {
-  it('should return a success status', async function() {
+  it('should return a success status', async () => {
     const res = await chai.request(App)
       .get('/api/v1/orders')
-      .set('Authorization',  `Bearer ${catererToken}`);
+      .set('Authorization', `Bearer ${catererToken}`);
 
     res.should.have.status(200);
   });
 
-  it('should return a success status as customer', async function() {
+  it('should return a success status as customer', async () => {
     const res = await chai.request(App)
       .get('/api/v1/orders')
-      .set('Authorization',  `Bearer ${customerToken}`);
+      .set('Authorization', `Bearer ${customerToken}`);
 
     res.should.have.status(200);
   });
 
-  it('should return a success status as admin', async function() {
+  it('should return a success status as admin', async () => {
     const res = await chai.request(App)
       .get('/api/v1/orders')
-      .set('Authorization',  `Bearer ${adminToken}`);
+      .set('Authorization', `Bearer ${adminToken}`);
 
     res.should.have.status(200);
   });

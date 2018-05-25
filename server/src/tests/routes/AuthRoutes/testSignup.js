@@ -1,7 +1,7 @@
 import {
   chai,
-  App,
-} from '../../setup'
+  App
+} from '../../setup';
 
 describe('POST /api/v1/auth/signup', () => {
   it('should return a success status', async () => {
@@ -12,7 +12,7 @@ describe('POST /api/v1/auth/signup', () => {
         fullName: 'Sele Mege',
         email: 'cookie@gmail.com',
         password: 'bookameal',
-        role: 'customer',
+        role: 'customer'
       });
 
     res.should.have.status(201);
@@ -24,7 +24,7 @@ describe('POST /api/v1/auth/signup', () => {
       .post('/api/v1/auth/signup')
       .send({
         username: 'dogo',
-        password: 'yaro',
+        password: 'yaro'
       });
 
     res.should.have.status(400);
@@ -38,12 +38,12 @@ describe('POST /api/v1/auth/signup', () => {
         fullName: 'Sele Mege',
         email: 'sfdele@gmail.com',
         password: 'bookameal',
-        role: 'customer',
+        role: 'customer'
       });
 
     res.should.have.status(409);
-    res.body.message[0].should.be.equal('username "otseobande" already exists')
-  })
+    res.body.message[0].should.be.equal('username "otseobande" already exists');
+  });
 
   it('should return 400 with message if email is taken', async () => {
     const res = await chai.request(App)
@@ -53,14 +53,14 @@ describe('POST /api/v1/auth/signup', () => {
         fullName: 'Sele Mege',
         email: 'otseobande@gmail.com',
         password: 'bookameal',
-        role: 'customer',
+        role: 'customer'
       });
 
     res.should.have.status(409);
-    res.body.message[0].should.be.equal('email "otseobande@gmail.com" already exists')
-  })
+    res.body.message[0].should.be.equal('email "otseobande@gmail.com" already exists');
+  });
 
-   it('should return 400 with message if role doesnt exist', async () => {
+  it('should return 400 with message if role doesnt exist', async () => {
     const res = await chai.request(App)
       .post('/api/v1/auth/signup')
       .send({
@@ -68,10 +68,9 @@ describe('POST /api/v1/auth/signup', () => {
         fullName: 'Sele Mege',
         email: 'otseobae@gmail.com',
         password: 'bookameal',
-        role: 'saler',
+        role: 'saler'
       });
 
     res.should.have.status(400);
-     
-  })
+  });
 });

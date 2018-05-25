@@ -12,7 +12,7 @@ const mealMenuCategory = (sequelize, DataTypes) => {
       defaultValue: DataTypes.UUIDV4,
       allowNull: false,
       unique: true,
-      primaryKey: true,
+      primaryKey: true
     },
     mealId: DataTypes.UUID,
     menuCategoryId: DataTypes.UUID,

@@ -12,7 +12,7 @@ const meal = (sequelize, DataTypes) => {
       defaultValue: DataTypes.UUIDV4,
       allowNull: false,
       unique: true,
-      primaryKey: true,
+      primaryKey: true
     },
     userId: DataTypes.UUID,
     title: DataTypes.STRING,
@@ -24,12 +24,12 @@ const meal = (sequelize, DataTypes) => {
   }, {
     paranoid: true,
     defaultScope: {
-      attributes: { exclude: ['createdAt', 'updatedAt', 'deletedAt'] },
-    },
+      attributes: { exclude: ['createdAt', 'updatedAt', 'deletedAt'] }
+    }
   });
 
   Meal.prototype.toJSON = function () {
-    const values = {...this.get()};
+    const values = { ...this.get() };
 
     delete values.userId;
     delete values.createdAt;
@@ -37,8 +37,8 @@ const meal = (sequelize, DataTypes) => {
     delete values.deletedAt;
 
     return values;
-  }
-  
+  };
+
   Meal.associate = (models) => {
     Meal.hasMany(models.order);
     Meal.belongsTo(models.user, {
