@@ -1,12 +1,11 @@
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
-import fs from 'fs';
 import logger from './utils/logger';
 import { trimStrings, handleErrors } from './middlewares';
 import setEventListeners from './events/setListeners';
 import apiRoutes from './routes/api';
-import otherRoutes from './routes/others';
+import clientRoutes from './routes/client';
 import config from './config';
 
 const app = express();
@@ -16,15 +15,13 @@ app.config = config;
 
 setEventListeners(app);
 
-//const accessLogStream = fs.createWriteStream(`${process.cwd()}\\logs\\access.log`, { flags: 'a' });
-
 app.use(
   morgan('combined'),
   cors(),
   express.urlencoded({ extended: true }),
   express.json(),
   trimStrings,
-  apiRoutes, otherRoutes,
+  apiRoutes, clientRoutes,
   handleErrors
 );
 
