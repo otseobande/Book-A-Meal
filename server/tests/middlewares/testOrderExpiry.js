@@ -4,7 +4,7 @@ import {
   mockReq,
   mockRes
 } from '../setup';
-import { validateUpdate } from '../../middlewares/validators/orders';
+import { validateUpdate } from '../../src/middlewares/validators/orders';
 
 const [, validateExpiry] = validateUpdate;
 

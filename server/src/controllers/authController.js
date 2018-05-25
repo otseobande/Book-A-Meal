@@ -50,7 +50,7 @@ class AuthController {
           });
         }
       })
-      .catch(err => next(err));
+      .catch(next);
   }
 
   /**
@@ -88,7 +88,7 @@ class AuthController {
           token
         });
       })
-      .catch(err => next(err));
+      .catch(next);
   }
 }
 

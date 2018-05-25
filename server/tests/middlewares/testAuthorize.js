@@ -5,7 +5,7 @@ import {
   mockRes,
   adminToken as token
 } from '../setup';
-import authorize from '../../middlewares/authorize';
+import authorize from '../../src/middlewares/authorize';
 
 const res = mockRes();
 

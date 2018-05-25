@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import swaggerUi from 'swagger-ui-express';
-import swaggerDocument from '../../docs/swagger.json';
+import swaggerDocument from '../../../docs/swagger.json';
 
-const router = Router();
+const docRouter = Router();
 const options = {
   explorer: true,
   customCss: `
@@ -20,6 +20,6 @@ const options = {
     }
   `
 };
-router.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));
+docRouter.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));
 
-export default router;
+export default docRouter;

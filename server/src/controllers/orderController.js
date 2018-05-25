@@ -59,7 +59,7 @@ class OrderController {
           });
         }
       })
-      .catch(err => next(err));
+      .catch(next);
   }
 
   /**
@@ -94,7 +94,7 @@ class OrderController {
         status: 'success',
         orders: foundOrders
       }))
-      .catch(err => next(err));
+      .catch(next);
   }
 
   /**
@@ -131,7 +131,7 @@ class OrderController {
           order: updatedOrder
         });
       })
-      .catch(err => next(err));
+      .catch(next);
   }
 
   /**
@@ -173,7 +173,7 @@ class OrderController {
           message: 'Order not found'
         });
       })
-      .catch(err => next(err));
+      .catch(next);
   }
 }
 

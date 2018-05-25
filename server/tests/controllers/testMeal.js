@@ -4,7 +4,7 @@ import {
   mockReq,
   mockRes
 } from '../setup';
-import MealController from '../../controllers/mealController';
+import MealController from '../../src/controllers/mealController';
 
 const res = mockRes();
 

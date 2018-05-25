@@ -4,7 +4,7 @@ import {
   mockReq,
   mockRes
 } from '../setup';
-import { validateCreate } from '../../middlewares/validators/menu';
+import { validateCreate } from '../../src/middlewares/validators/menu';
 
 const [ensureDateIsValid] = validateCreate;
 

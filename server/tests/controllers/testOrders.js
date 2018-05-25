@@ -5,8 +5,8 @@ import {
   mockRes,
   token
 } from '../setup';
-import { order } from '../../models';
-import OrderController from '../../controllers/orderController';
+import { order } from '../../src/models';
+import OrderController from '../../src/controllers/orderController';
 
 const res = mockRes();
 

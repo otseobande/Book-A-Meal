@@ -14,7 +14,7 @@ import logger from '../utils/logger';
  * @param {string} env - runtime environment
  * @return {json} res.json
  */
-const handleErrors = (error, req, res, next, env = config.env) => {
+const errorHandler = (error, req, res, next, env = config.env) => {
   if (error instanceof SyntaxError && error.status === 400) {
     return res.status(400).json({
       status: 'error',
@@ -52,4 +52,4 @@ const handleErrors = (error, req, res, next, env = config.env) => {
   });
 };
 
-export default handleErrors;
+export default errorHandler;

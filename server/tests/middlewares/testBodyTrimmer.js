@@ -2,7 +2,7 @@ import {
   chai,
   sinon
 } from '../setup';
-import trimStrings from '../../middlewares/trimStrings';
+import bodyTrimmer from '../../src/middlewares/bodyTrimmer';
 
 const request = {
   body: {
@@ -12,9 +12,9 @@ const request = {
 
 const next = sinon.spy();
 
-describe('trimStrings middleware', () => {
+describe('bodyTrimmer middleware', () => {
   beforeEach(() => {
-    trimStrings(request, {}, next);
+    bodyTrimmer(request, {}, next);
   });
 
   it('should trim strings in req body', () => {

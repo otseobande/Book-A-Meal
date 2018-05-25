@@ -5,7 +5,7 @@ import sinonChai from 'sinon-chai';
 import jwt from 'jsonwebtoken';
 import { mockReq, mockRes } from 'sinon-express-mock';
 import assert from 'assert';
-import App from '../app';
+import App from '../src/app';
 
 
 chai.use(chaiHttp);

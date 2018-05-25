@@ -38,7 +38,7 @@ class MenuController {
           });
         }
       })
-      .catch(err => next(err));
+      .catch(next);
   }
 
   /**
@@ -139,7 +139,7 @@ class MenuController {
 
         MenuController.sendNotFoundResponse(res);
       })
-      .catch(err => next(err));
+      .catch(next);
   }
 
   /**
@@ -174,7 +174,7 @@ class MenuController {
 
         return MenuController.sendNotFoundResponse(res);
       })
-      .catch(err => next(err));
+      .catch(next);
   }
 
 
@@ -236,7 +236,7 @@ class MenuController {
           });
         }
       })
-      .catch(err => next(err));
+      .catch(next);
   }
 
   /**

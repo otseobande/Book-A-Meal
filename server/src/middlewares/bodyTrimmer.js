@@ -7,7 +7,7 @@
  * @param  {Function} next - middleware next function
  * @return {function} next - passes control to the application
  */
-const trimStrings = (req, res, next) => {
+const bodyTrimmer = (req, res, next) => {
   Object.keys(req.body).forEach((key) => {
     if (typeof req.body[key] === 'string') {
       req.body[key] = req.body[key]
@@ -19,4 +19,4 @@ const trimStrings = (req, res, next) => {
   return next();
 };
 
-export default trimStrings;
+export default bodyTrimmer;

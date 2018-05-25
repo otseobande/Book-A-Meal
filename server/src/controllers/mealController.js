@@ -54,7 +54,7 @@ class MealController {
           });
         }
       })
-      .catch(err => next(err));
+      .catch(next);
   }
 
   /**
@@ -90,7 +90,7 @@ class MealController {
           message: 'Meal not found'
         });
       })
-      .catch(err => next(err));
+      .catch(next);
   }
 
   /**
@@ -124,7 +124,7 @@ class MealController {
           message: 'Meal not found'
         });
       })
-      .catch(err => next(err));
+      .catch(next);
   }
 
   /**
@@ -146,7 +146,7 @@ class MealController {
         status: 'success',
         meals
       }))
-      .catch(err => next(err));
+      .catch(next);
   }
 
   /**
@@ -187,7 +187,7 @@ class MealController {
           });
         }
       })
-      .catch(err => next(err));
+      .catch(next);
   }
 }
 

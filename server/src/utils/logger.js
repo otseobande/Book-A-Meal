@@ -6,6 +6,7 @@ const logger = winston.createLogger({
   level: 'info',
   format: format.combine(format.timestamp(), format.json()),
   transports: [
+    // # commented out because Heroku's filesystem is read-only
     // new winston.transports.File({
     //   filename: `${process.cwd()}\\logs\\error.log`,
     //   level: 'error',

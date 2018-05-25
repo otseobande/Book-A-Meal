@@ -5,7 +5,7 @@ import {
   mockRes,
   token
 } from '../setup';
-import MenuController from '../../controllers/menuController';
+import MenuController from '../../src/controllers/menuController';
 
 const res = mockRes();
 

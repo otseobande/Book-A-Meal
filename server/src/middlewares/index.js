@@ -1,11 +1,11 @@
-import trimStrings from './trimStrings';
-import handleErrors from './handleErrors';
+import bodyTrimmer from './bodyTrimmer';
+import errorHandler from './errorHandler';
 import authorize from './authorize';
 import guard from './guard';
 
 export {
-  trimStrings,
-  handleErrors,
+  bodyTrimmer,
+  errorHandler,
   authorize,
   guard
 };

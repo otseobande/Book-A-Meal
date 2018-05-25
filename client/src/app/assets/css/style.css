@@ -1,6 +1,6 @@
 @font-face {
     font-family: handWritten;
-    src: url('fonts/angel.ttf');
+    src: url('./fonts/angel.ttf');
 }
 body{
 	margin: 0px;

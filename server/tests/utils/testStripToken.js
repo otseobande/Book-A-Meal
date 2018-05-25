@@ -5,7 +5,7 @@ import {
   mockRes,
   adminToken as token
 } from '../setup';
-import stripToken from '../../utils/stripToken';
+import stripToken from '../../src/utils/stripToken';
 
 const tokenInAuthBearerHeaderReq = mockReq({
   headers: {

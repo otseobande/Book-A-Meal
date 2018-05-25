@@ -5,7 +5,7 @@ import {
   mockRes,
   token
 } from '../setup';
-import AuthController from '../../controllers/authController';
+import AuthController from '../../src/controllers/authController';
 
 const res = mockRes();
 

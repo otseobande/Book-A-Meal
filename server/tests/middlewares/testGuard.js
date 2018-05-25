@@ -4,7 +4,7 @@ import {
   mockReq,
   mockRes
 } from '../setup';
-import guard from '../../middlewares/guard';
+import guard from '../../src/middlewares/guard';
 
 const catererReq = mockReq({
   user: {

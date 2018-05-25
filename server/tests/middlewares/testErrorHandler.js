@@ -4,7 +4,7 @@ import {
   mockReq,
   mockRes
 } from '../setup';
-import handleErrors from '../../middlewares/handleErrors';
+import errorHandler from '../../src/middlewares/errorHandler';
 
 const res = mockRes();
 const next = sinon.spy();
@@ -27,9 +27,9 @@ const validationError = {
 const error = {
   stack: 'stacktrace'
 };
-describe('handleErrors middleware', () => {
+describe('errorHandler middleware', () => {
   it('handles validation error', () => {
-    handleErrors(validationError, null, res, next, 'test');
+    errorHandler(validationError, null, res, next, 'test');
 
     res.status.should.have.been.calledWith(400);
     res.json.should.have.been.calledWith({
@@ -39,7 +39,7 @@ describe('handleErrors middleware', () => {
   });
 
   it('handles JSON syntaxError from body-parser', () => {
-    handleErrors(jsonSyntaxError(), null, res, next, 'test');
+    errorHandler(jsonSyntaxError(), null, res, next, 'test');
 
     res.status.should.have.been.calledWith(400);
     res.json.should.have.been.calledWith({
@@ -49,7 +49,7 @@ describe('handleErrors middleware', () => {
   });
 
   it('should send descriptive server errors in non-prod environment', () => {
-    handleErrors(error, null, res, next, 'test');
+    errorHandler(error, null, res, next, 'test');
 
     res.status.should.have.been.calledWith(500);
     res.json.should.have.been.calledWith({
@@ -59,7 +59,7 @@ describe('handleErrors middleware', () => {
   });
 
   it('should not send descriptive server errors in prod environment', () => {
-    handleErrors(error, null, res, next, 'production');
+    errorHandler(error, null, res, next, 'production');
 
     res.status.should.have.been.calledWith(500);
     res.json.should.have.been.calledWith({
@@ -77,7 +77,7 @@ describe('handleErrors middleware', () => {
       ],
       name: 'SequelizeUniqueConstraintError'
     };
-    handleErrors(errorMock, null, res, next, 'production');
+    errorHandler(errorMock, null, res, next, 'production');
 
     res.status.should.have.been.calledWith(409);
     res.json.should.have.been.calledWith({

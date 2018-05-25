@@ -4,7 +4,6 @@ import {
   adminToken
 } from '../../setup';
 
-import { order } from '../../../models';
 
 describe('PUT /api/v1/orders/:orderId/deliver', () => {
   it('should return a success status 200', async () => {
