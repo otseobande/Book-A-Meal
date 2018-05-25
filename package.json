@@ -11,7 +11,7 @@
     "build:client": "webpack --config webpack.prod.js",
     "test": "npm-run-all test:server",
     "pretest:server": "npm-run-all lint:server migrate:test seed:test",
-    "test:server": "cross-env NODE_ENV=test JWT_SECRET=testsecret nyc mocha server/src/tests",
+    "test:server": "cross-env NODE_ENV=test nyc mocha server/src/tests",
     "migrate": "sequelize db:migrate:undo:all && sequelize db:migrate",
     "migrate:test": "sequelize --env test db:migrate:undo:all && sequelize --env test db:migrate",
     "seed": "sequelize db:seed:undo:all && sequelize db:seed:all",
