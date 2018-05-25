@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import Home from './Home.jsx';
 
 class App extends Component {
   render() {
-    return <h1>Hello otse</h1>;
+    return <Home />
   }
 }
 

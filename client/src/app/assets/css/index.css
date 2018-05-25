@@ -1,0 +1,208 @@
+.home{
+	background: url('../img/crispy-fish.jpg');
+	background-repeat: no-repeat;
+	
+	width: 100%;
+	height: 514px;
+
+}
+.div {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    animation-name: example;
+    animation-duration: 4s;
+}
+
+@media only screen and (min-width: 600px) {
+		nav{
+		background-color: #fd49119e;
+		margin-bottom: 0px;
+		height: 40px;
+		box-shadow: 0 120px 320px rgba(0, 0, 0, 0.41), 0 15px 12px rgba(0,0,0,0.22);
+	}
+	.meal-title{
+		width: 100%;
+	}
+
+	.nav-list{
+		margin-top: 6px;
+	}
+
+	.title{
+		position: absolute;
+	    top: 7px;
+	    left: 69px;
+	}
+
+	
+
+	.nav-list{
+		margin-top: 8px;
+	}
+
+	.intro-text{
+	    color: #f8fdff;
+	    font-weight: 900;
+	    text-align: center;
+	    padding-top: 122px;
+	    font-size: 51px;
+	    padding-left: 60px;
+	    font-family: calibri;
+	    padding-right: 60px;
+	    cursor: pointer;
+	}
+	.mask{
+		height: 456px;
+	    width: 100%;
+	    background-color: #0000007d;
+	    box-shadow: inset 0 -105px 168px -10px #000000;
+	}
+	
+	.menu-peak{
+		text-align: center;
+		font-size: 25px;
+		padding-top: 15px;
+		padding-bottom: 20px;
+
+	}
+
+	i.z{
+		font-style: normal !important;
+		margin: -10px;
+		cursor: pointer;
+		transition: font-size 1s
+		
+	}
+
+
+	i.z.bounceIn{
+    	font-size: 40px;
+	}
+
+
+} 
+
+@media only screen and (min-width: 768px) {
+	nav{
+		background-color: #fd49119e;
+		margin-bottom: 0px;
+		height: 40px;
+		box-shadow: 0 120px 320px rgba(0, 0, 0, 0.41), 0 15px 12px rgba(0,0,0,0.22);
+	}
+	.meal-title{
+		width: 100%;
+	}
+
+	.nav-list{
+		margin-top: 6px;
+	}
+
+	.title{
+		position: absolute;
+	    top: 7px;
+	    left: 69px;
+	}
+
+	
+
+	.nav-list{
+		margin-top: 8px;
+	}
+
+	.intro-text{
+	    color: #f8fdff;
+	    font-weight: 900;
+	    text-align: center;
+	    padding-top: 122px;
+	    font-size: 51px;
+	    padding-left: 60px;
+	    font-family: calibri;
+	    padding-right: 60px;
+	    cursor: pointer;
+	}
+	.mask{
+		height: 456px;
+	    width: 100%;
+	    background-color: #0000007d;
+	    box-shadow: inset 0 -105px 168px -10px #000000;
+	}
+	
+	.menu-peak{
+		text-align: center;
+		font-size: 25px;
+		padding-top: 15px;
+		padding-bottom: 20px;
+
+	}
+
+	i.z{
+		font-style: normal !important;
+		margin: -10px;
+		cursor: pointer;
+		transition: font-size 1s
+		
+	}
+
+
+	i.z.bounceIn{
+    	font-size: 40px;
+	}
+
+
+	
+}
+
+footer{
+		text-align: center;
+		background-color: #2e2d2d;
+		color: white;
+		padding: 10px;
+		margin-top: 39px;
+	}
+
+@media only screen and (max-width: 600px){
+	
+
+	.home{
+		background-size: 100% 357px
+	}
+	.mask{
+		height: 304px;
+	    width: 100%;
+	    background-color: #0000007d;
+	}
+	.intro-text{
+	    color: #f8fdff;
+	    font-weight: 900;
+	    text-align: center;
+	    padding-top: 64px;
+	    font-size: 20px;
+	    padding-left: 60px;
+	    font-family: calibri;
+	    padding-right: 60px;	
+	}
+	nav{
+		margin-bottom: 0px;
+	}
+	.home{
+		height: 379px;
+	}
+	.menu-peak{
+		text-align: center;
+		margin-bottom: 19px;
+		font-size: 19px;
+	}
+	i.z{
+		font-size: 34px;
+		font-style: normal !important;
+		margin: -10px;
+		cursor: pointer;
+		transition: font-size 1s		
+	}
+
+
+	i.z.bounceIn{
+    	font-size: 20px;
+	}
+}

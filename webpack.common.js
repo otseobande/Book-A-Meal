@@ -26,14 +26,37 @@ module.exports = {
         use: [
           { loader: "style-loader" }, 
           { loader: "css-loader" }, 
-          { loader: "sass-loader" }
         ]
       },
       {
         test: /\.(jsx|js)?$/,
         exclude: /node_modules/,
         use: ["babel-loader"]
-     }
+      },
+      {
+        test: /\.(png|svg|jpe?g|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]',
+               outputPath: 'img/'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]',
+               outputPath: 'fonts/'
+            }
+          }
+        ]
+      }
     ]
   },
 };
