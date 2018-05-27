@@ -11,7 +11,7 @@ module.exports = merge(common, {
   devtool: 'eval',
   plugins: [
     new CleanWebpackPlugin([path.join(__dirname, 'client/dist')]),
-    new FaviconsWebpackPlugin(path.join(__dirname, 'client/src/app/assets/img/logo.svg')),
+    new FaviconsWebpackPlugin(path.join(__dirname, 'client/src/assets/img/logo.svg')),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     })

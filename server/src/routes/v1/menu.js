@@ -9,13 +9,12 @@ import { guard, authorize } from '../../middlewares';
 
 const menuRouter = Router();
 
-menuRouter.use('/menu', authorize);
-
 menuRouter.get('/menu', MenuController.getSpecificDayMenu);
+
+menuRouter.use('/menu', authorize);
 menuRouter.get('/menu/:date', validateDate, MenuController.getSpecificDayMenu);
 
 menuRouter.use('/menu', guard('caterer'));
-
 menuRouter.post('/menu', validateCreate, MenuController.createMenu);
 menuRouter.put('/menu/:date', validateUpdate, MenuController.updateMenu);
 menuRouter.delete('/menu/:date', validateDate, MenuController.deleteMenu);

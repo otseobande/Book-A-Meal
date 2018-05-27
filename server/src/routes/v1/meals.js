@@ -9,8 +9,7 @@ import { guard, authorize } from '../../middlewares';
 
 const mealRouter = Router();
 
-mealRouter.use('/meals', authorize);
-mealRouter.use('/meals', guard('caterer'));
+mealRouter.use('/meals', authorize, guard('caterer'));
 
 mealRouter.post('/meals', validateCreate, MealController.create);
 mealRouter.get('/meals', MealController.getMeals);

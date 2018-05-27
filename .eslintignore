@@ -1,4 +1,4 @@
-server/src/tests
+server/tests
 server/src/config
 server/src/migrations
 server/src/models

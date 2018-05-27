@@ -159,16 +159,16 @@ class MenuController {
       ? moment(date)
       : moment();
 
-    return menu.find({
+    return menu.findAll({
       where: {
         date: givenDate
       }
     })
-      .then((foundMenu) => {
-        if (foundMenu) {
+      .then((foundMenus) => {
+        if (foundMenus && foundMenus.length > 0) {
           return res.status(200).json({
             status: 'success',
-            menu: foundMenu
+            menus: foundMenus
           });
         }
 

@@ -1,24 +1,10 @@
 import express from 'express';
 import path from 'path';
-import webpack from 'webpack';
-import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
-import webpackConfig from '../../../webpack.dev';
+import runExpressWebpackDev from '../utils/runExpressWebpackDev';
 
 const clientRouter = express.Router();
 
-if (process.env.NODE_ENV !== 'production') {
-  const compiler = webpack(webpackConfig);
-
-  clientRouter.use(webpackDevMiddleware(compiler, {
-    noInfo: true,
-    publicPath: webpackConfig.output.publicPath,
-    stats: { colors: true }
-  }));
-
-  // Hot reloading
-  clientRouter.use(webpackHotMiddleware(compiler));
-}
+runExpressWebpackDev(clientRouter, process.env.NODE_ENV);
 
 clientRouter.use(express.static(path.resolve(__dirname, '../../../client/dist')));
 

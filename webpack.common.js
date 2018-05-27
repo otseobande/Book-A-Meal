@@ -5,7 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: [
-    './client/src/app/index.js',
+    './client/src/app.js',
   ],
   output: {
     path: path.join(__dirname, 'client/dist'),
@@ -27,11 +27,11 @@ module.exports = {
           { loader: "style-loader" }, 
           { 
             loader: "css-loader", 
-            options: {
-              sourceMap: true,
-              modules: true,
-              localIdentName: "[local]___[hash:base64:5]"
-            }
+            // options: {
+            //   sourceMap: true,
+            //   modules: true,
+            //   localIdentName: "[local]___[hash:base64:5]"
+            // }
           }, 
           { loader: "sass-loader"}
         ]
@@ -42,25 +42,23 @@ module.exports = {
         use: ["babel-loader"]
       },
       {
-        test: /\.(png|svg|jpe?g|gif)$/,
+        test: /\.(png|jpe?g|gif|svg)$/,
         use: [
           {
             loader: 'file-loader',
             options: {
-              name: '[path][name].[ext]',
-               outputPath: 'img/'
+              name: './assets/img/[name].[ext]',
             }
           }
         ]
       },
       {
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
           {
             loader: 'file-loader',
             options: {
-              name: '[path][name].[ext]',
-               outputPath: 'fonts/'
+              name: './assets/font/[name].[ext]',
             }
           }
         ]

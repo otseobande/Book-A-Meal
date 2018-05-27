@@ -11,4 +11,19 @@ describe('unspecified routes', () => {
     res.should.have.status(200);
   });
 
+  it('static assets should be served', async () => {
+    const res = await chai.request(App)
+      .get('/assets/img/logo-white.svg');
+    res.should.have.status(200);
+  });
+
+  it('should send 404 for other methods at root', async () => {
+    const res = await chai.request(App)
+      .post('/');
+    res.should.have.status(404);
+    res.body.should.be.deep.equal({
+      status: 'error',
+      message: 'Route not found'
+    })
+  })
 });
