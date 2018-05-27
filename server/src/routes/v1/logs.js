@@ -4,7 +4,8 @@ import logger from '../../utils/logger';
 import validateLog from '../../middlewares/validators/log';
 
 const logRouter = Router();
-// # commented out because Heroku's filesystem is read-only
+// # Commented out because Heroku's filesystem is read-only
+// 
 // const { format } = winston;
 
 // const clientLogger = winston.createLogger({

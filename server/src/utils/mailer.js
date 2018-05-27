@@ -9,7 +9,6 @@ import { mail } from '../config';
  */
 const mailer = (mailOptions) => {
   const transporter = nodemailer.createTransport(mail.smtpConfig);
-
   transporter.sendMail(mailOptions);
 };
 
