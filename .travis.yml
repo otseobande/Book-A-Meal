@@ -11,6 +11,10 @@ env:
     - JWT_EXPIRY=24
     - ORDER_EXPIRY=30
 
+cache:
+  directories:
+    - 'node_modules'
+
 addons:
   apt:
     sources:
