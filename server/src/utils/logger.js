@@ -1,21 +1,22 @@
+/* eslint class-methods-use-this: 0 */
 import winston from 'winston';
 import mailer from './mailer';
 import { adminEmail } from '../config';
 
 const { format } = winston;
 
-
-class EmailTransport extends winston.Transport{
-  constructor(opts) {
-    super(opts);
-  }
-
+/**
+ * @class EmailTransport
+ */
+class EmailTransport extends winston.Transport {
+  /**
+   * logger methods for events
+   *
+   * @param  {object}   info  - event info object
+   * @param  {Function} callback - callback function
+   * @return {undefined}  returns undefined
+   */
   log(info, callback) {
-    console.log('logged')
-    setImmediate(() => {
-      this.emit('logged', info);
-    });
-
     mailer({
       from: 'Book-A-Meal <no-reply@bookameal.com>',
       to: adminEmail,
@@ -25,14 +26,14 @@ class EmailTransport extends winston.Transport{
 
     callback();
   }
-};
+}
 
 const logger = winston.createLogger({
   level: 'info',
   format: format.combine(format.timestamp(), format.json()),
   transports: [
     // # Commented out because Heroku's filesystem is read-only
-    // 
+    //
     // new winston.transports.File({
     //   filename: `${process.cwd()}\\logs\\error.log`,
     //   level: 'error',

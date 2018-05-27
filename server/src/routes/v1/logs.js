@@ -5,7 +5,7 @@ import validateLog from '../../middlewares/validators/log';
 
 const logRouter = Router();
 // # Commented out because Heroku's filesystem is read-only
-// 
+//
 // const { format } = winston;
 
 // const clientLogger = winston.createLogger({
