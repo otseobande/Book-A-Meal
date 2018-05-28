@@ -2,9 +2,9 @@ import {
   chai,
   sinon,
   mockReq,
-  mockRes,
+  mockRes
 } from '../setup';
-import MealController from '../../controllers/mealController';
+import MealController from '../../src/controllers/mealController';
 
 const res = mockRes();
 
@@ -17,105 +17,100 @@ describe('MealController', () => {
       },
       user: {
         id: 'asdf'
-       }
+      }
     });
 
     it('method calls next function on err', async () => {
-      try{
+      try {
         await MealController.create(req, res, next);
         next.should.have.been.called;
-      } catch(err) {
-        throw err
+      } catch (err) {
+        throw err;
       }
-    })
-  })
+    });
+  });
 
   describe('delete method', () => {
     const next = sinon.spy();
     const req = mockReq({
       params: {
-        mealId: 'asdf',
+        mealId: 'asdf'
       },
-      user:{
-        id:'asdf'
+      user: {
+        id: 'asdf'
       }
     });
 
     it('method calls next function on err', async () => {
-      try{
+      try {
         await MealController.delete(req, res, next);
         next.should.have.been.called;
-      } catch(err) {
-        throw err
+      } catch (err) {
+        throw err;
       }
-      
-    })
-  })
+    });
+  });
 
   describe('getMeal method', () => {
     const next = sinon.spy();
     const req = mockReq({
       params: {
-        mealId: 'asdf',
+        mealId: 'asdf'
       },
-      user:{
-        id:'asdf'
+      user: {
+        id: 'asdf'
       }
     });
 
     it('method calls next function on err', async () => {
-      try{
+      try {
         await MealController.getMeal(req, res, next);
         next.should.have.been.called;
-      } catch(err) {
-        throw err
-      }
-      
-    })
-
-  describe('getMeals method', () => {
-    const next = sinon.spy();
-    const req = mockReq({
-      params: {
-        mealId: 'asdf',
-      },
-      user:{
-        id:'asdf'
+      } catch (err) {
+        throw err;
       }
     });
 
-    it('method calls next function on err', async () => {
-      try{
-        await MealController.getMeals(req, res, next);
-        next.should.have.been.called;
-      } catch(err) {
-        throw err
-      }
-      
-    })
-  })
-  })
+    describe('getMeals method', () => {
+      const next = sinon.spy();
+      const req = mockReq({
+        params: {
+          mealId: 'asdf'
+        },
+        user: {
+          id: 'asdf'
+        }
+      });
+
+      it('method calls next function on err', async () => {
+        try {
+          await MealController.getMeals(req, res, next);
+          next.should.have.been.called;
+        } catch (err) {
+          throw err;
+        }
+      });
+    });
+  });
 
   describe('update method', () => {
     const next = sinon.spy();
     const req = mockReq({
       params: {
-        mealId: 'asdf',
+        mealId: 'asdf'
       },
-      user:{
-        id:'asdf'
+      user: {
+        id: 'asdf'
       }
     });
 
     it('method calls next function on err', async () => {
-      try{
+      try {
         await MealController.update(req, res, next);
         next.should.have.been.called;
-      } catch(err) {
-        throw err
+      } catch (err) {
+        throw err;
       }
-      
-    })
-  })
-  
-}) 
+    });
+  });
+});

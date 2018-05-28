@@ -2,25 +2,39 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
+import jwt from 'jsonwebtoken';
 import { mockReq, mockRes } from 'sinon-express-mock';
 import assert from 'assert';
-import App from "../app";
+import App from '../src/app';
+
 
 chai.use(chaiHttp);
 chai.use(sinonChai);
 chai.should();
 
-const adminToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyMGFjMjU3LTg2Y2MtNGE2Zi1hNjE5LTAyNDlhMjAxYzQ3NSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTUyNjk0NTI1MX0.sWTsGyZusSrsANFsOGHsLGprPK4IJkx8A-MJiElAJ6U";
-const catererToken ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZhNTZjOWU3LWU1ZjQtNDA4Ni1iN2U5LWRiNTgxMjAxYjcxZiIsInJvbGUiOiJjYXRlcmVyIiwiaWF0IjoxNTI2OTQ1Mzc1fQ.0X-IUGwnOkfjD-S6rPz3VuGCwrIj-SRsUYtitT7mSV0";
-const customerToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJhOGUxZmQzLTkyNmYtNDRjOS1hN2IzLTIxOGFlZGFiOGMxMiIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTUyNjc2NjA1NX0.samXzEmS5Hst3fMsVAO_qMvaFfzwc-BygOnpuBFPr0I";
+const adminToken = jwt.sign({
+  id: 'e20ac257-86cc-4a6f-a619-0249a201c475',
+  role: 'admin'
+}, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+const catererToken = jwt.sign({
+  id: 'fa56c9e7-e5f4-4086-b7e9-db581201b71f',
+  role: 'caterer'
+}, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+const customerToken = jwt.sign({
+  id: 'ba8e1fd3-926f-44c9-a7b3-218aedab8c12',
+  role: 'customer'
+}, process.env.JWT_SECRET, { expiresIn: '1h' });
+
 export {
-	chai,
-	assert,
-	sinon,
-	mockReq,
-	mockRes,
-	App,
-	adminToken,
-	catererToken,
-	customerToken
-}
+  chai,
+  assert,
+  sinon,
+  mockReq,
+  mockRes,
+  App,
+  adminToken,
+  catererToken,
+  customerToken
+};

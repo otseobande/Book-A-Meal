@@ -1,9 +1,9 @@
 {
   "check-coverage": true,
   "per-file": true,
-  "lines": 70,
-  "statements": 70,
-  "functions": 70,
+  "lines": 50,
+  "statements": 50,
+  "functions": 50,
   "branches": 40,
   "require": [
     "babel-register",
@@ -16,9 +16,9 @@
     "**/config/**",
     "**/UI/**",
     "**/config/**",
-    "server/migrations",
-    "server/models/index.js",
-    "server/app.js"
+    "server/src/migrations",
+    "server/src/models/index.js",
+    "server/src/app.js"
   ],
   "include": [
     "**/server/**"

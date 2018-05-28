@@ -1,4 +1,4 @@
-const items = document.querySelectorAll('i.z');
+ const items = document.querySelectorAll('i.z');
 
 const getToggleReduce = (index) => {
   const item = items[index];

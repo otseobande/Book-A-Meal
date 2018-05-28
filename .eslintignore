@@ -1,5 +1,5 @@
 server/tests
-server/config
-server/migrations
-server/models
-server/seeders
+server/src/config
+server/src/migrations
+server/src/models
+server/src/seeders

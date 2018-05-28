@@ -5,7 +5,7 @@ import {
   mockRes,
   token
 } from '../setup';
-import AuthController from '../../controllers/authController';
+import AuthController from '../../src/controllers/authController';
 
 const res = mockRes();
 
@@ -23,32 +23,30 @@ describe('AuthController', () => {
     });
 
     it('method calls next function on err', async () => {
-      try{
+      try {
         await AuthController.signup(req, res, next);
         next.should.have.been.called;
-      } catch(err) {
-        throw err
+      } catch (err) {
+        throw err;
       }
-    })
-  })
+    });
+  });
 
   describe('login method', () => {
     const next = sinon.spy();
     const req = mockReq({
       body: {
-        username: 8,
+        username: 8
       }
     });
 
     it('method calls next function on err', async () => {
-      try{
+      try {
         await AuthController.login(req, res, next);
         next.should.have.been.called;
-      } catch(err) {
-        throw err
+      } catch (err) {
+        throw err;
       }
-      
-    })
-  })
-  
-}) 
+    });
+  });
+});

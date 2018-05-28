@@ -5,23 +5,25 @@ import {
 } from '../setup';
 
 describe('unspecified routes', () => {
-	it('should send a welcome message at /', async () => {
-		const res = await chai.request(App)
-			.get('/');
-		res.should.have.status(200);
-		res.body.should.be.deep.equal({
-			status: 'success',
-		  message: 'Welcome to Book-A-Meal'
-		})
-		
-	})
-	it('should return error 404 if route not found', async () => {
-		const res = await chai.request(App)
-			.get('/kangaroo');
-		res.should.have.status(404);
-		res.body.should.be.deep.equal({
-			status: 'error',
-		  message: 'Route not found'
-		})
-	})
-})
+  it('should send a success at /', async () => {
+    const res = await chai.request(App)
+      .get('/');
+    res.should.have.status(200);
+  });
+
+  it('static assets should be served', async () => {
+    const res = await chai.request(App)
+      .get('/assets/img/logo-white.svg');
+    res.should.have.status(200);
+  });
+
+  it('should send 404 for other methods at root', async () => {
+    const res = await chai.request(App)
+      .post('/');
+    res.should.have.status(404);
+    res.body.should.be.deep.equal({
+      status: 'error',
+      message: 'Route not found'
+    })
+  })
+});

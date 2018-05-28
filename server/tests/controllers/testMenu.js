@@ -5,7 +5,7 @@ import {
   mockRes,
   token
 } from '../setup';
-import MenuController from '../../controllers/menuController';
+import MenuController from '../../src/controllers/menuController';
 
 const res = mockRes();
 
@@ -22,36 +22,35 @@ describe('MenuController', () => {
     });
 
     it('method calls next function on err', async () => {
-      try{
+      try {
         await MenuController.createMenu(req, res, next);
         next.should.have.been.called;
-      } catch(err) {
-        throw err
+      } catch (err) {
+        throw err;
       }
-    })
-  })
+    });
+  });
 
   describe('delete method', () => {
     const next = sinon.spy();
     const req = mockReq({
       params: {
-        mealId: 'asdf',
+        mealId: 'asdf'
       },
-      user:{
-        id:'asdf'
+      user: {
+        id: 'asdf'
       }
     });
 
     it('method calls next function on err', async () => {
-      try{
+      try {
         await MenuController.deleteMenu(req, res, next);
         next.should.have.been.called;
-      } catch(err) {
-        throw err
+      } catch (err) {
+        throw err;
       }
-      
-    })
-  })
+    });
+  });
 
   describe('getSpecificDayMenu method', () => {
     const next = sinon.spy();
@@ -59,67 +58,63 @@ describe('MenuController', () => {
       params: {
         date: 'sfd'
       },
-      user:{
-        id:'asdf'
+      user: {
+        id: 'asdf'
       }
     });
 
     it('method calls next function on err', async () => {
-      try{
+      try {
         await MenuController.getSpecificDayMenu(req, res, next);
         next.should.have.been.called;
-      } catch(err) {
-        throw err
+      } catch (err) {
+        throw err;
       }
-      
-    })
-  })
+    });
+  });
 
   describe('update method', () => {
     const next = sinon.spy();
     const req = mockReq({
       params: {
-        mealId: 'asdf',
+        mealId: 'asdf'
       },
-      user:{
-        id:'asdf'
+      user: {
+        id: 'asdf'
       }
     });
 
     it('method calls next function on err', async () => {
-      try{
+      try {
         await MenuController.updateMenu(req, res, next);
         next.should.have.been.called;
-      } catch(err) {
-        throw err
+      } catch (err) {
+        throw err;
       }
-      
-    })
-  })
+    });
+  });
 
   describe('update method with categories', () => {
     const next = sinon.spy();
     const req = mockReq({
       params: {
-        mealId: 'asdf',
+        mealId: 'asdf'
       },
       body: {
         categories: {}
       },
-      user:{
-        id:'asdf'
+      user: {
+        id: 'asdf'
       }
     });
 
     it('method calls next function on err', async () => {
-      try{
+      try {
         await MenuController.updateMenu(req, res, next);
         next.should.have.been.called;
-      } catch(err) {
-        throw err
+      } catch (err) {
+        throw err;
       }
-      
-    })
-  })
-  
-}) 
+    });
+  });
+});

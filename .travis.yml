@@ -8,13 +8,12 @@ env:
     - CC_TEST_REPORTER_ID=1c4feae9a685078726b61358fc7145f29761f877f1a8e5f2538d593dea207a89
     - CXX=g++-5
     - NODE_ENV=test
-    - JWT_SECRET=secret
     - JWT_EXPIRY=24
-    - TEST_DB_USER=postgres
-    - TEST_DB_PASS=
-    - TEST_DB_NAME=book_a_meal_test
-    - TEST_DB_HOST=localhost
-    - ORDER_EXPIRY=3
+    - ORDER_EXPIRY=30
+
+cache:
+  directories:
+    - 'node_modules'
 
 addons:
   apt:
@@ -27,6 +26,7 @@ services:
   - postgresql
 
 before_install:
+  - npm install -g npm@latest
   - npm install -g node-gyp node-pre-gyp
 
 install:
@@ -34,16 +34,13 @@ install:
 
 before_script:
   - psql -c 'create database book_a_meal_test;' -U postgres
-  - chmod 0755 ./node_modules/.bin/mocha
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
+  - npm run build
 
 script:
-  - npm run test:server
-
-deploy:
-  skip_cleanup: true
+  - npm run test
 
 after_success:
   - npm run coverage

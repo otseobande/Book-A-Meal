@@ -1,0 +1,118 @@
+body{
+	margin: 0px;
+	height: 100%;
+	/*background-color: #ff3d0029;*/
+	font-family: Arial, sans-serif;
+}
+
+input{
+	width: 100%;
+	height: 33px;
+    border-color: #c1b8b8;
+    border-style: solid;
+    border-radius: 5px;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+form{
+	width: 100%;
+}
+
+label{
+	font-weight: bold;
+	color: #373434;
+}
+
+.title{
+	text-align: center;
+	font-family: "Segoe Print";
+	font-size: 14px;
+}
+
+.login-area{
+	width: 400px;
+	display: flex;
+	margin: auto;
+	margin-top: 45px;
+	flex-direction: column;
+}
+
+.login-btn{
+	width: 100%;
+    height: 38px;
+    border-radius: 5px;
+    border-style: solid;
+    background-color: #e54310;
+    color: white;
+    font-size: 19px;
+    border-color: #903112;
+    cursor: pointer;
+}
+
+.login-btn:hover{
+	background-color: #903112;
+}
+
+.brand{
+	position: relative;
+	margin-top: 32px;
+	text-decoration: none;
+	text-align: center;
+	top: inherit;
+	left: inherit;
+}
+.brand > a > img{
+	width: 104px;
+}
+.brand > a{
+	text-decoration: none;
+	color: black;
+}
+
+@media only screen and (max-width: 600px){
+
+	.brand > img{
+		width: 70px;
+	}
+
+	.main-nav{
+		background-color: #4b4b86;
+		color: white;
+		height: 36px;
+		margin-top: 0px;
+		display: flex;
+		padding: 10px;
+		margin-bottom: 20px;
+	}
+
+	.title{
+		margin-top: 38px;
+		text-align: center;
+		font-family: "Segoe Print";
+	}
+
+	.login-area{
+		width: 80%;
+		display: flex;
+		margin: auto;
+		margin-top: 45px;
+		flex-direction: column;
+	}
+
+	.login-btn{
+		width: 100%;
+	    height: 38px;
+	    border-radius: 5px;
+	    border-style: solid;
+	    background-color: #e54310;
+	    color: white;
+	    font-size: 19px;
+	    border-color: #903112;
+	}
+
+	.login-btn:hover{
+		background-color: #903112;
+	}
+
+}
