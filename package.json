@@ -4,7 +4,6 @@
   "description": "Book-A-Meal is an application that allows customers to make food orders and helps the food vendor know what the customers want to eat. ",
   "main": "server/app.js",
   "scripts": {
-    "prestart": "npm-run-all --parallel build:server build:client",
     "start": "cross-env NODE_ENV=production node server/build/app.js",
     "start:dev": "cross-env NODE_ENV=development nodemon --exec babel-node -- server/src/app.js",
     "build": "npm-run-all --parallel build:server build:client",
@@ -31,17 +30,11 @@
   },
   "homepage": "https://github.com/otseobande/Book-A-Meal#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-istanbul": "^4.1.6",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-plugin-universal-import": "^2.0.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
     "bcrypt": "^2.0.1",
     "chai": "^4.1.2",
     "chai-enzyme": "^0.8.0",
@@ -83,6 +76,7 @@
     "nyc": "^11.7.1",
     "pg": "^7.4.1",
     "pg-hstore": "^2.3.2",
+    "prop-types": "^15.6.1",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
     "react-hot-loader": "^4.2.0",
@@ -107,5 +101,14 @@
     "winston-nodemailer": "0.0.5",
     "winston-transport": "^4.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-istanbul": "^4.1.6",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-plugin-universal-import": "^2.0.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1"
+  }
 }
