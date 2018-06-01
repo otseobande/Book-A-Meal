@@ -1,7 +1,7 @@
 /* eslint class-methods-use-this: 0 */
 import winston from 'winston';
 import mailer from './mailer';
-import { adminEmail } from '../config';
+import { env, adminEmail } from '../config';
 
 const { format } = winston;
 
@@ -20,7 +20,7 @@ class EmailTransport extends winston.Transport {
     mailer({
       from: 'Book-A-Meal <no-reply@bookameal.com>',
       to: adminEmail,
-      subject: 'AN ERROR JUST OCCURED',
+      subject: `AN ERROR JUST OCCURRED (${env})`,
       text: JSON.stringify(info)
     });
 

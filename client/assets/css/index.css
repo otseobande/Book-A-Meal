@@ -196,7 +196,7 @@ footer{
 	i.z{
 		font-size: 34px;
 		font-style: normal !important;
-		margin: -10px;
+		margin: 3px;
 		cursor: pointer;
 		transition: font-size 1s		
 	}

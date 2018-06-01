@@ -11,9 +11,10 @@ module.exports = merge(common, {
   devtool: 'eval',
   plugins: [
     new CleanWebpackPlugin([path.join(__dirname, 'client/dist')]),
-    new FaviconsWebpackPlugin(path.join(__dirname, 'client/src/assets/img/logo.svg')),
+    new FaviconsWebpackPlugin(path.join(__dirname, 'client/assets/img/logo.svg')),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      'APP_URL': JSON.stringify('https://meal-booking.herokuapp.com')
     })
   ],
   optimization: {

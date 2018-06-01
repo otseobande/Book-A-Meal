@@ -165,14 +165,12 @@ class MenuController {
       }
     })
       .then((foundMenus) => {
-        if (foundMenus && foundMenus.length > 0) {
+        if (foundMenus) {
           return res.status(200).json({
             status: 'success',
             menus: foundMenus
           });
         }
-
-        return MenuController.sendNotFoundResponse(res);
       })
       .catch(next);
   }

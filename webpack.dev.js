@@ -9,8 +9,13 @@ module.exports = merge(common, {
   entry: [
     'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true'
   ],
+
   devtool: 'source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development'),
+      'APP_URL': JSON.stringify('http://localhost:3000')
+    })
   ]
 });

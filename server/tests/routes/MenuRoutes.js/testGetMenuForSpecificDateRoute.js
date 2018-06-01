@@ -22,15 +22,15 @@ describe('GET /api/v1/menu/:date', () => {
     res.should.have.status(400);
   });
 
-  it('should return 404 if menu for day not found', async () => {
+  it('should return empty array if menu for day not found', async () => {
     const res = await chai.request(App)
       .get('/api/v1/menu/2020-05-02')
       .set('Authorization', `Bearer ${adminToken}`);
 
-    res.should.have.status(404);
+    res.should.have.status(200);
     res.body.should.deep.equal({
-      status: 'error',
-      message: 'Menu not set for this day'
+      status: 'success',
+      menus: []
     });
   });
 });

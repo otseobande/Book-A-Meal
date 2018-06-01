@@ -46,7 +46,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: './assets/img/[name].[ext]',
+              name: '../dist/img/[name].[ext]',
             }
           }
         ]
@@ -57,7 +57,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: './assets/font/[name].[ext]',
+              name: '../dist/font/[name].[ext]',
             }
           }
         ]

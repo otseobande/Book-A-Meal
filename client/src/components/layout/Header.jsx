@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../assets/img/logo-white.svg';
+import logo from '../../../assets/img/logo-white.svg';
 
 const Header = () => (
   <nav className="">

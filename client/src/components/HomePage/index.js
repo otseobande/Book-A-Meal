@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import logo from '../assets/img/logo-white.svg';
-import Footer from './layout/Footer.jsx';
-import Header from './layout/Header.jsx';
-import MenuPeep from './MenuPeep.jsx';
-import '../assets/css/style.css';
-import '../assets/css/index.css';
+import logo from '../../../assets/img/logo-white.svg';
+import Footer from '../layout/Footer.jsx';
+import Header from '../layout/Header.jsx';
+import MenuPeepContainer from './MenuPeepContainer.jsx';
+import '../../../assets/css/style.css';
+import '../../../assets/css/index.css';
 
 class Home extends Component {
   componentDidMount() {
@@ -44,7 +44,7 @@ class Home extends Component {
             </div>
           </div>
         </div>
-        <MenuPeep />
+        <MenuPeepContainer />
         <Footer />
       </div>
     )
