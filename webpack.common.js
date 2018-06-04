@@ -1,10 +1,9 @@
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: [
-    './client/src/app.js',
+    './client/src/app.js'
   ],
   output: {
     path: path.join(__dirname, 'client/dist'),
@@ -16,29 +15,29 @@ module.exports = {
       title: 'Book A Meal',
       template: 'client/src/index.html',
       filename: 'index.html'
-    }),
+    })
   ],
   module: {
     rules: [
       {
         test: /(\.css|.scss)$/,
         use: [
-          { loader: 'style-loader' }, 
-          { 
-            loader: 'css-loader', 
+          { loader: 'style-loader' },
+          {
+            loader: 'css-loader'
             // options: {
             //   sourceMap: true,
             //   modules: true,
             //   localIdentName: "[local]___[hash:base64:5]"
             // }
-          }, 
-          { loader: 'sass-loader'}
+          },
+          { loader: 'sass-loader' }
         ]
       },
       {
         test: /\.(jsx|js)?$/,
         exclude: /node_modules/,
-        use: ["babel-loader"]
+        use: ['babel-loader']
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/,
@@ -46,7 +45,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: '../dist/img/[name].[ext]',
+              name: '../dist/img/[name].[ext]'
             }
           }
         ]
@@ -57,11 +56,11 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: '../dist/font/[name].[ext]',
+              name: '../dist/font/[name].[ext]'
             }
           }
         ]
       }
     ]
-  },
+  }
 };
