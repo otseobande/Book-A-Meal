@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import logger from '../utils/logger';
 
-dotenv.config({ path: '../.env' });
+dotenv.config();
 
 const config = {
   production: {

@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import DisplayMeals from './DisplayMeals.jsx';
 import LoadingMeals from './LoadingMeals.jsx';
 
-const MenuPeep = ({loading, meals}) => (
-  <div className="content">   
+const MenuPeep = ({ loading, meals }) => (
+  <div className="content">
     <div className="menu-peak">
       <span>~~  </span>
       <span>
-        <b>Peep into today's menus</b>
+        <b>Peep into todays menus</b>
       </span>
       <span>  ~~</span>
     </div>
