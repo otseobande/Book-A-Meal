@@ -21,7 +21,8 @@
     "server/src/app.js"
   ],
   "include": [
-    "**/server/**"
+    "**/server/**",
+    "**/client/**"
   ],
   "reporter": ["lcov", "json", "text", "html"],
   "sourceMap": false,
