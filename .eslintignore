@@ -1,5 +1,10 @@
-server/tests
+**/tests
+**/dist
+**/build
 server/src/config
 server/src/migrations
 server/src/models
 server/src/seeders
+coverage
+UI
+logs

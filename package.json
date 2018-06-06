@@ -18,7 +18,7 @@
     "migrate:test": "sequelize --env test db:migrate:undo:all && sequelize --env test db:migrate",
     "seed": "sequelize db:seed:undo:all && sequelize db:seed:all",
     "seed:test": "sequelize --env test db:seed:all",
-    "lint:server": "eslint \"server/src/**/*.js\" app.js --fix",
+    "lint:server": "eslint \"**/*.js\" app.js --fix",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
@@ -105,7 +105,7 @@
     "winston-transport": "^4.0.0"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.3",
+    "babel-eslint": "^8.0.2",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-istanbul": "^4.1.6",
     "babel-plugin-transform-class-properties": "^6.24.1",

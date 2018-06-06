@@ -9,7 +9,7 @@ enzyme.configure({ adapter: new Adapter() });
 chai.use(chaiJestSnapshot);
 chai.should();
 
-before(function () {
+before(() => {
   chaiJestSnapshot.resetSnapshotRegistry();
 });
 
