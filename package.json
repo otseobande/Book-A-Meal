@@ -10,15 +10,13 @@
     "build": "npm-run-all --parallel build:server build:client",
     "build:server": "babel server/src -d server/build",
     "build:client": "webpack --config webpack.prod.js",
-    "test": "npm-run-all --parallel test:server test:client",
-    "pretest:server": "npm-run-all lint:server migrate:test seed:test",
-    "test:client": "cross-env NODE_ENV=test nyc mocha client/tests",
-    "test:server": "cross-env NODE_ENV=test nyc mocha server/tests",
+    "test": "cross-env NODE_ENV=test nyc mocha client/tests server/tests",
+    "pretest": "npm-run-all lint migrate:test seed:test",
     "migrate": "sequelize db:migrate:undo:all && sequelize db:migrate",
     "migrate:test": "sequelize --env test db:migrate:undo:all && sequelize --env test db:migrate",
     "seed": "sequelize db:seed:undo:all && sequelize db:seed:all",
     "seed:test": "sequelize --env test db:seed:all",
-    "lint:server": "eslint \"**/*.js\" app.js --fix",
+    "lint": "eslint **/*.js app.js --fix",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
