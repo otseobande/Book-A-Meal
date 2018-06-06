@@ -33,7 +33,4 @@ class MenuPeepContainer extends Component{
   }
 }
 
-
-
-
 export default MenuPeepContainer;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../layout/Header.jsx';
-import styles from './home.scss';
+import styles from './welcome.scss';
 
 /**
  * @class Welcome
@@ -25,11 +25,11 @@ class Welcome extends Component {
    */
   render() {
     return (
-      <div className="home">
+      <div className={styles.welcome}>
         <Header />
-        <div className="mask">
-          <div className="intro-text">
-            <span style={{ fontFamily: 'cursive' }} className="hungry">
+        <div className={styles.mask}>
+          <div className={styles.intro}>
+            <span style={{ fontFamily: 'cursive' }}>
               <span style={{ fontSize: 68 }}>
                 <b>
                   {
@@ -53,4 +53,5 @@ class Welcome extends Component {
     );
   }
 }
+
 export default Welcome;
