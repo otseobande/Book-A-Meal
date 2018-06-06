@@ -1,0 +1,98 @@
+.card {
+  background-color: white;
+  border-radius: 5px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+
+
+  @media only screen and (min-width: 600px) {
+    width: 94%;
+  }
+
+  @media only screen and (min-width: 768px) {
+    width: 80%;
+  }
+
+  @media only screen and (max-width: 600px){
+    width: 75%;
+  }
+
+  &:hover{
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3), 0 55px 58px rgba(0, 0, 0, 0.22);
+  }
+}
+
+.image{
+  height: 218px;
+ 
+  img{
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.body{
+  padding: 5px;
+  
+  @media only screen and (min-width: 600px) {
+		padding: 14px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    padding: 14px;
+  }
+}
+
+.title{
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 16px;
+  height: 1em; 
+  line-height: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  @media only screen and (max-width: 600px){
+    font-size: 19px;
+  }
+}
+
+.description{
+  color: #3f3e3e;
+  font-size: 13px;
+  height: 4em; 
+  line-height: 1em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #3f3e3e;
+}
+
+.footer{
+  display: flex;
+	padding: 10px;
+}
+
+.actions{
+  margin-left: auto;
+}
+
+.orderBtn{
+	background-color: #FF5722;
+  border: 2px solid #b93c15;
+  color: white;
+  border-radius: 5px;
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  font-size: 16px;
+  text-decoration: none;
+
+  &:hover{
+    background-color: #b93c15;
+  }
+}

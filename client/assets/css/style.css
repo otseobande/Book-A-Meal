@@ -270,10 +270,7 @@ nav{
 		margin-bottom: 0px;
 		height: 40px;
 	}
-	.meals{
-		display: flex;
-		flex-direction: column;
-	}
+
 	.menu-date-input{
 		width: 232px;
 		margin-right: 34px;
@@ -333,47 +330,6 @@ nav{
 	}
 	#search{
 		width: 640px;
-	}
-
-	/*.meals{
-		display: grid;
-		grid-template-columns: auto auto auto auto;
-	}*/
-
-	.card{
-		width: 94%;
-		margin: auto;
-		display: flex;
-		flex-direction: column;
-		margin-bottom: 20px;
-		margin-right: 20px;
-		box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
-	}
-	.card-body{
-		padding: 14px;
-	}
-	.card-img{
-		height: 218px;
-	}
-
-	.card-description{
-		color: #3f3e3e;
-		font-size: 13px;
-		height: 4em; 
-	    line-height: 1em;
-	    overflow: hidden;
-	    text-overflow: ellipsis;
-	}
-	.card-img > img{
-		height: 100%;
-		width: 100%;
-	}
-	.card-options{
-		margin-left: auto;
-	}
-	.card-footer{
-		display: flex;
-		padding: 10px;
 	}
 
 	.card-title{
@@ -481,10 +437,7 @@ nav{
 		margin-bottom: 0px;
 		height: 40px;
 	}
-	.meals{
-		display: grid;
-		grid-template-columns: repeat(4,1fr);
-	}
+
 	.menu-date-input{
 		width: 232px;
 		margin-right: 34px;
@@ -546,45 +499,9 @@ nav{
 		width: 640px;
 	}
 
-	/*.meals{
-		display: grid;
-		grid-template-columns: auto auto auto auto;
-	}*/
 
-	.card{
-		width: 80%;
-		margin: auto;
-		display: flex;
-		flex-direction: column;
-		margin-bottom: 20px;
-		margin-right: 20px;
-		box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
-	}
 	.card-body{
 		padding: 14px;
-	}
-	.card-img{
-		height: 218px;
-	}
-
-	.card-description{
-		color: #3f3e3e;
-		font-size: 13px;
-		height: 4em; 
-	    line-height: 1em;
-	    overflow: hidden;
-	    text-overflow: ellipsis;
-	}
-	.card-img > img{
-		height: 100%;
-		width: 100%;
-	}
-	.card-options{
-		margin-left: auto;
-	}
-	.card-footer{
-		display: flex;
-		padding: 10px;
 	}
 
 	.card-title{
@@ -790,9 +707,6 @@ nav{
     font-size: 16px;
 }
 
-.meals{
-    margin-top: 27px;
-}
 
 body{
   display: flex;
@@ -914,32 +828,6 @@ body{
 	}
 	.home{
 		height: 263px;
-	}
-	.card{
-		width: 75%;
-		margin: auto;
-		display: flex;
-		flex-direction: column;
-		margin-bottom: 20px;
-	}
-
-	.card-img{
-		height: 218px;
-	}
-
-	.card-description{
-		color: #3f3e3e;
-	}
-	.card-img > img{
-		height: 100%;
-		width: 100%;
-	}
-	.card-options{
-		margin-left: auto;
-	}
-	.card-footer{
-		display: flex;
-		padding: 10px;
 	}
 
 	.card-title{

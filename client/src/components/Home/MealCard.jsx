@@ -1,23 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './mealcard.scss';
 
 const MealCard = props => (
-  <div className="card">
-    <div className="card-img">
+  <div className={styles.card}>
+    <div className={styles.image}>
       <img src={props.image} alt="meal" />
     </div>
-    <div className="card-body">
-      <div className="card-title">{props.title}</div>
-      <div className="card-description">
+    <div className={styles.body}>
+      <div className={styles.title}>
+        {props.title}
+      </div>
+      <div className={styles.description}>
         {props.description}
       </div>
     </div>
-    <div className="card-footer">
+    <div className={styles.footer}>
       <span>
         <b>Price</b>: &#8358;{props.price}
       </span>
-      <div className="card-options">
-        <a className="order-btn" href="login.html">Order</a>
+      <div className={styles.actions}>
+        <a className={styles.orderBtn} href="login.html">Order</a>
       </div>
     </div>
   </div>
