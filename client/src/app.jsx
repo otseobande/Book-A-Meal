@@ -4,5 +4,5 @@ import App from './components/App.jsx';
 
 render(
   <App />,
-  document.getElementById('root')
+  document.getElementById('root') // eslint-disable-line no-undef
 );
