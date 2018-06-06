@@ -23,7 +23,7 @@ const DisplayMeals = (props) => {
 };
 
 DisplayMeals.propTypes = {
-  meals: PropTypes.arrayof(PropTypes.object).isRequired
+  meals: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default DisplayMeals;

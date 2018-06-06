@@ -20,7 +20,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /(\.css|.scss)$/,
+        test: /(\.css)$/,
         use: [
           { loader: 'style-loader' },
           {
@@ -30,9 +30,12 @@ module.exports = {
             //   modules: true,
             //   localIdentName: "[local]___[hash:base64:5]"
             // }
-          },
-          { loader: 'sass-loader' }
+          }
         ]
+      },
+      {
+        test: /\.scss$/,
+        loader: 'style-loader!css-loader?modules!sass-loader'
       },
       {
         test: /\.(jsx|js)?$/,

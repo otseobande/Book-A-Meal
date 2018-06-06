@@ -1,5 +1,5 @@
 import React from 'react';
-import Home from './Home';
+import Home from './Home/index.jsx';
 
 const App = () => <Home />;
 

@@ -13,7 +13,7 @@ const MenuPeep = ({ loading, meals }) => (
 );
 
 MenuPeep.propTypes = {
-  meals: PropTypes.arrayof(PropTypes.object).isRequired,
+  meals: PropTypes.arrayOf(PropTypes.object).isRequired,
   loading: PropTypes.bool.isRequired
 };
 

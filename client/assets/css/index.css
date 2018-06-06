@@ -67,19 +67,7 @@
 
 	}
 
-	i.z{
-		font-style: normal !important;
-		margin: 3px;
-		cursor: pointer;
-		transition: font-size 1s
-		
-	}
-
-
-	i.z.bounceIn{
-    	font-size: 40px;
-	}
-
+	
 
 } 
 
