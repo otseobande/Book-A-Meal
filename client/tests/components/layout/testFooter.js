@@ -9,11 +9,11 @@ enzyme.configure({ adapter: new Adapter() });
 chai.use(chaiJestSnapshot);
 chai.should();
 
-before(() => {
+before(function () {
   chaiJestSnapshot.resetSnapshotRegistry();
 });
 
-beforeEach(() => {
+beforeEach(function () {
   chaiJestSnapshot.configureUsingMochaContext(this);
 });
 

@@ -6,19 +6,15 @@ import LoadingMeals from './LoadingMeals.jsx';
 const MenuPeep = ({ loading, meals }) => (
   <div className="content">
     <div className="menu-peak">
-      <span>~~  </span>
-      <span>
-        <b>Peep into todays menus</b>
-      </span>
-      <span>  ~~</span>
+      <span>~~ <b>Peep into todays menus</b> ~~</span>
     </div>
     { loading ? <LoadingMeals /> : <DisplayMeals meals={meals} /> }
   </div>
-)
+);
 
 MenuPeep.propTypes = {
-  meals: PropTypes.array.isRequired,
+  meals: PropTypes.arrayof(PropTypes.object).isRequired,
   loading: PropTypes.bool.isRequired
-}
+};
 
 export default MenuPeep;
