@@ -29,22 +29,21 @@ class Welcome extends Component {
         <Header />
         <div className={styles.mask}>
           <div className={styles.intro}>
-            <span style={{ fontFamily: 'cursive' }}>
-              <span style={{ fontSize: 68 }}>
-                <b>
-                  {
-                    ('Hungry').split('').map((letter, index) => (
-                      <i
-                        key={letter}
-                        ref={elm => this.hungryElements[index] = elm}
-                        className={styles.hungry}
-                      >
-                        {letter}
-                      </i>
-                    ))
-                  }
-                </b>
-              </span><br />
+            <span className={styles.text}>
+              <b>
+                {
+                  ('Hungry').split('').map((letter, index) => (
+                    <i
+                      key={letter}
+                      ref={elm => this.hungryElements[index] = elm}
+                      className={styles.hungry}
+                    >
+                      {letter}
+                    </i>
+                  ))
+                }
+              </b>
+              <br />
               Book a meal on the go...
             </span>
           </div>

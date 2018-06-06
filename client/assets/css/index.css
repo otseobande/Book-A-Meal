@@ -33,14 +33,6 @@
 		margin-top: 8px;
 	}
 
-	.menu-peak{
-		text-align: center;
-		font-size: 25px;
-		padding-top: 15px;
-		padding-bottom: 20px;
-
-	}
-
 } 
 
 @media only screen and (min-width: 768px) {
@@ -121,11 +113,6 @@ footer{
 		margin-bottom: 0px;
 	}
 
-	.menu-peak{
-		text-align: center;
-		margin-bottom: 19px;
-		font-size: 19px;
-	}
 	i.z{
 		font-size: 34px;
 		font-style: normal !important;

@@ -2,34 +2,42 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import MenuPeep from './MenuPeep.jsx';
 
-class MenuPeepContainer extends Component{
+/**
+ * @class MenuPeepContainer
+ */
+class MenuPeepContainer extends Component {
   state = {
     loading: false,
     meals: []
-  }
+  };
 
+  /**
+   * @returns {undefined} - undefined
+   */
   componentDidMount() {
-    this.setState({loading: true});
+    this.state.loading = true;
 
-    axios.get(`${APP_URL}/api/v1/menu`)
-      .then(res => {
+    axios.get(`${APP_URL}/api/v1/menu`) // eslint-disable-line no-undef
+      .then((res) => {
         const { menus } = res.data;
-        const meals = menus.reduce((todaysMeals, menu) => {
-          return todaysMeals.concat(menu.categories.reduce((menuMeals, category) => {
-            return menuMeals.concat(category.meals);
-          }, []));
-        }, []);
+        const meals = menus.reduce((todaysMeals, menu) =>
+          todaysMeals.concat(menu.categories.reduce((menuMeals, category) =>
+            menuMeals.concat(category.meals), [])), []);
 
-        this.setState({meals, loading: false})
+        this.state.meals = meals;
+        this.state.loading = false;
       })
-      .catch(err => {
-        this.setState({loading: false})
-        console.log(err)
-      })
+      .catch((err) => {
+        this.state.loading = false;
+        console.log(err);
+      });
   }
 
+  /**
+   * @returns {JSX} - React JSX
+   */
   render() {
-    return <MenuPeep {...this.state}/>
+    return <MenuPeep {...this.state} />;
   }
 }
 

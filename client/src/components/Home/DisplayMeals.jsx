@@ -10,7 +10,7 @@ const DisplayMeals = (props) => {
       <div className={styles.meals}>
         {props.meals.map(meal => (
           <MealCard
-            key={meal.id}
+            key={meal.id + String(Math.random())}
             image={meal.img}
             description={meal.description}
             title={meal.title}
