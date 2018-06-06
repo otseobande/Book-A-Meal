@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-const MealCard = (props) =>  
+const MealCard = props => (
   <div className="card">
     <div className="card-img">
-      <img src={props.image} />
+      <img src={props.image} alt="meal" />
     </div>
     <div className="card-body">
       <div className="card-title">{props.title}</div>
@@ -21,6 +21,7 @@ const MealCard = (props) =>
       </div>
     </div>
   </div>
+);
 
 
 MealCard.propTypes = {
@@ -30,4 +31,4 @@ MealCard.propTypes = {
   price: PropTypes.number.isRequired
 };
 
-export default MealCare
+export default MealCard;
