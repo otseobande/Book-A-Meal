@@ -1,13 +1,4 @@
-@font-face {
-    font-family: handWritten;
-    src: url('../fonts/angel.ttf');
-}
-body{
-	margin: 0px;
-	height: 100%;
-	background-color: #f6f6f6;
-	font-family: cursive, Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
-}
+
 
 input, select{
 	width: 100%;
@@ -275,21 +266,6 @@ nav{
 	.menu-date-selection{
 		margin:auto;
 	}
-
-	.title{
-		position: absolute;
-	    top: 7px;
-	    left: 69px;
-	    text-decoration: none;
-	    color: white;
-	}
-
-	.logo{
-		position: absolute;
-	    top: 4px;
-	    left: -40px;
-	}
-
 	
 	.meal-search-area{
 		display: flex;

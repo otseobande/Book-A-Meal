@@ -18,6 +18,7 @@
         "consistent-return": "off",
         "linebreak-style": "off",
         "no-return-assign": "off",
+        "prefer-default-export": "off",
         "comma-dangle": ["error", {
             "arrays": "never",
             "objects": "never",

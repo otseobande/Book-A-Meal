@@ -1,0 +1,56 @@
+.nav{
+  background-color: #fd49119e;
+  margin-bottom: 0px;
+  height: 40px;
+  box-shadow: 0 120px 320px rgba(0, 0, 0, 0.41), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+.title-area{
+  @media only screen and (max-width: 600px){
+    display: flex;
+		width: 100%;
+  }
+}
+
+.title{
+	font-family: "Dancing Script",cursive, calibri;
+	font-size: 22px;
+  font-weight: bold;
+  position: absolute;
+  top: 7px;
+  left: 69px;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+
+  @media only screen and (max-width: 600px){
+    position: absolute;
+    top:none;
+    left: none;
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.logo{
+  position: absolute;
+    top: 4px;
+    left: -40px;
+}
+
+.app-name{
+  @media only screen and (max-width: 600px){
+    position: absolute;
+    top: 7px;
+    left: 39px;
+    width: 190px;
+  }
+}
+
+.nav-menus{
+  margin-left: auto;
+
+  @media only screen and (max-width: 600px){
+    display: none;
+  }
+}

@@ -1,12 +1,13 @@
 import React from 'react';
 import logo from '../../../assets/img/logo-white.svg';
+import styles from './header.scss';
 
 const Header = () => (
-  <nav className="">
-    <div className="title-area">
-      <a href="index.html" className="title">
-        <img className="logo" src={logo} width="30" />
-        <span className="app-name">Book-A-Meal</span>
+  <nav className={styles.nav}>
+    <div className={styles['title-area']}>
+      <a href="index.html" className={styles.title}>
+        <img className={styles.logo} src={logo} width="30" alt="logo" />
+        <span className={styles['app-name']}>Book-A-Meal</span>
       </a>
       <button id="nav-toggle" href="#">&#9776;</button>
     </div>

@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito:300,400,600,600i");
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400");
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
+
+@font-face {
+  font-family: handWritten;
+  src: url('../../assets/fonts/angel.ttf');
+}
+
+body{
+  margin: 0px;
+  height: 100%;
+  background-color: #f6f6f6;
+  font-family: Poppins, "Helvetica Neue", Arial, sans-serif;
+}

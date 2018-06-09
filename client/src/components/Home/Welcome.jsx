@@ -32,7 +32,7 @@ class Welcome extends Component {
             <span className={styles.text}>
               <b>
                 {
-                  ('Hungry').split('').map((letter, index) => (
+                  ('Hungry!?').split('').map((letter, index) => (
                     <i
                       key={letter}
                       ref={elm => this.hungryElements[index] = elm}
