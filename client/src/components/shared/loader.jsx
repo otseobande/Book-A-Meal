@@ -1,11 +1,11 @@
 import React from 'react';
 import loadingCube from '../../../assets/img/loading-cube.svg';
 
-const LoadingMeals = () => (
+const Loader = () => (
   <div style={{ textAlign: 'center' }}>
-    <img src={loadingCube} width={80} alt="loading" /><br />
-    loading meals...
+    <img src={loadingCube} width={40} alt="loading" /><br />
+    loading...
   </div>
 );
 
-export default LoadingMeals;
+export default Loader;

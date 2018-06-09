@@ -1,5 +1,5 @@
 import React from 'react';
-import steamingFood from '../../../assets/img/steaming.svg';
+import steamingFood from '../../../../assets/img/steaming.svg';
 
 const NoMeal = () => (
   <div style={{ textAlign: 'center' }}>

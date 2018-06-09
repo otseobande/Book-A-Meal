@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Header from '../layout/Header.jsx';
-import styles from './welcome.scss';
+import Header from '../../layout/header.jsx';
+import styles from './style.scss';
 
 /**
  * @class Welcome

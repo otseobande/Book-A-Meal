@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './mealcard.scss';
+import styles from './style.scss';
 
 const MealCard = props => (
   <div className={styles.card}>

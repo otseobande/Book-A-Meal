@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import DisplayMeals from './DisplayMeals.jsx';
-import LoadingMeals from './LoadingMeals.jsx';
-import styles from './menupeep.scss';
+import DisplayMeals from './displaymeals';
+import LoadingMeals from '../../shared/loader.jsx';
+import styles from './style.scss';
 
 /**
  * @class MenuPeep

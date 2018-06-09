@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import menusForTheDay from './menusForTheDay';
+import menusForTheDay from './menusfortheDay';
 
 export default combineReducers({
   menusForTheDay

@@ -1,14 +1,14 @@
 import React, { Fragment } from 'react';
-import Welcome from './Welcome.jsx';
-import Footer from '../layout/Footer.jsx';
-import MenuPeepContainer from './MenuPeepContainer.jsx';
+import Welcome from './welcome';
+import Footer from '../layout/footer.jsx';
+import MenuPeep from './menupeep';
 import '../../../assets/css/index.css';
 import '../../../assets/css/style.css';
 
 const Home = () => (
   <Fragment>
     <Welcome />
-    <MenuPeepContainer />
+    <MenuPeep />
     <Footer />
   </Fragment>
 );

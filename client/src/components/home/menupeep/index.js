@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { getMenusForTheDay } from '../../actions/menusForTheDay';
-import MenuPeep from './MenuPeep.jsx';
+import { getMenusForTheDay } from '../../../actions/menusfortheDay';
+import MenuPeep from './menupeep.jsx';
 
 const mapStateToProps = state => ({
   loading: state.menusForTheDay.loading,

@@ -13,6 +13,7 @@
         "babel/no-invalid-this": 1,
         "babel/semi": 1,
         "babel/no-unused-expressions": 1,
+        "react/jsx-filename-extension": "off",
         "import/no-unresolved": "off",
         "import/extensions": "off",
         "consistent-return": "off",
