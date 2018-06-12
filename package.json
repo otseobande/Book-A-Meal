@@ -128,6 +128,7 @@
     "babel-preset-react": "^6.24.1",
     "eslint-plugin-babel": "^5.1.0",
     "eslint-plugin-react": "^7.9.1",
+    "ignore-styles": "^5.0.1",
     "redux-devtools-extension": "^2.13.2",
     "webpack-cli": "^2.1.5"
   }
