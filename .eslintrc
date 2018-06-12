@@ -10,6 +10,11 @@
     "parser": "babel-eslint",
     "plugins": [ "babel" ],
     "rules": {
+        "jsx-a11y/anchor-is-valid": [ "off", {
+            "components": [ "Link" ],
+            "specialLink": [ "hrefLeft", "hrefRight" ],
+            "aspects": [ "noHref", "invalidHref", "preferButton" ]
+        }],
         "babel/no-invalid-this": 1,
         "babel/no-unused-expressions": 1,
         "react/jsx-filename-extension": "off",

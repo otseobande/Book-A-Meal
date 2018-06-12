@@ -46,6 +46,7 @@
     "chai-enzyme": "^0.8.0",
     "chai-http": "^4.0.0",
     "chai-jest-snapshot": "^2.0.0",
+    "classnames": "^2.2.6",
     "clean-webpack-plugin": "^0.1.19",
     "concurrently": "^3.5.1",
     "connected-react-router": "^4.3.0",

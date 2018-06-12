@@ -3,7 +3,6 @@ import chai from 'chai';
 import enzyme, { render } from 'enzyme';
 import chaiJestSnapshot from 'chai-jest-snapshot';
 import Adapter from 'enzyme-adapter-react-16';
-import Footer from '../../../src/components/shared/Footer/index.jsx';
 
 enzyme.configure({ adapter: new Adapter() });
 chai.use(chaiJestSnapshot);
@@ -17,9 +16,7 @@ beforeEach(function () {
   chaiJestSnapshot.configureUsingMochaContext(this);
 });
 
-describe('Footer Component', () => {
-  it('renders properly', () => {
-    const tree = render(<Footer />);
-    tree.should.matchSnapshot();
-  });
-});
+export {
+  chai,
+  enzyme
+}

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 import logo from '../../../../assets/img/logo-white.svg';
 import styles from './style.scss';
 
@@ -15,19 +16,18 @@ class NavBar extends Component {
     backgroundColor: '#e54310'
   }
   state = {
-    navMenuStyle: {}
+    navMenuStyle: {},
+    isNavMenuVisible: true,
+    navMenuClasses: classNames({
+      [styles['nav-menus']]: true,
+      [styles.visible]: this.isNavMenuVisible
+    })
   }
   /**
    * @returns {undefined} - undefined
    */
   toggleMenu() {
-    const visible = { display: 'block' };
-    const hidden = { display: 'none' };
-    this.setState({
-      navMenuStyle: this.state.navMenuStyle.display === 'block'
-        ? hidden
-        : visible
-    });
+    this.setState({ isNavMenuVisible: !this.state.isNavMenuVisible });
   }
 
   /**
@@ -43,7 +43,7 @@ class NavBar extends Component {
           </Link>
           <button id="nav-toggle" onClick={() => this.toggleMenu()} href="#">&#9776;</button>
         </div>
-        <div className={styles['nav-menus']} style={this.state.navMenuStyle}>
+        <div className={this.state.navMenuClasses} style={this.state.navMenuStyle}>
           <ul className={styles['nav-list']}>
             <li>
               <Link to="/login">Login</Link>
