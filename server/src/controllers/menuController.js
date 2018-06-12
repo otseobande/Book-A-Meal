@@ -174,8 +174,33 @@ class MenuController {
       })
       .catch(next);
   }
+  /**
+   *
+   * @param {object} req - Request object
+   * @param {object} res - Response object
+   * @param {Function} next - middleware next
+   * @return {json} res.json
+   */
+  static peepIntoTodaysMenu(req, res, next) {
+    menu.find({
+      where: {
+        date: moment().format('YYYY-MM-DD')
+      },
+      order: 'random()',
+      limit: 10
+    })
+      .then((menus) => {
+        const meals = menus.reduce((todaysMeals, currMenu) =>
+          todaysMeals.concat(currMenu.categories.reduce((menuMeals, category) =>
+            menuMeals.concat(category.meals), [])), []);
 
-
+        res.status(200).json({
+          status: 'success',
+          meals
+        });
+      })
+      .catch(next);
+  }
   /**
    * Updates an exising menu
    * @staticmethod
