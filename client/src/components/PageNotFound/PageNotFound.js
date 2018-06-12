@@ -1,5 +1,5 @@
 import React,{ Fragment } from 'react';
-import NavBar from '../shared/NavBar/index.jsx';
+import NavBar from '../shared/Layout/NavBar/NavBar.js';
 
 export default () => (
   <Fragment>

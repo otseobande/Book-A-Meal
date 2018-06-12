@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import DisplayMeals from './DisplayMeals';
-import LoadingMeals from '../../shared/loader.jsx';
+import DisplayMeals from './DisplayMeals/DisplayMeals.js';
+import LoadingMeals from '../../shared/Loader.js';
 import styles from './style.scss';
 
 /**

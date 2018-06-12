@@ -9,7 +9,7 @@ import { guard, authorize } from '../../middlewares';
 
 const menuRouter = Router();
 
-menuRouter.get('/menu/peep', MenuController.peepIntoTodaysMenu);
+menuRouter.get('/menu/peep', MenuController.peepIntoTodaysMenus);
 
 menuRouter.use('/menu', authorize);
 menuRouter.get('/menu', MenuController.getSpecificDayMenu);

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NavBar from '../../shared/NavBar/index.jsx';
+import NavBar from '../../shared/Layout/NavBar/NavBar.js';
 import styles from './style.scss';
 
 /**

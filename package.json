@@ -17,7 +17,7 @@
     "test": "cross-env NODE_ENV=test nyc mocha client/tests server/tests",
     "pretest:client": "npm run lint:client",
     "test:client": "cross-env NODE_ENV=test nyc mocha client/tests",
-    "pretest:server": "npm-run-all lint:server migrate:test",
+    "pretest:server": "npm-run-all lint:server migrate:test seed:test",
     "test:server": "cross-env NODE_ENV=test nyc mocha server/tests",
     "migrate": "sequelize db:migrate:undo:all && sequelize db:migrate",
     "migrate:test": "sequelize --env test db:migrate:undo:all && sequelize --env test db:migrate",

@@ -16,13 +16,9 @@ export const recieveMealsForTheDay = meals => ({
 export const getMealsForTheDay = () => (dispatch) => {
   dispatch(requestMealsForTheDay());
 
-  return axios.get(`${APP_URL}/api/v1/menu`) // eslint-disable-line no-undef
+  return axios.get(`${APP_URL}/api/v1/menu/peep`) // eslint-disable-line no-undef
     .then((res) => {
-      const { menus } = res.data;
-      const meals = menus.reduce((todaysMeals, menu) =>
-        todaysMeals.concat(menu.categories.reduce((menuMeals, category) =>
-          menuMeals.concat(category.meals), [])), []);
-
+      const { meals } = res.data;
       dispatch(recieveMealsForTheDay(meals));
     });
 };

@@ -1,4 +1,5 @@
 import moment from 'moment';
+import Sequelize from 'sequelize';
 import {
   menu,
   menuCategory,
@@ -164,14 +165,10 @@ class MenuController {
         date: givenDate
       }
     })
-      .then((foundMenus) => {
-        if (foundMenus) {
-          return res.status(200).json({
-            status: 'success',
-            menus: foundMenus
-          });
-        }
-      })
+      .then(foundMenus => res.status(200).json({
+        status: 'success',
+        menus: foundMenus
+      }))
       .catch(next);
   }
   /**
@@ -181,12 +178,12 @@ class MenuController {
    * @param {Function} next - middleware next
    * @return {json} res.json
    */
-  static peepIntoTodaysMenu(req, res, next) {
-    menu.find({
+  static peepIntoTodaysMenus(req, res, next) {
+    menu.findAll({
       where: {
         date: moment().format('YYYY-MM-DD')
       },
-      order: 'random()',
+      order: Sequelize.fn('RANDOM'),
       limit: 10
     })
       .then((menus) => {

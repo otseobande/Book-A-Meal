@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MealCard from '../MealCard';
-import NoMeal from '../NoMeal.jsx';
+import MealCard from '../MealCard/MealCard.js';
+import NoMeal from '../NoMeal.js';
 import styles from './style.scss';
 
 const DisplayMeals = (props) => {
