@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import DisplayMeals from './displaymeals';
+import DisplayMeals from './DisplayMeals';
 import LoadingMeals from '../../shared/loader.jsx';
 import styles from './style.scss';
 
@@ -12,7 +12,7 @@ class MenuPeep extends Component {
    * @returns {undefined} - undefined
    */
   componentDidMount() {
-    this.props.getMenus();
+    this.props.getMealsForTheDay();
   }
 
   /**
@@ -33,7 +33,7 @@ class MenuPeep extends Component {
 
 MenuPeep.propTypes = {
   meals: PropTypes.arrayOf(PropTypes.object).isRequired,
-  getMenus: PropTypes.func.isRequired,
+  getMealsForTheDay: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired
 };
 

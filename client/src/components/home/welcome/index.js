@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Header from '../../layout/header.jsx';
+import NavBar from '../../shared/NavBar/index.jsx';
 import styles from './style.scss';
 
 /**
@@ -15,7 +15,14 @@ class Welcome extends Component {
         setTimeout(() => letterElm.classList.toggle(styles.bounceIn), index * 250);
       });
     };
-    setInterval(animateHungry, 2500);
+    this.animationInterval = setInterval(animateHungry, 2500);
+  }
+
+  /**
+   * @returns {undefined}
+   */
+  componentWillUnmount() {
+    clearInterval(this.animationInterval);
   }
 
   hungryElements = [];
@@ -26,23 +33,23 @@ class Welcome extends Component {
   render() {
     return (
       <div className={styles.welcome}>
-        <Header />
+        <NavBar backgroundColor="#fd49119e" />
         <div className={styles.mask}>
           <div className={styles.intro}>
             <span className={styles.text}>
-              <b>
+              <span className={styles.hungry}>
                 {
-                  ('Hungry!?').split('').map((letter, index) => (
+                  ('Hungry!?,').split('').map((letter, index) => (
                     <i
                       key={letter}
                       ref={elm => this.hungryElements[index] = elm}
-                      className={styles.hungry}
+                      className={styles.hungryLetter}
                     >
                       {letter}
                     </i>
                   ))
                 }
-              </b>
+              </span>
               <br />
               Book a meal on the go...
             </span>

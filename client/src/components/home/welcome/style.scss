@@ -3,23 +3,32 @@
 	background-repeat: no-repeat;
 	width: 100%;
   height: 514px;
-  
+
   @media only screen and (max-width: 600px){
     height: 379px;
     background-size: 100% 357px
   }
 }
-
 .hungry{
+  font-size: 112px;
+
+  @media only screen and (max-width: 600px){
+    font-size: 60px;
+  }
+}
+.hungryLetter{
   font-style: normal !important;
   margin: 3px;
   cursor: pointer;
   transition: font-size 1s
-  
+
 }
 
-.hungry.bounceIn{
-  font-size: 40px;
+.hungryLetter.bounceIn{
+  font-size: 70px;
+  @media only screen and (max-width: 600px){
+    font-size: 40px;
+  }
 }
 
 .intro{
@@ -34,7 +43,6 @@
   cursor: pointer;
 
   @media only screen and (max-width: 600px){
-    padding-top: 64px;
     font-size: 20px;
   }
 }
@@ -46,11 +54,14 @@
   box-shadow: inset 0 -105px 168px -10px #000000;
 
   @media only screen and (max-width: 600px){
-    height: 304px;
+    height: 359px;
   }
 }
 
 .text{
-  font-family: 'Dancing Script', cursive; 
+  font-family: 'Dancing Script', cursive;
   font-size: 68px;
+  @media only screen and (max-width: 600px){
+    font-size: 35px;
+  }
 }

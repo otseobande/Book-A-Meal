@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import menusForTheDay from './menusfortheDay';
+import mealsForTheDay from './mealsForTheDay';
 
 export default combineReducers({
-  menusForTheDay
+  mealsForTheDay
 });

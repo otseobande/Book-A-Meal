@@ -1,6 +1,9 @@
-const types = [
-  'REQUEST_MENUS_FOR_THE_DAY',
-  'SAVE_MENUS_FOR_THE_DAY'
+const mealsForTheDay = [
+  'REQUEST_MEALS_FOR_THE_DAY',
+  'RECIEVE_MEALS_FOR_THE_DAY'
 ];
 
-export default types.reduce((acc, type) => ({ ...acc, [type]: type }), {});
+
+export default [
+  ...mealsForTheDay
+].reduce((acc, type) => ({ ...acc, [type]: type }), {});

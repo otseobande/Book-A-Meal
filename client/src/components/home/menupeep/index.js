@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
-import { getMenusForTheDay } from '../../../actions/menusfortheDay';
+import { getMealsForTheDay } from '../../../actions/mealsForTheDay';
 import MenuPeep from './menupeep.jsx';
 
 const mapStateToProps = state => ({
-  loading: state.menusForTheDay.loading,
-  meals: state.menusForTheDay.meals
+  loading: state.mealsForTheDay.isFetching,
+  meals: state.mealsForTheDay.meals
 });
 
 const mapDispatchToProps = dispatch => ({
-  getMenus: () => dispatch(getMenusForTheDay())
+  getMealsForTheDay: () => dispatch(getMealsForTheDay())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MenuPeep);

@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const DotEnv = require('dotenv-webpack');
 
 module.exports = {
   entry: [
@@ -15,22 +16,33 @@ module.exports = {
       title: 'Book A Meal',
       template: 'client/src/index.html',
       filename: 'index.html'
-    })
+    }),
+    new DotEnv()
   ],
   module: {
     rules: [
       {
         test: /(\.css)$/,
         use: [
-          { loader: 'style-loader' },
-          {
-            loader: 'css-loader'
-          }
+          'style-loader',
+          'css-loader'
         ]
       },
       {
         test: /(\.scss)$/,
-        loader: 'style-loader!css-loader?modules!sass-loader'
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              localIdentName: process.env.NODE_ENV === 'production'
+                ? '[hash:base64]'
+                : '[path][name]__[local]--[hash:base64:5]'
+            }
+          },
+          'sass-loader'
+        ]
       },
       {
         test: /\.(jsx|js)?$/,
