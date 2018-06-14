@@ -35,6 +35,9 @@
     "url": "https://github.com/otseobande/Book-A-Meal/issues"
   },
   "homepage": "https://github.com/otseobande/Book-A-Meal#readme",
+  "jest": {
+    "collectCoverage": true
+  },
   "dependencies": {
     "axios": "^0.18.0",
     "babel": "^6.23.0",
@@ -90,7 +93,6 @@
     "prop-types": "^15.6.1",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
-    "react-hot-loader": "^4.2.0",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
@@ -101,6 +103,7 @@
     "sass-loader": "^6.0.7",
     "sequelize": "^4.37.6",
     "sequelize-cli": "^4.0.0",
+    "shortid": "^2.2.8",
     "sinon": "^4.5.0",
     "sinon-chai": "^3.0.0",
     "sinon-express-mock": "^2.0.0",
@@ -127,10 +130,17 @@
     "babel-plugin-universal-import": "^2.0.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "compression-webpack-plugin": "^1.1.11",
     "eslint-plugin-babel": "^5.1.0",
     "eslint-plugin-react": "^7.9.1",
+    "faker": "^4.1.0",
     "ignore-styles": "^5.0.1",
+    "jest": "^23.1.0",
+    "react-hot-loader": "^4.3.2",
+    "react-test-renderer": "^16.4.1",
     "redux-devtools-extension": "^2.13.2",
-    "webpack-cli": "^2.1.5"
+    "should": "^13.2.1",
+    "webpack-cli": "^2.1.5",
+    "webpack-conditional-loader": "^1.0.12"
   }
 }

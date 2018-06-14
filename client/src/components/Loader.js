@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import loadingCube from '../../../assets/img/loading-cube.svg';
+import loadingCube from '../../assets/img/loading-cube.svg';
 
 const Loader = ({ width }) => (
   <div style={{ textAlign: 'center' }}>

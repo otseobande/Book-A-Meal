@@ -13,3 +13,9 @@ body{
   background-color: #f6f6f6;
   font-family: Poppins, "Helvetica Neue", Arial, sans-serif;
 }
+
+#root{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

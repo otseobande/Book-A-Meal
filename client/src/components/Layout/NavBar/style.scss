@@ -1,15 +1,14 @@
 .nav{
-  background-color: #fd49119e;
+  background-color: #d24e24;
   box-shadow: 0 120px 320px rgba(0, 0, 0, 0.41), 0 15px 12px rgba(0,0,0,0.22);
 
   @media only screen and (max-width: 600px){
     position: absolute;
     z-index: 10;
-    background-color: #e54310;
     padding: 9px;
     color: white;
     margin-bottom: 0px;
-    width: 95%;
+    width: 96%;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   }
 

@@ -1,19 +1,22 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import NavBar from './NavBar/NavBar.js';
 import Footer from './Footer/Footer.js';
 
 const Layout = props => (
   <Fragment>
-    <NavBar />
-    {props.children}
+    <div style={{ flex: 1 }}>
+      <NavBar />
+      {props.children}
+    </div>
     <Footer />
   </Fragment>
 );
 
 Layout.propTypes = {
-  children: React.PropTypes.oneOfType([
-    React.PropTypes.arrayOf(React.PropTypes.node),
-    React.PropTypes.node
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
   ]).isRequired
 };
 

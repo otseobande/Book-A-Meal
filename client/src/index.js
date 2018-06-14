@@ -1,17 +1,21 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { render } from 'react-dom';
+import { AppContainer } from 'react-hot-loader';
 import App from './components/App.js';
-import storeCreator from './storeCreator';
+import store from './store';
 
-(async () => {
-  const store = await storeCreator();
-
-  render(
+const renderApp = AppComponent => render(
+  <AppContainer>
     <Provider store={store}>
-      <App />
-    </Provider>,
-    document.getElementById('root') // eslint-disable-line no-undef
-  );
-})();
+      <AppComponent />
+    </Provider>
+  </AppContainer>,
+  document.getElementById('root') // eslint-disable-line no-undef
+);
 
+renderApp(App);
+
+// #if process.env.NODE_ENV === "development"
+module.hot.accept('./components/App.js', () => { renderApp(App); });
+// #endif

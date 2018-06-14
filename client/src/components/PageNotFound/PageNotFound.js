@@ -1,9 +1,7 @@
-import React,{ Fragment } from 'react';
-import NavBar from '../shared/Layout/NavBar/NavBar.js';
+import React, { Fragment } from 'react';
 
 export default () => (
   <Fragment>
-    <NavBar />
     <div>Page not found</div>
   </Fragment>
 );

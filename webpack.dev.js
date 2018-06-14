@@ -9,6 +9,23 @@ module.exports = merge(common, {
   ],
 
   devtool: 'source-map',
+  module: {
+    rules: [
+      {
+        test: /\.(jsx|js)?$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              plugins: ['react-hot-loader/babel']
+            }
+          },
+          'webpack-conditional-loader'
+        ]
+      }
+    ]
+  },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({

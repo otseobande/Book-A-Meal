@@ -37,6 +37,9 @@
           "requireParamDescription": false,
           "requireReturnDescription": true
         }],
+        "import/no-extraneous-dependencies": ["error", {
+            "devDependencies": true
+        }],
         "require-jsdoc": ["error", {
             "require": {
                 "FunctionDeclaration": true,

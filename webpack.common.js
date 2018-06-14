@@ -45,18 +45,10 @@ module.exports = {
         ]
       },
       {
-        test: /\.(jsx|js)?$/,
-        exclude: /node_modules/,
-        use: ['babel-loader']
-      },
-      {
         test: /\.(png|jpe?g|gif|svg)$/,
         use: [
           {
-            loader: 'file-loader',
-            options: {
-              name: '../dist/img/[name].[ext]'
-            }
+            loader: 'file-loader'
           }
         ]
       },
@@ -64,10 +56,7 @@ module.exports = {
         test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
           {
-            loader: 'file-loader',
-            options: {
-              name: '../dist/font/[name].[ext]'
-            }
+            loader: 'file-loader'
           }
         ]
       }
