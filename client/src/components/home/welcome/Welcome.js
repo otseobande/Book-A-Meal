@@ -33,7 +33,7 @@ class Welcome extends Component {
   render() {
     return (
       <div className={styles.welcome}>
-        <NavBar backgroundColor="#fd49119e" />
+        <NavBar home />
         <div className={styles.mask}>
           <div className={styles.intro}>
             <span className={styles.text}>

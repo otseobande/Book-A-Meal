@@ -10,10 +10,12 @@ import styles from './style.scss';
  */
 class NavBar extends Component {
   static propTypes = {
-    backgroundColor: PropTypes.string
+    backgroundColor: PropTypes.string,
+    home: PropTypes.bool
   }
   static defaultProps = {
-    backgroundColor: '#d24e24'
+    backgroundColor: '#d24e24',
+    home: false
   }
   state = {
     isNavMenuVisible: false,
@@ -22,6 +24,12 @@ class NavBar extends Component {
     })
 
   }
+
+  navClasses = classNames({
+    [styles.nav]: true,
+    [styles.home]: this.props.home
+  })
+
   /**
    * @returns {undefined} - undefined
    */
@@ -40,13 +48,13 @@ class NavBar extends Component {
    */
   render() {
     return (
-      <nav className={styles.nav} style={{ backgroundColor: this.props.backgroundColor }}>
+      <nav className={this.navClasses}>
         <div className={styles['title-area']}>
           <Link to="/" className={styles.title}>
             <img className={styles.logo} src={logo} width="30" alt="logo" />
             <span className={styles['app-name']}>Book-A-Meal</span>
           </Link>
-          <button id="nav-toggle" onClick={() => this.toggleMenu()} href="#">&#9776;</button>
+          <button className={styles.navToggle} onClick={() => this.toggleMenu()} href="#">&#9776;</button>
         </div>
         <div className={this.state.navMenuClasses}>
           <ul className={styles['nav-list']}>

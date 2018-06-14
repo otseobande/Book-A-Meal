@@ -5,17 +5,15 @@ import { AppContainer } from 'react-hot-loader';
 import App from './components/App.js';
 import store from './store';
 
-const renderApp = AppComponent => render(
+render(
   <AppContainer>
     <Provider store={store}>
-      <AppComponent />
+      <App />
     </Provider>
   </AppContainer>,
   document.getElementById('root') // eslint-disable-line no-undef
 );
 
-renderApp(App);
-
 // #if process.env.NODE_ENV === "development"
-module.hot.accept('./components/App.js', () => { renderApp(App); });
+module.hot.accept();
 // #endif

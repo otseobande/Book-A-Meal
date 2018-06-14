@@ -1,7 +1,5 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 export default () => (
-  <Fragment>
-    <div>Page not found</div>
-  </Fragment>
+  <div style={{ textAlign: 'center', paddingTop: '80px', fontSize: '40px' }}>Page not found</div>
 );
