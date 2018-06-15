@@ -10,18 +10,6 @@ const CompressionPlugin = require('compression-webpack-plugin');
 module.exports = merge(common, {
   mode: 'production',
   devtool: 'eval',
-  module: {
-    rules: [
-      {
-        test: /\.(jsx|js)?$/,
-        exclude: /node_modules/,
-        use: [
-          'babel-loader',
-          'webpack-conditional-loader'
-        ]
-      }
-    ]
-  },
   plugins: [
     new CleanWebpackPlugin([path.join(__dirname, 'client/dist')]),
     new FaviconsWebpackPlugin(path.join(__dirname, 'client/assets/img/logo.svg')),

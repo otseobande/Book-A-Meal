@@ -5,12 +5,14 @@ import Home from './Home/Home.js';
 import Layout from './Layout/Layout.js';
 import PageNotFound from './PageNotFound/PageNotFound.js';
 import './app.css';
+import SignUp from './auth/SignUp/SignUp.js';
 
 const App = () => (
   <Fragment>
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route path="/signup" component={SignUp} />
         <Layout>
           <Route component={PageNotFound} />
         </Layout>

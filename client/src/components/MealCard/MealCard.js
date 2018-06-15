@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styles from './meal-card.scss';
 
-const MealCard = ({meal, order, edit}) => (
+const MealCard = ({ meal, order, edit }) => (
   <div className={styles.card}>
     <div className={styles.image}>
       <img src={meal.img} alt="meal" />
@@ -40,10 +40,10 @@ MealCard.propTypes = {
     img: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    order: PropTypes.bool,
-    edit: PropTypes.bool
-  }).isRequired
+    price: PropTypes.number.isRequired
+  }).isRequired,
+  order: PropTypes.bool,
+  edit: PropTypes.bool
 };
 
 

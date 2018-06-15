@@ -7,7 +7,6 @@ module.exports = merge(common, {
   entry: [
     'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true'
   ],
-
   devtool: 'source-map',
   module: {
     rules: [
@@ -20,8 +19,7 @@ module.exports = merge(common, {
             options: {
               plugins: ['react-hot-loader/babel']
             }
-          },
-          'webpack-conditional-loader'
+          }
         ]
       }
     ]

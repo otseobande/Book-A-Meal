@@ -22,11 +22,16 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /(\.css)$/,
+        test: /\.(jsx|js)?$/,
+        exclude: /node_modules/,
         use: [
-          'style-loader',
-          'css-loader'
+          'babel-loader',
+          'webpack-conditional-loader'
         ]
+      },
+      {
+        test: /(\.css)$/,
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /(\.scss)$/,
@@ -45,20 +50,8 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|jpe?g|gif|svg)$/,
-        use: [
-          {
-            loader: 'file-loader'
-          }
-        ]
-      },
-      {
-        test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
-        use: [
-          {
-            loader: 'file-loader'
-          }
-        ]
+        test: /\.(png|jpe?g|gif|svg|woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+        use: ['file-loader']
       }
     ]
   }
