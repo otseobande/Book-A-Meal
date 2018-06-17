@@ -1,12 +1,12 @@
 import {
   REQUEST_MEALS_FOR_THE_DAY,
   RECIEVE_MEALS_FOR_THE_DAY
-} from '../actions/types';
+} from '../actions/actionTypes.js';
 
 const initialState = {
   meals: [],
   isFetching: false
-}; 
+};
 
 export default (state = initialState, { type, meals }) => {
   switch (type) {

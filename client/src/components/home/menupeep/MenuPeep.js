@@ -24,7 +24,7 @@ class MenuPeep extends Component {
         <div className={styles.heading}>
           <span>~~ <b>Peep into today&#39;s menus</b> ~~</span>
         </div>
-        { this.props.loading ? <LoadingMeals /> : <DisplayMeals meals={this.props.meals} /> }
+        { this.props.loading ? <LoadingMeals message="loading..." /> : <DisplayMeals meals={this.props.meals} /> }
       </div>
     );
   }

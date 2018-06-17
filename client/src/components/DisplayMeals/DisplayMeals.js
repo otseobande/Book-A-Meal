@@ -1,6 +1,5 @@
 import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
-import shortid from 'shortid';
 import MealCard from '../MealCard/MealCard.js';
 import NoMeal from './NoMeal.js';
 import LoadMoreButton from './LoadMore/LoadMoreButton.js';
@@ -27,7 +26,7 @@ class DisplayMeals extends Component {
     this.setState({
       visibleMeals: this.state.visibleMeals + 4
     });
-    animateWindowScrollBy(30, 20);
+    animateWindowScrollBy(30, 23);
   }
 
   /**
@@ -41,12 +40,13 @@ class DisplayMeals extends Component {
       return (
         <Fragment>
           <div className={styles.meals}>
-            {meals.slice(0, visibleMeals).map((meal, index) => (
-              <MealCard
-                key={index} // eslint-disable-line react/no-array-index-key
-                meal={meal}
-                order
-              />))
+            {
+              meals.slice(0, visibleMeals).map((meal, index) => (
+                <MealCard
+                  key={index} // eslint-disable-line react/no-array-index-key
+                  meal={meal}
+                  action="order"
+                />))
             }
           </div>
           {

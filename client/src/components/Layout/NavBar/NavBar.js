@@ -3,18 +3,16 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import logo from '../../../../assets/img/logo-white.svg';
-import styles from './style.scss';
+import styles from './navbar.scss';
 
 /**
  * @class NavBar
  */
 class NavBar extends Component {
   static propTypes = {
-    backgroundColor: PropTypes.string,
     home: PropTypes.bool
   }
   static defaultProps = {
-    backgroundColor: '#d24e24',
     home: false
   }
   state = {

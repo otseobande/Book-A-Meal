@@ -1,9 +1,132 @@
 .title{
   font-family: 'Dancing Script', cursive;
   font-size: 40px;
-  margin-top: 0px;
+  margin-top: 32px;
+  text-align: center;
+
+  h1{
+    margin-top: 0px;
+  }
+
+  a{
+    text-decoration: none;
+    color: black;
+  }
+
+  img{
+    @media only screen and (max-width: 600px){
+      width: 70px;
+    }
+    @media only screen and (min-width: 600px) {
+      width: 70px;
+    }
+    @media only screen and (min-width: 768px) {
+      width: 83px;
+    }
+  }
 }
 
-.login-area{
-  font-family: Poppins;
+.authArea{
+	width: 400px;
+	display: flex;
+	margin: auto;
+	margin-top: 45px;
+  flex-direction: column;
+  width: 40%;
+
+  @media only screen and (max-width: 600px){
+    width: 85%;
+  }
+  @media only screen and (min-width: 600px) {
+    width: 90%;
+  }
+
+  @media only screen and (min-width: 768px) {
+    width: 50%;
+  }
+
+  @media only screen and (min-width: 992px) {
+    width: 30%;
+  }
 }
+
+.label {
+  font-weight: bold;
+  color: #373434;
+}
+
+.input {
+  width: 92%;
+  height: 33px;
+  border-color: #c1b8b8;
+  border-style: solid;
+  border-radius: 5px;
+  font-size: 15px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  &:focus{
+    outline: coral auto 4px
+  }
+}
+
+.select{
+  @extend .input;
+  width: 98%;
+  @media only screen and (max-width: 600px){
+    width: 100%;
+  }
+
+}
+
+.loginBtn{
+	width: 100%;
+  height: 38px;
+  border-radius: 5px;
+  border-style: solid;
+  background-color: #e54310;
+  color: white;
+  font-size: 19px;
+  border-color: #903112;
+  cursor: pointer;
+
+  &:hover{
+    background-color: #903112;
+  }
+
+  &:disabled{
+    background-color: #dc7f61;
+  }
+}
+
+.loginBtnSubmit{
+  @extend .loginBtn;
+  :global{
+    animation: flipInX .5s ease-in;
+  }
+}
+
+.errorMessage{
+  color: #de1e1e;
+  font-size: 13px;
+  margin-top: -10px;
+}
+
+.error{
+  border-color: #de1e1e;
+  :global{
+    animation: shake .4s ease-in .2s;
+  }
+}
+
+.inputError{
+  @extend .input;
+  @extend .error;
+}
+
+.selectError{
+  @extend .select;
+  @extend .error;
+}
+

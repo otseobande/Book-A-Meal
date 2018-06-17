@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Switch, Route } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
+import 'animate.css';
 import Home from './Home/Home.js';
 import Layout from './Layout/Layout.js';
 import PageNotFound from './PageNotFound/PageNotFound.js';

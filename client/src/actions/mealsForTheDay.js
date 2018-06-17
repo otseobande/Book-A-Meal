@@ -2,7 +2,7 @@ import axios from 'axios';
 import {
   REQUEST_MEALS_FOR_THE_DAY,
   RECIEVE_MEALS_FOR_THE_DAY
-} from './types';
+} from './actionTypes.js';
 
 export const requestMealsForTheDay = () => ({
   type: REQUEST_MEALS_FOR_THE_DAY

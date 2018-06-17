@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styles from './meal-card.scss';
 
-const MealCard = ({ meal, order, edit }) => (
+const MealCard = ({
+  meal,
+  action,
+  handleDelete
+}) => (
   <div className={styles.card}>
     <div className={styles.image}>
       <img src={meal.img} alt="meal" />
@@ -18,15 +22,22 @@ const MealCard = ({ meal, order, edit }) => (
     </div>
     <div className={styles.footer}>
       <span>
-        <b>Price</b>: &#8358;{meal.price}
+        <b>Price</b>:
+          &#8358;
+        {
+            meal.price
+                .toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+          }
       </span>
       <div className={styles.actions}>
-        {order && <Link className={styles.orderBtn} to={`meal/${meal.id}/order`}>Order</Link>}
         {
-          edit &&
+          action === 'order' &&
+          <Link className={styles.orderBtn} to={`meal/${meal.id}/order`}>Order</Link>}
+        {
+          action === 'edit' &&
           <Fragment>
             <Link className={styles.orderBtn} to={`meal/${meal.id}/edit`}>Edit</Link>
-            <Link className={styles.orderBtn} to="/">Delete</Link>
+            <button className={styles.orderBtn} onClick={handleDelete}>Delete</button>
           </Fragment>
         }
       </div>
@@ -42,14 +53,14 @@ MealCard.propTypes = {
     description: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired
   }).isRequired,
-  order: PropTypes.bool,
-  edit: PropTypes.bool
+  action: PropTypes.string,
+  handleDelete: PropTypes.func
 };
 
 
 MealCard.defaultProps = {
-  order: false,
-  edit: false
+  action: '',
+  handleDelete: () => {}
 };
 
 export default MealCard;

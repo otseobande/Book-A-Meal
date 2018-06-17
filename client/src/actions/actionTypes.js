@@ -3,7 +3,11 @@ const mealsForTheDay = [
   'RECIEVE_MEALS_FOR_THE_DAY'
 ];
 
+const auth = [
+  'UPDATE_AUTHENTICATED_USER'
+];
 
 export default [
-  ...mealsForTheDay
+  ...mealsForTheDay,
+  ...auth
 ].reduce((acc, type) => ({ ...acc, [type]: type }), {});
