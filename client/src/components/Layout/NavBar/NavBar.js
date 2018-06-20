@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+import AuthLinks from './AuthLinks.js';
 import logo from '../../../../assets/img/logo-white.svg';
 import styles from './navbar.scss';
 
@@ -10,10 +11,15 @@ import styles from './navbar.scss';
  */
 class NavBar extends Component {
   static propTypes = {
-    home: PropTypes.bool
+    home: PropTypes.bool,
+    loggedIn: PropTypes.bool,
+    logout: PropTypes.func.isRequired,
+    user: PropTypes.object
   }
   static defaultProps = {
-    home: false
+    home: false,
+    loggedIn: false,
+    user: {}
   }
   state = {
     isNavMenuVisible: false,
@@ -56,12 +62,17 @@ class NavBar extends Component {
         </div>
         <div className={this.state.navMenuClasses}>
           <ul className={styles['nav-list']}>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/signup">Sign Up</Link>
-            </li>
+            {this.props.loggedIn ? (
+              <Fragment>
+                <li>
+                  <Link to="/">Hi {this.props.user.fullName}</Link>
+                </li>
+                <li>
+                  <Link to="/" onClick={this.props.logout}>Logout</Link>
+                </li>
+              </Fragment>
+            ) : <AuthLinks />
+            }
           </ul>
         </div>
       </nav>

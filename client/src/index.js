@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import App from './components/App.js';
-import store from './store';
+import { store } from './storeSetup.js';
 
 render(
   <AppContainer>

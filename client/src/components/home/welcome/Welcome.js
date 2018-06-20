@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import NavBar from '../../Layout/NavBar/NavBar.js';
-import styles from './style.scss';
+import NavBar from '../../Layout/NavBar/NavBarContainer.js';
+import styles from './welcome.scss';
 
 /**
  * @class Welcome

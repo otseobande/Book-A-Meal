@@ -78,6 +78,14 @@
     width: 100%;
   }
 
+  @media screen and (min-width: 600px){
+    width: 96%
+  }
+
+  @media only screen and (min-width: 768px) {
+    width: 97%;
+  }
+
 }
 
 .loginBtn{
@@ -97,6 +105,18 @@
 
   &:disabled{
     background-color: #dc7f61;
+  }
+
+  @media only screen and (max-width: 600px){
+    width: 100%;
+  }
+
+  @media screen and (min-width: 600px){
+    width: 96%
+  }
+
+  @media only screen and (min-width: 768px) {
+    width: 97%;
   }
 }
 

@@ -6,9 +6,9 @@ import thunk from 'redux-thunk';
 import { logger } from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
 // #endif
-import rootReducer from './reducers';
+import rootReducer from './reducers/rootReducer.js';
 
-const history = createBrowserHistory();
+export const history = createBrowserHistory();
 
 const middlewares = [
   thunk,
@@ -22,7 +22,7 @@ composeEnhancers = composeWithDevTools;
 middlewares.push(logger);
 // #endif
 
-export default createStore(
+export const store = createStore(
   connectRouter(history)(rootReducer),
   composeEnhancers(applyMiddleware(...middlewares))
 );

@@ -30,26 +30,6 @@ module.exports = {
         ]
       },
       {
-        test: /(\.css)$/,
-        use: ['style-loader', 'css-loader']
-      },
-      {
-        test: /(\.scss)$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              localIdentName: process.env.NODE_ENV === 'production'
-                ? '[hash:base64]'
-                : '[path][name]__[local]--[hash:base64:5]'
-            }
-          },
-          'sass-loader'
-        ]
-      },
-      {
         test: /\.(png|jpe?g|gif|svg|woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
         use: ['file-loader']
       }

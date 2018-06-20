@@ -4,7 +4,8 @@ const mealsForTheDay = [
 ];
 
 const auth = [
-  'UPDATE_AUTHENTICATED_USER'
+  'LOGIN_SUCCESS',
+  'LOGOUT'
 ];
 
 export default [

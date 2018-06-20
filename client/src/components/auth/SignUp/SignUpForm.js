@@ -1,4 +1,5 @@
 import React from 'react';
+// import PropTypes from 'prop-types';
 import Loader from '../../Loader.js';
 import styles from '../auth.scss';
 
@@ -14,19 +15,19 @@ const SignUpForm = ({
   handleReset
 }) => (
   <form onSubmit={handleSubmit}>
-    <label className={styles.label} htmlFor="fullname">Full name:
+    <label className={styles.label} htmlFor="fullName">Full name:
       <input
         className={
-          errors.fullname && touched.fullname
+          errors.fullName && touched.fullName
             ? styles.inputError : styles.input}
         type="text"
-        name="fullname"
+        name="fullName"
         onChange={handleChange}
         onBlur={handleBlur}
-        value={values.fullname}
+        value={values.fullName}
       />
-      {errors.fullname &&
-      touched.fullname && <div className={styles.errorMessage}>{errors.fullname}</div>}
+      {errors.fullName &&
+      touched.fullName && <div className={styles.errorMessage}>{errors.fullName}</div>}
     </label>
 
     <label className={styles.label} htmlFor="username">Username:
