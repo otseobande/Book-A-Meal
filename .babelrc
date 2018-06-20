@@ -6,7 +6,9 @@
 			"polyfill": false,
 			"regenerator": true
 		}],
-		"add-module-exports"
+		"add-module-exports",
+		"transform-class-properties",
+		"syntax-dynamic-import"
   ],
   "env": {
     "test": {

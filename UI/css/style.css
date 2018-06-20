@@ -47,13 +47,7 @@ textarea{
     margin-bottom: 10px;
     border-width: 2px;
 }
-nav{
-	background-color: #e54310;
-	padding: 9px;
-	color: white;
-	margin-bottom: 20px;
-	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-}
+
 .title{
 	font-family: "Segoe Print",cursive, calibri;
 	font-size: 22px;
@@ -190,11 +184,11 @@ nav{
 }
 
 .meal-order-btn:hover{
-       
+
     /*background-color: #522b2b96;*/
-    
+
     box-shadow: 1px 1px 43px rgb(0, 0, 0), 0 1px 2px rgba(0, 0, 0, 0.89);
-    
+
 }
 
 .checkbox-label {
@@ -297,7 +291,7 @@ nav{
 	    left: -40px;
 	}
 
-	
+
 	.meal-search-area{
 		display: flex;
 		flex-direction: row;
@@ -313,8 +307,8 @@ nav{
 	.nav-list > li{
 		display: inline-block;
 		margin-right: 4px;
-		cursor: pointer;    
-    	
+		cursor: pointer;
+
 	}
 	.nav-list > li > a{
 		border-radius: 5px;
@@ -359,7 +353,7 @@ nav{
 	.card-description{
 		color: #3f3e3e;
 		font-size: 13px;
-		height: 4em; 
+		height: 4em;
 	    line-height: 1em;
 	    overflow: hidden;
 	    text-overflow: ellipsis;
@@ -378,7 +372,7 @@ nav{
 
 	.card-title{
 		font-size: 16px;
-		height: 1em; 
+		height: 1em;
 	    line-height: 1em;
 	    overflow: hidden;
 	    white-space: nowrap;
@@ -389,23 +383,23 @@ nav{
 		margin-left: 5px;
 	}
 	/*.scroll-tooltip {
-		outline:none; 
+		outline:none;
 	}
 	.scroll-tooltip strong {line-height:30px;}
-	.scroll-tooltip:hover {text-decoration:none;} 
+	.scroll-tooltip:hover {text-decoration:none;}
 	.scroll-tooltip span {
 	    z-index:10;
-	    display:none; 
+	    display:none;
 	    padding:14px 20px;
-	    margin-top:60px; 
+	    margin-top:60px;
 	    margin-left:-160px;
-	    width:300px; 
+	    width:300px;
 	    line-height:16px;
 	}*/
 	.meal-title:hover span{
-	    display:inline; 
-	    position:absolute; 
-	    border:2px solid #FFF;  
+	    display:inline;
+	    position:absolute;
+	    border:2px solid #FFF;
 	    color:#EEE;
 	    top: 0;
 	    bottom: 0;
@@ -419,11 +413,11 @@ nav{
 		color: #db1616;
 	}
 	.callout {z-index:20;position:absolute;border:0;top:-14px;left:120px;}
-	    
+
 
 	.scroll-tooltip span
 	{
-	    border-radius:2px;        
+	    border-radius:2px;
 	    box-shadow: 0px 0px 8px 4px #666;
 	}
 	.scroll{
@@ -508,7 +502,7 @@ nav{
 	    left: -40px;
 	}
 
-	
+
 	.meal-search-area{
 		display: flex;
 		flex-direction: row;
@@ -524,8 +518,8 @@ nav{
 	.nav-list > li{
 		display: inline-block;
 		margin-right: 4px;
-		cursor: pointer;    
-    	
+		cursor: pointer;
+
 	}
 	.nav-list > li > a{
 		border-radius: 5px;
@@ -570,7 +564,7 @@ nav{
 	.card-description{
 		color: #3f3e3e;
 		font-size: 13px;
-		height: 4em; 
+		height: 4em;
 	    line-height: 1em;
 	    overflow: hidden;
 	    text-overflow: ellipsis;
@@ -589,7 +583,7 @@ nav{
 
 	.card-title{
 		font-size: 16px;
-		height: 1em; 
+		height: 1em;
 	    line-height: 1em;
 	    overflow: hidden;
 	    white-space: nowrap;
@@ -600,23 +594,23 @@ nav{
 		margin-left: 5px;
 	}
 	/*.scroll-tooltip {
-		outline:none; 
+		outline:none;
 	}
 	.scroll-tooltip strong {line-height:30px;}
-	.scroll-tooltip:hover {text-decoration:none;} 
+	.scroll-tooltip:hover {text-decoration:none;}
 	.scroll-tooltip span {
 	    z-index:10;
-	    display:none; 
+	    display:none;
 	    padding:14px 20px;
-	    margin-top:60px; 
+	    margin-top:60px;
 	    margin-left:-160px;
-	    width:300px; 
+	    width:300px;
 	    line-height:16px;
 	}*/
 	.meal-title:hover span{
-	    display:inline; 
-	    position:absolute; 
-	    border:2px solid #FFF;  
+	    display:inline;
+	    position:absolute;
+	    border:2px solid #FFF;
 	    color:#EEE;
 	    top: 0;
 	    bottom: 0;
@@ -630,11 +624,11 @@ nav{
 		color: #db1616;
 	}
 	.callout {z-index:20;position:absolute;border:0;top:-14px;left:120px;}
-	    
+
 
 	.scroll-tooltip span
 	{
-	    border-radius:2px;        
+	    border-radius:2px;
 	    box-shadow: 0px 0px 8px 4px #666;
 	}
 	.scroll{
@@ -697,7 +691,7 @@ nav{
 }
 .order-btn:hover{
 	background-color: #b93c15;
-} 
+}
 
 .card-1 {
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -753,7 +747,7 @@ nav{
     color: white;
     font-size: 23px;
     cursor: pointer;
-   
+
 }
 .red-btn{
 	cursor: pointer;
@@ -809,7 +803,7 @@ body{
 	border-width: 3px;
 	border-color: transparent;
 	border-top-color: white;
-	
+
 }
 
 
@@ -869,7 +863,7 @@ body{
 	    left: 39px;
 	    width: 190px;
 	}
-	.nav-menus > .nav-list{
+	/* .nav-menus > .nav-list{
 		list-style: none;
 		text-align: center;
 		padding: 0;
@@ -879,7 +873,7 @@ body{
 
 	.nav-menus > .nav-list > li{
 		border-bottom: 1px solid #fbfbfb;
-		
+
 	}
 
 	.nav-menus > .nav-list > li:hover{
@@ -895,7 +889,7 @@ body{
 		text-decoration: none;
 		display: block;
 		padding: 11px;
-	}
+	} */
 	#nav-toggle{
 		display: block;
 		background-color: transparent;
@@ -948,7 +942,7 @@ body{
 	nav > .title{
 		text-align: center;
 	}
-	
+
 	.page-title{
 		margin: 0;
     	margin-bottom: 14px;

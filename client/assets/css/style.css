@@ -1,15 +1,6 @@
-@font-face {
-    font-family: handWritten;
-    src: url('../fonts/angel.ttf');
-}
-body{
-	margin: 0px;
-	height: 100%;
-	background-color: #f6f6f6;
-	font-family: cursive, Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
-}
 
-input, select{
+
+/* input, select{
 	width: 100%;
 	height: 33px;
     border-color: #c1b8b8;
@@ -17,7 +8,7 @@ input, select{
     border-radius: 5px;
     font-size: 16px;
     margin-bottom: 10px;
-}
+} */
 
 input[type="checkbox"]
 .meal-select{
@@ -76,10 +67,6 @@ nav{
 	margin-bottom: 5px;
 }
 
-.content{
-	width: 90%;
-	margin: auto;
-}
 #nav-toggle{
 	display: none;
 }
@@ -190,11 +177,11 @@ nav{
 }
 
 .meal-order-btn:hover{
-       
+
     /*background-color: #522b2b96;*/
-    
+
     box-shadow: 1px 1px 43px rgb(0, 0, 0), 0 1px 2px rgba(0, 0, 0, 0.89);
-    
+
 }
 
 .checkbox-label {
@@ -270,10 +257,7 @@ nav{
 		margin-bottom: 0px;
 		height: 40px;
 	}
-	.meals{
-		display: flex;
-		flex-direction: column;
-	}
+
 	.menu-date-input{
 		width: 232px;
 		margin-right: 34px;
@@ -283,21 +267,6 @@ nav{
 		margin:auto;
 	}
 
-	.title{
-		position: absolute;
-	    top: 7px;
-	    left: 69px;
-	    text-decoration: none;
-	    color: white;
-	}
-
-	.logo{
-		position: absolute;
-	    top: 4px;
-	    left: -40px;
-	}
-
-	
 	.meal-search-area{
 		display: flex;
 		flex-direction: row;
@@ -313,8 +282,8 @@ nav{
 	.nav-list > li{
 		display: inline-block;
 		margin-right: 4px;
-		cursor: pointer;    
-    	
+		cursor: pointer;
+
 	}
 	.nav-list > li > a{
 		border-radius: 5px;
@@ -335,50 +304,9 @@ nav{
 		width: 640px;
 	}
 
-	/*.meals{
-		display: grid;
-		grid-template-columns: auto auto auto auto;
-	}*/
-
-	.card{
-		width: 94%;
-		margin: auto;
-		display: flex;
-		flex-direction: column;
-		margin-bottom: 20px;
-		margin-right: 20px;
-		box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
-	}
-	.card-body{
-		padding: 14px;
-	}
-	.card-img{
-		height: 218px;
-	}
-
-	.card-description{
-		color: #3f3e3e;
-		font-size: 13px;
-		height: 4em; 
-	    line-height: 1em;
-	    overflow: hidden;
-	    text-overflow: ellipsis;
-	}
-	.card-img > img{
-		height: 100%;
-		width: 100%;
-	}
-	.card-options{
-		margin-left: auto;
-	}
-	.card-footer{
-		display: flex;
-		padding: 10px;
-	}
-
 	.card-title{
 		font-size: 16px;
-		height: 1em; 
+		height: 1em;
 	    line-height: 1em;
 	    overflow: hidden;
 	    white-space: nowrap;
@@ -389,23 +317,23 @@ nav{
 		margin-left: 5px;
 	}
 	/*.scroll-tooltip {
-		outline:none; 
+		outline:none;
 	}
 	.scroll-tooltip strong {line-height:30px;}
-	.scroll-tooltip:hover {text-decoration:none;} 
+	.scroll-tooltip:hover {text-decoration:none;}
 	.scroll-tooltip span {
 	    z-index:10;
-	    display:none; 
+	    display:none;
 	    padding:14px 20px;
-	    margin-top:60px; 
+	    margin-top:60px;
 	    margin-left:-160px;
-	    width:300px; 
+	    width:300px;
 	    line-height:16px;
 	}*/
 	.meal-title:hover span{
-	    display:inline; 
-	    position:absolute; 
-	    border:2px solid #FFF;  
+	    display:inline;
+	    position:absolute;
+	    border:2px solid #FFF;
 	    color:#EEE;
 	    top: 0;
 	    bottom: 0;
@@ -419,11 +347,11 @@ nav{
 		color: #db1616;
 	}
 	.callout {z-index:20;position:absolute;border:0;top:-14px;left:120px;}
-	    
+
 
 	.scroll-tooltip span
 	{
-	    border-radius:2px;        
+	    border-radius:2px;
 	    box-shadow: 0px 0px 8px 4px #666;
 	}
 	.scroll{
@@ -481,10 +409,7 @@ nav{
 		margin-bottom: 0px;
 		height: 40px;
 	}
-	.meals{
-		display: grid;
-		grid-template-columns: repeat(4,1fr);
-	}
+
 	.menu-date-input{
 		width: 232px;
 		margin-right: 34px;
@@ -508,7 +433,7 @@ nav{
 	    left: -40px;
 	}
 
-	
+
 	.meal-search-area{
 		display: flex;
 		flex-direction: row;
@@ -524,8 +449,8 @@ nav{
 	.nav-list > li{
 		display: inline-block;
 		margin-right: 4px;
-		cursor: pointer;    
-    	
+		cursor: pointer;
+
 	}
 	.nav-list > li > a{
 		border-radius: 5px;
@@ -546,50 +471,14 @@ nav{
 		width: 640px;
 	}
 
-	/*.meals{
-		display: grid;
-		grid-template-columns: auto auto auto auto;
-	}*/
 
-	.card{
-		width: 80%;
-		margin: auto;
-		display: flex;
-		flex-direction: column;
-		margin-bottom: 20px;
-		margin-right: 20px;
-		box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
-	}
 	.card-body{
 		padding: 14px;
-	}
-	.card-img{
-		height: 218px;
-	}
-
-	.card-description{
-		color: #3f3e3e;
-		font-size: 13px;
-		height: 4em; 
-	    line-height: 1em;
-	    overflow: hidden;
-	    text-overflow: ellipsis;
-	}
-	.card-img > img{
-		height: 100%;
-		width: 100%;
-	}
-	.card-options{
-		margin-left: auto;
-	}
-	.card-footer{
-		display: flex;
-		padding: 10px;
 	}
 
 	.card-title{
 		font-size: 16px;
-		height: 1em; 
+		height: 1em;
 	    line-height: 1em;
 	    overflow: hidden;
 	    white-space: nowrap;
@@ -600,23 +489,23 @@ nav{
 		margin-left: 5px;
 	}
 	/*.scroll-tooltip {
-		outline:none; 
+		outline:none;
 	}
 	.scroll-tooltip strong {line-height:30px;}
-	.scroll-tooltip:hover {text-decoration:none;} 
+	.scroll-tooltip:hover {text-decoration:none;}
 	.scroll-tooltip span {
 	    z-index:10;
-	    display:none; 
+	    display:none;
 	    padding:14px 20px;
-	    margin-top:60px; 
+	    margin-top:60px;
 	    margin-left:-160px;
-	    width:300px; 
+	    width:300px;
 	    line-height:16px;
 	}*/
 	.meal-title:hover span{
-	    display:inline; 
-	    position:absolute; 
-	    border:2px solid #FFF;  
+	    display:inline;
+	    position:absolute;
+	    border:2px solid #FFF;
 	    color:#EEE;
 	    top: 0;
 	    bottom: 0;
@@ -630,11 +519,11 @@ nav{
 		color: #db1616;
 	}
 	.callout {z-index:20;position:absolute;border:0;top:-14px;left:120px;}
-	    
+
 
 	.scroll-tooltip span
 	{
-	    border-radius:2px;        
+	    border-radius:2px;
 	    box-shadow: 0px 0px 8px 4px #666;
 	}
 	.scroll{
@@ -697,7 +586,7 @@ nav{
 }
 .order-btn:hover{
 	background-color: #b93c15;
-} 
+}
 
 .card-1 {
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -753,7 +642,7 @@ nav{
     color: white;
     font-size: 23px;
     cursor: pointer;
-   
+
 }
 .red-btn{
 	cursor: pointer;
@@ -790,9 +679,6 @@ nav{
     font-size: 16px;
 }
 
-.meals{
-    margin-top: 27px;
-}
 
 body{
   display: flex;
@@ -809,7 +695,7 @@ body{
 	border-width: 3px;
 	border-color: transparent;
 	border-top-color: white;
-	
+
 }
 
 
@@ -879,7 +765,7 @@ body{
 
 	.nav-menus > .nav-list > li{
 		border-bottom: 1px solid #fbfbfb;
-		
+
 	}
 
 	.nav-menus > .nav-list > li:hover{
@@ -915,32 +801,6 @@ body{
 	.home{
 		height: 263px;
 	}
-	.card{
-		width: 75%;
-		margin: auto;
-		display: flex;
-		flex-direction: column;
-		margin-bottom: 20px;
-	}
-
-	.card-img{
-		height: 218px;
-	}
-
-	.card-description{
-		color: #3f3e3e;
-	}
-	.card-img > img{
-		height: 100%;
-		width: 100%;
-	}
-	.card-options{
-		margin-left: auto;
-	}
-	.card-footer{
-		display: flex;
-		padding: 10px;
-	}
 
 	.card-title{
 		font-size: 19px;
@@ -948,7 +808,7 @@ body{
 	nav > .title{
 		text-align: center;
 	}
-	
+
 	.page-title{
 		margin: 0;
     	margin-bottom: 14px;

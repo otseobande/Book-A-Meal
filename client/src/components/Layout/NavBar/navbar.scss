@@ -1,0 +1,136 @@
+.nav{
+  background-color: #d24e24;
+  padding: 9px;
+  color: white;
+
+  @media only screen and (max-width: 600px){
+    position: absolute;
+    z-index: 10;
+    padding: 9px;
+    color: white;
+    margin-bottom: 0px;
+    width: 96%;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  }
+
+
+  @media only screen and (min-width: 600px) {
+    display: flex;
+    flex-direction: row;
+    padding-left: 30px;
+    padding-right: 30px;
+
+    /*background-color: #a82800;*/
+    margin-bottom: 0px;
+    height: 40px;
+  }
+}
+
+.title-area{
+  margin-top: 4px;
+  @media only screen and (max-width: 600px){
+    display: flex;
+		width: 100%;
+  }
+}
+
+.title{
+	font-family: "Dancing Script",cursive, calibri;
+	font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  left: 69px;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+
+  @media only screen and (max-width: 600px){
+    position: absolute;
+    top:none;
+    left: none;
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.logo{
+  position: absolute;
+  left: -50px;
+}
+
+.app-name{
+  @media only screen and (max-width: 600px){
+    width: 190px;
+  }
+}
+
+.nav-menus{
+  margin-left: auto;
+
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
+}
+
+.nav-list{
+  list-style: none;
+  text-align: center;
+  padding: 0;
+  width: 100%;
+  margin: auto;
+
+  li{
+    display: inline-block;
+		margin-right: 4px;
+    cursor: pointer;
+
+    @media only screen and (max-width: 600px) {
+      border-bottom: 1px solid #fbfbfb;
+      display: block;
+    }
+
+    a{
+      border-radius: 5px;
+		  font-size: 18px;
+      color: white;
+      text-decoration: none;
+      display: block;
+      padding: 8px;
+
+      &:hover{
+        background-color: #cf1c15;
+      }
+    }
+  }
+}
+
+.visible{
+  display: block;
+}
+
+.hidden{
+  display: none;
+}
+
+.home{
+  background-color: #fd49119e;
+  box-shadow: 0 120px 320px rgba(0, 0, 0, 0.41), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+.navToggle{
+  display: none;
+
+
+  @media only screen and (max-width: 600px){
+    display: block;
+    background-color: transparent;
+    border-radius: 4px;
+    border-style: solid;
+    border-color: brown;
+    color: wheat;
+    font-size: 21px;
+    width: 45px;
+    margin-left: auto;
+    height: 36px;
+  }
+}

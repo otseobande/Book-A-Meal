@@ -18,7 +18,7 @@ const errorHandler = (error, req, res, next, env = config.env) => {
   if (error instanceof SyntaxError && error.status === 400) {
     return res.status(400).json({
       status: 'error',
-      message: 'The JSON in your request seems to be invalid.'
+      message: 'The JSON in your request is invalid.'
     });
   }
 

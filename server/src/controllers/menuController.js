@@ -1,4 +1,5 @@
 import moment from 'moment';
+import Sequelize from 'sequelize';
 import {
   menu,
   menuCategory,
@@ -164,20 +165,39 @@ class MenuController {
         date: givenDate
       }
     })
-      .then((foundMenus) => {
-        if (foundMenus && foundMenus.length > 0) {
-          return res.status(200).json({
-            status: 'success',
-            menus: foundMenus
-          });
-        }
+      .then(foundMenus => res.status(200).json({
+        status: 'success',
+        menus: foundMenus
+      }))
+      .catch(next);
+  }
+  /**
+   *
+   * @param {object} req - Request object
+   * @param {object} res - Response object
+   * @param {Function} next - middleware next
+   * @return {json} res.json
+   */
+  static peepIntoTodaysMenus(req, res, next) {
+    menu.findAll({
+      where: {
+        date: moment().format('YYYY-MM-DD')
+      },
+      order: Sequelize.fn('RANDOM'),
+      limit: 10
+    })
+      .then((menus) => {
+        const meals = menus.reduce((todaysMeals, currMenu) =>
+          todaysMeals.concat(currMenu.categories.reduce((menuMeals, category) =>
+            menuMeals.concat(category.meals), [])), []);
 
-        return MenuController.sendNotFoundResponse(res);
+        res.status(200).json({
+          status: 'success',
+          meals
+        });
       })
       .catch(next);
   }
-
-
   /**
    * Updates an exising menu
    * @staticmethod

@@ -1,10 +1,10 @@
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const DotEnv = require('dotenv-webpack');
 
 module.exports = {
   entry: [
-    './client/src/app.js',
+    './client/src/index.js'
   ],
   output: {
     path: path.join(__dirname, 'client/dist'),
@@ -17,51 +17,22 @@ module.exports = {
       template: 'client/src/index.html',
       filename: 'index.html'
     }),
+    new DotEnv()
   ],
   module: {
     rules: [
       {
-        test: /(\.css|.scss)$/,
-        use: [
-          { loader: 'style-loader' }, 
-          { 
-            loader: 'css-loader', 
-            // options: {
-            //   sourceMap: true,
-            //   modules: true,
-            //   localIdentName: "[local]___[hash:base64:5]"
-            // }
-          }, 
-          { loader: 'sass-loader'}
-        ]
-      },
-      {
         test: /\.(jsx|js)?$/,
         exclude: /node_modules/,
-        use: ["babel-loader"]
-      },
-      {
-        test: /\.(png|jpe?g|gif|svg)$/,
         use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: './assets/img/[name].[ext]',
-            }
-          }
+          'babel-loader',
+          'webpack-conditional-loader'
         ]
       },
       {
-        test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: './assets/font/[name].[ext]',
-            }
-          }
-        ]
+        test: /\.(png|jpe?g|gif|svg|woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+        use: ['file-loader']
       }
     ]
-  },
+  }
 };

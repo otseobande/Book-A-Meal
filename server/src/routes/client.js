@@ -1,19 +1,21 @@
-import express from 'express';
+import { Router } from 'express';
 import path from 'path';
+import gzipStatic from 'connect-gzip-static';
 import runExpressWebpackDev from '../utils/runExpressWebpackDev';
 
-const clientRouter = express.Router();
+const clientRouter = Router();
 
 runExpressWebpackDev(clientRouter, process.env.NODE_ENV);
 
-clientRouter.use(express.static(path.resolve(__dirname, '../../../client/dist')));
+const clientAssetPath = path.resolve(__dirname, '../../../client/dist');
 
-clientRouter.get('*', (_, res) => res.sendFile(path.join(__dirname, '../../../client/dist/index.html')));
+clientRouter.use(gzipStatic(clientAssetPath));
+
+clientRouter.get('*', (_, res) => res.sendFile(`${clientAssetPath}/index.html`));
 
 clientRouter.all('*', (_, res) => res.status(404).json({
   status: 'error',
   message: 'Route not found'
 }));
-
 
 export default clientRouter;

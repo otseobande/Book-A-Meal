@@ -9,9 +9,10 @@ import { guard, authorize } from '../../middlewares';
 
 const menuRouter = Router();
 
-menuRouter.get('/menu', MenuController.getSpecificDayMenu);
+menuRouter.get('/menu/peep', MenuController.peepIntoTodaysMenus);
 
 menuRouter.use('/menu', authorize);
+menuRouter.get('/menu', MenuController.getSpecificDayMenu);
 menuRouter.get('/menu/:date', validateDate, MenuController.getSpecificDayMenu);
 
 menuRouter.use('/menu', guard('caterer'));

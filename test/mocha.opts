@@ -1,5 +1,6 @@
---require babel-register 
---require regenerator-runtime/runtime 
---exit 
+--require babel-register
+--require regenerator-runtime/runtime
+--require ignore-styles
+--exit
 --recursive
 --timeout 10000
