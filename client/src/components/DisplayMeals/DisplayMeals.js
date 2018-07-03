@@ -11,7 +11,8 @@ import styles from './display-meals.scss';
  */
 class DisplayMeals extends Component {
   static propTypes = {
-    meals: PropTypes.arrayOf(PropTypes.object).isRequired
+    meals: PropTypes.arrayOf(PropTypes.object).isRequired,
+    loggedIn: PropTypes.bool.isRequired
   };
   state = {
     visibleMeals: 4
@@ -26,14 +27,14 @@ class DisplayMeals extends Component {
     this.setState({
       visibleMeals: this.state.visibleMeals + 4
     });
-    animateWindowScrollBy(30, 23);
+    animateWindowScrollBy(30, 20);
   }
 
   /**
    * @returns {JSX} - React JSX
    */
   render() {
-    const { meals } = this.props;
+    const { meals, loggedIn } = this.props;
     const { visibleMeals } = this.state;
 
     if (meals.length > 0) {
@@ -57,7 +58,7 @@ class DisplayMeals extends Component {
         </Fragment>
       );
     }
-    return <NoMeal />;
+    return <NoMeal loggedIn={loggedIn} />;
   }
 }
 

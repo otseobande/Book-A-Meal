@@ -10,16 +10,16 @@ import rootReducer from './reducers/rootReducer.js';
 
 export const history = createBrowserHistory();
 
+let composeEnhancers = compose;
+
 const middlewares = [
   thunk,
   routerMiddleware(history)
 ];
 
-let composeEnhancers = compose;
-
 // #if process.env.NODE_ENV === 'development'
-composeEnhancers = composeWithDevTools;
 middlewares.push(logger);
+composeEnhancers = composeWithDevTools;
 // #endif
 
 export const store = createStore(

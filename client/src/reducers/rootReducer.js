@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import mealsForTheDay from './mealsForTheDay';
+import menusPeep from './menusPeep';
+import menusForTheDay from './menusForTheDay';
 import auth from './auth.js';
 
 export default combineReducers({
-  mealsForTheDay,
+  menusPeep,
+  menusForTheDay,
   auth
 });

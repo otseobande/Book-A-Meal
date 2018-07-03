@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styles from './meal-card.scss';
@@ -6,9 +7,10 @@ import styles from './meal-card.scss';
 const MealCard = ({
   meal,
   action,
-  handleDelete
+  handleDelete,
+  className: addedClassName
 }) => (
-  <div className={styles.card}>
+  <div className={classnames(styles.card, addedClassName)}>
     <div className={styles.image}>
       <img src={meal.img} alt="meal" />
     </div>
@@ -54,12 +56,14 @@ MealCard.propTypes = {
     price: PropTypes.number.isRequired
   }).isRequired,
   action: PropTypes.string,
+  className: PropTypes.string,
   handleDelete: PropTypes.func
 };
 
 
 MealCard.defaultProps = {
   action: '',
+  className: '',
   handleDelete: () => {}
 };
 

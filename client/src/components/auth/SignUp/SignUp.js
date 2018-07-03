@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import AuthArea from '../AuthArea.js';
 import SignUpFormContainer from './SignUpFormContainer.js';
 
+
 const SignUp = () => (
   <AuthArea>
     <SignUpFormContainer />

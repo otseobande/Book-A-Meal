@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react';
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import 'animate.css';
-import './app.css';
+import 'normalize.css';
+import 'animate.css/animate.min.css';
+import 'react-toastify/dist/ReactToastify.min.css';
+import '../../assets/css/app.css';
 import AppRouter from './AppRouter.js';
 
 const App = () => (

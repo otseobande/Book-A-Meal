@@ -12,19 +12,22 @@ class MenuPeep extends Component {
    * @returns {undefined} - undefined
    */
   componentDidMount() {
-    this.props.getMealsForTheDay();
+    this.props.peepMenus();
   }
 
   /**
    * @returns {JSX} - React JSX
    */
   render() {
+    const { meals, loggedIn } = this.props;
     return (
       <div className={styles.peep}>
         <div className={styles.heading}>
           <span>~~ <b>Peep into today&#39;s menus</b> ~~</span>
         </div>
-        { this.props.loading ? <LoadingMeals message="loading..." /> : <DisplayMeals meals={this.props.meals} /> }
+        { this.props.loading
+          ? <LoadingMeals message="loading..." />
+          : <DisplayMeals loggedIn={loggedIn} meals={meals} /> }
       </div>
     );
   }
@@ -33,8 +36,9 @@ class MenuPeep extends Component {
 
 MenuPeep.propTypes = {
   meals: PropTypes.arrayOf(PropTypes.object).isRequired,
-  getMealsForTheDay: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired
+  peepMenus: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  loggedIn: PropTypes.bool.isRequired
 };
 
 export default MenuPeep;

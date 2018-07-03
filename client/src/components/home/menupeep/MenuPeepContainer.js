@@ -1,14 +1,16 @@
 import { connect } from 'react-redux';
-import { getMealsForTheDay } from '../../../actions/mealsForTheDay';
+import { bindActionCreators } from 'redux';
+import { peepMenus } from '../../../actions/peepMenus.js';
 import MenuPeep from './MenuPeep.js';
 
 const mapStateToProps = state => ({
-  loading: state.mealsForTheDay.isFetching,
-  meals: state.mealsForTheDay.meals
+  loading: state.menusPeep.isFetching,
+  meals: state.menusPeep.meals,
+  loggedIn: state.auth.loggedIn
 });
 
 const mapDispatchToProps = dispatch => ({
-  getMealsForTheDay: () => dispatch(getMealsForTheDay())
+  peepMenus: bindActionCreators(peepMenus, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MenuPeep);

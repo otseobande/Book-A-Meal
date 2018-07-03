@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import NavBar from './NavBar/NavBar.js';
+import NavBar from './NavBar/NavBarContainer.js';
 import Footer from './Footer/Footer.js';
 
 const Layout = props => (

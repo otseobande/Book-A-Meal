@@ -42,14 +42,8 @@ module.exports = merge(common, {
       filename: '[name].css',
       chunkFilename: '[id].css'
     }),
-    new webpack.DefinePlugin({
-      APP_URL: JSON.stringify('https://meal-booking.herokuapp.com')
-    }),
     new CompressionPlugin({
       algorithm: 'gzip'
     })
-  ],
-  optimization: {
-    minimize: true
-  }
+  ]
 });

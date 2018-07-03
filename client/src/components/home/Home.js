@@ -4,19 +4,20 @@ import Welcome from './Welcome/Welcome.js';
 import Footer from '../Layout/Footer/Footer.js';
 import MenuPeepContainer from './MenuPeep/MenuPeepContainer.js';
 
-// import '../../../assets/css/index.css';
-// import '../../../assets/css/style.css';
-
 const Home = () => (
-  <Overdrive id="page">
-    <Fragment>
-      <div style={{ flex: 1 }}>
-        <Welcome />
-        <MenuPeepContainer />
+  <Fragment>
+    <div style={{ flex: 1 }}>
+      <div>
+        <Overdrive id="page">
+          <Fragment>
+            <Welcome />
+            <MenuPeepContainer />
+          </Fragment>
+        </Overdrive>
       </div>
-      <Footer />
-    </Fragment>
-  </Overdrive>
+    </div>
+    <Footer />
+  </Fragment>
 );
 
 export default Home;

@@ -1,22 +1,21 @@
 import { LOGIN_SUCCESS, LOGOUT } from '../actions/actionTypes.js';
+import initialAuthState from '../utils/initialAuthState.js';
+import ls from '../utils/securels.js';
 
-const initialState = {
-  user: {},
-  loggedIn: false
-};
+const initialState = initialAuthState(ls.get('book-a-meal'));
 
-export default (state = initialState, { type, userDetails }) => {
+export default (state = initialState, { type, user }) => {
   switch (type) {
     case LOGIN_SUCCESS:
       return {
         ...state,
-        user: userDetails.user,
+        user,
         loggedIn: true
       };
     case LOGOUT:
       return {
         ...state,
-        ...initialState
+        loggedIn: false
       };
     default:
       return state;

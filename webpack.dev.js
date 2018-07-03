@@ -43,9 +43,6 @@ module.exports = merge(common, {
     ]
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.DefinePlugin({
-      APP_URL: JSON.stringify('http://localhost:3000')
-    })
+    new webpack.HotModuleReplacementPlugin()
   ]
 });
