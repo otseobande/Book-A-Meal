@@ -1,0 +1,158 @@
+.menu {
+  min-height: 399px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  border-radius: 2px;
+  margin-top: 2px;
+
+  @media only screen and (max-width: 600px) {
+    background: transparent;
+    box-shadow: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 54px;
+  }
+}
+
+.menuTop{
+  height: 52px;
+  width: 101%;
+  background-color: white;
+  background: linear-gradient(to bottom, #963f0d 1%,#f7c485 30%,#f9b868 70%,#963f0d 100%);
+  box-shadow: 0 1px 127px rgba(0, 0, 0, 0.93), 0 1px 2px rgba(0,0,0,0.24);
+
+  @media only screen and (max-width: 600px) {
+    height: 0px;
+  }
+}
+
+.scroll-bottom{
+  margin-top: auto;
+  height: 58px;
+  width: 102%;
+
+  background-color: white;
+  background: linear-gradient(to bottom, #963f0d 1%,#f7c485 30%,#f9b868 70%,#963f0d 100%);
+  box-shadow: 0 1px 127px rgba(0, 0, 0, 0.93), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.menuBody{
+  height: 100%;
+  font-family: Handwritten;
+  padding-left: 43px;
+  padding-right: 43px;
+  box-shadow: inset 20px -17px 179px 23px #00000078;
+
+  @media only screen and (min-width: 600px) {
+    box-shadow: none;
+    padding: 0px;
+    box-shadow: none;
+    background-color: white;
+    width: 92%;
+    /* text-align: center; */
+    margin: auto;
+    margin-top: 0px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    border-radius: 5px;
+    padding: 7px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    box-shadow: none;
+    padding: 0px;
+    box-shadow: none;
+    background-color: white;
+    width: 92%;
+    /* text-align: center; */
+    margin: auto;
+    margin-top: 0px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    border-radius: 5px;
+    padding: 7px;
+  }
+}
+
+.menuHeader{
+  font-weight: lighter;
+  font-family: handWritten;
+  font-size: 54px;
+  text-align: center;
+  margin-bottom: 35px;
+  margin-top: 0px;
+
+  @media only screen and (max-width: 600px) {
+    margin: 0;
+  }
+}
+
+.catererName{
+  font-family: Poppins, calibri;
+  font-size: 22px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.categoryTitle {
+  margin: 0;
+   font-weight: 400;
+   font-size: 48px;
+
+   font-family: "Dancing Script",cursive, calibri;
+   font-size: 27px;
+}
+
+.scroll-body li{
+  display: flex;
+  margin-bottom: 6px;
+}
+.handwritten{
+	font-family: handWritten;
+	font-weight: 300;
+}
+
+.mealList{
+  font-family: Poppins, calibri;
+  margin-top: 0px;
+  font-size: 16px;
+  list-style: none;
+  padding-left: 0px;
+
+  .meal{
+    border: 1px solid #c5c5c5;
+    padding-bottom: 6px;
+    padding-top: 9px;
+    margin-bottom: 1px;
+    border-radius: 5px;
+
+  background-color: #f7f7f7;
+    .mealTitle{
+      padding-left: 14px;
+    }
+    .img{
+      width: 20px;
+      height: 16px;
+      margin-left: auto;
+      margin-right: 7px;
+    }
+  }
+}
+
+.mealTitle{
+  display: flex;
+}
+
+.mealCard{
+  margin-bottom: 12px;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  width: 271px;
+  box-shadow: none;
+
+  &:hover{
+    box-shadow: none;
+  }
+}

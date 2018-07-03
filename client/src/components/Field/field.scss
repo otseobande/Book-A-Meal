@@ -1,0 +1,60 @@
+.label {
+  font-weight: bold;
+  color: #373434;
+}
+
+.input {
+  width: 92%;
+  height: 33px;
+  border-color: #c1b8b8;
+  border-style: solid;
+  border-radius: 5px;
+  font-size: 15px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  &:focus{
+    outline: coral auto 4px
+  }
+}
+
+.select{
+  @extend .input;
+  width: 98%;
+  @media only screen and (max-width: 600px){
+    width: 100%;
+  }
+
+  @media screen and (min-width: 600px){
+    width: 96%
+  }
+
+  @media only screen and (min-width: 768px) {
+    width: 97%;
+  }
+
+}
+
+.errorMessage{
+  color: #de1e1e;
+  font-size: 13px;
+  margin-top: -10px;
+}
+
+.error{
+  border-color: #de1e1e;
+  :global{
+    animation: shake .4s ease-in .2s;
+  }
+}
+
+.inputError{
+  @extend .input;
+  @extend .error;
+}
+
+.selectError{
+  @extend .select;
+  @extend .error;
+}
