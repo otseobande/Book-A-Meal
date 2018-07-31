@@ -135,9 +135,9 @@
     "winston-mail": "^1.5.1",
     "winston-nodemailer": "0.0.5",
     "winston-transport": "^4.0.0",
-    "yup": "^0.25.1"
-  },
-  "devDependencies": {
+    "yup": "^0.25.1",
+    "mini-css-extract-plugin": "^0.4.0",
+    "compression-webpack-plugin": "^1.1.11",
     "babel-eslint": "^8.0.2",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-istanbul": "^4.1.6",
@@ -148,13 +148,11 @@
     "babel-plugin-universal-import": "^2.0.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
-    "compression-webpack-plugin": "^1.1.11",
     "eslint-plugin-babel": "^5.1.0",
     "eslint-plugin-react": "^7.9.1",
     "faker": "^4.1.0",
     "ignore-styles": "^5.0.1",
     "jest": "^23.1.0",
-    "mini-css-extract-plugin": "^0.4.0",
     "react-hot-loader": "^4.3.2",
     "react-test-renderer": "^16.4.1",
     "redux-devtools-extension": "^2.13.2",
@@ -163,5 +161,8 @@
     "url-loader": "^1.0.1",
     "webpack-cli": "^2.1.5",
     "webpack-conditional-loader": "^1.0.12"
+  },
+  "devDependencies": {
+
   }
 }
