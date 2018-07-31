@@ -25,6 +25,9 @@
     "seed:test": "sequelize --env test db:seed:all",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
+  "engines": {
+    "node": "10.3.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/otseobande/Book-A-Meal.git"
