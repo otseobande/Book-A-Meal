@@ -3,7 +3,7 @@ import AuthController from '../../controllers/authController';
 import {
   validateLogin,
   validateSignup
-} from '../../middlewares/validators/auth';
+} from '../../middlewares/validators/users';
 
 const authRouter = Router();
 

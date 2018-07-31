@@ -9,13 +9,13 @@ const email = Joi.string()
 const username = Joi.string()
   .min(1);
 const password = Joi.string()
-  .min(1);
+  .min(6);
 const role = Joi.string()
   .min(1)
   .valid(['caterer', 'customer', 'admin']);
 
 
-const validateSignup = validate({
+export const validateSignup = validate({
   body: {
     fullName: fullName.required(),
     email: email.required(),
@@ -25,15 +25,23 @@ const validateSignup = validate({
   }
 });
 
-const validateLogin = validate({
+export const validateLogin = validate({
   body: {
     username: username.required(),
     password: password.required()
   }
 });
 
+export const validateEmail = validate({
+  body: {
+    email: email.required()
+  }
+});
 
-export {
-  validateSignup,
-  validateLogin
-};
+export const validateReset = validate({
+  body: {
+    password: password.required(),
+    resetToken: Joi.string()
+  }
+});
+

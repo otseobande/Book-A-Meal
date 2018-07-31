@@ -1,5 +1,2 @@
-import sendNotificationsForTodaysMenu from './sendNotificationsForTodaysMenu';
+export { default as sendNotificationsForTodaysMenu } from './sendNotificationsForTodaysMenu';
 
-export default {
-  sendNotificationsForTodaysMenu
-};

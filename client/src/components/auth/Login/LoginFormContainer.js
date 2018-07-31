@@ -27,4 +27,7 @@ const mapStateToProps = state => ({
   location: state.router.location
 });
 
-export default compose(connect(mapStateToProps), withFormik(loginFormConfig))(AuthForm);
+export default compose(
+  connect(mapStateToProps),
+  withFormik(loginFormConfig)
+)(AuthForm);

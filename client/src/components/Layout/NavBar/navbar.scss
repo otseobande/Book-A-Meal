@@ -2,13 +2,14 @@
   background-color: #d24e24;
   padding: 9px;
   color: white;
+  box-sizing: border-box;
 
   @media only screen and (max-width: 600px){
     position: absolute;
     padding: 9px;
     color: white;
     margin-bottom: 0px;
-    width: 96%;
+    width: 101%;
   }
 
 
@@ -20,7 +21,7 @@
 
     /*background-color: #a82800;*/
     margin-bottom: 0px;
-    height: 40px;
+    height: 60px;
 
   }
 }
@@ -45,9 +46,9 @@
 
   @media only screen and (max-width: 600px){
     position: absolute;
-    top:none;
-    left: none;
+    left: 60px;
     text-decoration: none;
+    font-size: 26px;
     color: white;
   }
 }
@@ -77,7 +78,7 @@
   padding: 0;
   width: 100%;
   margin: auto;
-
+  margin-top: 6px;
 
   @media only screen and (max-width: 600px) {
     margin-top: 8px;
@@ -100,10 +101,15 @@
       text-decoration: none;
       display: block;
       padding: 8px;
+      padding-top: 4px;
+      padding-bottom: 5px;
 
       &:hover{
-        background-color: #902605;
+        background-color: #b42f06;
         border: 3px dotted #71230b;
+      }
+      @media only screen and (max-width: 600px) {
+        font-size: 17px;
       }
     }
   }

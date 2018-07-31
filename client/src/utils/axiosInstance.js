@@ -1,12 +1,10 @@
 import axios from 'axios';
-import ls from './securels';
+import getToken from './getToken';
 
-const { token } = ls.get('book-a-meal');
-
-export default axios.create({
+export default () => axios.create({
   baseURL: `${process.env.APP_URL}/api/v1/`,
   headers: {
-    Authorization: `Bearer ${token}`,
+    Authorization: `Bearer ${getToken()}`,
     accept: 'application/json',
     'Content-type': 'application/json; charset=UTF-8'
   }

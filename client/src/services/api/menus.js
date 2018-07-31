@@ -13,7 +13,7 @@ class Menus {
    * @returns {Promise} axios promise
    */
   static peep() {
-    return axiosInstance.get('/menu/peep');
+    return axiosInstance().get('/menu/peep');
   }
 
   /**
@@ -25,8 +25,8 @@ class Menus {
    * @returns {Promise} axios promise
    */
   static getMenus(date) {
-    if (date) {
-      return axiosInstance.get('/menu');
+    if (!date) {
+      return axiosInstance().get('/menu');
     }
 
     const formattedDate = dateFormat(date, 'YYYY-MM-DD');
@@ -42,7 +42,7 @@ class Menus {
    * @returns {Promise} axios promise
    */
   static createMenu(menuData) {
-    return axiosInstance.post('/menu', menuData);
+    return axiosInstance().post('/menu', menuData);
   }
 
   /**
@@ -56,7 +56,7 @@ class Menus {
   static editMenu(date, menuData) {
     const formattedDate = dateFormat(date, 'YYYY-MM-DD');
 
-    return axiosInstance.put(`/menu/${formattedDate}`, menuData);
+    return axiosInstance().put(`/menu/${formattedDate}`, menuData);
   }
 
   /**
@@ -69,7 +69,7 @@ class Menus {
   static delete(date) {
     const formattedDate = dateFormat(date, 'YYYY-MM-DD');
 
-    return axiosInstance.delete(`/menu/${formattedDate}`);
+    return axiosInstance().delete(`/menu/${formattedDate}`);
   }
 }
 

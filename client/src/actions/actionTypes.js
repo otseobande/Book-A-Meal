@@ -12,7 +12,14 @@ const actionTypes = mirrorArray([
   // auth
   'LOGIN_SUCCESS',
   'SIGNUP_SUCCESS',
-  'LOGOUT'
+  'PASSWORD_RESET_SUCCESS',
+  'RESET_MAIL_REQUEST_SUCCESS',
+  'LOGOUT',
+
+  // orders
+  'ORDER_PLACED',
+  'FETCH_ORDER_HISTORY_SUCCESSFUL',
+  'CANCEL_ORDER_SUCCESSFUL'
 ]);
 
 export default actionTypes;

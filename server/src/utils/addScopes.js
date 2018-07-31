@@ -9,6 +9,9 @@ const addScopes = (db) => {
     include: [
       { model: db.meal }
     ],
+    order: [
+      ['createdAt', 'DESC']
+    ],
     attributes: { exclude: ['deletedAt'] }
   }, { override: true });
 
@@ -25,6 +28,9 @@ const addScopes = (db) => {
           }
         }]
       }
+    ],
+    order: [
+      ['createdAt', 'DESC']
     ],
     attributes: { exclude: ['deletedAt'] }
   }), { override: true });

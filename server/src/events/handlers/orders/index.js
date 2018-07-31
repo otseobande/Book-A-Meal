@@ -1,9 +1,4 @@
-import sendOrderCreatedNotifications from './sendOrderCreatedNotifications';
-import sendOrderUpdatedNotifications from './sendOrderUpdatedNotifications';
-import sendOrderDeliveredNotifications from './sendOrderDeliveredNotifications';
+export { default as sendOrderUpdatedNotifications } from './sendOrderUpdatedNotifications';
+export { default as sendOrderDeliveredNotifications } from './sendOrderDeliveredNotifications';
+export { default as sendOrderCreatedNotifications } from './sendOrderCreatedNotifications';
 
-export default {
-  sendOrderCreatedNotifications,
-  sendOrderUpdatedNotifications,
-  sendOrderDeliveredNotifications
-};

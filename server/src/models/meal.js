@@ -17,7 +17,7 @@ const meal = (sequelize, DataTypes) => {
     userId: DataTypes.UUID,
     title: DataTypes.STRING,
     description: DataTypes.STRING,
-    price: DataTypes.INTEGER,
+    price: DataTypes.FLOAT,
     img: DataTypes.STRING,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE

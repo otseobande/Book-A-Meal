@@ -53,7 +53,7 @@ export const validateReqBodyOnCreate = validate({
  * @param  {Function} next - Middleware next
  * @return {res| next} response or calls next function
  */
-const validateExpiry = (req, res, next) =>
+export const validateExpiry = (req, res, next) =>
   order.find({
     where: {
       id: req.params.orderId,
@@ -62,10 +62,10 @@ const validateExpiry = (req, res, next) =>
   })
     .then((foundOrder) => {
       if (foundOrder) {
-        if (moment(foundOrder.createdAt).add(config.orderExpiry, 'minutes') < moment()) {
+        if (moment(foundOrder.createdAt).add(config.orderModificationPeriod, 'minutes') < moment()) {
           return res.status(422).json({
             status: 'error',
-            message: 'order modification has expired'
+            message: 'order modification period has elapsed'
           });
         }
         req.order = foundOrder;

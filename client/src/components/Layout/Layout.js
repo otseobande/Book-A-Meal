@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import NavBar from './NavBar/NavBarContainer.js';
 import Footer from './Footer/Footer.js';
 
-const Layout = props => (
+const Layout = ({ children }) => (
   <Fragment>
-    <div style={{ flex: 1 }}>
-      <NavBar />
-      {props.children}
+    <div style={{ flex: 1, display: 'grid' }}>
+      <div>
+        <NavBar />
+        {children}
+      </div>
     </div>
     <Footer />
   </Fragment>
@@ -19,5 +21,6 @@ Layout.propTypes = {
     PropTypes.node
   ]).isRequired
 };
+
 
 export default Layout;

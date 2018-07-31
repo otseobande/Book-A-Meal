@@ -2,7 +2,8 @@ import { LOGIN_SUCCESS, LOGOUT } from '../actions/actionTypes.js';
 import initialAuthState from '../utils/initialAuthState.js';
 import ls from '../utils/securels.js';
 
-const initialState = initialAuthState(ls.get('book-a-meal'));
+const storedData = ls.get('book-a-meal');
+const initialState = initialAuthState(storedData);
 
 export default (state = initialState, { type, user }) => {
   switch (type) {

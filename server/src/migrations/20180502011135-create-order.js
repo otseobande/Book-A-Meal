@@ -24,6 +24,10 @@ export default {
       allowNull: false,
       type: Sequelize.STRING
     },
+    price: {
+      allowNull: false,
+      type: Sequelize.FLOAT
+    },
     status: {
       allowNull: false,
       type: Sequelize.ENUM,

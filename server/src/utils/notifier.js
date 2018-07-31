@@ -25,11 +25,15 @@ class Notifier {
    */
   async sendMail() {
     const userToNotify = await user.findOne({ where: { id: this.userId } });
+    const firstName = userToNotify.fullName.split(' ')[0];
+    const capitalizedFirstName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
+
     const mailOptions = {
       from: 'Book-A-Meal <no-reply@bookameal.com>',
       to: userToNotify.email,
       subject: this.subject,
-      text: dedent`Hi ${userToNotify.fullName.split(' ')[0]},
+      text: dedent`Hi ${capitalizedFirstName},
+
         ${this.info}`
     };
     mailer(mailOptions);

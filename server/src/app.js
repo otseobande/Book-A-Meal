@@ -3,7 +3,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 import logger from './utils/logger';
 import { bodyTrimmer, errorHandler } from './middlewares';
-import setEventListeners from './events/setListeners';
+import setEventListeners from './events/setEventListeners';
 import apiRouter from './routes/api';
 import clientRouter from './routes/client';
 import config from './config';

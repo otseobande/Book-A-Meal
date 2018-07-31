@@ -26,7 +26,7 @@ describe('POST /api/v1/auth/login', () => {
     res.should.have.status(400);
     res.body.should.be.deep.equal({
       status: 'error',
-      message: 'Please check your credentials'
+      message: 'Username or password is incorrect'
     });
   });
 

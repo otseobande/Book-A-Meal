@@ -34,5 +34,11 @@ const signUpFormConfig = {
     setSubmitting(false);
   }
 };
+const mapStateToProps = () => ({
+  type: 'signup'
+});
 
-export default compose(connect(), withFormik(signUpFormConfig))(AuthForm);
+export default compose(
+  connect(mapStateToProps),
+  withFormik(signUpFormConfig)
+)(AuthForm);

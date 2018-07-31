@@ -11,18 +11,24 @@ class AuthForm extends Component {
     switch (this.props.type) {
       case 'login':
         return 'Login';
+      case 'signup':
+        return 'Sign Up';
       case 'reset':
-        return 'Reset';
+        return 'Send reset password email';
+      case 'changepassword':
+        return 'Change password';
       default:
         return 'Sign Up';
     }
   }
 
-  isSignUp = () => this.props.type === 'signup'
+  isSignUp = () => this.props.type === 'signup';
 
-  isLogin = () => this.props.type === 'login'
+  isLogin = () => this.props.type === 'login';
 
-  isReset = () => this.props.type === 'reset'
+  isReset = () => this.props.type === 'reset';
+
+  isChangePassword = () => this.props.type === 'changepassword';
 
   /**
    * @return {undefined} - undefined
@@ -53,9 +59,11 @@ class AuthForm extends Component {
               onBlur={handleBlur}
               value={values.fullName}
             />
-            {errors.fullName &&
+            {
+              errors.fullName &&
               touched.fullName &&
-              <div className={styles.errorMessage}>{errors.fullName}</div>}
+              <div className={styles.errorMessage}>{errors.fullName}</div>
+            }
           </label>
         }
         {
@@ -72,9 +80,10 @@ class AuthForm extends Component {
               onBlur={handleBlur}
               value={values.username}
             />
-            {errors.username &&
-            touched.username &&
-            <div className={styles.errorMessage}>{errors.username}</div>}
+            {
+              errors.username &&
+              touched.username &&
+              <div className={styles.errorMessage}>{errors.username}</div>}
           </label>
         }
         {
@@ -91,8 +100,10 @@ class AuthForm extends Component {
               onBlur={handleBlur}
               value={values.email}
             />
-            {errors.email &&
-      touched.email && <div className={styles.errorMessage}>{errors.email}</div>}
+            {
+              errors.email &&
+              touched.email &&
+              <div className={styles.errorMessage}>{errors.email}</div>}
           </label>
         }
 
@@ -113,15 +124,19 @@ class AuthForm extends Component {
               <option value="customer">Customer</option>
               <option value="caterer">Caterer</option>
             </select>
-            {errors.role &&
-      touched.role && <div className={styles.errorMessage}>{errors.role}</div>}
+            {
+              errors.role &&
+              touched.role &&
+              <div className={styles.errorMessage}>{errors.role}</div>
+            }
           </label>
         }
 
         {
-          (this.isSignUp() || this.isLogin())
+          (this.isSignUp() || this.isLogin() || this.isChangePassword())
           &&
-          <label className={styles.label} htmlFor="password">Password:
+          <label className={styles.label} htmlFor="password">
+            {this.isChangePassword() ? 'New password:' : 'Password:'}
             <input
               className={
           errors.password && touched.password
@@ -132,14 +147,17 @@ class AuthForm extends Component {
               onBlur={handleBlur}
               value={values.password}
             />
-            {errors.password &&
-      touched.password && <div className={styles.errorMessage}>{errors.password}</div>}
+            {
+              errors.password &&
+              touched.password &&
+              <div className={styles.errorMessage}>{errors.password}</div>
+            }
           </label>
         }
 
         {
 
-          this.isSignUp()
+          (this.isSignUp() || this.isChangePassword())
           &&
           <label className={styles.label} htmlFor="password-confirmation">Confirm password:
             <input
@@ -152,8 +170,11 @@ class AuthForm extends Component {
               onBlur={handleBlur}
               value={values.passwordConfirm}
             />
-            {errors.passwordConfirm &&
-      touched.passwordConfirm && <div className={styles.errorMessage}>{errors.passwordConfirm}</div>}
+            {
+              errors.passwordConfirm &&
+              touched.passwordConfirm &&
+              <div className={styles.errorMessage}>{errors.passwordConfirm}</div>
+            }
           </label>
         }
         <button
@@ -170,7 +191,7 @@ class AuthForm extends Component {
 }
 
 AuthForm.propTypes = {
-  type: PropTypes.string,
+  type: PropTypes.string.isRequired,
   values: PropTypes.objectOf(PropTypes.string),
   touched: PropTypes.objectOf(PropTypes.bool),
   errors: PropTypes.objectOf(PropTypes.string),
@@ -181,7 +202,6 @@ AuthForm.propTypes = {
 };
 
 AuthForm.defaultProps = {
-  type: 'signup',
   values: {},
   touched: {},
   errors: {},

@@ -9,6 +9,7 @@ export default {
       quantity: 1,
       phoneNumber: '+2348131928452',
       status: 'pending',
+      price: 500,
       deliveryAddress: 'bajiki close',
       createdAt: moment().format()
     },
@@ -19,6 +20,7 @@ export default {
       quantity: 1,
       phoneNumber: '+2348131928452',
       status: 'delivered',
+      price: 500,
       deliveryAddress: 'bajiki close',
       createdAt: moment().format()
     },
@@ -28,6 +30,7 @@ export default {
       mealId: '64c45c00-ed18-44b7-862a-f12d0481696c',
       quantity: 1,
       status: 'pending',
+      price: 500,
       phoneNumber: '+2348131928452',
       deliveryAddress: 'Irepodun street',
       createdAt: moment().format()
@@ -39,6 +42,7 @@ export default {
       quantity: 1,
       phoneNumber: '+2348131928452',
       status: 'pending',
+      price: 500,
       deliveryAddress: 'Irepodun street',
       createdAt: moment().subtract(5, 'hours').format()
     }

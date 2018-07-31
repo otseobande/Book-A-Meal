@@ -1,7 +1,7 @@
 import axiosInstance from '../../utils/axiosInstance.js';
 
 /**
- * Auth api service class. Abstracts api calls to authentication endpoints
+ * Users api service class. Abstracts api calls to authentication and user endpoints
  *
  * @class Auth
  */
@@ -13,7 +13,17 @@ class Auth {
    * @returns {Promise} axios promise
    */
   static login(userDetails) {
-    return axiosInstance.post('/auth/login', userDetails);
+    return axiosInstance().post('/auth/login', userDetails);
+  }
+
+  /**
+   *
+   * @param {Object} userDetails An object with user signup details
+   *
+   * @return {Promise} axios promise
+   */
+  static signup(userDetails) {
+    return axiosInstance().post('/auth/signup', userDetails);
   }
 }
 

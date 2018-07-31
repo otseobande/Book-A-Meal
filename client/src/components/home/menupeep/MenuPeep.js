@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import DisplayMeals from '../../DisplayMeals/DisplayMeals.js';
-import LoadingMeals from '../../Loader.js';
+import Loader from '../../Loader.js';
 import styles from './menu-peep.scss';
 
 /**
@@ -19,14 +19,14 @@ class MenuPeep extends Component {
    * @returns {JSX} - React JSX
    */
   render() {
-    const { meals, loggedIn } = this.props;
+    const { meals, loggedIn, loading } = this.props;
     return (
       <div className={styles.peep}>
         <div className={styles.heading}>
           <span>~~ <b>Peep into today&#39;s menus</b> ~~</span>
         </div>
-        { this.props.loading
-          ? <LoadingMeals message="loading..." />
+        { loading
+          ? <Loader />
           : <DisplayMeals loggedIn={loggedIn} meals={meals} /> }
       </div>
     );

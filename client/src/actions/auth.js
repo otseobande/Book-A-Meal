@@ -1,8 +1,10 @@
-import axios from 'axios';
 import { toast } from 'react-toastify';
 import { push } from 'connected-react-router';
 import Auth from '../services/api/auth.js';
-import { LOGIN_SUCCESS, LOGOUT } from './actionTypes.js';
+import {
+  LOGIN_SUCCESS,
+  LOGOUT
+} from './actionTypes.js';
 import ls from '../utils/securels.js';
 import requestErrorHandler from '../utils/requestErrorHandler.js';
 
@@ -14,21 +16,19 @@ export const loginSuccess = user => ({
 export const login = (userDetails, from) => (dispatch) => {
   Auth.login(userDetails).then((res) => {
     const { user, token } = res.data;
-    dispatch(loginSuccess(user));
-    dispatch(from ? push(from) : '/menus');
-    toast.success('Login successful!', { autoClose: 3000 });
 
     ls.set('book-a-meal', { user, token });
+    const redirectLink = from || '/menus';
+
+    dispatch(loginSuccess(user));
+    dispatch(push(redirectLink));
+
+    toast.success(`Welcome back ${user.username}!`, { autoClose: 4000 });
   }).catch(requestErrorHandler);
 };
 
 export const signup = userDetails => (dispatch) => {
-  axios.post(`${process.env.APP_URL}/api/v1/auth/signup`, userDetails, {
-    headers: {
-      accept: 'application/json',
-      'Content-type': 'application/json; charset=UTF-8'
-    }
-  }).then((res) => {
+  Auth.signup(userDetails).then((res) => {
     const { user, token } = res.data;
     dispatch(loginSuccess(user));
     toast.success('Signup successful!', { autoClose: 3000 });

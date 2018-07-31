@@ -1,3 +1,5 @@
+@import '../../../assets/scss/_variables';
+
 .card {
   background-color: white;
   border-radius: 5px;
@@ -93,8 +95,8 @@
 }
 
 .orderBtn{
-	background-color: #FF5722;
-  border: 2px solid #b93c15;
+	background-color: $order-btn-bg-color;
+  border: 2px solid darken($order-btn-bg-color, 10%);
   color: white;
   border-radius: 5px;
   padding-left: 9px;
@@ -103,8 +105,9 @@
   padding-bottom: 2px;
   font-size: 16px;
   text-decoration: none;
+  cursor: pointer;
 
   &:hover{
-    background-color: #b93c15;
+    background-color: darken($order-btn-bg-color, 10%);
   }
 }

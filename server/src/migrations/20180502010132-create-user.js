@@ -33,6 +33,10 @@ export default {
       type: Sequelize.ENUM,
       values: ['customer', 'caterer', 'admin']
     },
+    resetToken: {
+      type: Sequelize.STRING,
+      allowNull: true
+    },
     createdAt: {
       allowNull: false,
       type: Sequelize.DATE,

@@ -1,23 +1,21 @@
 import React, { Fragment } from 'react';
-import Overdrive from 'react-overdrive';
+import DocumentTitle from 'react-document-title';
 import Welcome from './Welcome/Welcome.js';
 import Footer from '../Layout/Footer/Footer.js';
 import MenuPeepContainer from './MenuPeep/MenuPeepContainer.js';
 
 const Home = () => (
-  <Fragment>
-    <div style={{ flex: 1 }}>
-      <div>
-        <Overdrive id="page">
-          <Fragment>
-            <Welcome />
-            <MenuPeepContainer />
-          </Fragment>
-        </Overdrive>
+  <DocumentTitle title="Home - Book-A-Meal">
+    <Fragment>
+      <div style={{ flex: 1 }}>
+        <div>
+          <Welcome />
+          <MenuPeepContainer />
+        </div>
       </div>
-    </div>
-    <Footer />
-  </Fragment>
+      <Footer />
+    </Fragment>
+  </DocumentTitle>
 );
 
 export default Home;

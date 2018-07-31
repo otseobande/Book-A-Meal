@@ -1,7 +1,8 @@
 import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
+import isEmpty from 'lodash/isEmpty';
 import MealCard from '../MealCard/MealCard.js';
-import NoMeal from './NoMeal.js';
+import NoMenu from '../NoMenu.js';
 import LoadMoreButton from './LoadMore/LoadMoreButton.js';
 import animateWindowScrollBy from '../../utils/animateWindowScrollBy';
 import styles from './display-meals.scss';
@@ -37,28 +38,27 @@ class DisplayMeals extends Component {
     const { meals, loggedIn } = this.props;
     const { visibleMeals } = this.state;
 
-    if (meals.length > 0) {
-      return (
-        <Fragment>
-          <div className={styles.meals}>
-            {
-              meals.slice(0, visibleMeals).map((meal, index) => (
-                <MealCard
-                  key={index} // eslint-disable-line react/no-array-index-key
-                  meal={meal}
-                  action="order"
-                />))
-            }
-          </div>
+    return isEmpty(meals) ?
+      <div className={styles.noMenu}>
+        <NoMenu loggedIn={loggedIn} />
+      </div> :
+      <Fragment>
+        <div className={styles.meals}>
           {
-            visibleMeals < meals.length
-            &&
-            <LoadMoreButton handleClick={this.displayMore} />
-          }
-        </Fragment>
-      );
-    }
-    return <NoMeal loggedIn={loggedIn} />;
+          meals.slice(0, visibleMeals).map((meal, index) => (
+            <MealCard
+              key={index} // eslint-disable-line react/no-array-index-key
+              meal={meal}
+              action={loggedIn ? 'order' : ''}
+            />))
+        }
+        </div>
+        {
+          visibleMeals < meals.length
+          &&
+          <LoadMoreButton handleClick={this.displayMore} />
+        }
+      </Fragment>;
   }
 }
 

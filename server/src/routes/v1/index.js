@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import userRouter from './users';
 import authRouter from './auth';
 import mealRouter from './meals';
 import menuRouter from './menu';
@@ -11,6 +12,7 @@ const v1router = Router();
 v1router.use(
   '/v1',
   authRouter,
+  userRouter,
   mealRouter,
   menuRouter,
   orderRouter,

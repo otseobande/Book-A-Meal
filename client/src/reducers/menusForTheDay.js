@@ -5,7 +5,7 @@ import {
 
 const initialState = {
   menus: [],
-  isFetching: false
+  isFetching: true
 };
 
 export default (state = initialState, { type, menus }) => {

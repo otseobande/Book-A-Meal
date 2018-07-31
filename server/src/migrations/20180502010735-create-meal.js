@@ -21,7 +21,7 @@ export default {
     },
     price: {
       allowNull: false,
-      type: Sequelize.INTEGER
+      type: Sequelize.FLOAT
     },
     img: {
       type: Sequelize.STRING

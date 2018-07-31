@@ -31,6 +31,18 @@ export default {
       userId: 'e20ac257-86cc-4a6f-a619-0249a201c475',
       title: 'cameroon menu',
       date: moment().format('YYYY-MM-DD')
+    },
+    {
+      id: 'aca43e8e-3315-451f-a523-1318f003463e',
+      userId: 'e20ac257-86cc-4a6f-a619-0249a201c475',
+      title: 'cameroon menu',
+      date: moment().format('YYYY-MM-DD')
+    },
+    {
+      id: '6575acfd-1ed9-4ee0-a60e-1395c47868c5',
+      userId: 'fa56c9e7-e5f4-4086-b7e9-db581201b71f',
+      title: 'cameroon menu',
+      date: moment().format('YYYY-MM-DD')
     }
 
   ], {}),

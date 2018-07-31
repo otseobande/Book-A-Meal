@@ -1,0 +1,27 @@
+.body{
+  text-align: center;
+}
+
+.btn {
+  border-radius: 5px;
+  color: white;
+  width: 57px;
+  height: 35px;
+  cursor: pointer;
+}
+.yesBtn {
+  @extend .btn;
+
+
+  border: 2px solid darken(#de1e1e, 5%);
+  background-color: #de1e1e;
+}
+
+.noBtn {
+  @extend .btn;
+  border-color: darken(#6b747d, 5%);
+  border-width: 2px;
+  background-color: transparent;
+  color: darken(#6b747d, 5%);
+  margin-right: 20px;
+}

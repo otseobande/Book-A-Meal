@@ -29,12 +29,14 @@ class OrderController {
     })
       .then((foundMeal) => {
         if (foundMeal) {
+          const price = foundMeal.price * quantity;
           return orders.create({
             userId: req.user.id,
             mealId,
             quantity,
             deliveryAddress,
             phoneNumber,
+            price,
             status: 'pending'
           });
         }
@@ -66,9 +68,9 @@ class OrderController {
    * Gets all orders
    *
    * @staticmethod
-   * @param  {object} req - Request object
-   * @param {object} res - Response object
-   * @param {function} next - Middlware next
+   * @param  {object} req Request object
+   * @param {object} res Response object
+   * @param {function} next Middlware next
    * @return {json} res.json
    */
   static getAllOrders(req, res, next) {
@@ -116,18 +118,60 @@ class OrderController {
     } = req.body;
 
     const { order } = req;
+
+    return meals.findOne({
+      where: {
+        id: mealId
+      }
+    })
+      .then((foundMeal) => {
+        if (foundMeal) {
+          const newPrice = foundMeal.price * quantity;
+          return order.updateAttributes({
+            mealId: mealId || order.mealId,
+            quantity: quantity || order.quantity,
+            deliveryAddress: deliveryAddress || order.deliveryAddress,
+            phoneNumber: phoneNumber || order.phoneNumber,
+            price: quantity ? newPrice : order.price
+          });
+        }
+      })
+      .then((updatedOrder) => {
+        if (updatedOrder) {
+          req.app.emit('OrderUpdated', updatedOrder);
+
+          res.status(200).json({
+            status: 'success',
+            message: 'order updated successfully',
+            order: updatedOrder
+          });
+        }
+      })
+      .catch(next);
+  }
+
+  /**
+   * Cancels an existing order
+   *
+   * @staticmethod
+   *
+   * @param {Object} req Request object
+   * @param {Object} res Response object
+   * @param {Function} next Middleware next
+   * @return {json} res.json
+   */
+  static cancelOrder(req, res, next) {
+    const { order } = req;
+
     return order.updateAttributes({
-      mealId: mealId || order.mealId,
-      quantity: quantity || order.quantity,
-      deliveryAddress: deliveryAddress || order.deliveryAddress,
-      phoneNumber: phoneNumber || order.phoneNumber
+      status: 'cancelled'
     })
       .then((updatedOrder) => {
-        req.app.emit('OrderUpdated', updatedOrder);
+        req.app.emit('OrderCancelled', updatedOrder);
 
         res.status(200).json({
           status: 'success',
-          message: 'order updated successfully',
+          message: 'order cancelled successfully',
           order: updatedOrder
         });
       })

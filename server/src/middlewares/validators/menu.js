@@ -77,7 +77,7 @@ const validateFieldsForCreate = validate({
  *
  * @type {Array}
  */
-const validateCreate = [
+export const validateCreate = [
   ensureDateIsValid,
   confirmDateIsNotPast,
   validateFieldsForCreate
@@ -87,7 +87,7 @@ const validateCreate = [
 /**
  * Validation middleware
  */
-const validateUpdate = validate({
+export const validateUpdate = validate({
   params: {
     date
   },
@@ -101,7 +101,7 @@ const validateUpdate = validate({
 /**
  * Validation middleware
  */
-const validateDate = validate({
+export const validateDate = validate({
   params: {
     date
   },
@@ -109,10 +109,3 @@ const validateDate = validate({
     token
   }
 });
-
-
-export {
-  validateUpdate,
-  validateCreate,
-  validateDate
-};

@@ -1,4 +1,6 @@
 import { toast } from 'react-toastify';
+import { logout } from '../actions/auth.js';
+import { dispatch } from '../store.js';
 
 /**
  * @param {Object} error Error object from an axios request
@@ -6,18 +8,29 @@ import { toast } from 'react-toastify';
  * @returns {undefined} undefined
  */
 const requestErrorHandler = (error) => {
+  const toastError = message => toast.error(message, {
+    autoClose: 8000
+  });
+
   if (error.response) {
     const messages = error.response.data.message;
 
+    if (error.response.status === 401) {
+      dispatch(logout());
+      return toastError('You are logged out. Please login.');
+    }
+
     if (Array.isArray(error.response.data.message)) {
       messages.forEach((message) => {
-        toast.error(message);
+        toastError(message);
       });
     } else {
-      toast.error(messages);
+      toastError(messages);
     }
+  } else if (!error.status) {
+    toastError('Please check your internet connection!');
   } else {
-    toast.error(error.message);
+    toastError(error.message);
   }
 };
 

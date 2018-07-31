@@ -16,6 +16,7 @@ const order = (sequelize, DataTypes) => {
     userId: DataTypes.UUID,
     mealId: DataTypes.UUID,
     quantity: DataTypes.INTEGER,
+    price: DataTypes.FLOAT,
     status: DataTypes.ENUM('pending', 'delivered', 'cancelled'),
     deliveryAddress: DataTypes.STRING,
     phoneNumber: DataTypes.STRING,

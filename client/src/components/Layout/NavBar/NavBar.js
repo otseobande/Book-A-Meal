@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
+import Overdrive from 'react-overdrive';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import AuthLinks from './AuthLinks.js';
+import CustomerLinks from './CustomerLinks.js';
 import logo from '../../../../assets/img/logo-white.svg';
 import styles from './navbar.scss';
 
@@ -37,7 +39,7 @@ class NavBar extends Component {
    * @returns {JSX} - React JSX
    */
   render() {
-    const { pathname } = this.props;
+    const { pathname, user } = this.props;
 
     return (
       <nav className={classNames({
@@ -50,7 +52,12 @@ class NavBar extends Component {
             <img className={styles.logo} src={logo} width="30" alt="logo" />
             <span className={styles.appName}>Book-A-Meal</span>
           </Link>
-          <button className={styles.navToggle} onClick={() => this.toggleMenu()} href="#">&#9776;</button>
+          <button className={styles.navToggle} onClick={() => this.toggleMenu()} href="#">
+            { this.state.isNavMenuVisible ?
+              <span style={{ fontSize: 29 }}>&times;</span> :
+              <span>&#9776;</span>
+            }
+          </button>
         </div>
         <div
           className={classNames({
@@ -63,23 +70,24 @@ class NavBar extends Component {
               this.props.loggedIn
               ? (
                 <Fragment>
-                  <li>
-                    <Link
-                      className={classNames({
-                        [styles.active]: pathname === '/menus'
-                      })}
-                      to="/menus"
-                    >
-                      Menus
-                    </Link>
-                  </li>
+                  <AuthLinks
+                    role={user.role}
+                    pathname={pathname}
+                  />
                   <li>
                     <Link to="/" onClick={this.props.logout}>Logout</Link>
                   </li>
                 </Fragment>
               )
               :
-                <AuthLinks />
+                <Fragment>
+                  <li>
+                    <Link to="/login">Login</Link>
+                  </li>
+                  <li>
+                    <Link to="/signup">Sign Up</Link>
+                  </li>
+                </Fragment>
             }
           </ul>
         </div>
