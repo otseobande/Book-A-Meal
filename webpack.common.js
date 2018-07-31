@@ -17,7 +17,7 @@ module.exports = {
       template: 'client/src/index.html',
       filename: 'index.html'
     }),
-    new DotEnv()
+    new DotEnv({ systemvars: true })
   ],
   module: {
     rules: [

@@ -146,3 +146,12 @@
   min-height: 100px;
   padding: 15px;
 }
+
+.background{
+  background: url(//res.cloudinary.com/otse/image/upload/co_rgb:3e3e3e,e_blur:966,o_61/v1531698049/crispy-fish_ztgkfr.jpg);
+  height: 100vh;
+  
+  @media only screen and (max-width: 600px){
+    height: 120vh;
+  }
+}

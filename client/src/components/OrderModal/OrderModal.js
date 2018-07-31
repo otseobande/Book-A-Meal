@@ -283,12 +283,16 @@ class OrderModal extends Component {
             {
               this.state.detailsEntered ?
                 <div className={btnsClass}>
-                  <button
-                    className={orderStyles.cancelBtn}
-                    onClick={this.goBackToEdit}
-                  >
-                  Edit details
-                  </button>
+                  {!this.state.orderRequestIsProcessing &&
+
+                    <button
+                      className={orderStyles.cancelBtn}
+                      onClick={this.goBackToEdit}
+                    >
+                    Edit details
+                    </button>
+                  }
+
                   <button
                     className={orderStyles.successBtn}
                     onClick={this.placeOrder}

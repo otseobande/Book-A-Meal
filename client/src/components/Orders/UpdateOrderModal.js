@@ -87,7 +87,7 @@ class UpdateOrderModal extends Component {
   handleClose = () => {
     this.setState({
       detailsEntered: false,
-      updateOrderRequestIsProcessing: false,
+      updateOrderRequestIsProcessing: false
     });
     this.props.handleClose();
   }
@@ -256,12 +256,16 @@ class UpdateOrderModal extends Component {
             {
               this.state.detailsEntered ?
                 <div className={orderStyles.btns}>
+                  {!this.state.updateOrderRequestIsProcessing &&
+
                   <button
                     className={orderStyles.cancelBtn}
                     onClick={this.goBackToEdit}
                   >
-                  Edit details
+                    Edit details
                   </button>
+                  }
+
                   <button
                     className={orderStyles.successBtn}
                     onClick={() => this.updateOrder(order.id)}
