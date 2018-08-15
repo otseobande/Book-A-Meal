@@ -1,8 +1,8 @@
 import { withFormik } from 'formik';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import * as Yup from 'yup';
 import AuthForm from '../AuthForm.js';
+import { loginSchema } from '../../../utils/validationSchemas.js';
 import { login } from '../../../actions/auth.js';
 
 const loginFormConfig = {
@@ -10,15 +10,14 @@ const loginFormConfig = {
     username: '',
     password: ''
   }),
-  validationSchema: Yup.object().shape({
-    username: Yup.string().required('username is required!'),
-    password: Yup.string().required('Password is required')
-  }),
+  validationSchema: loginSchema,
   handleSubmit: (values, { setSubmitting, props }) => {
-    const { from } = props.location.state || { from: '/menus' };
+    setSubmitting(true);
+    const { from } = props.location.state || { from: null };
 
-    props.dispatch(login(values, from));
-    setSubmitting(false);
+    props.dispatch(login(values, from)).then(() => {
+      setSubmitting(false);
+    });
   }
 };
 

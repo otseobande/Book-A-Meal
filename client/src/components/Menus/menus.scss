@@ -127,7 +127,7 @@
     background-color: #f7f7f7;
 
     .mealTitle{
-      padding-left: 14px;
+      padding-left: 3px;
     }
     .img{
       width: 20px;
@@ -146,6 +146,11 @@
 .mealTitle{
   display: flex;
   cursor: pointer;
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
 }
 
 .mealCard{

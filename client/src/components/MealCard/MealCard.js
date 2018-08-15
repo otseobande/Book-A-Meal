@@ -1,15 +1,15 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import OrderModal from '../OrderModal/OrderModal.js';
+import OrderModal from '../Orders/OrderModal/OrderModal.js';
 import localizeNum from '../../utils/localizeNum.js';
 import styles from './meal-card.scss';
 
 /**
  * @class MealCard
  */
-class MealCard extends Component {
+class MealCard extends PureComponent {
   static propTypes = {
     meal: PropTypes.shape({
       img: PropTypes.string.isRequired,
@@ -18,7 +18,6 @@ class MealCard extends Component {
       price: PropTypes.number.isRequired
     }).isRequired,
     action: PropTypes.string,
-    loggedIn: PropTypes.bool.isRequired,
     className: PropTypes.string,
     handleDelete: PropTypes.func
   };
@@ -26,7 +25,6 @@ class MealCard extends Component {
   static defaultProps = {
     action: '',
     className: '',
-    loggedIn: false,
     handleDelete: () => {}
   };
 
@@ -50,7 +48,6 @@ class MealCard extends Component {
       meal,
       action,
       handleDelete,
-      loggedIn,
       className: addedClassName
     } = this.props;
 
@@ -73,22 +70,37 @@ class MealCard extends Component {
           </span>
           <div className={styles.actions}>
             {
-          action === 'order' &&
-          <button className={styles.orderBtn} onClick={this.handleOpenOrderModal}>Order</button>}
+              action === 'order' &&
+              <button
+                className={styles.orderBtn}
+                onClick={this.handleOpenOrderModal}
+              >
+                  Order
+              </button>
+            }
             {
-          action === 'edit' &&
-          <Fragment>
-            <Link className={styles.orderBtn} to="/">Edit</Link>
-            <button className={styles.orderBtn} onClick={handleDelete}>Delete</button>
-          </Fragment>
-        }
+              action === 'edit' &&
+              <Fragment>
+                <Link className={styles.orderBtn} to="/">Edit</Link>
+                <button
+                  className={styles.orderBtn}
+                  onClick={handleDelete}
+                >
+                    Delete
+                </button>
+              </Fragment>
+            }
           </div>
         </div>
-        <OrderModal
-          isOpen={this.state.showOrderModal}
-          handleClose={this.handleCloseOrderModal}
-          meal={meal}
-        />
+        {
+          action === 'order' &&
+          <OrderModal
+            isOpen={this.state.showOrderModal}
+            handleClose={this.handleCloseOrderModal}
+            meal={meal}
+          />
+        }
+
       </div>
     );
   }

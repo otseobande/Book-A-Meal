@@ -74,28 +74,45 @@ class OrderController {
    * @return {json} res.json
    */
   static getAllOrders(req, res, next) {
-    let findOrders = orders.findAll();
+    const page = req.query.page || 1;
+    const limit = req.query.limit || 10;
+    const offset = limit * (page - 1);
+
+    let findOrders;
+
     switch (req.user.role) {
       case 'caterer':
         findOrders = orders.scope({ method: ['caterer', req.user.id] })
           .findAll();
         break;
       case 'customer':
-        findOrders = orders.findAll({
+        findOrders = orders.findAndCountAll({
           where: {
             userId: req.user.id
-          }
+          },
+          limit,
+          offset
         });
         break;
       default:
+        findOrders = orders.findAndCountAll({
+          limit, offset
+        });
         break;
     }
 
     return findOrders
-      .then(foundOrders => res.status(200).json({
-        status: 'success',
-        orders: foundOrders
-      }))
+      .then(({ count, rows }) => {
+        const pageCount = Math.ceil(count / limit);
+        res.status(200).json({
+          status: 'success',
+          orders: rows,
+          meta: {
+            itemCount: count,
+            pageCount
+          }
+        });
+      })
       .catch(next);
   }
 

@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import userRouter from './users';
-import authRouter from './auth';
-import mealRouter from './meals';
-import menuRouter from './menu';
-import orderRouter from './orders';
-import docRouter from './docs';
-import logRouter from './logs';
+import userRouter from './usersRouter.js';
+import authRouter from './authRouter.js';
+import mealRouter from './mealsRouter.js';
+import menuRouter from './menuRouter.js';
+import orderRouter from './ordersRouter.js';
+import docRouter from './docsRouter.js';
+import logRouter from './logsRouter.js';
 
 const v1router = Router();
 

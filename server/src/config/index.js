@@ -28,5 +28,4 @@ if (process.env.HEROKU_APP_NAME) {
   config.appUrl = `https//${process.env.HEROKU_APP_NAME}.herokuapp.com`;
 };
 
-console.log(config.mail);
 export default config;

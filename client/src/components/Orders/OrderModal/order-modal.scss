@@ -1,4 +1,4 @@
-@import '../../../assets/scss/_variables';
+@import '../../../../assets/scss/_variables';
 
 .header {
   text-align: center;
@@ -180,6 +180,10 @@
   min-width: 81px;
   cursor: pointer;
   outline: none;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 14px;
+  }
 }
 
 .successBtn {
@@ -228,6 +232,12 @@
   color: #b94421;
 }
 
+.editDetailsBtn {
+  @extend .btn;
+  border: 2px solid  #5d5452;
+  background-color: transparent;
+  color: #5d5452;
+}
 
 .errorInput{
   @extend .input;

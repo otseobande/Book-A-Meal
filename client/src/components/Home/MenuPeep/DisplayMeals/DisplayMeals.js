@@ -1,10 +1,10 @@
 import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
-import MealCard from '../MealCard/MealCard.js';
-import NoMenu from '../NoMenu.js';
+import MealCard from '../../../MealCard/MealCard.js';
+import NoMenu from '../../../NoMenu.js';
 import LoadMoreButton from './LoadMore/LoadMoreButton.js';
-import animateWindowScrollBy from '../../utils/animateWindowScrollBy';
+import animateWindowScrollBy from '../../../../utils/animateWindowScrollBy';
 import styles from './display-meals.scss';
 
 /**

@@ -1,31 +1,20 @@
 import React, { Fragment } from 'react';
-import classNames from 'classnames';
-import { Link } from 'react-router-dom';
-import styles from './navbar.scss';
+import PropTypes from 'prop-types';
+import PageLink from './PageLink.js';
 
 const CustomerLinks = ({ pathname }) => (
   <Fragment>
     <li>
-      <Link
-        className={classNames({
-          [styles.active]: pathname === '/menus'
-        })}
-        to="/menus"
-      >
-        Menus
-      </Link>
+      <PageLink to="/menus" text="Menus" pathname={pathname} />
     </li>
     <li>
-      <Link
-        className={classNames({
-          [styles.active]: pathname === '/orders'
-        })}
-        to="/orders"
-      >
-        Order history
-      </Link>
+      <PageLink to="/orders" text="Order history" pathname={pathname} />
     </li>
   </Fragment>
 );
+
+CustomerLinks.propTypes = {
+  pathname: PropTypes.string.isRequired
+};
 
 export default CustomerLinks;

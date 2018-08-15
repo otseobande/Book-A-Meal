@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import MealCard from '../MealCard/MealCard.js';
 import styles from './menus.scss';
-import rightArrow from '../../../assets/img/right-arrow.svg';
+import upArrow from '../../../assets/img/up-arrow.svg';
 import downArrow from '../../../assets/img/down-arrow.svg';
-import OrderModal from '../OrderModal/OrderModal.js';
+import OrderModal from '../Orders/OrderModal/OrderModal.js';
 
 /**
  * @class MealDropDown
- *
+ * @param {Object} event Javascript event object
  */
 class MealDropDown extends Component {
   static propTypes = {
@@ -45,13 +45,17 @@ class MealDropDown extends Component {
    */
   render() {
     const { meal } = this.props;
-    const arrow = this.state.droppedDown ? downArrow : rightArrow;
+    const arrow = this.state.droppedDown ? upArrow : downArrow;
 
     return (
       <div className={styles.meal}>
-        {/* eslint-disable  */}
-        <div className={styles.mealTitle} onClick={this.dropDown}>
-        * {meal.title}
+        <div
+          aria-hidden
+          role="button"
+          className={styles.mealTitle}
+          onClick={this.dropDown}
+        >
+          * {meal.title}
           <div className={styles.leftSection}>
             <button className={styles.orderBtn} onClick={this.handleOpenModal}>Order</button>
             <img className={styles.img} src={arrow} alt="down-arrow" />

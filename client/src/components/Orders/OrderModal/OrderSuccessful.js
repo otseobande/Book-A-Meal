@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import checkMark from '../../../assets/img/check-mark.svg';
+import checkMark from '../../../../assets/img/check-mark.svg';
 import orderStyles from './order-modal.scss';
 
 const OrderSuccessful = ({ handleClose }) => (

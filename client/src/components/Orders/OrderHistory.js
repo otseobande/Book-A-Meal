@@ -10,6 +10,9 @@ import OrderService from '../../services/api/orders.js';
 import Layout from '../Layout/Layout.js';
 import OrderRow from './OrderRow.js';
 import styles from './order.scss';
+import Table from '../ResponsiveTable/Table.js';
+import Cell from '../ResponsiveTable/Cell.js';
+import Row from '../ResponsiveTable/Row.js';
 
 /**
  * @class OrderHistory
@@ -57,23 +60,21 @@ class OrderHistory extends Component {
       }).catch(requestErrorHandler);
   }
 
-  updateOrder = (orderId, orderDetails) => {
-    return OrderService.updateOrder(orderId, orderDetails)
-      .then((res) => {
-        const { order: updatedOrder } = res.data;
-        const orders = this.state.orders.slice();
+  updateOrder = (orderId, orderDetails) => OrderService.updateOrder(orderId, orderDetails)
+    .then((res) => {
+      const { order: updatedOrder } = res.data;
+      const orders = this.state.orders.slice();
 
-        const updatedOrders = orders.map((order) => {
-          if (order.id === updatedOrder.id) {
-            return updatedOrder;
-          }
+      const updatedOrders = orders.map((order) => {
+        if (order.id === updatedOrder.id) {
+          return updatedOrder;
+        }
 
-          return order;
-        });
-        this.setState({ orders: updatedOrders });
-        toast.success('Order updated successfully');
-      }).catch(requestErrorHandler);
-  }
+        return order;
+      });
+      this.setState({ orders: updatedOrders });
+      toast.success('Order updated successfully');
+    }).catch(requestErrorHandler)
   colorStatus = (status) => {
     let color;
     switch (status) {
@@ -101,32 +102,16 @@ class OrderHistory extends Component {
         <Layout>
           <div className={styles.container}>
             <h2>Order History</h2>
-            <div className={styles.tableWrapper} />
-            <div className={styles.table}>
-              <div className={classnames([styles.row, styles.header])}>
-                <div className={styles.cell}>
-                  Date
-                </div>
-                <div className={styles.cell}>
-                  Meal
-                </div>
-                <div className={styles.cell}>
-                  Qty
-                </div>
-                <div className={styles.cell}>
-                  Price
-                </div>
-                <div className={styles.cell}>
-                  Delivery address
-                </div>
-
-                <div className={styles.cell}>
-                    Status
-                </div>
-                <div className={styles.cell}>
-                    Actions
-                </div>
-              </div>
+            <Table>
+              <Row header>
+                <Cell>Date</Cell>
+                <Cell>Meal</Cell>
+                <Cell>Qty</Cell>
+                <Cell>Price</Cell>
+                <Cell>Delivery address</Cell>
+                <Cell>Status</Cell>
+                <Cell>Actions</Cell>
+              </Row>
               { !this.state.fetching && this.state.orders.map(order => (
                 <OrderRow
                   key={order.id}
@@ -134,8 +119,9 @@ class OrderHistory extends Component {
                   handleCancelOrder={this.cancelOrder}
                   handleUpdateOrder={this.updateOrder}
                 />
-              ))}
-            </div>
+                ))
+              }
+            </Table>
             {this.state.fetching && <Loader />}
           </div>
         </Layout>

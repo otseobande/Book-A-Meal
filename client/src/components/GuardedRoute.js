@@ -10,19 +10,22 @@ const GuardedRoute = ({
   ...otherProps
 }) => {
   const routeIsForGuests = type === 'guest';
+
   const redirectTo = routeIsForGuests ? '/' : '/login';
   const permitRoute = routeIsForGuests ? !loggedIn : loggedIn;
 
   return (
     <Route
       {...otherProps}
-      component={props => (permitRoute
+      component={props => (
+        permitRoute
         ? <Component {...props} />
         : <Redirect to={{
           pathname: redirectTo,
           state: { from: props.location.pathname }
         }}
-        />)
+        />
+      )
     }
     />
   );

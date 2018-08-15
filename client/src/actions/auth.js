@@ -13,19 +13,22 @@ export const loginSuccess = user => ({
   user
 });
 
-export const login = (userDetails, from) => (dispatch) => {
-  Auth.login(userDetails).then((res) => {
+export const login = (userDetails, from) => dispatch => Auth.login(userDetails)
+  .then((res) => {
     const { user, token } = res.data;
 
+    const mainPage = user.role === 'caterer' ? '/menus' : '/manage-menus';
+
     ls.set('book-a-meal', { user, token });
-    const redirectLink = from || '/menus';
+
+    const redirectLink = from || mainPage;
 
     dispatch(loginSuccess(user));
     dispatch(push(redirectLink));
 
     toast.success(`Welcome back ${user.username}!`, { autoClose: 4000 });
-  }).catch(requestErrorHandler);
-};
+  })
+  .catch(requestErrorHandler);
 
 export const signup = userDetails => (dispatch) => {
   Auth.signup(userDetails).then((res) => {

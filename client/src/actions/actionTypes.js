@@ -19,7 +19,11 @@ const actionTypes = mirrorArray([
   // orders
   'ORDER_PLACED',
   'FETCH_ORDER_HISTORY_SUCCESSFUL',
-  'CANCEL_ORDER_SUCCESSFUL'
+  'CANCEL_ORDER_SUCCESSFUL',
+
+  // meals
+  'REQUEST_MEALS',
+  'RECIEVE_MEALS'
 ]);
 
 export default actionTypes;

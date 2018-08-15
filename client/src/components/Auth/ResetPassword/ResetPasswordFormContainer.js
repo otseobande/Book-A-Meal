@@ -1,7 +1,7 @@
 import { withFormik } from 'formik';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import * as Yup from 'yup';
+import { resetPasswordSchema } from '../../../utils/validationSchemas.js';
 import AuthForm from '../AuthForm.js';
 import { sendResetMail } from '../../../actions/resetPassword.js';
 
@@ -9,11 +9,7 @@ const resetPasswordFormConfig = {
   mapPropsToValues: () => ({
     email: ''
   }),
-  validationSchema: Yup.object().shape({
-    email: Yup.string()
-      .email('Invalid email address')
-      .required('Email is required!')
-  }),
+  validationSchema: resetPasswordSchema,
   handleSubmit: async (values, { setSubmitting, props }) => {
     setSubmitting(true);
     await props.dispatch(sendResetMail(values));

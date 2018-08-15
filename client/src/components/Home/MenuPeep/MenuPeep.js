@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import DisplayMeals from '../../DisplayMeals/DisplayMeals.js';
+import DisplayMeals from './DisplayMeals/DisplayMeals.js';
 import Loader from '../../Loader.js';
 import styles from './menu-peep.scss';
 

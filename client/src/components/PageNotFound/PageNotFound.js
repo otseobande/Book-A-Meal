@@ -6,7 +6,6 @@ export default () => (
   <Layout>
     <div className={styles.background}>
       <div className={styles.notFound}>
-          404<br />
           Page not found
       </div>
     </div>

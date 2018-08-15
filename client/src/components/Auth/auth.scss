@@ -1,4 +1,5 @@
 @import '../../../assets/scss/_variables';
+@import '../../../assets/scss/form';
 
 .title{
   font-family: 'Dancing Script', cursive;
@@ -56,36 +57,6 @@
   }
 }
 
-.label {
-  font-weight: bold;
-  color: #373434;
-}
-
-.input {
-  box-sizing: border-box;
-  width: 100%;
-  height: 33px;
-  border-color: #c1b8b8;
-  border-style: solid;
-  border-radius: 5px;
-  font-size: 15px;
-  margin: auto;
-  margin-bottom: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
-
-  &:focus{
-    outline: coral auto 4px
-  }
-}
-
-.select{
-  @extend .input;
-  width: 100%;
-  border-width: 2px;
-
-
-}
 
 .loginBtn{
 	width: 100%;
@@ -150,7 +121,7 @@
 .background{
   background: url(//res.cloudinary.com/otse/image/upload/co_rgb:3e3e3e,e_blur:966,o_61/v1531698049/crispy-fish_ztgkfr.jpg);
   height: 100vh;
-  
+
   @media only screen and (max-width: 600px){
     height: 120vh;
   }

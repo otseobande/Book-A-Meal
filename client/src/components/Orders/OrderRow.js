@@ -1,20 +1,40 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import ConfirmCancelOrderModal from './ConfirmCancelOrderModal.js';
 import UpdateOrderModal from './UpdateOrderModal.js';
 import localizeNum from '../../utils/localizeNum.js';
 import formatDateString from '../../utils/formatDateString.js';
 import orderIsModifiable from '../../utils/orderIsModifiable.js';
-import OrderService from '../../services/api/orders.js';
+import Cell from '../ResponsiveTable/Cell.js';
+import Row from '../ResponsiveTable/Row.js';
 import styles from './order.scss';
 
 /**
  * @class OrderRow
+ *
+ * @param {String} status
  */
 class OrderRow extends Component {
+  static propTypes = {
+    order: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      meal: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        img: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired
+      }).isRequired
+    }).isRequired,
+    handleCancelOrder: PropTypes.func.isRequired,
+    handleUpdateOrder: PropTypes.func.isRequired
+  }
+
   state = {
     cancelModalIsOpen: false,
     updateModalIsOpen: false
   }
+
   colorStatus = (status) => {
     let color;
     switch (status) {
@@ -42,7 +62,6 @@ class OrderRow extends Component {
     this.setState({ cancelModalIsOpen: true });
   }
 
-
   closeUpdateModal = () => {
     this.setState({ updateModalIsOpen: false });
   }
@@ -56,27 +75,26 @@ class OrderRow extends Component {
   render() {
     const { order } = this.props;
     return (
-      <div className={styles.row} key={order.id}>
-        <div className={styles.cell} data-title="date">
+      <Row key={order.id}>
+        <Cell title="date">
           {formatDateString(order.createdAt)}
-        </div>
-        <div className={styles.cell} data-title="Meal">
+        </Cell>
+        <Cell title="Meal">
           {order.meal.title}
-        </div>
-        <div className={styles.cell} data-title="Quantity">
+        </Cell>
+        <Cell title="Quantity">
           {order.quantity}
-        </div>
-        <div className={styles.cell} data-title="Price">
+        </Cell>
+        <Cell title="Price">
           &#8358;{localizeNum(order.price)}
-        </div>
-        <div className={styles.cell} data-title="Delivery address">
+        </Cell>
+        <Cell title="Delivery address">
           <p className={styles.deliveryAddress}>{order.deliveryAddress}</p>
-        </div>
-        <div className={styles.cell} data-title="Status">
+        </Cell>
+        <Cell title="Status">
           {this.colorStatus(order.status)}
-        </div>
-        <div className={styles.cell} data-title="">
-          {/*  */}
+        </Cell>
+        <Cell>
           {
             order.status === 'pending' &&
             orderIsModifiable(order.createdAt) &&
@@ -95,11 +113,12 @@ class OrderRow extends Component {
               </button>
             </Fragment>
           }
-        </div>
+        </Cell>
+
         <ConfirmCancelOrderModal
           isOpen={this.state.cancelModalIsOpen}
           handleClose={this.closeCancelConfirmationModal}
-          order={order}
+          orderId={order.id}
           handleCancelOrder={this.props.handleCancelOrder}
         />
         <UpdateOrderModal
@@ -108,7 +127,7 @@ class OrderRow extends Component {
           order={order}
           handleUpdateOrder={this.props.handleUpdateOrder}
         />
-      </div>
+      </Row>
     );
   }
 }

@@ -1,0 +1,22 @@
+@import '../../../assets/scss/_variables';
+@import '../../../assets/scss/buttons';
+
+.container {
+  min-height: 399px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 2px;
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+    flex-direction: column;
+    margin-top: 54px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(300px, 1fr) );
+}

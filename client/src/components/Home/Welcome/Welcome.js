@@ -42,7 +42,7 @@ class Welcome extends Component {
                   ('Hungry!?,').split('').map((letter, index) => (
                     <i
                       key={letter}
-                      ref={elm => this.hungryElements[index] = elm}
+                      ref={(elm) => { this.hungryElements[index] = elm; }}
                       className={styles.hungryLetter}
                     >
                       {letter}

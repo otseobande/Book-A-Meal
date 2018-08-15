@@ -1,15 +1,17 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import CustomerLinks from './CustomerLinks.js';
-import { Link } from 'react-router-dom';
+import CatererLinks from './CatererLinks.js';
 
-const AuthLinks = ({ role, pathname }) => {
-  //if (role === 'customer') {
-    return (
-      <CustomerLinks
-        pathname={pathname}
-      />
-    );
-  //}
+const AuthLinks = ({ role, pathname }) => (
+  role === 'customer' ?
+    <CustomerLinks pathname={pathname} /> :
+    <CatererLinks pathname={pathname} />
+);
+
+AuthLinks.propTypes = {
+  role: PropTypes.string.isRequired,
+  pathname: PropTypes.string.isRequired
 };
 
 export default AuthLinks;
