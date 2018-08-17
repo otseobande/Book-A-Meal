@@ -10,7 +10,7 @@
   margin-top: 2px;
 
   @media only screen and (max-width: 600px) {
-    width: 100%;
+    width: 90%;
     flex-direction: column;
     margin-top: 54px;
   }
@@ -18,5 +18,12 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat( auto-fit, minmax(300px, 1fr) );
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
+
+.addMealBtn {
+  @extend .successBtn;
+  width: 96px;
+  margin-bottom: 20px;
+}
+

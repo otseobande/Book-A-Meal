@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { getMenusForTheDay } from '../../actions/menusForTheDay.js';
 import Menus from './Menus.js';
 
@@ -9,8 +8,4 @@ const mapStateToProps = state => ({
   loggedIn: state.auth.loggedIn
 });
 
-const mapDispatchToProps = dispatch => ({
-  getMenusForTheDay: bindActionCreators(getMenusForTheDay, dispatch)
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Menus);
+export default connect(mapStateToProps, { getMenusForTheDay })(Menus);

@@ -1,18 +1,19 @@
-import { FETCH_ORDER_HISTORY_SUCCESSFUL, CANCEL_ORDER_SUCCESSFUL } from '../actions/actionTypes.js';
+import { RECEIVE_ORDERS } from '../actions/actionTypes.js';
 
 const initialState = {
-  isFetching: true
+  isFetching: true,
+  orders: []
 };
 
-export default (state = initialState, { type, orders, order }) => {
+export default (state = initialState, { type, orders, pagination }) => {
   switch (type) {
-    case FETCH_ORDER_HISTORY_SUCCESSFUL:
+    case RECEIVE_ORDERS:
       return {
         ...state,
         isFetching: false,
-        orders
+        orders,
+        pagination: pagination || state.pagination
       };
-      
     default:
       return state;
   }

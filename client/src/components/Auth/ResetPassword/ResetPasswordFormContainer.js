@@ -1,7 +1,7 @@
 import { withFormik } from 'formik';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { resetPasswordSchema } from '../../../utils/validationSchemas.js';
+import { resetPasswordSchema } from '../../../utils/validation-schemas/authInfoSchemas.js';
 import AuthForm from '../AuthForm.js';
 import { sendResetMail } from '../../../actions/resetPassword.js';
 

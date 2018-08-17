@@ -2,7 +2,7 @@ import { withFormik } from 'formik';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import AuthForm from '../AuthForm.js';
-import { loginSchema } from '../../../utils/validationSchemas.js';
+import { loginSchema } from '../../../utils/validation-schemas/authInfoSchemas.js';
 import { login } from '../../../actions/auth.js';
 
 const loginFormConfig = {

@@ -1,13 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MealCard from '../MealCard/MealCard.js';
+import NoMealSet from './NoMealSet.js';
+import MealCard from '../MealCard/MealCardContainer.js';
 import styles from './meals.scss';
 
 const DisplayMealCards = ({
   meals
 }) => (
   <div className={styles.grid}>
-    {meals.map(meal => <MealCard meal={meal} />)}
+    {
+      meals.length > 0 ?
+      meals.map(meal => (
+        <MealCard
+          key={meal.id}
+          meal={meal}
+          action="edit"
+        />
+      )) :
+      <NoMealSet />
+    }
   </div>
 );
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import InputField from '../Form/InputField.js';
 import Loader from '../Loader.js';
 import styles from './auth.scss';
 
@@ -40,142 +41,69 @@ class AuthForm extends Component {
       errors,
       isSubmitting,
       handleChange,
-      handleBlur,
       handleSubmit
     } = this.props;
     return (
       <form onSubmit={handleSubmit}>
         {
-          this.isSignUp()
-          &&
-          <label className={styles.label} htmlFor="fullName">Full name:
-            <input
-              className={
-            errors.fullName && touched.fullName
-              ? styles.inputError : styles.input}
-              type="text"
-              name="fullName"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.fullName}
-            />
-            {
-              errors.fullName &&
-              touched.fullName &&
-              <div className={styles.errorMessage}>{errors.fullName}</div>
-            }
-          </label>
+          this.isSignUp() &&
+          <InputField name="fullName" label="Full name" {...this.props} />
         }
         {
-          (this.isSignUp() || this.isLogin())
-          &&
-          <label className={styles.label} htmlFor="username">Username:
-            <input
-              className={
-            errors.username && touched.username
-              ? styles.inputError : styles.input}
-              type="text"
-              name="username"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.username}
-            />
-            {
-              errors.username &&
-              touched.username &&
-              <div className={styles.errorMessage}>{errors.username}</div>}
-          </label>
+          (this.isSignUp() || this.isLogin()) &&
+          <InputField name="username" label="Username" {...this.props} />
         }
         {
-          (this.isSignUp() || this.isReset())
-          &&
-          <label className={styles.label} htmlFor="email">Email:
-            <input
-              className={
-          errors.email && touched.email
-            ? styles.inputError : styles.input}
-              type="email"
-              name="email"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.email}
-            />
-            {
-              errors.email &&
-              touched.email &&
-              <div className={styles.errorMessage}>{errors.email}</div>}
-          </label>
+          (this.isSignUp() || this.isReset()) &&
+          <InputField name="email" label="Email" {...this.props} type="email" />
         }
 
         {
           this.isSignUp()
           &&
-          <label className={styles.label} htmlFor="role">Role:
-            <select
-              className={
-          errors.role && touched.role
-            ? styles.selectError : styles.select}
-              name="role"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.role}
-            >
-              <option value="" disabled>Select a role</option>
-              <option value="customer">Customer</option>
-              <option value="caterer">Caterer</option>
-            </select>
+          <div>
+            Role:
+            <div>
+              <label>
+                Customer
+                <input
+                  type="radio"
+                  value="customer"
+                  name="role"
+                  className={styles.roleCheckbox}
+                  onChange={handleChange}
+                  checked={values.role === 'customer' ? 'checked' : ''}
+                />
+              </label>
+              <label>
+                Caterer
+                <input
+                  type="radio"
+                  value="caterer"
+                  name="role"
+                  className={styles.roleCheckbox}
+                  onChange={handleChange}
+                  checked={values.role === 'caterer' ? 'checked' : ''}
+                />
+              </label>
+            </div>
             {
               errors.role &&
               touched.role &&
               <div className={styles.errorMessage}>{errors.role}</div>
             }
-          </label>
+          </div>
         }
 
         {
-          (this.isSignUp() || this.isLogin() || this.isChangePassword())
-          &&
-          <label className={styles.label} htmlFor="password">
-            {this.isChangePassword() ? 'New password:' : 'Password:'}
-            <input
-              className={
-          errors.password && touched.password
-            ? styles.inputError : styles.input}
-              type="password"
-              name="password"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.password}
-            />
-            {
-              errors.password &&
-              touched.password &&
-              <div className={styles.errorMessage}>{errors.password}</div>
-            }
-          </label>
+          !this.isReset() &&
+          <InputField name="password" label="Password" {...this.props} type="password" />
         }
 
         {
 
-          (this.isSignUp() || this.isChangePassword())
-          &&
-          <label className={styles.label} htmlFor="password-confirmation">Confirm password:
-            <input
-              className={
-          errors.passwordConfirm && touched.passwordConfirm
-            ? styles.inputError : styles.input}
-              type="password"
-              name="passwordConfirm"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.passwordConfirm}
-            />
-            {
-              errors.passwordConfirm &&
-              touched.passwordConfirm &&
-              <div className={styles.errorMessage}>{errors.passwordConfirm}</div>
-            }
-          </label>
+          (this.isSignUp() || this.isChangePassword()) &&
+          <InputField name="passwordConfirm" label="Confirm password" {...this.props} type="password" />
         }
         <button
           className={isSubmitting ? styles.loginBtnSubmit : styles.loginBtn}
@@ -183,7 +111,11 @@ class AuthForm extends Component {
           onClick={handleSubmit}
           disabled={isSubmitting}
         >
-          {isSubmitting ? <Loader message="" width={30} /> : this.submitBtnTxt()}
+          {
+            isSubmitting ?
+              <Loader message="" width={30} /> :
+              this.submitBtnTxt()
+          }
         </button>
       </form>
     );
@@ -197,7 +129,6 @@ AuthForm.propTypes = {
   errors: PropTypes.objectOf(PropTypes.string),
   isSubmitting: PropTypes.bool,
   handleChange: PropTypes.func.isRequired,
-  handleBlur: PropTypes.func,
   handleSubmit: PropTypes.func.isRequired
 };
 
@@ -205,8 +136,7 @@ AuthForm.defaultProps = {
   values: {},
   touched: {},
   errors: {},
-  isSubmitting: false,
-  handleBlur() {}
+  isSubmitting: false
 };
 
 export default AuthForm;

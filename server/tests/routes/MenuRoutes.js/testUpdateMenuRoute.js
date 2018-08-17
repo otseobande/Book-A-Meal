@@ -10,7 +10,6 @@ describe('PUT /api/v1/menu/:date', () => {
       .put('/api/v1/menu/2018-07-26')
       .set('Authorization', `Bearer ${adminToken}`)
       .send({
-        title: 'test menu',
         categories: [{
           title: 'Benue style',
           meals: ['e20ac257-86cc-4a6f-a619-0249a201c475', 'ba8e1fd3-926f-44c9-a7b3-218aedab8c12']
@@ -44,7 +43,6 @@ describe('PUT /api/v1/menu/:date', () => {
       .put('/api/v1/menu/2030-01-24')
       .set('Authorization', `Bearer ${adminToken}`)
       .send({
-        title: 'test menu',
         categories: [{
           title: 'Benue style',
           meals: ['e20ac257-86cc-4a6f-a619-0249a201c475', 'ba8e1fd3-926f-44c9-a7b3-218aedab8c12']

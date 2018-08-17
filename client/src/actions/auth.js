@@ -1,10 +1,7 @@
 import { toast } from 'react-toastify';
 import { push } from 'connected-react-router';
 import Auth from '../services/api/auth.js';
-import {
-  LOGIN_SUCCESS,
-  LOGOUT
-} from './actionTypes.js';
+import { LOGIN_SUCCESS, LOGOUT } from './actionTypes.js';
 import ls from '../utils/securels.js';
 import requestErrorHandler from '../utils/requestErrorHandler.js';
 
@@ -17,7 +14,7 @@ export const login = (userDetails, from) => dispatch => Auth.login(userDetails)
   .then((res) => {
     const { user, token } = res.data;
 
-    const mainPage = user.role === 'caterer' ? '/menus' : '/manage-menus';
+    const mainPage = user.role === 'caterer' ? '/manage-orders' : '/menus';
 
     ls.set('book-a-meal', { user, token });
 
@@ -30,15 +27,15 @@ export const login = (userDetails, from) => dispatch => Auth.login(userDetails)
   })
   .catch(requestErrorHandler);
 
-export const signup = userDetails => (dispatch) => {
-  Auth.signup(userDetails).then((res) => {
+export const signup = userDetails => dispatch => Auth.signup(userDetails)
+  .then((res) => {
     const { user, token } = res.data;
     dispatch(loginSuccess(user));
     toast.success('Signup successful!', { autoClose: 3000 });
 
     ls.set('book-a-meal', { user, token });
-  }).catch(requestErrorHandler);
-};
+  })
+  .catch(requestErrorHandler);
 
 export const logout = () => {
   toast('Logged out.', { autoClose: 1500 });

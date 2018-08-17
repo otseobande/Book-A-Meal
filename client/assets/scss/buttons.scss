@@ -1,7 +1,17 @@
+.btns {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  @media only screen and (max-width: 600px) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
 .btn {
   padding: 7px 5px;
   font-size: 17px;
-  border-radius: 5px;
+  border-radius: 3px;
   min-width: 81px;
   cursor: pointer;
   outline: none;
@@ -36,6 +46,10 @@
   border: 2px solid #3f3e3e;
   background-color: transparent;
   color: #3f3e3e;
+
+  &:hover{
+    background-color: #eaeaea;
+  }
 }
 
 .cancelBtn {
@@ -43,4 +57,24 @@
   border: 2px solid #b94421;
   background-color: transparent;
   color: #b94421;
+}
+
+.iconBtn{
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  border-radius: 10px;
+  outline: none;
+}
+
+.iconBtn{
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  border-radius: 10px;
+  outline: none;
+}
+
+.icon {
+  margin: auto;
 }

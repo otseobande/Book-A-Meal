@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
-import styles from './cancel-modal.scss';
+import styles from './confirm-cancel-modal.scss';
 
 /**
  * @class ConfirmCancelOrderModal

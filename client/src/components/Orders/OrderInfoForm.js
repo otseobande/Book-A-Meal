@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
+import debounce from 'lodash/debounce';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { orderInfoSchema } from '../../utils/validationSchemas.js';
+import orderInfoSchema from '../../utils/validation-schemas/orderInfoSchema.js';
 import localizeNum from '../../utils/localizeNum.js';
 import loadingCube from '../../../assets/img/loading-cube.svg';
 import orderStyles from './OrderModal/order-modal.scss';
@@ -52,12 +53,12 @@ class OrderInfoForm extends PureComponent {
     const targetName = event.target.name;
     const currentValue = event.target.value;
 
-    this.setState(prevState => ({
+    this.setState(state => ({
       fields: {
-        ...prevState.fields,
+        ...state.fields,
         [targetName]: currentValue
       }
-    }), () => this.validate(targetName));
+    }), debounce(() => this.validate(targetName), 1000));
   }
 
   handleBlur = (event) => {
@@ -65,7 +66,10 @@ class OrderInfoForm extends PureComponent {
   }
 
   validate = (targetName) => {
-    orderInfoSchema.validate(this.state.fields, { abortEarly: false }).then(() => {
+    orderInfoSchema.validate(
+      this.state.fields,
+      { abortEarly: false }
+    ).then(() => {
       const { errors } = this.state;
       delete errors[targetName];
 
@@ -77,9 +81,9 @@ class OrderInfoForm extends PureComponent {
       error.inner.forEach((err) => {
         errors[err.path] = err.message;
       });
-      this.setState(prevState => ({
+      this.setState(state => ({
         touched: {
-          ...prevState.touched,
+          ...state.touched,
           [targetName]: true
         },
         errors
@@ -88,7 +92,10 @@ class OrderInfoForm extends PureComponent {
   }
 
   proceedToConfirm = () => {
-    orderInfoSchema.validate(this.state.fields, { abortEarly: false }).then(() => {
+    orderInfoSchema.validate(
+      this.state.fields,
+      { abortEarly: false }
+    ).then(() => {
       this.setState({ detailsEntered: true });
     }).catch((error) => {
       const errors = {};
@@ -106,14 +113,14 @@ class OrderInfoForm extends PureComponent {
 
 
   increaseQuantity = () => {
-    this.setState(prevState => ({ quantity: prevState.quantity + 1 }));
+    this.setState(state => ({ quantity: state.quantity + 1 }));
   }
 
   reduceQuantity = () => {
-    this.setState((prevState) => {
-      if (prevState.quantity > 1) {
+    this.setState((state) => {
+      if (state.quantity > 1) {
         return {
-          quantity: prevState.quantity - 1
+          quantity: state.quantity - 1
         };
       }
     });

@@ -44,7 +44,7 @@ class AuthController {
       })
       .then((responseSent) => {
         if (!responseSent) {
-          res.status(400).json({
+          res.status(401).json({
             status: 'error',
             message: 'Username or password is incorrect'
           });

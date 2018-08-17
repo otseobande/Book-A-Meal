@@ -12,7 +12,7 @@ class Meals {
    *
    * @returns {Promise} Axios promise
    */
-  static createMeal(mealDetails) {
+  static addMeal(mealDetails) {
     return axiosInstance().post('/meals', mealDetails);
   }
 

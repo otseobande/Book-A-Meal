@@ -8,7 +8,7 @@ describe('POST /api/v1/users/reset_password', () => {
     const res = await chai.request(App)
       .post('/api/v1/users/reset_password')
       .send({
-        email: 'cookie@gmail.com'
+        email: 'mealbooker@gmail.com'
       });
 
     res.should.have.status(202);

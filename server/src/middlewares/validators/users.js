@@ -28,7 +28,7 @@ export const validateSignup = validate({
 export const validateLogin = validate({
   body: {
     username: username.required(),
-    password: password.required()
+    password: Joi.string().required()
   }
 });
 
@@ -41,7 +41,7 @@ export const validateEmail = validate({
 export const validateReset = validate({
   body: {
     password: password.required(),
-    resetToken: Joi.string()
+    resetToken: Joi.string().required()
   }
 });
 

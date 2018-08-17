@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import DocumentTitle from 'react-document-title';
 import PropTypes from 'prop-types';
 import AuthArea from '../AuthArea.js';
-import Message from './Message.js';
+import SentMessage from './SentMessage.js';
 
 import styles from './resetpassword.scss';
 import ResetPasswordFormContainer from './ResetPasswordFormContainer.js';
@@ -14,7 +14,7 @@ const ResetPassword = ({ mailSent }) => (
       <div className={styles.mailSentCard}>
         {
         mailSent ?
-          <Message /> :
+          <SentMessage /> :
           <Fragment>
             <ResetPasswordFormContainer />
             <p style={{ textAlign: 'center' }}>

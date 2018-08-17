@@ -4,8 +4,8 @@ import { getMeals } from '../../actions/meals.js';
 import Meals from './Meals.js';
 
 const mapStateToProps = state => ({
-  meals: state.meals.meals,
-  isFetching: state.meals.isFetching
+  meals: state.catererMeals.meals,
+  isFetching: state.catererMeals.isFetching
 });
 
 const mapDispatchToProps = dispatch => ({

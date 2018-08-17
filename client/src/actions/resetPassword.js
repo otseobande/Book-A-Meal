@@ -6,18 +6,17 @@ export const resetMailRequestSuccess = () => ({
   type: RESET_MAIL_REQUEST_SUCCESS
 });
 
-export const sendResetMail = userDetails => (dispatch) => {
-  Users.sendResetMail(userDetails).then(() => {
+export const sendResetMail = userDetails => dispatch => Users.sendResetMail(userDetails)
+  .then(() => {
     dispatch(resetMailRequestSuccess());
-  }).catch(requestErrorHandler);
-};
+  })
+  .catch(requestErrorHandler);
 
 export const passwordResetSuccess = () => ({
   type: PASSWORD_RESET_SUCCESS
 });
 
-export const resetPassword = resetDetails => (dispatch) => {
-  Users.resetPassword(resetDetails).then(() => {
+export const resetPassword = resetDetails => dispatch => Users.resetPassword(resetDetails)
+  .then(() => {
     dispatch(passwordResetSuccess());
   }).catch(requestErrorHandler);
-};

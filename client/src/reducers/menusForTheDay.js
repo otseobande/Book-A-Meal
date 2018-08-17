@@ -1,6 +1,6 @@
 import {
   REQUEST_MENUS_FOR_THE_DAY,
-  RECIEVE_MENUS_FOR_THE_DAY
+  RECEIVE_MENUS_FOR_THE_DAY
 } from '../actions/actionTypes.js';
 
 const initialState = {
@@ -8,14 +8,15 @@ const initialState = {
   isFetching: true
 };
 
-export default (state = initialState, { type, menus }) => {
+export default (state = initialState, { type, menus, pagination }) => {
   switch (type) {
     case REQUEST_MENUS_FOR_THE_DAY:
       return { ...state, isFetching: true };
-    case RECIEVE_MENUS_FOR_THE_DAY:
+    case RECEIVE_MENUS_FOR_THE_DAY:
       return {
         ...state,
         menus,
+        pagination: pagination || state.pagination,
         isFetching: false
       };
     default:

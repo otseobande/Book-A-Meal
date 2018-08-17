@@ -1,10 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
-import Overdrive from 'react-overdrive';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import AuthLinks from './AuthLinks.js';
-import CustomerLinks from './CustomerLinks.js';
 import logo from '../../../../assets/img/logo-white.svg';
 import styles from './navbar.scss';
 
@@ -16,7 +14,8 @@ class NavBar extends Component {
     home: PropTypes.bool,
     loggedIn: PropTypes.bool,
     logout: PropTypes.func.isRequired,
-    pathname: PropTypes.string.isRequired
+    pathname: PropTypes.string.isRequired,
+    user: PropTypes.objectOf(PropTypes.string).isRequired
   }
   static defaultProps = {
     home: false,
@@ -67,8 +66,7 @@ class NavBar extends Component {
         >
           <ul className={styles.navList}>
             {
-              this.props.loggedIn
-              ? (
+              this.props.loggedIn ?
                 <Fragment>
                   <AuthLinks
                     role={user.role}
@@ -77,9 +75,7 @@ class NavBar extends Component {
                   <li>
                     <Link to="/" onClick={this.props.logout}>Logout</Link>
                   </li>
-                </Fragment>
-              )
-              :
+                </Fragment> :
                 <Fragment>
                   <li>
                     <Link to="/login">Login</Link>

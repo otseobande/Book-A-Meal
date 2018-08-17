@@ -1,19 +1,12 @@
+@import '../../../assets/scss/_variables';
+@import '../../../assets/scss/buttons';
+
 .container{
   margin: auto;
   width: 80%;
 
   @media only screen and (max-width: 600px) {
     margin-top: 86px;
-  }
-
-  @media only screen and (min-width: 600px) {}
-
-  @media only screen and (min-width: 768px) {}
-
-  @media only screen and (min-width: 992px) {}
-
-  @media only screen and (min-width: 1200px) {
-
   }
 }
 
@@ -79,11 +72,6 @@
 
   }
 
-  @media only screen and (min-width: 992px) {}
-
-  @media only screen and (min-width: 1200px) {
-
-  }
   @media only screen and (max-width: 600px) {
     margin-bottom: 3px;
     padding: 2px 16px;
@@ -114,6 +102,7 @@
 
 .updateBtn {
   @extend .btn;
+  font-size: 14px;
   background-color: transparent;
   color: darken(#6b747d, 5%);
   border: 2px solid darken(#6b747d, 5%);
@@ -121,6 +110,7 @@
 
 .deleteBtn {
   @extend .btn;
+  font-size: 14px;
   background-color: #de1e1e;
   color: #f7f5f4;
   border: 2px solid darken(#de1e1e, 5%);
@@ -131,4 +121,18 @@
   @media only screen and (min-width: 1200px) {
     max-width: 307px;
   }
+}
+
+.body {
+  text-align: center;
+}
+
+.deliverBtn {
+  @extend .successBtn;
+  font-size: 14px;
+  text-transform: none;
+}
+
+.paginationDetails {
+  text-align: center;
 }

@@ -23,7 +23,7 @@ const order = (sequelize, DataTypes) => {
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE
   }, {
-    paranoid: true
+    paranoid: false
   });
 
   Order.prototype.toJSON = function () {
@@ -41,7 +41,10 @@ const order = (sequelize, DataTypes) => {
       as: 'customer',
       foreignKey: 'userId'
     });
-    Order.belongsTo(models.meal);
+    Order.belongsTo(models.meal, {
+      onDelete: 'cascade',
+      hooks: true
+    });
   };
   return Order;
 };

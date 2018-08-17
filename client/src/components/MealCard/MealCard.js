@@ -1,9 +1,12 @@
 import React, { PureComponent, Fragment } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import OrderModal from '../Orders/OrderModal/OrderModal.js';
 import localizeNum from '../../utils/localizeNum.js';
+import ConfirmDeleteModal from '../../components/ConfirmDeleteModal/ConfirmDeleteModal.js';
+import EditMealModal from './EditMealModal/EditMealModal.js';
+import cancelIcon from '../../../assets/img/cancel-icon.svg';
+import pencilIcon from '../../../assets/img/pencil-icon.svg';
 import styles from './meal-card.scss';
 
 /**
@@ -29,15 +32,33 @@ class MealCard extends PureComponent {
   };
 
   state = {
-    showOrderModal: false
+    orderModalOpen: false,
+    deleteModalOpen: false,
+    editModalOpen: false
   }
 
-  handleOpenOrderModal = () => {
-    this.setState({ showOrderModal: true });
+  openOrderModal = () => {
+    this.setState({ orderModalOpen: true });
   }
 
-  handleCloseOrderModal = () => {
-    this.setState({ showOrderModal: false });
+  closeOrderModal = () => {
+    this.setState({ orderModalOpen: false });
+  }
+
+  openDeleteModal = () => {
+    this.setState({ deleteModalOpen: true });
+  }
+
+  closeDeleteModal = () => {
+    this.setState({ deleteModalOpen: false });
+  }
+
+  openEditModal = () => {
+    this.setState({ editModalOpen: true });
+  }
+
+  closeEditModal = () => {
+    this.setState({ editModalOpen: false });
   }
 
   /**
@@ -73,7 +94,7 @@ class MealCard extends PureComponent {
               action === 'order' &&
               <button
                 className={styles.orderBtn}
-                onClick={this.handleOpenOrderModal}
+                onClick={this.openOrderModal}
               >
                   Order
               </button>
@@ -81,13 +102,39 @@ class MealCard extends PureComponent {
             {
               action === 'edit' &&
               <Fragment>
-                <Link className={styles.orderBtn} to="/">Edit</Link>
                 <button
-                  className={styles.orderBtn}
-                  onClick={handleDelete}
+                  className={styles.iconBtn}
+                  onClick={this.openEditModal}
                 >
-                    Delete
+                  <img
+                    src={pencilIcon}
+                    width="18"
+                    alt="edit"
+                    className={styles.icon}
+                  />
                 </button>
+                <button
+                  className={styles.iconBtn}
+                  onClick={this.openDeleteModal}
+                >
+                  <img
+                    src={cancelIcon}
+                    width="18"
+                    alt="delete"
+                    className={styles.icon}
+                  />
+                </button>
+                <ConfirmDeleteModal
+                  isOpen={this.state.deleteModalOpen}
+                  confirmText="Are you sure you want to delete meal?"
+                  handleClose={this.closeDeleteModal}
+                  handleDelete={() => handleDelete(meal.id)}
+                />
+                <EditMealModal
+                  isOpen={this.state.editModalOpen}
+                  handleClose={this.closeEditModal}
+                  meal={meal}
+                />
               </Fragment>
             }
           </div>
@@ -95,8 +142,8 @@ class MealCard extends PureComponent {
         {
           action === 'order' &&
           <OrderModal
-            isOpen={this.state.showOrderModal}
-            handleClose={this.handleCloseOrderModal}
+            isOpen={this.state.orderModalOpen}
+            handleClose={this.closeOrderModal}
             meal={meal}
           />
         }

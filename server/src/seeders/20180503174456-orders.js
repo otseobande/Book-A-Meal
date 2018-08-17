@@ -44,7 +44,7 @@ export default {
       status: 'pending',
       price: 500,
       deliveryAddress: 'Irepodun street',
-      createdAt: moment().subtract(5, 'hours').format()
+      createdAt: moment().subtract(5000, 'hours').format()
     }
   ], {}),
 

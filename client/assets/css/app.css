@@ -67,11 +67,12 @@ body{
   border-radius: 4px;
   outline: none;
   padding: 20px;
+  max-height: 800px;
 }
 
 @media only screen and (max-width: 600px) {
   .react-modal-body{
-  font-size: 14px;
+    font-size: 14px;
   }
 }
 
@@ -79,29 +80,66 @@ body{
 
 @media only screen and (min-width: 768px) {
   .react-modal-body{
-  left: 108px;
-  right: 108px;
+    left: 108px;
+    right: 108px;
   }
 }
 
 @media only screen and (min-width: 992px) {
   .react-modal-body{
-  left: 177px;
-  right: 177px;
+    left: 177px;
+    right: 177px;
   }
 }
 
 @media only screen and (min-width: 1200px) {
   .react-modal-body{
-  left: 266px;
-  right: 266px;
+    left: 266px;
+    right: 266px;
   }
 }
 
 @media only screen and (max-width: 600px) {
   .react-modal-body{
-  top: 32px;
-  left: 20px;
-  right: 20px;
+    top: 32px;
+    left: 20px;
+    right: 20px;
   }
+}
+
+
+.pagination{
+  display: block;
+  text-align: center;
+  padding: 0px;
+}
+
+.pagination li {
+  display: inline-block;
+}
+.pagination a {
+  cursor: pointer;
+  padding: 3px 10px 3px 10px;
+  border: 1px solid gray;
+  background-color: white;
+}
+
+.pagination .previous a {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.pagination .disabled a {
+  color: #c7c7c7;
+  outline: none;
+  cursor: default;
+}
+.pagination .next a {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.pagination .active a{
+  border: 2px solid orange;
+  outline-color: orange;
 }

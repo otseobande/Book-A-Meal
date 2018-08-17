@@ -1,7 +1,7 @@
 import { withFormik } from 'formik';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { signUpSchema } from '../../../utils/validationSchemas.js';
+import { signUpSchema } from '../../../utils/validation-schemas/authInfoSchemas.js';
 import AuthForm from '../AuthForm.js';
 import { signup } from '../../../actions/auth.js';
 

@@ -49,7 +49,7 @@ class MenuController {
    * @return {Promise} Promise for extending operation
    */
   static createMenuHelper(req, res) {
-    const { title, categories } = req.body;
+    const { categories } = req.body;
     const date = req.body.date || req.params.date || moment();
 
     return menu.findOne({
@@ -68,7 +68,6 @@ class MenuController {
         } else {
           return menu.create({
             userId: req.user.id,
-            title,
             date,
             categories
           }, {
@@ -171,6 +170,43 @@ class MenuController {
       }))
       .catch(next);
   }
+
+  /**
+   * Gets all menus created by a user
+   *
+   * @staticmethod
+   * @param  {object} req - Request object
+   * @param {object} res - Response object
+   * @param {function} next - middleware next (for error handling)
+   * @return {json} res.json
+   */
+  static getMenus(req, res, next) {
+    const page = req.query.page || 1;
+    const limit = req.query.limit || 10;
+    const offset = limit * (page - 1);
+
+    return menu.findAndCountAll({
+      where: {
+        userId: req.user.id
+      },
+      limit,
+      offset
+    })
+      .then(({ count, rows }) => {
+        const pageCount = Math.ceil(count / limit);
+        res.status(200).json({
+          status: 'success',
+          menus: rows,
+          pagination: {
+            itemCount: count,
+            pageCount,
+            currentPage: page
+          }
+        });
+      })
+      .catch(next);
+  }
+
   /**
    *
    * @param {object} req - Request object

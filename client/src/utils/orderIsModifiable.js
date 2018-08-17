@@ -2,7 +2,7 @@ import addMinutes from 'date-fns/add_minutes';
 import isBefore from 'date-fns/is_before';
 
 /**
- * Takes a creationg date of an order and confirms if the
+ * Takes a creation date of an order and confirms if the
  * order is modifiable by returning a boolean
  *
  * @param {String} date Order creation date

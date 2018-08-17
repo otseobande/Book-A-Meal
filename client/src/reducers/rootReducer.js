@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux';
-import menusPeep from './menusPeep';
-import menusForTheDay from './menusForTheDay';
+import menusPeep from './menusPeep.js';
+import menusForTheDay from './menusForTheDay.js';
 import auth from './auth.js';
 import resetPassword from './resetPassword.js';
 import orderHistory from './orderHistory.js';
-import meals from './meals.js';
+import catererMeals from './catererMeals.js';
+import catererMenus from './catererMenus.js';
 
 export default combineReducers({
   menusPeep,
@@ -12,5 +13,6 @@ export default combineReducers({
   auth,
   resetPassword,
   orderHistory,
-  meals
+  catererMeals,
+  catererMenus
 });

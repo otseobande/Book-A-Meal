@@ -14,12 +14,7 @@ const img = Joi.string()
   .min(1);
 const token = Joi.string();
 const mealId = Joi.string();
-// .guid({
-//   version: [
-//     'uuidv4',
-//     'uuidv5'
-//   ]
-// });
+
 
 /**
  * Validation middleware

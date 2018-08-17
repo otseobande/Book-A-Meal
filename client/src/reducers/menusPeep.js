@@ -1,4 +1,4 @@
-import { REQUEST_PEEP_MENUS, RECIEVE_PEEP_MENUS } from '../actions/actionTypes.js';
+import { REQUEST_PEEP_MENUS, RECEIVE_PEEP_MENUS } from '../actions/actionTypes.js';
 
 const initialState = {
   meals: [],
@@ -9,7 +9,7 @@ export default (state = initialState, { type, meals }) => {
   switch (type) {
     case REQUEST_PEEP_MENUS:
       return { ...state, isFetching: true };
-    case RECIEVE_PEEP_MENUS:
+    case RECEIVE_PEEP_MENUS:
       return {
         ...state,
         meals,

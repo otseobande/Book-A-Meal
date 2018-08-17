@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import DocumentTitle from 'react-document-title';
-import Layout from '../Layout/Layout.js';
 import MenuDisplay from './MenuDisplay.js';
 import Loader from '../Loader.js';
 import styles from './menus.scss';
@@ -32,10 +31,9 @@ class Menus extends Component {
 
     return (
       <DocumentTitle title="Menus - Book-A-Meal">
-        <Layout>
-          <div className={styles.menu}>
-            <h2 className={styles.menuHeader}>~ Menus for the day ~</h2>
-            {
+        <div className={styles.menu}>
+          <h2 className={styles.menuHeader}>~ Menus for the day ~</h2>
+          {
             loading ?
               <Loader /> :
               <MenuDisplay
@@ -43,8 +41,7 @@ class Menus extends Component {
                 loggedIn={loggedIn}
               />
           }
-          </div>
-        </Layout>
+        </div>
       </DocumentTitle>
     );
   }

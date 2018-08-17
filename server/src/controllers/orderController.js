@@ -83,7 +83,7 @@ class OrderController {
     switch (req.user.role) {
       case 'caterer':
         findOrders = orders.scope({ method: ['caterer', req.user.id] })
-          .findAll();
+          .findAndCountAll({ limit, offset });
         break;
       case 'customer':
         findOrders = orders.findAndCountAll({
@@ -107,9 +107,10 @@ class OrderController {
         res.status(200).json({
           status: 'success',
           orders: rows,
-          meta: {
+          pagination: {
             itemCount: count,
-            pageCount
+            pageCount,
+            currentPage: page
           }
         });
       })
@@ -138,7 +139,7 @@ class OrderController {
 
     return meals.findOne({
       where: {
-        id: mealId
+        id: mealId || order.mealId
       }
     })
       .then((foundMeal) => {
@@ -213,7 +214,7 @@ class OrderController {
       .then(mealOrders => mealOrders.find(order => order.id === orderId))
       .then((order) => {
         if (order) {
-          return order.updateAttributes({
+          return order.update({
             status: 'delivered'
           });
         }

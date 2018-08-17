@@ -7,7 +7,9 @@ import {
 import errorHandler from '../../src/middlewares/errorHandler';
 
 const res = mockRes();
+
 const next = sinon.spy();
+
 const jsonSyntaxError = () => {
   const err = new SyntaxError();
   err.status = 400;
@@ -27,8 +29,13 @@ const validationError = {
 const error = {
   stack: 'stacktrace'
 };
+
 describe('errorHandler middleware', () => {
-  it('handles validation error', () => {
+  beforeEach(() => {
+    res.json.resetHistory();
+  })
+
+  it('should handle validation error', () => {
     errorHandler(validationError, null, res, next, 'test');
 
     res.status.should.have.been.calledWith(400);
@@ -38,13 +45,13 @@ describe('errorHandler middleware', () => {
     });
   });
 
-  it('handles JSON syntaxError from body-parser', () => {
+  it('should handle JSON syntaxError from body-parser', () => {
     errorHandler(jsonSyntaxError(), null, res, next, 'test');
 
     res.status.should.have.been.calledWith(400);
     res.json.should.have.been.calledWith({
       status: 'error',
-      message: 'The JSON in your request seems to be invalid.'
+      message: 'The JSON in your request is invalid.'
     });
   });
 

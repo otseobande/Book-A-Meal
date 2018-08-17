@@ -4,27 +4,37 @@ import { ConnectedRouter } from 'connected-react-router';
 import history from '../history.js';
 import GuardedRoute from './GuardedRoute.js';
 import Home from './Home/Home.js';
-import Menus from './Menus/MenusContainer.js';
+import MenusContainer from './Menus/MenusContainer.js';
+import ManageMenusContainer from './Menus/ManageMenus/ManageMenusContainer.js';
 import MealsContainer from './Meals/MealsContainer.js';
-import Orders from './Orders/OrderHistoryContainer.js';
+import OrderHistoryContainer from './Orders/OrderHistoryContainer.js';
+import CatererOrderHistory from './Orders/CatererOrderHistoryContainer.js';
 import SignUp from './Auth/SignUp/SignUp.js';
 import Login from './Auth/Login/Login.js';
 import ResetPassword from './Auth/ResetPassword/ResetPasswordContainer.js';
 import ChangePassword from './Auth/ResetPassword/ChangePassword/ChangePasswordContainer.js';
 import PageNotFound from './PageNotFound/PageNotFound.js';
+import Layout from './Layout/Layout.js';
 
 const AppRouter = () => (
   <ConnectedRouter history={history}>
     <Switch>
       <Route exact path="/" component={Home} />
-      <GuardedRoute type="guest" path="/login" component={Login} />
-      <GuardedRoute type="guest" path="/signup" component={SignUp} />
-      <GuardedRoute exact type="guest" path="/reset_password" component={ResetPassword} />
+      <GuardedRoute path="/login" component={Login} />
+      <GuardedRoute path="/signup" component={SignUp} />
+      <GuardedRoute exact path="/reset_password" component={ResetPassword} />
       <Route path="/reset_password/:token" component={ChangePassword} />
-      <GuardedRoute path="/menus" component={Menus} />
-      <GuardedRoute path="/manage-meals" component={MealsContainer} />
-      <GuardedRoute path="/orders" component={Orders} />
-      <Route component={PageNotFound} />
+
+      <Layout>
+        <Switch>
+          <GuardedRoute path="/menus" allow="customer" component={MenusContainer} />
+          <GuardedRoute path="/manage-menus" allow="caterer" component={ManageMenusContainer} />
+          <GuardedRoute path="/manage-meals" allow="caterer" component={MealsContainer} />
+          <GuardedRoute path="/manage-orders" allow="caterer" component={CatererOrderHistory} />
+          <GuardedRoute path="/orders" allow="customer" component={OrderHistoryContainer} />
+          <Route component={PageNotFound} />
+        </Switch>
+      </Layout>
     </Switch>
   </ConnectedRouter>
 );

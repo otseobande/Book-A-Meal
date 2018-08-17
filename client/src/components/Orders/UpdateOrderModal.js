@@ -23,7 +23,8 @@ class UpdateOrderModal extends Component {
         price: PropTypes.number.isRequired
       }).isRequired,
       deliveryAddress: PropTypes.string.isRequired,
-      phoneNumber: PropTypes.string.isRequired
+      phoneNumber: PropTypes.string.isRequired,
+      quantity: PropTypes.number.isRequired
     }).isRequired
   }
 
@@ -64,6 +65,7 @@ class UpdateOrderModal extends Component {
       >
         <OrderInfoForm
           meal={order.meal}
+          quantity={order.quantity}
           deliveryAddress={order.deliveryAddress}
           phoneNumber={order.phoneNumber}
           handleSubmit={this.updateOrder(order.id)}

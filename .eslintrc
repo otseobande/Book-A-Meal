@@ -15,10 +15,11 @@
             "specialLink": [ "hrefLeft", "hrefRight" ],
             "aspects": [ "noHref", "invalidHref", "preferButton" ]
         }],
+        "jsx-a11y/label-has-for": "off",
+        "no-useless-escape": "off",
         "babel/no-invalid-this": 1,
         "babel/no-unused-expressions": 1,
         "react/jsx-filename-extension": "off",
-        "import/no-unresolved": "off",
         "import/extensions": "off",
         "consistent-return": "off",
         "linebreak-style": "off",

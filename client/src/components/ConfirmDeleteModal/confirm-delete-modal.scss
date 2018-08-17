@@ -1,3 +1,6 @@
+@import '../../../assets/scss/_variables';
+@import '../../../assets/scss/buttons';
+
 .body{
   text-align: center;
 }
@@ -9,11 +12,10 @@
   height: 35px;
   cursor: pointer;
 }
+
 .yesBtn {
-  @extend .btn;
+  @extend .cancelBtn;
 
-
-  border: 2px solid darken(#de1e1e, 5%);
   background-color: #de1e1e;
 }
 

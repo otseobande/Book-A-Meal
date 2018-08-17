@@ -20,10 +20,13 @@ class Users {
   /**
    * Get all user orders
    *
+   * @param {Object} paginationInfo An object with the limit and offset for the requested resource
+   *
    * @return {Promise} axios promise
    */
-  static getOrders() {
-    return axiosInstance().get('/orders');
+  static getOrders(paginationInfo = { limit: 10, page: 1 }) {
+    const { limit, page } = paginationInfo;
+    return axiosInstance().get(`/orders?limit=${limit}&page=${page}`);
   }
 
   /**

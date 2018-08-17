@@ -16,6 +16,7 @@ menuRouter.get('/menu', MenuController.getSpecificDayMenu);
 menuRouter.get('/menu/:date', validateDate, MenuController.getSpecificDayMenu);
 
 menuRouter.use('/menu', guard('caterer'));
+menuRouter.get('/menus', authorize, guard('caterer'), MenuController.getMenus);
 menuRouter.post('/menu', validateCreate, MenuController.createMenu);
 menuRouter.put('/menu/:date', validateUpdate, MenuController.updateMenu);
 menuRouter.delete('/menu/:date', validateDate, MenuController.deleteMenu);

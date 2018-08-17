@@ -14,7 +14,6 @@ const menu = (sequelize, DataTypes) => {
       primaryKey: true
     },
     userId: DataTypes.UUID,
-    title: DataTypes.STRING,
     date: DataTypes.DATEONLY,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE

@@ -11,10 +11,6 @@ export default {
       allowNull: false,
       type: Sequelize.UUID
     },
-    title: {
-      allowNull: false,
-      type: Sequelize.STRING
-    },
     date: {
       allowNull: false,
       type: Sequelize.DATEONLY

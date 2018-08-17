@@ -1,0 +1,11 @@
+.container{
+  text-align: center;
+
+  :global{
+    animation: fadeInUp .2s ease-in;
+  }
+}
+
+.text {
+  font-size: 23px;
+}

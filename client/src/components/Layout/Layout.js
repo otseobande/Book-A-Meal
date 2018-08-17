@@ -2,14 +2,13 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import NavBar from './NavBar/NavBarContainer.js';
 import Footer from './Footer/Footer.js';
+import styles from './layout.scss';
 
 const Layout = ({ children }) => (
   <Fragment>
-    <div style={{ flex: 1, display: 'grid' }}>
-      <div>
-        <NavBar />
-        {children}
-      </div>
+    <div className={styles.layout}>
+      <NavBar />
+      {children}
     </div>
     <Footer />
   </Fragment>

@@ -5,6 +5,7 @@ import Loader from '../Loader.js';
 import DisplayMealCards from './DisplayMealCards.js';
 import styles from './meals.scss';
 import AddMealModal from './AddMealModal/AddMealModal.js';
+import DocumentTitle from 'react-document-title';
 
 /**
  * @class Meal
@@ -40,14 +41,19 @@ class Meal extends Component {
   render() {
     const { meals, isFetching } = this.props;
     return (
-      <Layout>
+      <DocumentTitle title="Meals - Book-A-Meal">
         <div className={styles.container}>
           <h2>Manage Meals</h2>
-          <button className={styles.btn} onClick={this.openAddMealModal}>Add meal</button>
+          <button
+            className={styles.addMealBtn}
+            onClick={this.openAddMealModal}
+          >
+             Add Meal
+          </button>
           {isFetching ? <Loader /> : <DisplayMealCards meals={meals} />}
           <AddMealModal isOpen={this.state.addMealModalIsOpen} handleClose={this.closeAddMealModal} />
         </div>
-      </Layout>
+      </DocumentTitle>
     );
   }
 }

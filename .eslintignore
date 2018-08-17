@@ -6,5 +6,7 @@ server/src/migrations
 server/src/models
 server/src/seeders
 coverage
+server-coverage
+client-coverage
 UI
 logs

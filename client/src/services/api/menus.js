@@ -24,14 +24,25 @@ class Menus {
    *
    * @returns {Promise} axios promise
    */
-  static getMenus(date) {
+  static getSpecificMenu(date) {
     if (!date) {
       return axiosInstance().get('/menu');
     }
 
     const formattedDate = dateFormat(date, 'YYYY-MM-DD');
 
-    return axiosInstance.get(`/menu/${formattedDate}`);
+    return axiosInstance().get(`/menu/${formattedDate}`);
+  }
+
+  /**
+   * Gets all menus created by a user
+   *
+   * @static
+   * @returns {Promise} axois promise
+   * @memberof Menus
+   */
+  static getMenus() {
+    return axiosInstance().get('/menus');
   }
 
   /**
@@ -41,7 +52,7 @@ class Menus {
    *
    * @returns {Promise} axios promise
    */
-  static createMenu(menuData) {
+  static setMenu(menuData) {
     return axiosInstance().post('/menu', menuData);
   }
 
@@ -53,8 +64,8 @@ class Menus {
    *
    * @returns {Promise} axios promise
    */
-  static editMenu(date, menuData) {
-    const formattedDate = dateFormat(date, 'YYYY-MM-DD');
+  static editMenu(menuData) {
+    const formattedDate = dateFormat(menuData.date, 'YYYY-MM-DD');
 
     return axiosInstance().put(`/menu/${formattedDate}`, menuData);
   }
@@ -66,7 +77,7 @@ class Menus {
    *
    * @returns {Promise} axios promise
    */
-  static delete(date) {
+  static deleteMenu(date) {
     const formattedDate = dateFormat(date, 'YYYY-MM-DD');
 
     return axiosInstance().delete(`/menu/${formattedDate}`);

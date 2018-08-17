@@ -15,6 +15,7 @@ class DisplayMeals extends Component {
     meals: PropTypes.arrayOf(PropTypes.object).isRequired,
     loggedIn: PropTypes.bool.isRequired
   };
+
   state = {
     visibleMeals: 4
   }

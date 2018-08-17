@@ -2,7 +2,7 @@ import jwtDecode from 'jwt-decode';
 import isFuture from 'date-fns/is_future';
 
 /**
- * Checks localstorage for saved user details and creates an auth state
+ * uses user details and creates an auth state
  * object for it.
  *
  * @param {object} data - User data

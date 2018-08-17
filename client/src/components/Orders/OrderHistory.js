@@ -1,80 +1,38 @@
 import React, { Component, Fragment } from 'react';
-import classnames from 'classnames';
+import PropTypes from 'prop-types';
 import DocumentTitle from 'react-document-title';
-import { toast } from 'react-toastify';
-import orderIsModifiable from '../../utils/orderIsModifiable.js';
-import requestErrorHandler from '../../utils/requestErrorHandler.js';
-import localizeNum from '../../utils/localizeNum.js';
-import Loader from '../Loader.js';
-import OrderService from '../../services/api/orders.js';
-import Layout from '../Layout/Layout.js';
-import OrderRow from './OrderRow.js';
 import styles from './order.scss';
-import Table from '../ResponsiveTable/Table.js';
-import Cell from '../ResponsiveTable/Cell.js';
-import Row from '../ResponsiveTable/Row.js';
+import NoOrder from './NoOrder.js';
+import ReactPaginate from 'react-paginate';
+import DisplayOrderHistory from './DisplayOrderHistoryTable.js';
 
 /**
  * @class OrderHistory
  */
 class OrderHistory extends Component {
-  state = {
-    orders: [],
-    fetching: false,
-    orderCancelInProgress: false,
-    orderCancelSuccessful: false
+  static propTypes = {
+    fetchOrderHistory: PropTypes.func.isRequired,
+    orders: PropTypes.arrayOf(PropTypes.object).isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    cancelOrder: PropTypes.func.isRequired,
+    updateOrder: PropTypes.func.isRequired,
+    paginationDetails: PropTypes.objectOf(PropTypes.number).isRequired
   }
+
   /**
    * @returns {undefined} undefined
    */
   componentDidMount() {
-    this.fetchOrders();
+    this.props.fetchOrderHistory();
   }
 
-  fetchOrders = () => {
-    this.setState({ fetching: true });
-    OrderService.getOrders().then((res) => {
-      const { orders } = res.data;
-
-      this.setState(() => ({ orders, fetching: false }));
-    }).catch(requestErrorHandler);
+  handlePageClick = (data) => {
+    this.props.fetchOrderHistory({
+      page: data.selected + 1,
+      limit: 10
+    });
   }
 
-  cancelOrder = (orderId) => {
-    this.setState({ orderCancelInProgress: true });
-
-    OrderService.cancelOrder(orderId)
-      .then(() => {
-        this.setState({ orderCancelInProgress: false, orderCancelSuccessful: true });
-        const orders = this.state.orders.slice();
-
-        const updatedOrders = orders.map((order) => {
-          const updatedOrder = order;
-          if (order.id === orderId) {
-            updatedOrder.status = 'cancelled';
-          }
-          return updatedOrder;
-        });
-        toast.success('Order cancelled');
-        this.setState({ orders: updatedOrders });
-      }).catch(requestErrorHandler);
-  }
-
-  updateOrder = (orderId, orderDetails) => OrderService.updateOrder(orderId, orderDetails)
-    .then((res) => {
-      const { order: updatedOrder } = res.data;
-      const orders = this.state.orders.slice();
-
-      const updatedOrders = orders.map((order) => {
-        if (order.id === updatedOrder.id) {
-          return updatedOrder;
-        }
-
-        return order;
-      });
-      this.setState({ orders: updatedOrders });
-      toast.success('Order updated successfully');
-    }).catch(requestErrorHandler)
   colorStatus = (status) => {
     let color;
     switch (status) {
@@ -97,34 +55,41 @@ class OrderHistory extends Component {
    * @returns {JSX} React JSX
    */
   render() {
+    const { orders, paginationDetails } = this.props;
     return (
       <DocumentTitle title="Order history - Book-A-Meal">
-        <Layout>
-          <div className={styles.container}>
-            <h2>Order History</h2>
-            <Table>
-              <Row header>
-                <Cell>Date</Cell>
-                <Cell>Meal</Cell>
-                <Cell>Qty</Cell>
-                <Cell>Price</Cell>
-                <Cell>Delivery address</Cell>
-                <Cell>Status</Cell>
-                <Cell>Actions</Cell>
-              </Row>
-              { !this.state.fetching && this.state.orders.map(order => (
-                <OrderRow
-                  key={order.id}
-                  order={order}
-                  handleCancelOrder={this.cancelOrder}
-                  handleUpdateOrder={this.updateOrder}
-                />
-                ))
-              }
-            </Table>
-            {this.state.fetching && <Loader />}
-          </div>
-        </Layout>
+        <div className={styles.container}>
+          <h2>Order History</h2>
+          {
+              orders.length ?
+                <Fragment>
+                  <DisplayOrderHistory
+                    isFetching={this.props.isFetching}
+                    orders={orders}
+                    cancelOrder={this.props.cancelOrder}
+                    updateOrder={this.props.updateOrder}
+                  />
+                  <ReactPaginate
+                    breakLabel={<a href="">...</a>}
+                    pageCount={paginationDetails.pageCount}
+                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={5}
+                    previousClassName="previous"
+                    nextClassName="next"
+                    previousLabel="<<"
+                    nextLabel=">>"
+                    onPageChange={this.handlePageClick}
+                    containerClassName="pagination"
+                    subContainerClassName="pages pagination"
+                    activeClassName="active"
+                  />
+                  <div className={styles.paginationDetails}>
+                    {`Page ${paginationDetails.currentPage} of ${paginationDetails.pageCount}`}
+                  </div>
+                </Fragment> :
+                <NoOrder />
+            }
+        </div>
       </DocumentTitle>
     );
   }
