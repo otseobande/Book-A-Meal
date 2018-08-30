@@ -1,0 +1,68 @@
+@import '../../../../../assets/scss/_variables';
+@import '../../../../../assets/scss/buttons';
+
+.card {
+  background-color: white;
+  border-radius: 5px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  width: 300px;
+
+  :global{
+    animation: fadeInUp .2s ease-in;
+  }
+
+  &:hover{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  }
+}
+
+.dateHeader {
+  text-align: center;
+  margin: 0px;
+}
+
+.mealList {
+  margin-top: 8px;
+  font-size: 14px;
+  span {
+    margin-left: 10px;
+  }
+}
+
+.categoryTitle {
+  font-family: "Dancing script";
+  margin: 0px;
+  margin-bottom: 5px;
+  font-size: 18px;
+  text-transform: capitalize;
+}
+
+.footer{
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #d0d0d0;
+  max-height: 290px;
+}
+.body{
+  padding: 10px;
+  height: 179px;
+  overflow: auto;
+}
+
+.actions {
+  margin-left: auto;
+}
+
+.menuMeal {
+  margin-bottom: 3px;
+  font-size: 14px;
+}
+
+.category {
+  margin-bottom: 10px;
+}

@@ -137,15 +137,32 @@ class MealController {
    * @return {json} res.json
    */
   static getMeals(req, res, next) {
-    return Meal.findAll({
+    const page = req.query.page || 1;
+    const limit = req.query.limit || 10;
+    const offset = limit * (page - 1);
+
+    return Meal.findAndCountAll({
       where: {
         userId: req.user.id
-      }
+      },
+      order: [
+        ['createdAt', 'DESC']
+      ],
+      limit,
+      offset
     })
-      .then(meals => res.status(200).json({
-        status: 'success',
-        meals
-      }))
+      .then(({ count, rows }) => {
+        const pageCount = Math.ceil(count / limit);
+        res.status(200).json({
+          status: 'success',
+          meals: rows,
+          pagination: {
+            itemCount: count,
+            pageCount,
+            currentPage: page
+          }
+        });
+      })
       .catch(next);
   }
 

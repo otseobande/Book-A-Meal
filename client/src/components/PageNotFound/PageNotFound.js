@@ -1,14 +1,17 @@
 import React from 'react';
-import Overdrive from 'react-overdrive';
+import lost from '../../../assets/img/lost.svg';
 import styles from './pagenotfound.scss';
 
 export default () => (
-  <Overdrive id="page">
-    <div className={styles.background}>
-      <div className={styles.notFound}>
-      404<br />
-      Page not found
-      </div>
+  <div className={styles.background}>
+    <div className={styles.notFound}>
+      <img
+        src={lost}
+        width="150"
+        alt="not found"
+        className={styles.image}
+      />
+      <p>Page not found</p>
     </div>
-  </Overdrive>
+  </div>
 );

@@ -1,13 +1,14 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import NavBar from './NavBar/NavBar.js';
+import NavBar from './NavBar/NavBarContainer.js';
 import Footer from './Footer/Footer.js';
+import styles from './layout.scss';
 
-const Layout = props => (
+const Layout = ({ children }) => (
   <Fragment>
-    <div style={{ flex: 1 }}>
+    <div className={styles.layout}>
       <NavBar />
-      {props.children}
+      {children}
     </div>
     <Footer />
   </Fragment>
@@ -19,5 +20,6 @@ Layout.propTypes = {
     PropTypes.node
   ]).isRequired
 };
+
 
 export default Layout;

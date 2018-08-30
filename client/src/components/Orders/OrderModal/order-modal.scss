@@ -1,0 +1,273 @@
+@import '../../../../assets/scss/_variables';
+
+.header {
+  text-align: center;
+  @media only screen and (max-width: 600px) {}
+
+  @media only screen and (min-width: 600px) {}
+
+  @media only screen and (min-width: 768px) {}
+
+  @media only screen and (min-width: 992px) {}
+
+  @media only screen and (min-width: 1200px) {
+    font-size: 24px;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: #0c0c0cbf;
+}
+
+.body{
+  position: absolute;
+  top: 144px;
+  left: 340px;
+  right: 340px;
+  background: white;
+  overflow: auto;
+  border-radius: 4px;
+  outline: none;
+  padding: 20px;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 14px;
+  }
+
+  @media only screen and (min-width: 600px) {}
+
+  @media only screen and (min-width: 768px) {
+    left: 108px;
+    right: 108px;
+  }
+
+  @media only screen and (min-width: 992px) {
+    left: 177px;
+    right: 177px;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    left: 266px;
+    right: 266px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    top: 32px;
+    left: 20px;
+    right: 20px;
+  }
+}
+
+.content{
+  display: flex;
+
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+  }
+}
+
+.imageContainer{
+  display: flex;
+  flex-basis: 40%;
+  img {
+    width: 232px;
+    max-height: 231px;
+    margin: auto;
+
+    @media only screen and (max-width: 600px) {
+      width: 64%;
+      height: 75%;
+    }
+
+    @media only screen and (min-width: 600px) {}
+
+    @media only screen and (min-width: 768px) {
+      width: 172px;
+    }
+
+    @media only screen and (min-width: 992px) {
+      width: 190px;
+    }
+
+    @media only screen and (min-width: 1200px) {
+
+    }
+
+    @media only screen and (max-width: 600px) {
+
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    margin-bottom: 10px;
+  }
+
+}
+
+.detailArea {
+  flex-basis: 60%;
+}
+
+.mealImage{
+  border-radius: 5px;
+  width: 194px;
+  @media only screen and (max-width: 600px) {
+    margin: auto;
+    width: 157px;
+  }
+}
+
+.input {
+  box-sizing: border-box;
+  width: 100%;
+  border: 2px solid #c1b8b8;
+  border-style: solid;
+  border-radius: 5px;
+  font-size: 15px;
+  margin: auto;
+  margin-bottom: -4px;
+  padding: 10px;
+  height: 33px;
+
+  &:focus{
+    outline: coral auto 4px
+  }
+
+  &:disabled{
+    border-color:transparent;
+    padding: 0px;
+  }
+}
+
+.deliverAddressInput {
+  @extend .input;
+  height: 68px;
+}
+
+.quantityBtn {
+  border-radius: 5px;
+  border: 1px solid #cac5c5f5;
+  padding: 1px 7px 1px 7px;
+  text-align: center;
+  background-color: #eaeaeafa;
+  cursor: pointer;
+}
+
+.quantityCtrl {
+  display: flex;
+  justify-content: space-between;
+  width: 88px;
+  margin-left: 8px;
+}
+
+.quantityArea{
+  display: flex;
+}
+
+.info {
+  margin-bottom: 10px;
+}
+
+.btn {
+  padding: 7px 5px;
+  font-size: 17px;
+  border-radius: 5px;
+  min-width: 81px;
+  cursor: pointer;
+  outline: none;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 14px;
+  }
+}
+
+.successBtn {
+  @extend .btn;
+  color: white;
+  background-color: $green-btn-color;
+  border: 2px solid darken($green-btn-color, 5%);
+  &:hover{
+    background-color: darken($green-btn-color, 5%);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  }
+
+  &:disabled, &[disabled]{
+    background-color: darken($green-btn-color, 5%);
+    &:hover{
+      box-shadow: none;
+      cursor: none;
+    }
+  }
+}
+
+.closeModalBtn {
+  @extend .btn;
+  border: 2px solid #3f3e3e;
+  background-color: transparent;
+  color: #3f3e3e;
+}
+.btns {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  @media only screen and (max-width: 600px) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.fadeInLeft {
+  :global {
+    animation: fadeInLeft .4s ease-in;
+  }
+}
+.cancelBtn {
+  @extend .btn;
+  border: 2px solid #b94421;
+  background-color: transparent;
+  color: #b94421;
+}
+
+.editDetailsBtn {
+  @extend .btn;
+  border: 2px solid  #5d5452;
+  background-color: transparent;
+  color: #5d5452;
+}
+
+.errorInput{
+  @extend .input;
+  border-color: #de1e1e;
+  :global{
+    animation: shake .4s ease-in .2s;
+  }
+}
+
+.errorDeliveryAddressInput{
+  @extend .deliverAddressInput;
+  border-color: #de1e1e;
+  :global{
+    animation: shake .4s ease-in .2s;
+  }
+}
+
+.errorMessage {
+  color: #de1e1e;
+  font-size: 13px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 600px) {}
+
+@media only screen and (min-width: 600px) {}
+
+@media only screen and (min-width: 768px) {}
+
+@media only screen and (min-width: 992px) {}
+
+@media only screen and (min-width: 1200px) {}

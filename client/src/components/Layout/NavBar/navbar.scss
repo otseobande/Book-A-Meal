@@ -2,15 +2,14 @@
   background-color: #d24e24;
   padding: 9px;
   color: white;
+  box-sizing: border-box;
 
   @media only screen and (max-width: 600px){
     position: absolute;
-    z-index: 10;
     padding: 9px;
     color: white;
     margin-bottom: 0px;
-    width: 96%;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    width: 101%;
   }
 
 
@@ -22,11 +21,12 @@
 
     /*background-color: #a82800;*/
     margin-bottom: 0px;
-    height: 40px;
+    height: 60px;
+
   }
 }
 
-.title-area{
+.titleArea{
   margin-top: 4px;
   @media only screen and (max-width: 600px){
     display: flex;
@@ -46,9 +46,9 @@
 
   @media only screen and (max-width: 600px){
     position: absolute;
-    top:none;
-    left: none;
+    left: 60px;
     text-decoration: none;
+    font-size: 26px;
     color: white;
   }
 }
@@ -58,13 +58,13 @@
   left: -50px;
 }
 
-.app-name{
+.appName{
   @media only screen and (max-width: 600px){
     width: 190px;
   }
 }
 
-.nav-menus{
+.navMenus{
   margin-left: auto;
 
   @media only screen and (max-width: 600px) {
@@ -72,12 +72,17 @@
   }
 }
 
-.nav-list{
+.navList{
   list-style: none;
   text-align: center;
   padding: 0;
   width: 100%;
   margin: auto;
+  margin-top: 6px;
+
+  @media only screen and (max-width: 600px) {
+    margin-top: 8px;
+  }
 
   li{
     display: inline-block;
@@ -96,16 +101,36 @@
       text-decoration: none;
       display: block;
       padding: 8px;
+      padding-top: 4px;
+      padding-bottom: 5px;
 
       &:hover{
-        background-color: #cf1c15;
+        background-color: #b42f06;
+        border: 3px dotted #71230b;
+      }
+      @media only screen and (max-width: 600px) {
+        font-size: 17px;
       }
     }
   }
 }
 
+.active{
+  background-color: #902605;
+  border: 3px dotted #71230b;
+
+  @media only screen and (max-width: 600px) {
+    margin-bottom: 4px;
+    border: 2.5px dotted #71230b;
+  }
+}
 .visible{
   display: block;
+  @media only screen and (max-width: 600px) {
+    :global{
+      animation: fadeInDown .14s linear;
+    }
+  }
 }
 
 .hidden{
@@ -119,7 +144,7 @@
 
 .navToggle{
   display: none;
-
+  outline: none;
 
   @media only screen and (max-width: 600px){
     display: block;

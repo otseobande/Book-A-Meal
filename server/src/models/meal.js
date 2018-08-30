@@ -17,7 +17,7 @@ const meal = (sequelize, DataTypes) => {
     userId: DataTypes.UUID,
     title: DataTypes.STRING,
     description: DataTypes.STRING,
-    price: DataTypes.INTEGER,
+    price: DataTypes.FLOAT,
     img: DataTypes.STRING,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE
@@ -40,7 +40,10 @@ const meal = (sequelize, DataTypes) => {
   };
 
   Meal.associate = (models) => {
-    Meal.hasMany(models.order);
+    Meal.hasMany(models.order, {
+      onDelete: 'cascade',
+      hooks: true
+    });
     Meal.belongsTo(models.user, {
       as: 'caterer',
       foreignKey: 'userId'

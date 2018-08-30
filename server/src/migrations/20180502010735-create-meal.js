@@ -21,10 +21,11 @@ export default {
     },
     price: {
       allowNull: false,
-      type: Sequelize.INTEGER
+      type: Sequelize.FLOAT
     },
     img: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
+      defaultValue: 'https://res.cloudinary.com/otse/image/upload/v1534444076/breakfast_ylcjud.svg'
     },
     createdAt: {
       allowNull: false,

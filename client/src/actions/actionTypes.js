@@ -1,14 +1,32 @@
-const mealsForTheDay = [
-  'REQUEST_MEALS_FOR_THE_DAY',
-  'RECIEVE_MEALS_FOR_THE_DAY'
-];
+import mirrorArray from '../utils/mirrorArray.js';
 
-const auth = [
+const actionTypes = mirrorArray([
+  // menus peep
+  'REQUEST_PEEP_MENUS',
+  'RECEIVE_PEEP_MENUS',
+
+  // menus for the day
+  'REQUEST_MENUS_FOR_THE_DAY',
+  'RECEIVE_MENUS_FOR_THE_DAY',
+
+  // Caterer Menus
+  'REQUEST_MENUS',
+  'RECEIVE_MENUS',
+
+  // auth
   'LOGIN_SUCCESS',
-  'LOGOUT'
-];
+  'SIGNUP_SUCCESS',
+  'PASSWORD_RESET_SUCCESS',
+  'RESET_MAIL_REQUEST_SUCCESS',
+  'LOGOUT',
 
-export default [
-  ...mealsForTheDay,
-  ...auth
-].reduce((acc, type) => ({ ...acc, [type]: type }), {});
+  // orders
+  'ORDER_PLACED',
+  'RECEIVE_ORDERS',
+
+  // meals
+  'REQUEST_MEALS',
+  'RECEIVE_MEALS'
+]);
+
+export default actionTypes;

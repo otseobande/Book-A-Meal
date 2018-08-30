@@ -1,0 +1,47 @@
+@import '../../../../../assets/scss/_variables';
+
+.meals {
+  margin-top: 27px;
+
+  @media only screen and (max-width: 600px) {
+    margin-top: 0px;
+    display: flex;
+		flex-direction: column;
+  }
+
+  @media only screen and (min-width: 600px) {
+    display: grid;
+		grid-template-columns: repeat(2,1fr);
+  }
+
+  @media only screen and (min-width: 768px) {
+    display: grid;
+		grid-template-columns: repeat(3,1fr);
+  }
+
+  @media only screen and (min-width: 992px) {
+    display: grid;
+		grid-template-columns: repeat(4,1fr);
+  }
+}
+
+.noMenu{
+  height: 100%;
+  background-color: white;
+  width: 92%;
+  margin: auto;
+  margin-top: 0px;
+  box-shadow: $card-shadow;
+  border-radius: 5px;
+  padding: 15px;
+  :global{
+    animation: slideInUp .3s ease-in-out;
+  }
+  @media only screen and (max-width: 600px) {
+
+  }
+
+  @media only screen and (min-width: 1200px) {
+    width: 70%;
+  }
+}

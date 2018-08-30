@@ -14,10 +14,10 @@ const sendOrderCreatedNotifications = async (order) => {
     const customerNotifier = new Notifier({
       userId: order.userId,
       subject,
-      info: `Your order for "${meal.title}" was placed successfully and would be delivered within the next few minutes.`
+      info: `Your order for "${meal.title}" was placed successfully and would be delivered soon.`
     });
 
-    await customerNotifier.notify();
+    await customerNotifier.sendMail();
 
     const customer = await order.getCustomer();
     const catererNotifier = new Notifier({
@@ -25,7 +25,9 @@ const sendOrderCreatedNotifications = async (order) => {
       subject,
       info: dedent`
         An order for "${meal.title}" was just made. Order details are:
+
         - Quantity: ${order.quantity}
+        - Price: N${order.price}
         - Delivery Address: ${order.deliveryAddress}
         - Phone Number: ${order.phoneNumber}
         - Customer Name: ${customer.fullName}
@@ -33,7 +35,7 @@ const sendOrderCreatedNotifications = async (order) => {
       `
     });
 
-    await catererNotifier.notify();
+    await catererNotifier.sendMail();
 
     return true;
   } catch (err) {

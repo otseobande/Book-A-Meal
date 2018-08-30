@@ -4,7 +4,7 @@ import logger from '../../../utils/logger';
 
 /**
  * Sends welcome notifications on user signup
- * @param  {object} user - Sequelize model instance
+ * @param  {object} user Sequelize model instance
  * @return {Promise}  Promise resolving with a boolean
  */
 const sendWelcomeNotifications = async (user) => {
@@ -13,10 +13,8 @@ const sendWelcomeNotifications = async (user) => {
       userId: user.id,
       subject: 'Welcome to Book-A-Meal',
       info: dedent`
-      
-      Welcome to Book-A-Meal,
-      we are excited to have you create an account with us and we look forward to serving you
-      the best quality.
+
+      Welcome to Book-A-Meal, we are excited to have you join us. We look forward to giving a wonderful experience.
 
       Thanks,
       The Book-A-Meal team.`

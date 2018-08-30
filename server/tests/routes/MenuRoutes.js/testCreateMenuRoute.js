@@ -11,7 +11,6 @@ describe('POST /api/v1/menu', () => {
       .post('/api/v1/menu')
       .set('Authorization', `Bearer ${adminToken}`)
       .send({
-        title: 'test menu',
         date: '2020-05-09',
         categories: [{
           title: 'Benue style',
@@ -35,7 +34,6 @@ describe('POST /api/v1/menu', () => {
       .post('/api/v1/menu')
       .set('Authorization', `Bearer ${catererToken}`)
       .send({
-        title: 'test menu',
         categories: [{
           title: 'Benue style',
           meals: ['dd72bc9b-beb0-49c6-be7b-20106e8aa3d0']
@@ -58,7 +56,6 @@ describe('POST /api/v1/menu', () => {
       .post('/api/v1/menu')
       .set('Authorization', `Bearer ${adminToken}`)
       .send({
-        title: 'test menu',
         date: '2020-05-09',
         categories: [{
           title: 'Benue style',
@@ -82,7 +79,6 @@ describe('POST /api/v1/menu', () => {
       .post('/api/v1/menu')
       .set('Authorization', `Bearer ${adminToken}`)
       .send({
-        title: 'test menu',
         date: '2016-05-09',
         categories: [{
           title: 'Benue style',

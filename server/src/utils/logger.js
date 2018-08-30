@@ -30,7 +30,11 @@ class EmailTransport extends winston.Transport {
 
 const logger = winston.createLogger({
   level: 'info',
-  format: format.combine(format.timestamp(), format.json()),
+  format: format.combine(
+    format.colorize(),
+    format.timestamp(),
+    format.json()
+  ),
   transports: [
     // # Commented out because Heroku's filesystem is read-only
     //

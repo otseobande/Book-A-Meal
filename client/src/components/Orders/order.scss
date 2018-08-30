@@ -1,0 +1,138 @@
+@import '../../../assets/scss/_variables';
+@import '../../../assets/scss/buttons';
+
+.container{
+  margin: auto;
+  width: 80%;
+
+  @media only screen and (max-width: 600px) {
+    margin-top: 86px;
+  }
+}
+
+.tableWrapper {
+  margin-top: 30px;
+ }
+
+.table {
+  margin: 0 0 40px 0;
+  width: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  display: table;
+
+  @media screen and (max-width: 600px) {
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+
+.row {
+  display: table-row;
+  background-color: #ffffff;
+
+  @media only screen and (max-width: 600px) {
+    padding: 14px 0 7px;
+    display: block;
+    margin-bottom: 10px;
+    border-top: 3px solid #716c6c;
+  }
+}
+
+.header {
+  font-weight: 900;
+  color: #ffffff;
+  background: #716c6c;
+  @media only screen and (max-width: 600px) {
+    padding: 0;
+    height: 6px;
+    display: none
+  }
+}
+
+.cell {
+  padding: 6px 12px;
+  display: table-cell;
+
+  &[data-title='Delivery address'], &[data-title='Meal']{
+    word-break: break-all;
+  }
+
+  &[data-title='Meal']{
+    word-break: break-word;
+  }
+
+  &[data-title='Status']{
+    text-transform: capitalize;
+  }
+
+  @media only screen and (min-width: 768px) {
+    padding: 11px 12px;
+    display: table-cell;
+    border-bottom: 1px solid #cccccc;
+
+  }
+
+  @media only screen and (max-width: 600px) {
+    margin-bottom: 3px;
+    padding: 2px 16px;
+    display: block;
+
+    &:before {
+      margin-bottom: 3px;
+      content: attr(data-title);
+      min-width: 98px;
+      font-size: 10px;
+      line-height: 10px;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #969696;
+      display: block;
+    }
+  }
+}
+
+.btn {
+  border-radius: 3px;
+  margin-right: 5px;
+  text-transform: capitalize;
+  margin-bottom: 4px;
+  cursor: pointer;
+
+}
+
+.updateBtn {
+  @extend .btn;
+  font-size: 14px;
+  background-color: transparent;
+  color: darken(#6b747d, 5%);
+  border: 2px solid darken(#6b747d, 5%);
+}
+
+.deleteBtn {
+  @extend .btn;
+  font-size: 14px;
+  background-color: #de1e1e;
+  color: #f7f5f4;
+  border: 2px solid darken(#de1e1e, 5%);
+}
+
+.deliveryAddress {
+  margin: 0;
+  @media only screen and (min-width: 1200px) {
+    max-width: 307px;
+  }
+}
+
+.body {
+  text-align: center;
+}
+
+.deliverBtn {
+  @extend .successBtn;
+  font-size: 14px;
+  text-transform: none;
+}
+
+.paginationDetails {
+  text-align: center;
+}

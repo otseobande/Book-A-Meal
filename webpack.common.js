@@ -17,7 +17,7 @@ module.exports = {
       template: 'client/src/index.html',
       filename: 'index.html'
     }),
-    new DotEnv()
+    new DotEnv({ systemvars: true })
   ],
   module: {
     rules: [
@@ -30,8 +30,26 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|jpe?g|gif|svg|woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+        test: /\.(png|jpe?g|gif)?$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 8192
+          }
+        }
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
         use: ['file-loader']
+      },
+      {
+        test: /\.svg/,
+        use: {
+          loader: 'svg-url-loader',
+          options: {
+            noquotes: true
+          }
+        }
       }
     ]
   }

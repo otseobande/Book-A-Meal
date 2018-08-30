@@ -44,9 +44,9 @@ class AuthController {
       })
       .then((responseSent) => {
         if (!responseSent) {
-          res.status(400).json({
+          res.status(401).json({
             status: 'error',
-            message: 'Please check your credentials'
+            message: 'Username or password is incorrect'
           });
         }
       })
@@ -57,7 +57,7 @@ class AuthController {
    * Creates new users
    *
    * @staticmethod
-   * @param  {object} req - Request object
+   * @param {object} req - Request object
    * @param {object} res - Response object
    * @param {function} next - middleware next (for error handling)
    * @return {json} res.json

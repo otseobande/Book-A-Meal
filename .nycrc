@@ -28,5 +28,5 @@
   "sourceMap": false,
   "instrument": false,
   "cache": true,
-  "report-dir": "./coverage"
+  "report-dir": "./server-coverage"
 }

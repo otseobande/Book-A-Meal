@@ -2,6 +2,12 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { jwtExpiry, jwtSecret } from '../config';
 
+const hashUserPassword = (user) => {
+  user.username = user.username.toLowerCase();
+  user.email = user.email.toLowerCase();
+  user.password = bcrypt.hashSync(user.password, 10);
+}
+
 /**
  * @model
  * @param  {object} sequelize - Sequelize DB connection object
@@ -22,6 +28,7 @@ const user = (sequelize, DataTypes) => {
       username: DataTypes.STRING,
       email: DataTypes.STRING,
       password: DataTypes.STRING,
+      resetToken: DataTypes.STRING,
       role: DataTypes.ENUM('customer', 'caterer', 'admin'),
       createdAt: DataTypes.DATE,
       updatedAt: DataTypes.DATE
@@ -32,11 +39,8 @@ const user = (sequelize, DataTypes) => {
         attributes: { exclude: ['createdAt', 'updatedAt', 'deletedAt'] }
       },
       hooks: {
-  	    beforeCreate(user, options) {
-  	      user.username = user.username.toLowerCase();
-  	      user.email = user.email.toLowerCase();
-  	      user.password = bcrypt.hashSync(user.password, 10);
-  	    }
+  	    beforeCreate: hashUserPassword,
+        beforeUpdate: hashUserPassword
   	  }
     }
   );
@@ -48,6 +52,7 @@ const user = (sequelize, DataTypes) => {
     delete values.createdAt;
     delete values.updatedAt;
     delete values.deletedAt;
+    delete values.resetToken;
 
     return values;
   };

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loader component should match snapshot 1`] = `
+<div
+  style={
+    Object {
+      "textAlign": "center",
+    }
+  }
+>
+  <img
+    alt="loading"
+    src="test-file-stub"
+    width={40}
+  />
+  <br />
+  loading...
+</div>
+`;

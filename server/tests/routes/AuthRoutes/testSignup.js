@@ -51,13 +51,13 @@ describe('POST /api/v1/auth/signup', () => {
       .send({
         username: 'otsande',
         fullName: 'Sele Mege',
-        email: 'otseobande@gmail.com',
+        email: 'mealbooker@gmail.com',
         password: 'bookameal',
         role: 'customer'
       });
 
     res.should.have.status(409);
-    res.body.message[0].should.be.equal('email "otseobande@gmail.com" already exists');
+    res.body.message[0].should.be.equal('email "mealbooker@gmail.com" already exists');
   });
 
   it('should return 400 with message if role doesnt exist', async () => {

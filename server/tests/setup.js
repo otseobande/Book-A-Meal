@@ -27,6 +27,12 @@ const customerToken = jwt.sign({
   role: 'customer'
 }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
+const resetToken = jwt.sign({
+  id: 'e20ac257-86cc-4a6f-a619-0249a201c475'
+}, process.env.JWT_SECRET , {
+  expiresIn: '3h'
+});
+
 export {
   chai,
   assert,
@@ -36,5 +42,6 @@ export {
   App,
   adminToken,
   catererToken,
-  customerToken
+  customerToken,
+  resetToken
 };

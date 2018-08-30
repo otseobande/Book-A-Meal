@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito:300,400,600,600i");
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400");
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
+
+body{
+  margin: 0px;
+  height: 100%;
+  background-color: #f6f6f6;
+  font-family: Poppins, "Helvetica Neue", Arial, sans-serif;
+}
+
+#root{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.Toastify__toast-container--top-right {
+  top: 4em;
+}
+
+@media only screen and (max-width: 600px){
+  .Toastify__toast-container--top-right {
+    top: 0em;
+  }
+}
+
+.switch-wrapper {
+  position: relative;
+}
+
+.switch-wrapper > div {
+  position: absolute;
+}
+
+.ReactModal__Content {
+  opacity: 0;
+}
+
+.ReactModal__Content--after-open {
+  opacity: 1;
+  transition: opacity 150ms;
+}
+
+.ReactModal__Content--before-close {
+  opacity: 0;
+}
+
+
+
+.react-modal-overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: #0c0c0cbf;
+}
+
+.react-modal-body{
+  position: absolute;
+  top: 144px;
+  left: 340px;
+  right: 340px;
+  background: white;
+  overflow: auto;
+  border-radius: 4px;
+  outline: none;
+  padding: 20px;
+  max-height: 800px;
+}
+
+@media only screen and (max-width: 600px) {
+  .react-modal-body{
+    font-size: 14px;
+  }
+}
+
+@media only screen and (min-width: 600px) {}
+
+@media only screen and (min-width: 768px) {
+  .react-modal-body{
+    left: 108px;
+    right: 108px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .react-modal-body{
+    left: 177px;
+    right: 177px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .react-modal-body{
+    left: 266px;
+    right: 266px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .react-modal-body{
+    top: 32px;
+    left: 20px;
+    right: 20px;
+  }
+}
+
+
+.pagination{
+  display: block;
+  text-align: center;
+  padding: 0px;
+}
+
+.pagination li {
+  display: inline-block;
+}
+.pagination a {
+  cursor: pointer;
+  padding: 3px 10px 3px 10px;
+  border: 1px solid gray;
+  background-color: white;
+}
+
+.pagination .previous a {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.pagination .disabled a {
+  color: #c7c7c7;
+  outline: none;
+  cursor: default;
+}
+.pagination .next a {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.pagination .active a{
+  border: 2px solid orange;
+  outline-color: orange;
+}

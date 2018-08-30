@@ -1,0 +1,262 @@
+@import '../../../assets/scss/_variables';
+
+.menu {
+  min-height: 399px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  border-radius: 2px;
+  margin-top: 2px;
+
+  @media only screen and (max-width: 600px) {
+    background: transparent;
+    box-shadow: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 54px;
+  }
+}
+
+.menuTop{
+  height: 52px;
+  width: 101%;
+  background-color: white;
+  background: linear-gradient(to bottom, #963f0d 1%,#f7c485 30%,#f9b868 70%,#963f0d 100%);
+  box-shadow: $card-shadow;
+
+  @media only screen and (max-width: 600px) {
+    height: 0px;
+  }
+}
+
+.scroll-bottom{
+  margin-top: auto;
+  height: 58px;
+  width: 102%;
+
+  background-color: white;
+  background: linear-gradient(to bottom, #963f0d 1%,#f7c485 30%,#f9b868 70%,#963f0d 100%);
+  box-shadow: 0 1px 127px rgba(0, 0, 0, 0.93), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.menuBody{
+  height: 100%;
+  padding-left: 43px;
+  padding-right: 43px;
+  padding: 0px;
+  background-color: white;
+  width: 92%;
+  /* text-align: center; */
+  margin: auto;
+  margin-top: 0px;
+  box-shadow: $card-shadow;
+  border-radius: 5px;
+  padding: 7px;
+
+  @media only screen and (max-width: 600px) {
+
+  }
+
+  @media only screen and (min-width: 1200px) {
+    width: 70%;
+  }
+}
+
+.menuHeader{
+  font-family: Poppins, calibri;
+  font-size: 26px;
+  margin-top: 10px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 35px;
+  margin-top: 20px;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 23px;
+    margin-bottom: 20px;
+    margin-top: 19px;
+  }
+}
+
+.catererName{
+  font-family: Poppins, calibri;
+  font-size: 22px;
+  text-align: center;
+  margin-bottom: 10px;
+
+
+  @media only screen and (max-width: 600px) {
+    font-size: 19px;
+  }
+}
+
+.categoryTitle {
+  margin: 0;
+   font-weight: 400;
+   font-size: 48px;
+
+   font-family: "Dancing Script",cursive, calibri;
+   font-size: 27px;
+}
+
+.scroll-body li{
+  display: flex;
+  margin-bottom: 6px;
+}
+.handwritten{
+	font-family: handWritten;
+	font-weight: 300;
+}
+
+.mealList{
+  font-family: Poppins, calibri;
+  margin-top: 0px;
+  font-size: 16px;
+  list-style: none;
+  padding-left: 0px;
+
+  .meal{
+    border: 1px solid #c5c5c5;
+    padding-bottom: 9px;
+    padding-top: 9px;
+    margin-bottom: 1px;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+
+    .mealTitle{
+      padding-left: 3px;
+    }
+    .img{
+      width: 20px;
+      height: 16px;
+      margin-right: 7px;
+    }
+
+    .leftSection{
+      margin-left:auto;
+    }
+  }
+
+
+}
+
+.mealTitle{
+  display: flex;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.mealCard{
+  margin-bottom: 12px;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  width: 271px;
+  box-shadow: none;
+  margin-top: 10px;
+
+  :global{
+    animation: fadeInDown .05s ease-in-out;
+  }
+
+  &:hover{
+    box-shadow: none;
+  }
+}
+
+.navigators{
+  display: flex;
+  padding: 10px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+
+  .right{
+    margin-left: auto;
+  }
+
+  button {
+    background-color: $navigator-btn-bg-color;
+    border: 2px solid darken($navigator-btn-bg-color, 10%);
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+
+    &:hover{
+      background-color: darken($navigator-btn-bg-color, 10%);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    }
+
+    @media only screen and (max-width: 600px) {
+      font-size: 15px;
+    }
+  }
+
+  img{
+    width: 10px;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    width: 70%;
+  }
+}
+
+.flipIn{
+  :global{
+    animation: flipInY .4s ease-in;
+  }
+}
+
+.flipOut{
+  :global{
+    animation: flipOutY .4s ease-in;
+  }
+}
+
+
+.orderBtn{
+	background-color: $order-btn-bg-color;
+  border: 2px solid darken($order-btn-bg-color, 10%);
+  color: white;
+  border-radius: 5px;
+  padding-left: 9px;
+  padding-right: 9px;
+  font-size: 17px;
+  margin-right: 13px;
+  text-decoration: none;
+  cursor: pointer;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 14px;
+    margin-right: 2px;
+  }
+
+  &:hover{
+    background-color: darken($order-btn-bg-color, 10%);
+  }
+}
+
+.slideInUp {
+  :global{
+    animation: slideInUp .3s ease-in-out;
+  }
+}
+.noMenu{
+  @extend .menuBody;
+  @extend .slideInUp;
+
+  height: 100%;
+  background-color: white;
+  width: 92%;
+  margin: auto;
+  margin-top: 0px;
+  box-shadow: $card-shadow;
+  border-radius: 5px;
+  padding: 15px;
+}

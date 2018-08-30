@@ -16,6 +16,6 @@ Loader.propTypes = {
 
 Loader.defaultProps = {
   width: 40,
-  message: ''
+  message: 'loading...'
 };
 export default Loader;

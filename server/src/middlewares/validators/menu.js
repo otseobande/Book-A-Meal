@@ -2,11 +2,10 @@ import Joi from 'joi';
 import validate from 'express-validation';
 import moment from 'moment';
 
-const title = Joi.string()
-  .min(2)
-  .max(25);
 const categories = Joi.array().items(Joi.object().keys({
-  title: Joi.string().min(1).required(),
+  title: Joi.string()
+    .min(2)
+    .max(25).required(),
   meals: Joi.array().items(Joi.string().guid({
     version: [
       'uuidv4',
@@ -50,7 +49,7 @@ const ensureDateIsValid = (req, res, next) => {
  * @return {res | undefined} response or calls next function
  */
 const confirmDateIsNotPast = (req, res, next) => {
-  if (req.body.date && moment(req.body.date) < moment()) {
+  if (req.body.date && moment(req.body.date) < moment().startOf('day')) {
     return res.status(400).json({
       status: 'error',
       message: 'You cannot set menu for a date in the past.'
@@ -65,7 +64,6 @@ const confirmDateIsNotPast = (req, res, next) => {
  */
 const validateFieldsForCreate = validate({
   body: {
-    title: title.required(),
     date,
     categories: categories.required(),
     token
@@ -77,7 +75,7 @@ const validateFieldsForCreate = validate({
  *
  * @type {Array}
  */
-const validateCreate = [
+export const validateCreate = [
   ensureDateIsValid,
   confirmDateIsNotPast,
   validateFieldsForCreate
@@ -87,12 +85,11 @@ const validateCreate = [
 /**
  * Validation middleware
  */
-const validateUpdate = validate({
+export const validateUpdate = validate({
   params: {
     date
   },
   body: {
-    title: title.required(),
     categories,
     token
   }
@@ -101,7 +98,7 @@ const validateUpdate = validate({
 /**
  * Validation middleware
  */
-const validateDate = validate({
+export const validateDate = validate({
   params: {
     date
   },
@@ -109,10 +106,3 @@ const validateDate = validate({
     token
   }
 });
-
-
-export {
-  validateUpdate,
-  validateCreate,
-  validateDate
-};

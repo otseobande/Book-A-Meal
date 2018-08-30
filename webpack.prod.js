@@ -1,5 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -42,14 +41,8 @@ module.exports = merge(common, {
       filename: '[name].css',
       chunkFilename: '[id].css'
     }),
-    new webpack.DefinePlugin({
-      APP_URL: JSON.stringify('https://meal-booking.herokuapp.com')
-    }),
     new CompressionPlugin({
       algorithm: 'gzip'
     })
-  ],
-  optimization: {
-    minimize: true
-  }
+  ]
 });

@@ -30,7 +30,7 @@ describe('PUT /api/v1/orders/:orderId', () => {
     res.should.have.status(200);
   });
 
-  it('should return error 422 if order is expired', async () => {
+  it('should return error 422 if order modification period has elapsed', async () => {
     const res = await chai.request(App)
       .put('/api/v1/orders/fdc2ea34-ff16-4658-971d-8fb6132f6dfd')
       .set('Authorization', `Bearer ${adminToken}`)
@@ -44,7 +44,7 @@ describe('PUT /api/v1/orders/:orderId', () => {
     res.should.have.status(422);
     res.body.should.deep.equal({
       status: 'error',
-      message: 'order modification has expired'
+      message: 'order modification period has elapsed'
     });
   });
 

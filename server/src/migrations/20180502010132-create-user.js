@@ -28,6 +28,10 @@ export default {
       allowNull: false,
       type: Sequelize.STRING
     },
+    resetToken: {
+      allowNull: true,
+      type: Sequelize.STRING
+    },
     role: {
       allowNull: false,
       type: Sequelize.ENUM,

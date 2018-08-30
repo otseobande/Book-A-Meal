@@ -7,9 +7,6 @@ env:
   global:
     - CC_TEST_REPORTER_ID=1c4feae9a685078726b61358fc7145f29761f877f1a8e5f2538d593dea207a89
     - CXX=g++-5
-    - NODE_ENV=test
-    - JWT_EXPIRY=24
-    - ORDER_EXPIRY=30
 
 cache:
   directories:
@@ -26,22 +23,24 @@ services:
   - postgresql
 
 before_install:
-  - npm install -g npm@latest
+  - npm i -g npm@latest
   - npm install -g node-gyp node-pre-gyp
+  - npm i -g codecov
 
 install:
   - npm install
 
-# before_script:
-#   - psql -c 'create database book_a_meal_test;' -U postgres
-#   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-#   - chmod +x ./cc-test-reporter
-#   - ./cc-test-reporter before-build
-#   - npm run build
+before_script:
+  - psql -c 'create database book_a_meal_test;' -U postgres
+  - curl -L http://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+  - npm run build
 
-# script:
-#   - npm run test
+script:
+  - npm run test
 
-# after_success:
-#   - npm run coverage
-#   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+after_success:
+  - npm run coverage
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - codecov

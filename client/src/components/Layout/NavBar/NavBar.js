@@ -14,36 +14,23 @@ class NavBar extends Component {
     home: PropTypes.bool,
     loggedIn: PropTypes.bool,
     logout: PropTypes.func.isRequired,
-    user: PropTypes.object
+    pathname: PropTypes.string.isRequired,
+    user: PropTypes.objectOf(PropTypes.string).isRequired
   }
   static defaultProps = {
     home: false,
-    loggedIn: false,
-    user: {}
+    loggedIn: false
   }
   state = {
-    isNavMenuVisible: false,
-    navMenuClasses: classNames({
-      [styles['nav-menus']]: true
-    })
-
+    isNavMenuVisible: false
   }
-
-  navClasses = classNames({
-    [styles.nav]: true,
-    [styles.home]: this.props.home
-  })
 
   /**
    * @returns {undefined} - undefined
    */
   toggleMenu() {
     this.setState({
-      isNavMenuVisible: !this.state.isNavMenuVisible,
-      navMenuClasses: classNames({
-        [styles['nav-menus']]: true,
-        [styles.visible]: !this.state.isNavMenuVisible
-      })
+      isNavMenuVisible: !this.state.isNavMenuVisible
     });
   }
 
@@ -51,27 +38,52 @@ class NavBar extends Component {
    * @returns {JSX} - React JSX
    */
   render() {
+    const { pathname, user } = this.props;
+
     return (
-      <nav className={this.navClasses}>
-        <div className={styles['title-area']}>
+      <nav className={classNames({
+        [styles.nav]: true,
+        [styles.home]: this.props.home
+      })}
+      >
+        <div className={styles.titleArea}>
           <Link to="/" className={styles.title}>
             <img className={styles.logo} src={logo} width="30" alt="logo" />
-            <span className={styles['app-name']}>Book-A-Meal</span>
+            <span className={styles.appName}>Book-A-Meal</span>
           </Link>
-          <button className={styles.navToggle} onClick={() => this.toggleMenu()} href="#">&#9776;</button>
+          <button className={styles.navToggle} onClick={() => this.toggleMenu()} href="#">
+            { this.state.isNavMenuVisible ?
+              <span style={{ fontSize: 29 }}>&times;</span> :
+              <span>&#9776;</span>
+            }
+          </button>
         </div>
-        <div className={this.state.navMenuClasses}>
-          <ul className={styles['nav-list']}>
-            {this.props.loggedIn ? (
-              <Fragment>
-                <li>
-                  <Link to="/">Hi {this.props.user.fullName}</Link>
-                </li>
-                <li>
-                  <Link to="/" onClick={this.props.logout}>Logout</Link>
-                </li>
-              </Fragment>
-            ) : <AuthLinks />
+        <div
+          className={classNames({
+            [styles.navMenus]: true,
+            [styles.visible]: this.state.isNavMenuVisible
+          })}
+        >
+          <ul className={styles.navList}>
+            {
+              this.props.loggedIn ?
+                <Fragment>
+                  <AuthLinks
+                    role={user.role}
+                    pathname={pathname}
+                  />
+                  <li>
+                    <Link to="/" onClick={this.props.logout}>Logout</Link>
+                  </li>
+                </Fragment> :
+                <Fragment>
+                  <li>
+                    <Link to="/login">Login</Link>
+                  </li>
+                  <li>
+                    <Link to="/signup">Sign Up</Link>
+                  </li>
+                </Fragment>
             }
           </ul>
         </div>

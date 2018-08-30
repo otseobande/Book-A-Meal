@@ -7,7 +7,10 @@
 const addScopes = (db) => {
   db.order.addScope('defaultScope', {
     include: [
-      { model: db.meal }
+      { model: db.meal, paranoid: false }
+    ],
+    order: [
+      ['createdAt', 'DESC']
     ],
     attributes: { exclude: ['deletedAt'] }
   }, { override: true });
@@ -23,8 +26,12 @@ const addScopes = (db) => {
           where: {
             id: catererUserId
           }
-        }]
+        }],
+        paranoid: false
       }
+    ],
+    order: [
+      ['createdAt', 'DESC']
     ],
     attributes: { exclude: ['deletedAt'] }
   }), { override: true });
@@ -42,6 +49,9 @@ const addScopes = (db) => {
           }
         }]
       }
+    ],
+    order: [
+      ['createdAt', 'DESC']
     ]
   }, { override: true });
 };
