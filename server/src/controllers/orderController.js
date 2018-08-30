@@ -104,9 +104,12 @@ class OrderController {
     return findOrders
       .then(({ count, rows }) => {
         const pageCount = Math.ceil(count / limit);
+        const filteredOrders = rows.map(order => order.meal && order)
+          .filter(Boolean);
+
         res.status(200).json({
           status: 'success',
-          orders: rows,
+          orders: filteredOrders,
           pagination: {
             itemCount: count,
             pageCount,

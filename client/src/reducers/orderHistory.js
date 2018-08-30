@@ -2,7 +2,8 @@ import { RECEIVE_ORDERS } from '../actions/actionTypes.js';
 
 const initialState = {
   isFetching: true,
-  orders: []
+  orders: [],
+  pagination: {}
 };
 
 export default (state = initialState, { type, orders, pagination }) => {

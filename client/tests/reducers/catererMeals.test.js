@@ -4,6 +4,7 @@ import { REQUEST_MEALS, RECEIVE_MEALS } from '../../src/actions/actionTypes.js';
 const state = {
   meals: [1,3]
 }
+
 describe("catererMeals reducer", () => {
   it('should return initial state if action type is undefined', () => {
     const newState = catererMeals(state, {type: undefined});
@@ -11,7 +12,7 @@ describe("catererMeals reducer", () => {
     expect(newState).toEqual(state);
   })
 
-  it('should return state with isFetching:true on REQUEST_MEALS action', () => {
+  it('should return state with isFetching as true on REQUEST_MEALS action', () => {
     const newState = catererMeals(state, {type: REQUEST_MEALS});
 
     expect(newState).toEqual({
@@ -20,7 +21,7 @@ describe("catererMeals reducer", () => {
     })
   })
 
-  it('should return state with isFetching:false with meals and pagination on RECEIVE_MEALS action', () => {
+  it('should return state with isFetching as false with meals and pagination on RECEIVE_MEALS action', () => {
     const newState = catererMeals(state, {
       type: RECEIVE_MEALS,
       meals: [],

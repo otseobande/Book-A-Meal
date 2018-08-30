@@ -5,10 +5,10 @@ import {
 
 const initialState = {
   menus: [],
-  isFetching: true
+  isFetching: false
 };
 
-export default (state = initialState, { type, menus, pagination }) => {
+export default (state = initialState, { type, menus }) => {
   switch (type) {
     case REQUEST_MENUS_FOR_THE_DAY:
       return { ...state, isFetching: true };
@@ -16,7 +16,6 @@ export default (state = initialState, { type, menus, pagination }) => {
       return {
         ...state,
         menus,
-        pagination: pagination || state.pagination,
         isFetching: false
       };
     default:

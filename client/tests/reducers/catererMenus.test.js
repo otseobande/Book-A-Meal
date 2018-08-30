@@ -11,7 +11,7 @@ describe("catererMenus reducer", () => {
     expect(newState).toEqual(state);
   })
 
-  it('should return state with isFetching:true on REQUEST_MENUS action', () => {
+  it('should return state with isFetching as true on REQUEST_MENUS action', () => {
     const newState = catererMenus(state, {type: REQUEST_MENUS});
 
     expect(newState).toEqual({
@@ -20,7 +20,7 @@ describe("catererMenus reducer", () => {
     })
   })
 
-  it('should return state with isFetching:false with meals and pagination on RECEIVE_MENUS action', () => {
+  it('should return state with isFetching as false with meals and pagination on RECEIVE_MENUS action', () => {
     const newState = catererMenus(state, {
       type: RECEIVE_MENUS,
       menus: [],
