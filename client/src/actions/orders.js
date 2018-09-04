@@ -1,7 +1,9 @@
 import Orders from '../services/api/orders.js';
 import {
   ORDER_PLACED,
-  RECEIVE_ORDERS
+  RECEIVE_ORDERS,
+  EDIT_ORDER
+
 } from './actionTypes.js';
 import requestErrorHandler from '../utils/requestErrorHandler.js';
 
@@ -9,16 +11,25 @@ export const orderPlaced = () => ({
   type: ORDER_PLACED
 });
 
+export const editOrder = order => ({
+  type: EDIT_ORDER,
+  payload: {
+    order
+  }
+});
+
 export const placeOrder = orderDetails => dispatch => Orders.placeOrder(orderDetails)
   .then(() => {
-    dispatch(orderPlaced);
+    dispatch(orderPlaced());
   })
   .catch(requestErrorHandler);
 
 export const receiveOrders = (orders, pagination) => ({
   type: RECEIVE_ORDERS,
-  orders,
-  pagination
+  payload: {
+    orders,
+    pagination
+  }
 });
 
 export const fetchOrderHistory = paginationInfo => dispatch => Orders.getOrders(paginationInfo)
@@ -29,42 +40,29 @@ export const fetchOrderHistory = paginationInfo => dispatch => Orders.getOrders(
   })
   .catch(requestErrorHandler);
 
-const updateOrders = (updatedOrder, getState) => {
-  const orders = getState().orderHistory.orders.slice();
-  return orders.map((order) => {
-    if (order.id === updatedOrder.id) {
-      return updatedOrder;
-    }
-    return order;
-  });
-};
-
-export const cancelOrder = orderId => (dispatch, getState) => Orders.cancelOrder(orderId)
+export const cancelOrder = orderId => dispatch => Orders.cancelOrder(orderId)
   .then((res) => {
-    const { order, pagination } = res.data;
-    const updatedOrders = updateOrders(order, getState);
+    const { order } = res.data;
 
-    dispatch(receiveOrders(updatedOrders, pagination));
+    dispatch(editOrder(order));
   })
   .catch(requestErrorHandler);
 
 
-export const deliverOrder = orderId => (dispatch, getState) => Orders.deliverOrder(orderId)
+export const deliverOrder = orderId => dispatch => Orders.deliverOrder(orderId)
   .then((res) => {
-    const { order, pagination } = res.data;
-    const updatedOrders = updateOrders(order, getState);
+    const { order } = res.data;
 
-    dispatch(receiveOrders(updatedOrders, pagination));
+    dispatch(editOrder(order));
   })
   .catch(requestErrorHandler);
 
 
-export const updateOrder = (orderId, orderDetails) => (dispatch, getState) =>
+export const updateOrder = (orderId, orderDetails) => dispatch =>
   Orders.updateOrder(orderId, orderDetails)
     .then((res) => {
-      const { order, pagination } = res.data;
-      const updatedOrders = updateOrders(order, getState);
+      const { order } = res.data;
 
-      dispatch(receiveOrders(updatedOrders, pagination));
+      dispatch(editOrder(order));
     })
     .catch(requestErrorHandler);

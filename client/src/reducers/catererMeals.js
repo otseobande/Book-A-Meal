@@ -1,21 +1,31 @@
-import { REQUEST_MEALS, RECEIVE_MEALS } from '../actions/actionTypes.js';
+import * as types from '../actions/actionTypes.js';
+import * as utils from '../utils/reducer-utils/caterer-meals-utils.js';
 
 const initialState = {
   meals: [],
-  isFetching: false
+  isFetching: false,
+  pagination: {
+    page: 1
+  }
 };
 
-export default (state = initialState, { type, meals, pagination }) => {
+export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case REQUEST_MEALS:
+    case types.REQUEST_MEALS:
       return { ...state, isFetching: true };
-    case RECEIVE_MEALS:
+    case types.RECEIVE_MEALS:
       return {
         ...state,
-        meals,
-        pagination: pagination || state.pagination,
+        meals: payload.meals,
+        pagination: payload.pagination || state.pagination,
         isFetching: false
       };
+    case types.ADD_MEAL:
+      return utils.addMeal(state, payload);
+    case types.REMOVE_MEAL:
+      return utils.removeMeal(state, payload);
+    case types.EDIT_MEAL:
+      return utils.updateMeal(state, payload);
     default:
       return state;
   }

@@ -1,7 +1,6 @@
 # Book-A-Meal :rice: :fork_and_knife: :point_left:
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/128c9747e0b49230e3f3/maintainability)](https://codeclimate.com/github/otseobande/Book-A-Meal/maintainability) [![Build Status](https://travis-ci.org/otseobande/Book-A-Meal.svg?branch=develop)](https://travis-ci.org/otseobande/Book-A-Meal)
-[![codecov](https://codecov.io/gh/otseobande/Book-A-Meal/branch/develop/graph/badge.svg)](https://codecov.io/gh/otseobande/Book-A-Meal)
+[![Build Status](https://travis-ci.org/otseobande/Book-A-Meal.svg?branch=develop)](https://travis-ci.org/otseobande/Book-A-Meal) [![codecov](https://codecov.io/gh/otseobande/Book-A-Meal/branch/develop/graph/badge.svg)](https://codecov.io/gh/otseobande/Book-A-Meal) [![Maintainability](https://api.codeclimate.com/v1/badges/128c9747e0b49230e3f3/maintainability)](https://codeclimate.com/github/otseobande/Book-A-Meal/maintainability) [![Continuous Integration](https://camo.githubusercontent.com/23ee7a697b291798079e258bbc25434c4fac4f8b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f50726f7465637465645f62792d486f756e642d6138373364312e737667)](https://houndci.com)
 
 Book-A-Meal is an application that allows customers to make food orders and helps the food
 vendor know what the customers want to eat.
@@ -34,8 +33,8 @@ vendor know what the customers want to eat.
 To get the application running follow this steps:
 
 * Install NodeJs and Postgres on your local machine
-* clone the repository `git clone https://github.com/otseobande/Book-A-Meal`
-* Navigate to project folder
+* clone the repository `$ git clone https://github.com/otseobande/Book-A-Meal`
+* Navigate to project folder `$ cd Book-A-Meal`
 * Make a copy of the `.env.example` file and rename it to `.env`
 * Update `.env` with necessary environment details e.g database credentials
 * Install npm dependencies by running `npm install`

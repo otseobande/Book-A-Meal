@@ -22,7 +22,7 @@ describe('AuthController', () => {
       }
     });
 
-    it('method calls next function on err', async () => {
+    it('should call next function on err', async () => {
       try {
         await AuthController.signup(req, res, next);
         next.should.have.been.called;
@@ -40,7 +40,7 @@ describe('AuthController', () => {
       }
     });
 
-    it('method calls next function on err', async () => {
+    it('should call next function on err', async () => {
       try {
         await AuthController.login(req, res, next);
         next.should.have.been.called;

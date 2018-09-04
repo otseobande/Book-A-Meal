@@ -5,14 +5,14 @@ const initialState = {
   isFetching: false
 };
 
-export default (state = initialState, { type, meals }) => {
+export default (state = initialState, { type, payload }) => {
   switch (type) {
     case REQUEST_PEEP_MENUS:
       return { ...state, isFetching: true };
     case RECEIVE_PEEP_MENUS:
       return {
         ...state,
-        meals,
+        meals: payload.meals,
         isFetching: false
       };
     default:

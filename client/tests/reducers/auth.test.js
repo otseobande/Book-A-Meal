@@ -18,7 +18,7 @@ describe('auth reducer', () => {
   it('should return state with loggedIn:true on LOGIN_SUCCESS action', () => {
     const newState = auth(state, {
       type: LOGIN_SUCCESS,
-      user
+      payload: { user }
     });
 
     expect(newState).toEqual({

@@ -20,7 +20,7 @@ describe('MealController', () => {
       }
     });
 
-    it('method calls next function on err', async () => {
+    it('should call next function on err', async () => {
       try {
         await MealController.create(req, res, next);
         next.should.have.been.called;
@@ -41,7 +41,7 @@ describe('MealController', () => {
       }
     });
 
-    it('method calls next function on err', async () => {
+    it('should call next function on err', async () => {
       try {
         await MealController.delete(req, res, next);
         next.should.have.been.called;
@@ -62,7 +62,7 @@ describe('MealController', () => {
       }
     });
 
-    it('method calls next function on err', async () => {
+    it('should call next function on err', async () => {
       try {
         await MealController.getMeal(req, res, next);
         next.should.have.been.called;
@@ -82,7 +82,7 @@ describe('MealController', () => {
         }
       });
 
-      it('method calls next function on err', async () => {
+      it('should call next function on err', async () => {
         try {
           await MealController.getMeals(req, res, next);
           next.should.have.been.called;
@@ -104,7 +104,7 @@ describe('MealController', () => {
       }
     });
 
-    it('method calls next function on err', async () => {
+    it('should call next function on err', async () => {
       try {
         await MealController.update(req, res, next);
         next.should.have.been.called;

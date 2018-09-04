@@ -21,7 +21,7 @@ describe('MenuController', () => {
       }
     });
 
-    it('method calls next function on err', async () => {
+    it('should call next function on err', async () => {
       try {
         await MenuController.createMenu(req, res, next);
         next.should.have.been.called;
@@ -42,7 +42,7 @@ describe('MenuController', () => {
       }
     });
 
-    it('method calls next function on err', async () => {
+    it('should call next function on err', async () => {
       try {
         await MenuController.deleteMenu(req, res, next);
         next.should.have.been.called;
@@ -63,7 +63,7 @@ describe('MenuController', () => {
       }
     });
 
-    it('method calls next function on err', async () => {
+    it('should call next function on err', async () => {
       try {
         await MenuController.getSpecificDayMenu(req, res, next);
         next.should.have.been.called;
@@ -84,7 +84,7 @@ describe('MenuController', () => {
       }
     });
 
-    it('method calls next function on err', async () => {
+    it('should call next function on err', async () => {
       try {
         await MenuController.updateMenu(req, res, next);
         next.should.have.been.called;
@@ -108,7 +108,7 @@ describe('MenuController', () => {
       }
     });
 
-    it('method calls next function on err', async () => {
+    it('should call next function on err', async () => {
       try {
         await MenuController.updateMenu(req, res, next);
         next.should.have.been.called;

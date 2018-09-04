@@ -12,6 +12,9 @@ const actionTypes = mirrorArray([
   // Caterer Menus
   'REQUEST_MENUS',
   'RECEIVE_MENUS',
+  'ADD_MENU',
+  'REMOVE_MENU',
+  'EDIT_MENU',
 
   // auth
   'LOGIN_SUCCESS',
@@ -23,10 +26,14 @@ const actionTypes = mirrorArray([
   // orders
   'ORDER_PLACED',
   'RECEIVE_ORDERS',
+  'EDIT_ORDER',
 
   // meals
   'REQUEST_MEALS',
-  'RECEIVE_MEALS'
+  'RECEIVE_MEALS',
+  'ADD_MEAL',
+  'REMOVE_MEAL',
+  'EDIT_MEAL'
 ]);
 
 export default actionTypes;

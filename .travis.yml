@@ -23,9 +23,7 @@ services:
   - postgresql
 
 before_install:
-  - npm i -g npm@latest
-  - npm install -g node-gyp node-pre-gyp
-  - npm i -g codecov
+  - npm i -g npm@latest node-gyp node-pre-gyp codecov
 
 install:
   - npm install

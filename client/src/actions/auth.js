@@ -7,7 +7,9 @@ import requestErrorHandler from '../utils/requestErrorHandler.js';
 
 export const loginSuccess = user => ({
   type: LOGIN_SUCCESS,
-  user
+  payload: {
+    user
+  }
 });
 
 export const login = (userDetails, from) => dispatch => Auth.login(userDetails)
@@ -37,11 +39,6 @@ export const signup = userDetails => dispatch => Auth.signup(userDetails)
   })
   .catch(requestErrorHandler);
 
-export const logout = () => {
-  toast('Logged out.', { autoClose: 1500 });
-  ls.remove('book-a-meal');
-
-  return {
-    type: LOGOUT
-  };
-};
+export const logout = () => ({
+  type: LOGOUT
+});

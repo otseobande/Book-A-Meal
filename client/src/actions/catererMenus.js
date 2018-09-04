@@ -1,74 +1,70 @@
-import { RECEIVE_MENUS, REQUEST_MENUS } from './actionTypes';
+import * as types from './actionTypes';
 import Menus from '../services/api/menus.js';
 import requestErrorHandler from '../utils/requestErrorHandler.js';
 
 export const receiveMenus = (menus, pagination) => ({
-  type: RECEIVE_MENUS,
-  menus,
-  pagination
+  type: types.RECEIVE_MENUS,
+  payload: {
+    menus,
+    pagination
+  }
 });
 
 export const requestMenus = () => ({
-  type: REQUEST_MENUS
+  type: types.REQUEST_MENUS
 });
 
-const getMenusFromStateAndAddNew = (menu, getState) => {
-  const menus = getState().catererMenus.menus.slice();
-  const updatedMenus = [menu, ...menus];
+export const addMenu = menu => ({
+  type: types.ADD_MENU,
+  payload: {
+    menu
+  }
+});
 
-  return updatedMenus;
-};
+export const editMenu = menu => ({
+  type: types.EDIT_MENU,
+  payload: {
+    menu
+  }
+});
 
-const getMenusFromStateAndRemoveOne = (menuDate, getState) => {
-  const menus = getState().catererMenus.menus.slice();
-  const updatedMenus = menus.filter(menu => menu.date !== menuDate);
+export const removeMenu = menu => ({
+  type: types.REMOVE_MENU,
+  payload: {
+    menu
+  }
+});
 
-  return updatedMenus;
-};
-
-const getMenusFromStateAndReplaceOne = (updatedMenu, getState) => {
-  const menus = getState().catererMenus.menus.slice();
-  const updatedMenus = menus.map((menu) => {
-    if (menu.date === updatedMenu.date) {
-      return updatedMenu;
-    }
-
-    return menu;
-  });
-
-  return updatedMenus;
-};
-
-export const setMenu = menuDetails => (dispatch, getState) => Menus.setMenu(menuDetails)
+export const setMenu = menuDetails => dispatch => Menus.setMenu(menuDetails)
   .then((res) => {
     const { menu } = res.data;
-    const updatedMenus = getMenusFromStateAndAddNew(menu, getState);
 
-    dispatch(receiveMenus(updatedMenus));
+    dispatch(addMenu(menu));
   })
   .catch(requestErrorHandler);
 
-export const getMenus = () => dispatch => Menus.getMenus()
-  .then((res) => {
-    const { menus, pagination } = res.data;
+export const getMenus = () => (dispatch) => {
+  dispatch(requestMenus());
 
-    dispatch(receiveMenus(menus, pagination));
-  })
-  .catch(requestErrorHandler);
+  return Menus.getMenus()
+    .then((res) => {
+      const { menus, pagination } = res.data;
 
-export const deleteMenu = menuDate => (dispatch, getState) => Menus.deleteMenu(menuDate)
+      dispatch(receiveMenus(menus, pagination));
+    })
+    .catch(requestErrorHandler);
+};
+
+export const deleteMenu = menu => dispatch => Menus.deleteMenu(menu.date)
   .then(() => {
-    const updatedMenus = getMenusFromStateAndRemoveOne(menuDate, getState);
-
-    dispatch(receiveMenus(updatedMenus));
+    dispatch(removeMenu(menu));
   })
   .catch(requestErrorHandler);
 
-export const editMenu = menuDetails => (dispatch, getState) => Menus.editMenu(menuDetails)
+export const changeMenu = menuDetails => dispatch => Menus.editMenu(menuDetails)
   .then((res) => {
     const { menu } = res.data;
-    const updatedMenus = getMenusFromStateAndReplaceOne(menu, getState);
 
-    dispatch(receiveMenus(updatedMenus));
+    dispatch(editMenu(menu));
   })
   .catch(requestErrorHandler);

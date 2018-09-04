@@ -1,21 +1,29 @@
-import { REQUEST_MENUS, RECEIVE_MENUS } from '../actions/actionTypes.js';
+import * as types from '../actions/actionTypes.js';
+import { addMenu, editMenu, removeMenu } from '../utils/reducer-utils/caterer-menus-utils.js';
 
 const initialState = {
   menus: [],
-  isFetching: true
+  isFetching: true,
+  pagination: {}
 };
 
-export default (state = initialState, { type, menus, pagination }) => {
+export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case REQUEST_MENUS:
+    case types.REQUEST_MENUS:
       return { ...state, isFetching: true };
-    case RECEIVE_MENUS:
+    case types.RECEIVE_MENUS:
       return {
         ...state,
-        menus,
-        pagination: pagination || state.pagination,
+        menus: payload.menus,
+        pagination: payload.pagination || state.pagination,
         isFetching: false
       };
+    case types.ADD_MENU:
+      return addMenu(state, payload);
+    case types.REMOVE_MENU:
+      return removeMenu(state, payload);
+    case types.EDIT_MENU:
+      return editMenu(state, payload);
     default:
       return state;
   }

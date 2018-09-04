@@ -23,7 +23,6 @@ describe('PUT /api/v1/users/reset_password', () => {
         resetToken: updatedUser.resetToken
       });
 
-    console.log({body: res.body})
     res.should.have.status(200);
     res.body.should.be.deep.equal({
       status: 'success',

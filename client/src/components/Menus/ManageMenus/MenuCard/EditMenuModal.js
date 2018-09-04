@@ -8,7 +8,7 @@ import styles from '../set-menu.scss';
 const EditMenuModal = ({
   isOpen,
   handleClose,
-  editMenu,
+  changeMenu,
   meals,
   date,
   categories
@@ -22,7 +22,7 @@ const EditMenuModal = ({
   >
     <MenuDetailsForm
       closeModal={handleClose}
-      handleSave={editMenu}
+      handleSave={changeMenu}
       meals={meals}
       date={date}
       categories={categories}
@@ -33,7 +33,7 @@ const EditMenuModal = ({
 EditMenuModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,
-  editMenu: PropTypes.func.isRequired,
+  changeMenu: PropTypes.func.isRequired,
   meals: PropTypes.arrayOf(PropTypes.object).isRequired,
   date: PropTypes.string.isRequired,
   categories: PropTypes.arrayOf(PropTypes.object).isRequired

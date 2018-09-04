@@ -2,7 +2,7 @@ import { withFormik } from 'formik';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import MealForm from '../MealForm/MealForm.js';
-import { addMeal } from '../../../actions/meals';
+import { saveMeal } from '../../../actions/meals';
 import mealInfoSchema from '../../../utils/validation-schemas/mealInfoSchema.js';
 
 const AddMealFormConfig = {
@@ -16,7 +16,7 @@ const AddMealFormConfig = {
   handleSubmit: (values, { setSubmitting, props }) => {
     setSubmitting(true);
 
-    props.dispatch(addMeal(values))
+    props.dispatch(saveMeal(values))
       .then(() => {
         setSubmitting(false);
         props.handleClose();

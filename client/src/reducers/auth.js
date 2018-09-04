@@ -5,12 +5,12 @@ import ls from '../utils/securels.js';
 const storedData = ls.get('book-a-meal');
 const initialState = initialAuthState(storedData);
 
-export default (state = initialState, { type, user }) => {
+export default (state = initialState, { type, payload }) => {
   switch (type) {
     case LOGIN_SUCCESS:
       return {
         ...state,
-        user,
+        user: payload.user,
         loggedIn: true
       };
     case LOGOUT:

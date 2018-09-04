@@ -128,7 +128,7 @@ class MealCard extends PureComponent {
                   isOpen={this.state.deleteModalOpen}
                   confirmText="Are you sure you want to delete meal?"
                   handleClose={this.closeDeleteModal}
-                  handleDelete={() => handleDelete(meal.id)}
+                  handleDelete={() => handleDelete(meal)}
                 />
                 <EditMealModal
                   isOpen={this.state.editModalOpen}
