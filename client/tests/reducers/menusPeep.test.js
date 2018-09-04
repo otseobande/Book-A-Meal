@@ -25,14 +25,17 @@ describe('menusPeep reducer', () => {
   });
 
   it('should return state with isFetching as false and meals on RECEIVE_PEEP_MENUS acttion', () => {
+    const payload =  {
+      meals: ['test']
+    }
     const newState = menusPeep(state, {
       type: RECEIVE_PEEP_MENUS,
-      meals: ['test']
+      payload
     });
 
     expect(newState).toEqual({
       ...state,
-      meals: ['test'],
+      meals: payload.meals,
       isFetching: false
     });
   })

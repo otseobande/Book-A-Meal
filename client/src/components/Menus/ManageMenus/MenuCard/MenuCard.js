@@ -100,7 +100,7 @@ class MenuCard extends Component {
         <ConfirmDeleteModal
           isOpen={this.state.deleteModalOpen}
           handleClose={this.closeDeleteModal}
-          handleDelete={() => deleteMenu(menu.date)}
+          handleDelete={() => deleteMenu(menu)}
         />
         <EditMenuModalContainer
           isOpen={this.state.editModalOpen}

@@ -4,7 +4,7 @@ import {
 } from '../../setup';
 
 describe('POST /api/v1/auth/signup', () => {
-  it('should return a success status', async () => {
+  it('should return 201 after creation', async () => {
     const res = await chai.request(App)
       .post('/api/v1/auth/signup')
       .send({
@@ -30,7 +30,7 @@ describe('POST /api/v1/auth/signup', () => {
     res.should.have.status(400);
   });
 
-  it('should return 400 with message if username is taken', async () => {
+  it('should return 409 with message if username is taken', async () => {
     const res = await chai.request(App)
       .post('/api/v1/auth/signup')
       .send({
@@ -45,7 +45,7 @@ describe('POST /api/v1/auth/signup', () => {
     res.body.message[0].should.be.equal('username "otseobande" already exists');
   });
 
-  it('should return 400 with message if email is taken', async () => {
+  it('should return 409 with message if email is taken', async () => {
     const res = await chai.request(App)
       .post('/api/v1/auth/signup')
       .send({

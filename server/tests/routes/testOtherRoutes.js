@@ -4,20 +4,20 @@ import {
   token
 } from '../setup';
 
-describe('unspecified routes', () => {
+describe('non-api routes', () => {
   it('should send a success at /', async () => {
     const res = await chai.request(App)
       .get('/');
     res.should.have.status(200);
   });
 
-  it('static assets should be served', async () => {
+  it('/assets should serve assets', async () => {
     const res = await chai.request(App)
       .get('/assets/img/logo-white.svg');
     res.should.have.status(200);
   });
 
-  it('should send 404 for other methods at root', async () => {
+  it('should send 404 for other methods on /', async () => {
     const res = await chai.request(App)
       .post('/');
     res.should.have.status(404);

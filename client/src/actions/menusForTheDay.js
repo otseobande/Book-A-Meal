@@ -8,7 +8,9 @@ export const requestMenusForTheDay = () => ({
 
 export const receiveMenusForTheDay = menus => ({
   type: RECEIVE_MENUS_FOR_THE_DAY,
-  menus
+  payload: {
+    menus
+  }
 });
 
 export const getMenusForTheDay = () => (dispatch) => {
@@ -18,5 +20,6 @@ export const getMenusForTheDay = () => (dispatch) => {
     .then((res) => {
       const { menus } = res.data;
       dispatch(receiveMenusForTheDay(menus));
-    }).catch(requestErrorHandler);
+    })
+    .catch(requestErrorHandler);
 };

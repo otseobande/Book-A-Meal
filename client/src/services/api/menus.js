@@ -59,7 +59,6 @@ class Menus {
   /**
    * Sends a request to edit the menu for the date specified.
    *
-   * @param {string} date String with date in YYYY-MM-DD format
    * @param {Object} menuData Details to update the menu with
    *
    * @returns {Promise} axios promise

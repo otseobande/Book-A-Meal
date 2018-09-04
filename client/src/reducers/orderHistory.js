@@ -1,4 +1,5 @@
-import { RECEIVE_ORDERS } from '../actions/actionTypes.js';
+import { RECEIVE_ORDERS, EDIT_ORDER } from '../actions/actionTypes.js';
+import editOrder from '../utils/reducer-utils/editOrder.js';
 
 const initialState = {
   isFetching: true,
@@ -6,15 +7,17 @@ const initialState = {
   pagination: {}
 };
 
-export default (state = initialState, { type, orders, pagination }) => {
+export default (state = initialState, { type, payload }) => {
   switch (type) {
     case RECEIVE_ORDERS:
       return {
         ...state,
         isFetching: false,
-        orders,
-        pagination: pagination || state.pagination
+        orders: payload.orders,
+        pagination: payload.pagination || state.pagination
       };
+    case EDIT_ORDER:
+      return editOrder(state, payload);
     default:
       return state;
   }

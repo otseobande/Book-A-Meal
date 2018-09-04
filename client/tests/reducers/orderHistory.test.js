@@ -1,9 +1,15 @@
 import orderHistory from '../../src/reducers/orderHistory.js';
-import { RECEIVE_ORDERS } from '../../src/actions/actionTypes.js';
+import { RECEIVE_ORDERS, EDIT_ORDER } from '../../src/actions/actionTypes.js';
 
 const state = {
   isFetching: true,
-  orders: [],
+  orders: [{
+    id: '3482934',
+    status: 'pending'
+  }, {
+    id: '5389434',
+    status: 'pending'
+  }],
   pagination: { pageCount: 1 }
 };
 
@@ -22,7 +28,7 @@ describe('orderHistory reducer', () => {
 
     const newState = orderHistory(state, {
       type: RECEIVE_ORDERS,
-      ...payload
+      payload
     });
 
     expect(newState).toEqual({
@@ -33,9 +39,27 @@ describe('orderHistory reducer', () => {
 
   it('should return state with default pagination if pagination is undefined in payload', () => {
     const newState = orderHistory(state, {
-      type: RECEIVE_ORDERS
+      type: RECEIVE_ORDERS,
+      payload: {
+        orders: []
+      }
     });
 
     expect(newState.pagination).toEqual({ pageCount: 1});
+  });
+
+  it('should return state with update order on EDIT_ORDER action', () => {
+    const updatedOrder = {
+      id: '3482934',
+      status: 'delivered'
+    }
+    const newState = orderHistory(state, {
+      type: EDIT_ORDER,
+      payload: {
+        order: updatedOrder
+      }
+    });
+
+    expect(newState.orders).toContain(updatedOrder);
   })
 })

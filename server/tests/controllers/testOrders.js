@@ -12,7 +12,7 @@ const res = mockRes();
 
 describe('Order Controller', () => {
   describe('createOrder method', () => {
-    it('should call next on err', async () => {
+    it('should call next function on err', async () => {
 			 try {
         const next = sinon.spy();
         const req = mockReq({

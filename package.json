@@ -16,7 +16,7 @@
     "pretest": "npm-run-all lint migrate:test seed:test",
     "test": "npm-run-all --parallel test:server test:client",
     "pretest:client": "npm run lint:client",
-    "test:client": "cross-env NODE_ENV=test jest client/tests",
+    "test:client": "cross-env NODE_ENV=test jest",
     "pretest:server": "npm-run-all lint:server migrate:test seed:test",
     "test:server": "cross-env NODE_ENV=test nyc mocha server/tests",
     "migrate": "sequelize db:migrate:undo:all && sequelize db:migrate",
@@ -39,26 +39,6 @@
     "url": "https://github.com/otseobande/Book-A-Meal/issues"
   },
   "homepage": "https://github.com/otseobande/Book-A-Meal#readme",
-  "jest": {
-    "verbose": true,
-    "collectCoverage": true,
-    "coverageDirectory": "./client-coverage",
-    "collectCoverageFrom": [
-      "./client/src/**/*.{js,jsx}",
-      "!./client/tests"
-    ],
-    "setupFiles": [
-      "jest-localstorage-mock",
-      "<rootDir>/client/tests/setup.js"
-    ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
-    "moduleNameMapper": {
-      "^.+\\.(css|scss)$": "identity-obj-proxy",
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/client/tests/__mocks__/fileMock.js"
-    }
-  },
   "dependencies": {
     "animate.css": "^3.6.1",
     "axios": "^0.18.0",
@@ -72,14 +52,13 @@
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.15",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-plugin-universal-import": "^2.0.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.15",
     "bcrypt": "^2.0.1",
     "chai": "^4.1.2",
-    "chai-enzyme": "^0.8.0",
     "chai-http": "^4.0.0",
     "chai-jest-snapshot": "^2.0.0",
     "classnames": "^2.2.6",
@@ -150,6 +129,7 @@
     "redux": "^4.0.0",
     "redux-devtools-extension": "^2.13.2",
     "redux-logger": "^3.0.6",
+    "redux-mock-store": "^1.5.3",
     "redux-thunk": "^2.3.0",
     "sass-loader": "^6.0.7",
     "secure-ls": "^1.1.0",
@@ -173,12 +153,11 @@
     "webpack-hot-middleware": "^2.22.2",
     "webpack-merge": "^4.1.2",
     "winston": "^3.0.0-rc5",
-    "winston-mail": "^1.5.1",
-    "winston-nodemailer": "0.0.5",
     "winston-transport": "^4.0.0",
     "yup": "^0.25.1"
   },
   "devDependencies": {
+    "axios-mock-adapter": "^1.15.0",
     "enzyme": "^3.5.0",
     "enzyme-adapter-react-16": "^1.3.0",
     "enzyme-to-json": "^3.3.4",

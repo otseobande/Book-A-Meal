@@ -8,7 +8,7 @@ export const requestPeepMenus = () => ({
 
 export const receivePeepMenus = meals => ({
   type: RECEIVE_PEEP_MENUS,
-  meals
+  payload: { meals }
 });
 
 export const peepMenus = () => (dispatch) => {
