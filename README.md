@@ -71,7 +71,7 @@ Find API endpoint documentation here https://meal-booking.herokuapp.com/api/v1/d
 
 ## Pivotal Tracker
 
-Project is currently being managed with Pivotal Tracker, a project management tool. You can find the stories at [Book-A-Meal Pivotal Tracker Board](https://www.pivotaltracker.com/n/projects/2165646)
+Project is currently being managed with Pivotal Tracker, a project management tool. You can find the stories on the [Book-A-Meal Pivotal Tracker Board](https://www.pivotaltracker.com/n/projects/2165646)
 
 ## Contributing
 

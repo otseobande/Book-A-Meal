@@ -38,11 +38,15 @@ class Menus {
    * Gets all menus created by a user
    *
    * @static
+   * @param {Object} paginationInfo Object with page and limit
    * @returns {Promise} axois promise
    * @memberof Menus
    */
-  static getMenus() {
-    return axiosInstance().get('/menus');
+  static getMenus(paginationInfo = {}) {
+    const limit = paginationInfo.limit || 10;
+    const page = paginationInfo.page || 1;
+
+    return axiosInstance().get(`/menus?limit=${limit}&page=${page}`);
   }
 
   /**

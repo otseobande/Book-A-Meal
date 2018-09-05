@@ -145,9 +145,6 @@ class MealController {
       where: {
         userId: req.user.id
       },
-      order: [
-        ['createdAt', 'DESC']
-      ],
       limit,
       offset
     })

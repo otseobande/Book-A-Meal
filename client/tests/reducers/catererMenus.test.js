@@ -36,33 +36,41 @@ describe("catererMenus reducer", () => {
   })
 
   it('should return state with isFetching as false with meals and pagination on RECEIVE_MENUS action', () => {
+    const payload = {
+      menus: [{
+        id: 'adfew9efda',
+        date: '3023-02-02'
+      }],
+      pagination: {}
+    };
     const newState = catererMenus(state, {
       type: RECEIVE_MENUS,
-      payload: {
-        menus: [],
-        pagination: {}
-      }
+      payload
     });
 
     expect(newState).toEqual({
       ...state,
-      menus: [],
+      menus: [...state.menus, ...payload.menus],
       pagination: {},
       isFetching: false
     })
   });
 
   it('should return state with isFetching as false with meals and pagination on RECEIVE_MENUS action if pagination is not in payload', () => {
+    const payload = {
+      menus: [{
+        id: 'adfew9efda',
+        date: '3023-02-02'
+      }]
+    };
     const newState = catererMenus(state, {
       type: RECEIVE_MENUS,
-      payload: {
-        menus: []
-      }
+      payload
     });
 
     expect(newState).toEqual({
       ...state,
-      menus: [],
+      menus: [...state.menus, ...payload.menus],
       pagination: state.pagination,
       isFetching: false
     })

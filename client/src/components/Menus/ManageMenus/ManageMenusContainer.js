@@ -5,6 +5,7 @@ import ManageMenus from './ManageMenus.js';
 
 const mapStateToProps = state => ({
   menus: state.catererMenus.menus,
+  pagination: state.catererMenus.pagination,
   isFetching: state.catererMenus.isFetching
 });
 

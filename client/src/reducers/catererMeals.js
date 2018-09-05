@@ -16,7 +16,7 @@ export default (state = initialState, { type, payload }) => {
     case types.RECEIVE_MEALS:
       return {
         ...state,
-        meals: payload.meals,
+        meals: [...state.meals, ...payload.meals],
         pagination: payload.pagination || state.pagination,
         isFetching: false
       };

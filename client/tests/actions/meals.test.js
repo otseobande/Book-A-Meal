@@ -75,7 +75,7 @@ describe('Meal actions', () => {
   describe('getMeals action creator', () => {
     let dispatchedActions;
     beforeAll(async () => {
-      await store.dispatch(mealActions.getMeals(meal));
+      await store.dispatch(mealActions.getMeals({}));
       dispatchedActions = store.getActions();
     });
     it('should dispatch REQUEST_MEALS action', () => {

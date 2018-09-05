@@ -25,11 +25,7 @@ export default {
       menuCategoryId: 'c709086c-08f4-49ee-9bfd-6b004aa6ed93',
       mealId: 'e0a8e7f2-c27b-484e-9cd7-c4720e14b004'
     },
-    {
-      id: '7cdc71c2-c890-42ee-bc13-864da0060b22',
-      menuCategoryId: 'ffd61b69-d030-4c12-b72b-7a737f14b719',
-      mealId: '64c45c00-ed18-44b7-862a-f12d0481696c'
-    }
+    
   ], {}),
 
   down: (queryInterface, Sequelize) => queryInterface.bulkDelete('mealMenuCategories', null, {})

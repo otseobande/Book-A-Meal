@@ -14,7 +14,8 @@ class ManageMenus extends Component {
     getMenus: PropTypes.func.isRequired,
     getMeals: PropTypes.func.isRequired,
     menus: PropTypes.arrayOf(PropTypes.object).isRequired,
-    isFetching: PropTypes.bool.isRequired
+    isFetching: PropTypes.bool.isRequired,
+    pagination: PropTypes.objectOf(PropTypes.number).isRequired
   }
 
   state = {
@@ -41,7 +42,6 @@ class ManageMenus extends Component {
    * @returns {JSX} React JSX
    */
   render() {
-    const { menus, isFetching } = this.props;
     return (
       <DocumentTitle title="Menus - Book-A-Meal">
         <div className={styles.container}>
@@ -53,10 +53,12 @@ class ManageMenus extends Component {
              Set Menu
           </button>
           {
-              isFetching ?
+              this.props.isFetching && this.props.menus.length < 1 ?
                 <Loader /> :
                 <DisplayMenus
-                  menus={menus}
+                  menus={this.props.menus}
+                  pagination={this.props.pagination}
+                  getMenus={this.props.getMenus}
                 />
             }
           <SetMenuModalContainer
