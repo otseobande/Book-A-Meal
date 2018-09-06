@@ -189,6 +189,8 @@ class MenuController {
       where: {
         userId: req.user.id
       },
+      include: [],
+      distinct: true,
       limit,
       offset
     })

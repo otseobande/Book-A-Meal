@@ -20,10 +20,13 @@ class Meals {
   /**
    * Makes a request to get meals created by a user
    *
-   * @returns {Promise} Axois promise
+   * @param {Object} paginationInfo Object with limit and page
+   * @returns {Promise} Axios promise
    */
-  static getMeals() {
-    return axiosInstance().get('/meals');
+  static getMeals(paginationInfo = {}) {
+    const limit = paginationInfo.limit || 10;
+    const page = paginationInfo.page || 1;
+    return axiosInstance().get(`/meals?limit=${limit}&page=${page}`);
   }
 
   /**

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Layout from '../Layout/Layout.js';
+import DocumentTitle from 'react-document-title';
 import Loader from '../Loader.js';
 import DisplayMealCards from './DisplayMealCards.js';
 import styles from './meals.scss';
 import AddMealModal from './AddMealModal/AddMealModal.js';
-import DocumentTitle from 'react-document-title';
 
 /**
  * @class Meal
@@ -14,7 +13,8 @@ class Meal extends Component {
   static propTypes = {
     meals: PropTypes.arrayOf(PropTypes.object).isRequired,
     isFetching: PropTypes.bool.isRequired,
-    getMeals: PropTypes.func.isRequired
+    getMeals: PropTypes.func.isRequired,
+    pagination: PropTypes.objectOf(PropTypes.number).isRequired
   }
 
   state = {
@@ -25,7 +25,7 @@ class Meal extends Component {
    * @returns {undefined} undefined
    */
   componentDidMount() {
-    this.props.getMeals();
+    this.props.getMeals({ limit: 10, page: 1 });
   }
 
   openAddMealModal = () => {
@@ -39,7 +39,9 @@ class Meal extends Component {
    * @returns {JSX} React JSX
    */
   render() {
-    const { meals, isFetching } = this.props;
+    const {
+      meals, isFetching, pagination, getMeals
+    } = this.props;
     return (
       <DocumentTitle title="Meals - Book-A-Meal">
         <div className={styles.container}>
@@ -50,8 +52,19 @@ class Meal extends Component {
           >
              Add Meal
           </button>
-          {isFetching ? <Loader /> : <DisplayMealCards meals={meals} />}
-          <AddMealModal isOpen={this.state.addMealModalIsOpen} handleClose={this.closeAddMealModal} />
+          {
+            isFetching && meals.length < 1 ?
+              <Loader /> :
+              <DisplayMealCards
+                meals={meals}
+                pagination={pagination}
+                getMeals={getMeals}
+              />
+          }
+          <AddMealModal
+            isOpen={this.state.addMealModalIsOpen}
+            handleClose={this.closeAddMealModal}
+          />
         </div>
       </DocumentTitle>
     );

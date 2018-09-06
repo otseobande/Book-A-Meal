@@ -38,10 +38,10 @@ export const removeMeal = meal => ({
 });
 
 
-export const getMeals = () => (dispatch) => {
+export const getMeals = paginationInfo => (dispatch) => {
   dispatch(requestMeals());
 
-  return Meals.getMeals()
+  return Meals.getMeals(paginationInfo)
     .then((res) => {
       const { meals, pagination } = res.data;
       dispatch(receiveMeals(meals, pagination));

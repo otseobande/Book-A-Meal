@@ -43,10 +43,10 @@ export const setMenu = menuDetails => dispatch => Menus.setMenu(menuDetails)
   })
   .catch(requestErrorHandler);
 
-export const getMenus = () => (dispatch) => {
+export const getMenus = paginationInfo => (dispatch) => {
   dispatch(requestMenus());
 
-  return Menus.getMenus()
+  return Menus.getMenus(paginationInfo)
     .then((res) => {
       const { menus, pagination } = res.data;
 
