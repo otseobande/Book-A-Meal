@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import DocumentTitle from 'react-document-title';
 import PropTypes from 'prop-types';
 import AuthArea from '../AuthArea.js';
 import SentMessage from './SentMessage.js';
@@ -9,10 +8,9 @@ import styles from './resetpassword.scss';
 import ResetPasswordFormContainer from './ResetPasswordFormContainer.js';
 
 const ResetPassword = ({ mailSent }) => (
-  <DocumentTitle title="Reset password - Book-A-Meal">
-    <AuthArea>
-      <div className={styles.mailSentCard}>
-        {
+  <AuthArea>
+    <div className={styles.mailSentCard}>
+      {
         mailSent ?
           <SentMessage /> :
           <Fragment>
@@ -22,9 +20,8 @@ const ResetPassword = ({ mailSent }) => (
             </p>
           </Fragment>
       }
-      </div>
-    </AuthArea>
-  </DocumentTitle>
+    </div>
+  </AuthArea>
 );
 
 ResetPassword.propTypes = {

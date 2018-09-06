@@ -1,9 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import DocumentTitle from 'react-document-title';
+import ReactPaginate from 'react-paginate';
 import styles from './order.scss';
 import NoOrder from './NoOrder.js';
-import ReactPaginate from 'react-paginate';
 import DisplayOrderHistory from './DisplayOrderHistoryTable.js';
 
 /**
@@ -57,40 +56,38 @@ class OrderHistory extends Component {
   render() {
     const { orders, paginationDetails } = this.props;
     return (
-      <DocumentTitle title="Order history - Book-A-Meal">
-        <div className={styles.container}>
-          <h2>Order History</h2>
-          {
-              orders.length ?
-                <Fragment>
-                  <DisplayOrderHistory
-                    isFetching={this.props.isFetching}
-                    orders={orders}
-                    cancelOrder={this.props.cancelOrder}
-                    updateOrder={this.props.updateOrder}
-                  />
-                  <ReactPaginate
-                    breakLabel={<a href="">...</a>}
-                    pageCount={paginationDetails.pageCount}
-                    marginPagesDisplayed={2}
-                    pageRangeDisplayed={5}
-                    previousClassName="previous"
-                    nextClassName="next"
-                    previousLabel="<<"
-                    nextLabel=">>"
-                    onPageChange={this.handlePageClick}
-                    containerClassName="pagination"
-                    subContainerClassName="pages pagination"
-                    activeClassName="active"
-                  />
-                  <div className={styles.paginationDetails}>
-                    {`Page ${paginationDetails.currentPage} of ${paginationDetails.pageCount}`}
-                  </div>
-                </Fragment> :
-                <NoOrder />
-            }
-        </div>
-      </DocumentTitle>
+      <div className={styles.container}>
+        <h2>Order History</h2>
+        {
+          orders.length ?
+            <Fragment>
+              <DisplayOrderHistory
+                isFetching={this.props.isFetching}
+                orders={orders}
+                cancelOrder={this.props.cancelOrder}
+                updateOrder={this.props.updateOrder}
+              />
+              <ReactPaginate
+                breakLabel={<a href="">...</a>}
+                pageCount={paginationDetails.pageCount}
+                marginPagesDisplayed={2}
+                pageRangeDisplayed={5}
+                previousClassName="previous"
+                nextClassName="next"
+                previousLabel="<<"
+                nextLabel=">>"
+                onPageChange={this.handlePageClick}
+                containerClassName="pagination"
+                subContainerClassName="pages pagination"
+                activeClassName="active"
+              />
+              <div className={styles.paginationDetails}>
+                {`Page ${paginationDetails.currentPage} of ${paginationDetails.pageCount}`}
+              </div>
+            </Fragment> :
+            <NoOrder />
+        }
+      </div>
     );
   }
 }

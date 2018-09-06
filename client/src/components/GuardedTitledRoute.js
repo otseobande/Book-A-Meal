@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
-import { Redirect, Route } from 'react-router';
+import { Redirect } from 'react-router';
+import TitledRoute from './TitledRoute.js';
 
-const GuardedRoute = ({
+const GuardedTitledRoute = ({
   component: Component,
   loggedIn,
   allow,
@@ -31,7 +32,7 @@ const GuardedRoute = ({
   }
 
   return (
-    <Route
+    <TitledRoute
       {...otherProps}
       component={props => (
         permitRoute ?
@@ -49,7 +50,7 @@ const GuardedRoute = ({
 };
 
 
-GuardedRoute.propTypes = {
+GuardedTitledRoute.propTypes = {
   component: PropTypes.func.isRequired,
   type: PropTypes.string,
   location: PropTypes.objectOf(PropTypes.oneOfType([
@@ -63,7 +64,7 @@ GuardedRoute.propTypes = {
   loggedIn: PropTypes.bool.isRequired
 };
 
-GuardedRoute.defaultProps = {
+GuardedTitledRoute.defaultProps = {
   type: '',
   allow: 'guest',
   user: { role: 'guest' }
@@ -75,4 +76,4 @@ const mapStateToProps = state => ({
   location: state.router.location
 });
 
-export default connect(mapStateToProps)(GuardedRoute);
+export default connect(mapStateToProps)(GuardedTitledRoute);
