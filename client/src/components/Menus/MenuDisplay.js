@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
-import NoMenu from '../NoMenu.js';
+import NoMenu from '../NoMenu/NoMenu.js';
 import MenuCategory from './MenuCategory.js';
 import MenuNavigator from './MenuNavigator.js';
 import styles from './menus.scss';

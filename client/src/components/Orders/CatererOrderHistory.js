@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactPaginate from 'react-paginate';
 import isEmpty from 'lodash/isEmpty';
-import DocumentTitle from 'react-document-title';
 import NoOrder from './NoOrder';
 import styles from './order.scss';
 import Table from '../ResponsiveTable/Table.js';
@@ -46,54 +45,52 @@ class CatererOrderHistory extends Component {
   render() {
     const { orders, deliverOrder, paginationDetails } = this.props;
     return (
-      <DocumentTitle title="Orders - Book-A-Meal">
-        <div className={styles.container}>
-          <h2>Order History</h2>
-          {
-            isEmpty(orders) ?
-              <NoOrder /> :
-              <div>
-                <Table>
-                  <Row header>
-                    <Cell>Date</Cell>
-                    <Cell>Meal</Cell>
-                    <Cell>Qty</Cell>
-                    <Cell>Price</Cell>
-                    <Cell>Delivery address</Cell>
-                    <Cell>Status</Cell>
-                    <Cell>Actions</Cell>
-                  </Row>
-                  {
-                    orders.map(order => (
-                      <CatererOrderHistoryRow
-                        key={order.id}
-                        order={order}
-                        handleDeliver={deliverOrder}
-                      />
-                    ))
-                  }
-                </Table>
-                <ReactPaginate
-                  breakLabel={<a href="">...</a>}
-                  pageCount={paginationDetails.pageCount}
-                  marginPagesDisplayed={2}
-                  pageRangeDisplayed={5}
-                  previousClassName="previous"
-                  nextClassName="next"
-                  previousLabel="<<"
-                  nextLabel=">>"
-                  onPageChange={this.handlePageClick}
-                  containerClassName="pagination"
-                  subContainerClassName="pages pagination"
-                  activeClassName="active"
-                />
-                <div className={styles.paginationDetails}>
-                  {`Page ${paginationDetails.currentPage} of ${paginationDetails.pageCount}`}
-                </div>
+      <div className={styles.container}>
+        <h2>Order History</h2>
+        {
+          isEmpty(orders) ?
+            <NoOrder /> :
+            <div>
+              <Table>
+                <Row header>
+                  <Cell>Date</Cell>
+                  <Cell>Meal</Cell>
+                  <Cell>Qty</Cell>
+                  <Cell>Price</Cell>
+                  <Cell>Delivery address</Cell>
+                  <Cell>Status</Cell>
+                  <Cell>Actions</Cell>
+                </Row>
+                {
+                  orders.map(order => (
+                    <CatererOrderHistoryRow
+                      key={order.id}
+                      order={order}
+                      handleDeliver={deliverOrder}
+                    />
+                  ))
+                }
+              </Table>
+              <ReactPaginate
+                breakLabel={<a href="">...</a>}
+                pageCount={paginationDetails.pageCount}
+                marginPagesDisplayed={2}
+                pageRangeDisplayed={5}
+                previousClassName="previous"
+                nextClassName="next"
+                previousLabel="<<"
+                nextLabel=">>"
+                onPageChange={this.handlePageClick}
+                containerClassName="pagination"
+                subContainerClassName="pages pagination"
+                activeClassName="active"
+              />
+              <div className={styles.paginationDetails}>
+                {`Page ${paginationDetails.currentPage} of ${paginationDetails.pageCount}`}
               </div>
-            }
-        </div>
-      </DocumentTitle>
+            </div>
+          }
+      </div>
     );
   }
 }

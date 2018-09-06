@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoMenu component should match snapshot 1`] = `
+<div
+  className="container"
+>
+  <img
+    alt="no menu"
+    src="test-file-stub"
+    width="150"
+  />
+  <p
+    className="text"
+  >
+    Hungry customers are waiting. Set a menu!
+  </p>
+</div>
+`;

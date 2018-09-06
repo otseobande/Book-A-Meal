@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import DocumentTitle from 'react-document-title';
 import Loader from '../Loader.js';
 import DisplayMealCards from './DisplayMealCards.js';
 import styles from './meals.scss';
@@ -43,16 +42,15 @@ class Meal extends Component {
       meals, isFetching, pagination, getMeals
     } = this.props;
     return (
-      <DocumentTitle title="Meals - Book-A-Meal">
-        <div className={styles.container}>
-          <h2>Manage Meals</h2>
-          <button
-            className={styles.addMealBtn}
-            onClick={this.openAddMealModal}
-          >
+      <div className={styles.container}>
+        <h2>Manage Meals</h2>
+        <button
+          className={styles.addMealBtn}
+          onClick={this.openAddMealModal}
+        >
              Add Meal
-          </button>
-          {
+        </button>
+        {
             isFetching && meals.length < 1 ?
               <Loader /> :
               <DisplayMealCards
@@ -61,12 +59,11 @@ class Meal extends Component {
                 getMeals={getMeals}
               />
           }
-          <AddMealModal
-            isOpen={this.state.addMealModalIsOpen}
-            handleClose={this.closeAddMealModal}
-          />
-        </div>
-      </DocumentTitle>
+        <AddMealModal
+          isOpen={this.state.addMealModalIsOpen}
+          handleClose={this.closeAddMealModal}
+        />
+      </div>
     );
   }
 }

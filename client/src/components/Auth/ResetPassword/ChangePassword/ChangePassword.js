@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import DocumentTitle from 'react-document-title';
 import PropTypes from 'prop-types';
 import AuthArea from '../../AuthArea.js';
 import ChangePasswordFormContainer from './ChangePasswordFormContainer.js';
@@ -8,9 +7,8 @@ import checkMark from '../../../../../assets/img/check-mark.svg';
 
 
 const ChangePassword = ({ resetSuccessful }) => (
-  <DocumentTitle title="Change password - Book-A-Meal">
-    <AuthArea>
-      {
+  <AuthArea>
+    {
       resetSuccessful ?
         <div style={{ textAlign: 'center' }}>
           Password reset successful!
@@ -33,8 +31,7 @@ const ChangePassword = ({ resetSuccessful }) => (
           </div>
         </Fragment>
     }
-    </AuthArea>
-  </DocumentTitle>
+  </AuthArea>
 );
 
 ChangePassword.propTypes = {
