@@ -34,12 +34,12 @@ describe('menusForTheDay reducer', () => {
 
     const newState = menusForTheDay(state, {
       type: RECEIVE_MENUS_FOR_THE_DAY,
-      ...payload
+      payload
     });
 
     expect(newState).toEqual({
       ...state,
-      ...payload,
+      menus: payload.menus,
       isFetching: false
     });
   })

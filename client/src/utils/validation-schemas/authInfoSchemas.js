@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 
-const username = Yup.string().required('username is required!');
-const password = Yup.string().required('Password is required');
+const username = Yup.string().required('Username is required!');
+const password = Yup.string().required('Password is required!');
 const email = Yup.string()
   .email('Invalid email address')
   .required('Email is required!');

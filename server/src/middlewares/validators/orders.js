@@ -23,7 +23,7 @@ const status = Joi.string()
   .min(1);
 const phoneNumber = extendedJoi.string()
   .min(11)
-  .phoneNumber({ defaultCountry: 'NG', format: 'international' });
+  .phoneNumber();
 const orderId = Joi.string().guid({
   version: [
     'uuidv4',
