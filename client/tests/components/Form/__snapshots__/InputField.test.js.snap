@@ -11,3 +11,23 @@ exports[`InputField component should match snapshot 1`] = `
   />
 </label>
 `;
+
+exports[`InputField component should match snapshot on error 1`] = `
+<label
+  className="label"
+  htmlFor="testInput"
+>
+  :
+  <input
+    className="inputError"
+    name="testInput"
+    type="text"
+    value=""
+  />
+  <div
+    className="errorMessage"
+  >
+    name is required
+  </div>
+</label>
+`;

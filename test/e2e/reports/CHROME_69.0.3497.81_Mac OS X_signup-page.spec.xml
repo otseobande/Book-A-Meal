@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="6">
+
+  <testsuite name="signup-page.spec"
+    errors="0" failures="0" hostname="" id="" package="signup-page.spec" skipped="0"
+    tests="6" time="18.36" timestamp="Mon, 10 Sep 2018 08:43:38 GMT">
+  
+    <testcase name="Home link should be visible and redirect to home page" classname="signup-page.spec" time="3.350" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Login link should be visible and redirect to the login page" classname="signup-page.spec" time="0.3660" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Error messages should show if fields are empty on signup button click" classname="signup-page.spec" time="0.4960" assertions="10">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Email should show error if email is invalid" classname="signup-page.spec" time="0.4930" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Customer should be able to signup successfully" classname="signup-page.spec" time="6.686" assertions="1">
+
+    
+    </testcase>
+  
+    <testcase name="Caterer should be able to signup successfully" classname="signup-page.spec" time="6.965" assertions="1">
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>

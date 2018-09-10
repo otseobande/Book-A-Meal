@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="6">
+
+  <testsuite name="login-page.spec"
+    errors="0" failures="0" hostname="" id="" package="login-page.spec" skipped="0"
+    tests="6" time="23.47" timestamp="Mon, 10 Sep 2018 08:43:14 GMT">
+  
+    <testcase name="Home link should be visible and redirect to home page" classname="login-page.spec" time="11.14" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Forgot password link should be visible and redirect to reset password page" classname="login-page.spec" time="0.3320" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Signup link should be visible and redirect to signup page" classname="login-page.spec" time="0.3210" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Error messages should show if fields are empty on login button click" classname="login-page.spec" time="3.589" assertions="4">
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Caterer should be able to login successfully" classname="login-page.spec" time="2.618" assertions="1">
+
+    
+    </testcase>
+  
+    <testcase name="Customer should be able to login successfully" classname="login-page.spec" time="5.477" assertions="1">
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>

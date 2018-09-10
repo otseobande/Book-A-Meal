@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { peepMenus } from '../../../actions/peepMenus.js';
 import MenuPeep from './MenuPeep.js';
 
@@ -9,8 +8,6 @@ const mapStateToProps = state => ({
   loggedIn: state.auth.loggedIn
 });
 
-const mapDispatchToProps = dispatch => ({
-  peepMenus: bindActionCreators(peepMenus, dispatch)
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(MenuPeep);
+export default connect(mapStateToProps, {
+  peepMenus
+})(MenuPeep);

@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MealFormButtons component should match screenshot if isSubmitting is false 1`] = `
+<div
+  className="btns"
+>
+  <button
+    className="successBtn"
+    disabled=""
+    type="button"
+  >
+    Save
+  </button>
+  <button
+    className="closeModalBtn"
+    onClick={[Function]}
+    type="button"
+  >
+    Cancel
+  </button>
+</div>
+`;
+
+exports[`MealFormButtons component should match screenshot if isSubmitting is true 1`] = `
+<div
+  className="btns"
+>
+  <button
+    className="successBtn"
+    disabled="disabled"
+    type="button"
+  >
+    Please wait..
+  </button>
+  <button
+    className="closeModalBtn"
+    onClick={[Function]}
+    type="button"
+  >
+    Cancel
+  </button>
+</div>
+`;

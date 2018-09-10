@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Meals component should match snapshot when isFetching is false 1`] = `
+<div
+  className="container"
+>
+  <h2>
+    Manage Meals
+  </h2>
+  <button
+    className="addMealBtn"
+    onClick={[Function]}
+  >
+    Add Meal
+  </button>
+  <DisplayMealCards
+    getMeals={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "limit": 10,
+              "page": 1,
+            },
+          ],
+          Array [
+            Object {
+              "limit": 10,
+              "page": 1,
+            },
+          ],
+          Array [
+            Object {
+              "limit": 10,
+              "page": 1,
+            },
+          ],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
+      }
+    }
+    meals={Array []}
+    pagination={
+      Object {
+        "currentPage": 1,
+      }
+    }
+  />
+  <AddMealModal
+    handleClose={[Function]}
+    isOpen={false}
+  />
+</div>
+`;
+
+exports[`Meals component should match snapshot when isFetching is true and meals array is empty 1`] = `
+<div
+  className="container"
+>
+  <h2>
+    Manage Meals
+  </h2>
+  <button
+    className="addMealBtn"
+    onClick={[Function]}
+  >
+    Add Meal
+  </button>
+  <Loader
+    message="loading..."
+    width={40}
+  />
+  <AddMealModal
+    handleClose={[Function]}
+    isOpen={false}
+  />
+</div>
+`;

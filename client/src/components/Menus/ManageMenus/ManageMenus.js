@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import DocumentTitle from 'react-document-title';
 import Loader from '../../Loader.js';
 import styles from './manage-menus.scss';
 import SetMenuModalContainer from './SetMenuModalContainer.js';
@@ -43,16 +42,15 @@ class ManageMenus extends Component {
    */
   render() {
     return (
-      <DocumentTitle title="Menus - Book-A-Meal">
-        <div className={styles.container}>
-          <h2>Manage Menus</h2>
-          <button
-            className={styles.successBtn}
-            onClick={this.openMenuModal}
-          >
+      <div className={styles.container}>
+        <h2>Manage Menus</h2>
+        <button
+          className={styles.successBtn}
+          onClick={this.openMenuModal}
+        >
              Set Menu
-          </button>
-          {
+        </button>
+        {
               this.props.isFetching && this.props.menus.length < 1 ?
                 <Loader /> :
                 <DisplayMenus
@@ -61,12 +59,11 @@ class ManageMenus extends Component {
                   getMenus={this.props.getMenus}
                 />
             }
-          <SetMenuModalContainer
-            isOpen={this.state.setMenuModalOpen}
-            handleClose={this.closeMenuModal}
-          />
-        </div>
-      </DocumentTitle>
+        <SetMenuModalContainer
+          isOpen={this.state.setMenuModalOpen}
+          handleClose={this.closeMenuModal}
+        />
+      </div>
     );
   }
 }

@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login component should match snapshot 1`] = `
+<AuthArea>
+  <Connect(C) />
+  <p
+    style={
+      Object {
+        "textAlign": "center",
+      }
+    }
+  >
+    <Link
+      replace={false}
+      to="/reset_password"
+    >
+      Forgot your password?
+    </Link>
+    <br />
+    <br />
+    <span>
+      Need an account? 
+      <Link
+        replace={false}
+        to="/signup"
+      >
+        Sign up
+      </Link>
+    </span>
+  </p>
+</AuthArea>
+`;

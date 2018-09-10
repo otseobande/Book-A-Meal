@@ -5,7 +5,7 @@ import { resetPasswordSchema } from '../../../utils/validation-schemas/authInfoS
 import AuthForm from '../AuthForm.js';
 import { sendResetMail } from '../../../actions/resetPassword.js';
 
-const resetPasswordFormConfig = {
+export const resetPasswordFormConfig = {
   mapPropsToValues: () => ({
     email: ''
   }),
@@ -16,6 +16,7 @@ const resetPasswordFormConfig = {
     setSubmitting(false);
   }
 };
+
 const mapStateToProps = state => ({
   type: 'reset',
   mailSent: state.resetPassword.mailSent

@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import AuthForm from '../../AuthForm.js';
 import { resetPassword } from '../../../../actions/resetPassword.js';
 
-const ChangePasswordFormConfig = {
+export const changePasswordFormConfig = {
   mapPropsToValues: () => ({
     password: '',
     passwordConfirm: ''
@@ -37,5 +37,5 @@ const mapStateToProps = state => ({
 
 export default compose(
   connect(mapStateToProps),
-  withFormik(ChangePasswordFormConfig)
+  withFormik(changePasswordFormConfig)
 )(AuthForm);

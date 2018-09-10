@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MealDropDown component should match snapshot if droppedDown state is false 1`] = `
+<div
+  className="meal"
+>
+  <div
+    aria-hidden={true}
+    className="mealTitle"
+    onClick={[Function]}
+    role="button"
+  >
+    * 
+    fufu and egusi
+    <div
+      className="leftSection"
+    >
+      <button
+        className="orderBtn"
+        onClick={[Function]}
+      >
+        Order
+      </button>
+      <img
+        alt="down-arrow"
+        className="img"
+        src="test-file-stub"
+      />
+    </div>
+  </div>
+  <OrderModal
+    handleClose={[Function]}
+    isOpen={false}
+    meal={
+      Object {
+        "id": "test-id",
+        "img": "fufu.jpg",
+        "price": 230,
+        "title": "fufu and egusi",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`MealDropDown component should match snapshot if droppedDown state is true 1`] = `
+<div
+  className="meal"
+>
+  <div
+    aria-hidden={true}
+    className="mealTitle"
+    onClick={[Function]}
+    role="button"
+  >
+    * 
+    fufu and egusi
+    <div
+      className="leftSection"
+    >
+      <button
+        className="orderBtn"
+        onClick={[Function]}
+      >
+        Order
+      </button>
+      <img
+        alt="down-arrow"
+        className="img"
+        src="test-file-stub"
+      />
+    </div>
+  </div>
+  <MealCard
+    action=""
+    className="mealCard"
+    deleteMeal={[Function]}
+    meal={
+      Object {
+        "id": "test-id",
+        "img": "fufu.jpg",
+        "price": 230,
+        "title": "fufu and egusi",
+      }
+    }
+  />
+  <OrderModal
+    handleClose={[Function]}
+    isOpen={false}
+    meal={
+      Object {
+        "id": "test-id",
+        "img": "fufu.jpg",
+        "price": 230,
+        "title": "fufu and egusi",
+      }
+    }
+  />
+</div>
+`;

@@ -22,13 +22,13 @@ class MealCard extends PureComponent {
     }).isRequired,
     action: PropTypes.string,
     className: PropTypes.string,
-    handleDelete: PropTypes.func
+    deleteMeal: PropTypes.func
   };
 
   static defaultProps = {
     action: '',
     className: '',
-    handleDelete: () => {}
+    deleteMeal: () => {}
   };
 
   state = {
@@ -61,6 +61,12 @@ class MealCard extends PureComponent {
     this.setState({ editModalOpen: false });
   }
 
+  handleDelete = () => {
+    const { meal } = this.props;
+
+    this.props.deleteMeal(meal);
+  }
+
   /**
    * @returns {JSX} React JSX
    */
@@ -68,7 +74,6 @@ class MealCard extends PureComponent {
     const {
       meal,
       action,
-      handleDelete,
       className: addedClassName
     } = this.props;
 
@@ -128,7 +133,7 @@ class MealCard extends PureComponent {
                   isOpen={this.state.deleteModalOpen}
                   confirmText="Are you sure you want to delete meal?"
                   handleClose={this.closeDeleteModal}
-                  handleDelete={() => handleDelete(meal)}
+                  handleDelete={this.handleDelete}
                 />
                 <EditMealModal
                   isOpen={this.state.editModalOpen}

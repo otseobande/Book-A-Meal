@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TitledRoute component should match snapshot 1`] = `
+<SideEffect(DocumentTitle)
+  title=" - Book-A-Meal"
+>
+  <Route
+    title=""
+  />
+</SideEffect(DocumentTitle)>
+`;

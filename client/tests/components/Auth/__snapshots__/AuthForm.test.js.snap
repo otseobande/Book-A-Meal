@@ -1,0 +1,224 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AuthForm component should match snapshot if type prop is changepassword 1`] = `
+<form
+  onSubmit={[MockFunction]}
+>
+  <InputField
+    errors={Object {}}
+    handleChange={[MockFunction]}
+    handleSubmit={[MockFunction]}
+    isSubmitting={false}
+    label="Password"
+    name="password"
+    touched={Object {}}
+    type="password"
+    values={Object {}}
+  />
+  <InputField
+    errors={Object {}}
+    handleChange={[MockFunction]}
+    handleSubmit={[MockFunction]}
+    isSubmitting={false}
+    label="Confirm password"
+    name="passwordConfirm"
+    touched={Object {}}
+    type="password"
+    values={Object {}}
+  />
+  <button
+    className="loginBtn"
+    disabled={false}
+    onClick={[MockFunction]}
+    type="submit"
+  >
+    Change password
+  </button>
+</form>
+`;
+
+exports[`AuthForm component should match snapshot if type prop is login 1`] = `
+<form
+  onSubmit={[MockFunction]}
+>
+  <InputField
+    errors={Object {}}
+    handleChange={[MockFunction]}
+    handleSubmit={[MockFunction]}
+    isSubmitting={false}
+    label="Username"
+    name="username"
+    touched={Object {}}
+    type="login"
+    values={Object {}}
+  />
+  <InputField
+    errors={Object {}}
+    handleChange={[MockFunction]}
+    handleSubmit={[MockFunction]}
+    isSubmitting={false}
+    label="Password"
+    name="password"
+    touched={Object {}}
+    type="password"
+    values={Object {}}
+  />
+  <button
+    className="loginBtn"
+    disabled={false}
+    onClick={[MockFunction]}
+    type="submit"
+  >
+    Login
+  </button>
+</form>
+`;
+
+exports[`AuthForm component should match snapshot if type prop is reset 1`] = `
+<form
+  onSubmit={[MockFunction]}
+>
+  <InputField
+    errors={Object {}}
+    handleChange={[MockFunction]}
+    handleSubmit={[MockFunction]}
+    isSubmitting={false}
+    label="Email"
+    name="email"
+    touched={Object {}}
+    type="email"
+    values={Object {}}
+  />
+  <button
+    className="loginBtn"
+    disabled={false}
+    onClick={[MockFunction]}
+    type="submit"
+  >
+    Send reset password email
+  </button>
+</form>
+`;
+
+exports[`AuthForm component should match snapshot if type prop is signup 1`] = `
+<form
+  onSubmit={[MockFunction]}
+>
+  <InputField
+    errors={Object {}}
+    handleChange={[MockFunction]}
+    handleSubmit={[MockFunction]}
+    isSubmitting={false}
+    label="Full name"
+    name="fullName"
+    touched={Object {}}
+    type="signup"
+    values={Object {}}
+  />
+  <InputField
+    errors={Object {}}
+    handleChange={[MockFunction]}
+    handleSubmit={[MockFunction]}
+    isSubmitting={false}
+    label="Username"
+    name="username"
+    touched={Object {}}
+    type="signup"
+    values={Object {}}
+  />
+  <InputField
+    errors={Object {}}
+    handleChange={[MockFunction]}
+    handleSubmit={[MockFunction]}
+    isSubmitting={false}
+    label="Email"
+    name="email"
+    touched={Object {}}
+    type="email"
+    values={Object {}}
+  />
+  <div>
+    Role:
+    <div>
+      <label>
+        Customer
+        <input
+          checked=""
+          className="roleCheckbox"
+          name="role"
+          onChange={[MockFunction]}
+          type="radio"
+          value="customer"
+        />
+      </label>
+      <label>
+        Caterer
+        <input
+          checked=""
+          className="roleCheckbox"
+          name="role"
+          onChange={[MockFunction]}
+          type="radio"
+          value="caterer"
+        />
+      </label>
+    </div>
+  </div>
+  <InputField
+    errors={Object {}}
+    handleChange={[MockFunction]}
+    handleSubmit={[MockFunction]}
+    isSubmitting={false}
+    label="Password"
+    name="password"
+    touched={Object {}}
+    type="password"
+    values={Object {}}
+  />
+  <InputField
+    errors={Object {}}
+    handleChange={[MockFunction]}
+    handleSubmit={[MockFunction]}
+    isSubmitting={false}
+    label="Confirm password"
+    name="passwordConfirm"
+    touched={Object {}}
+    type="password"
+    values={Object {}}
+  />
+  <button
+    className="loginBtn"
+    disabled={false}
+    onClick={[MockFunction]}
+    type="submit"
+  >
+    Sign Up
+  </button>
+</form>
+`;
+
+exports[`AuthForm component should match snapshot if type prop not given or is not valid 1`] = `
+<form
+  onSubmit={[MockFunction]}
+>
+  <InputField
+    errors={Object {}}
+    handleChange={[MockFunction]}
+    handleSubmit={[MockFunction]}
+    isSubmitting={false}
+    label="Password"
+    name="password"
+    touched={Object {}}
+    type="password"
+    values={Object {}}
+  />
+  <button
+    className="loginBtn"
+    disabled={false}
+    onClick={[MockFunction]}
+    type="submit"
+  >
+    Sign Up
+  </button>
+</form>
+`;
