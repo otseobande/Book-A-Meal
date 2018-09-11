@@ -6,7 +6,7 @@ import Cell from '../ResponsiveTable/Cell.js';
 import Row from '../ResponsiveTable/Row.js';
 import OrderRow from './OrderRow.js';
 
-const DisplayOrderHistory = ({
+const DisplayOrderHistoryTable = ({
   isFetching,
   orders,
   cancelOrder,
@@ -39,11 +39,11 @@ const DisplayOrderHistory = ({
   </div>
 );
 
-DisplayOrderHistory.propTypes = {
+DisplayOrderHistoryTable.propTypes = {
   orders: PropTypes.arrayOf(PropTypes.object).isRequired,
   isFetching: PropTypes.bool.isRequired,
   cancelOrder: PropTypes.func.isRequired,
   updateOrder: PropTypes.func.isRequired
 };
 
-export default DisplayOrderHistory;
+export default DisplayOrderHistoryTable;

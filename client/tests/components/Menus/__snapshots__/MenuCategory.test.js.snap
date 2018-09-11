@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuCategory component should match snapshot 1`] = `
+<div>
+  <h3
+    className="categoryTitle"
+  >
+    -
+  </h3>
+  <ul
+    className="mealList"
+  >
+    <li
+      key="test-id"
+    >
+      <MealDropDown
+        meal={
+          Object {
+            "id": "test-id",
+            "img": "fufu.jpg",
+            "price": 230,
+            "title": "fufu and egusi",
+          }
+        }
+      />
+    </li>
+  </ul>
+</div>
+`;

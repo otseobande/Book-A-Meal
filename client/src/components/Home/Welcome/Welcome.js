@@ -10,12 +10,7 @@ class Welcome extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    const animateHungry = () => {
-      this.hungryElements.forEach((letterElm, index) => {
-        setTimeout(() => letterElm.classList.toggle(styles.bounceIn), index * 250);
-      });
-    };
-    this.animationInterval = setInterval(animateHungry, 2500);
+    this.animationInterval = setInterval(this.animateHungry, 2500);
   }
 
   /**
@@ -26,6 +21,12 @@ class Welcome extends Component {
   }
 
   hungryElements = [];
+
+  animateHungry = () => {
+    this.hungryElements.forEach((letterElm, index) => {
+      setTimeout(() => letterElm.classList.toggle(styles.bounceIn), index * 250);
+    });
+  };
 
   /**
    * @returns {JSX} - React JSX

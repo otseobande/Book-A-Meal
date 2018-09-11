@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CatererOrderHistory component should match snapshot if orders array is empty 1`] = `
+<div
+  className="container"
+>
+  <h2>
+    Order History
+  </h2>
+  <NoOrder />
+</div>
+`;
+
+exports[`CatererOrderHistory component should match snapshot if orders array is not empty 1`] = `
+<div
+  className="container"
+>
+  <h2>
+    Order History
+  </h2>
+  <div>
+    <Table>
+      <Row
+        header={true}
+      >
+        <Cell
+          title=""
+        >
+          Date
+        </Cell>
+        <Cell
+          title=""
+        >
+          Meal
+        </Cell>
+        <Cell
+          title=""
+        >
+          Qty
+        </Cell>
+        <Cell
+          title=""
+        >
+          Price
+        </Cell>
+        <Cell
+          title=""
+        >
+          Delivery address
+        </Cell>
+        <Cell
+          title=""
+        >
+          Status
+        </Cell>
+        <Cell
+          title=""
+        >
+          Actions
+        </Cell>
+      </Row>
+      <CatererOrderHistoryRow
+        handleDeliver={[MockFunction]}
+        key="asdf23e"
+        order={
+          Object {
+            "id": "asdf23e",
+          }
+        }
+      />
+    </Table>
+    <PaginationBoxView
+      activeClassName="active"
+      breakLabel={
+        <a
+          href=""
+        >
+          ...
+        </a>
+      }
+      containerClassName="pagination"
+      disableInitialCallback={false}
+      disabledClassName="disabled"
+      marginPagesDisplayed={2}
+      nextClassName="next"
+      nextLabel=">>"
+      onPageChange={[Function]}
+      pageCount={1}
+      pageRangeDisplayed={5}
+      previousClassName="previous"
+      previousLabel="<<"
+      subContainerClassName="pages pagination"
+    />
+    <div
+      className="paginationDetails"
+    >
+      Page 1 of 1
+    </div>
+  </div>
+</div>
+`;

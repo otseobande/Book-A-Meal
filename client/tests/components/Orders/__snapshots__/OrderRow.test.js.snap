@@ -1,0 +1,446 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderRow component should match snapshot if status is anything else 1`] = `
+<Row
+  header={false}
+  key="ecd2344b-9c49-4c78-8623-f7f3334e2f4e"
+>
+  <Cell
+    title="date"
+  >
+    9th Sep, 2018
+  </Cell>
+  <Cell
+    title="Meal"
+  >
+    Beef with rice
+  </Cell>
+  <Cell
+    title="Quantity"
+  >
+    1
+  </Cell>
+  <Cell
+    title="Price"
+  >
+    ₦
+    500.00
+  </Cell>
+  <Cell
+    title="Delivery address"
+  >
+    <p
+      className="deliveryAddress"
+    >
+      24 irepodun street, bodija, ibadan
+    </p>
+  </Cell>
+  <Cell
+    title="Status"
+  >
+    <span
+      style={
+        Object {
+          "color": "yellow",
+        }
+      }
+    >
+      anything else
+    </span>
+  </Cell>
+  <Cell
+    title=""
+  />
+  <ConfirmCancelOrderModal
+    handleClose={[Function]}
+    isOpen={false}
+    orderId="ecd2344b-9c49-4c78-8623-f7f3334e2f4e"
+  />
+  <UpdateOrderModal
+    handleClose={[Function]}
+    isOpen={false}
+    order={
+      Object {
+        "createdAt": "2018-09-10T09:05:53.650Z",
+        "deliveryAddress": "24 irepodun street, bodija, ibadan",
+        "id": "ecd2344b-9c49-4c78-8623-f7f3334e2f4e",
+        "meal": Object {
+          "caterer": Object {
+            "email": "mealbooker@gmail.com",
+            "fullName": "Otse Obande",
+            "id": "e20ac257-86cc-4a6f-a619-0249a201c475",
+            "role": "caterer",
+            "username": "otseobande",
+          },
+          "description": "Fried rice and beef",
+          "id": "dd72bc9b-beb0-49c6-be7b-20106e8aa3d0",
+          "img": "https://qph.ec.quoracdn.net/main-qimg-114f40fc7ad4f623ac45ebb33e2c1f8d",
+          "price": 500,
+          "title": "Beef with rice",
+        },
+        "phoneNumber": "08131928452",
+        "price": 500,
+        "quantity": 1,
+        "status": "anything else",
+        "updatedAt": "2018-09-10T09:06:06.292Z",
+      }
+    }
+  />
+</Row>
+`;
+
+exports[`OrderRow component should match snapshot if status is cancelled 1`] = `
+<Row
+  header={false}
+  key="ecd2344b-9c49-4c78-8623-f7f3334e2f4e"
+>
+  <Cell
+    title="date"
+  >
+    9th Sep, 2018
+  </Cell>
+  <Cell
+    title="Meal"
+  >
+    Beef with rice
+  </Cell>
+  <Cell
+    title="Quantity"
+  >
+    1
+  </Cell>
+  <Cell
+    title="Price"
+  >
+    ₦
+    500.00
+  </Cell>
+  <Cell
+    title="Delivery address"
+  >
+    <p
+      className="deliveryAddress"
+    >
+      24 irepodun street, bodija, ibadan
+    </p>
+  </Cell>
+  <Cell
+    title="Status"
+  >
+    <span
+      style={
+        Object {
+          "color": "red",
+        }
+      }
+    >
+      cancelled
+    </span>
+  </Cell>
+  <Cell
+    title=""
+  />
+  <ConfirmCancelOrderModal
+    handleClose={[Function]}
+    isOpen={false}
+    orderId="ecd2344b-9c49-4c78-8623-f7f3334e2f4e"
+  />
+  <UpdateOrderModal
+    handleClose={[Function]}
+    isOpen={false}
+    order={
+      Object {
+        "createdAt": "2018-09-10T09:05:53.650Z",
+        "deliveryAddress": "24 irepodun street, bodija, ibadan",
+        "id": "ecd2344b-9c49-4c78-8623-f7f3334e2f4e",
+        "meal": Object {
+          "caterer": Object {
+            "email": "mealbooker@gmail.com",
+            "fullName": "Otse Obande",
+            "id": "e20ac257-86cc-4a6f-a619-0249a201c475",
+            "role": "caterer",
+            "username": "otseobande",
+          },
+          "description": "Fried rice and beef",
+          "id": "dd72bc9b-beb0-49c6-be7b-20106e8aa3d0",
+          "img": "https://qph.ec.quoracdn.net/main-qimg-114f40fc7ad4f623ac45ebb33e2c1f8d",
+          "price": 500,
+          "title": "Beef with rice",
+        },
+        "phoneNumber": "08131928452",
+        "price": 500,
+        "quantity": 1,
+        "status": "cancelled",
+        "updatedAt": "2018-09-10T09:06:06.292Z",
+      }
+    }
+  />
+</Row>
+`;
+
+exports[`OrderRow component should match snapshot if status is delivered 1`] = `
+<Row
+  header={false}
+  key="ecd2344b-9c49-4c78-8623-f7f3334e2f4e"
+>
+  <Cell
+    title="date"
+  >
+    9th Sep, 2018
+  </Cell>
+  <Cell
+    title="Meal"
+  >
+    Beef with rice
+  </Cell>
+  <Cell
+    title="Quantity"
+  >
+    1
+  </Cell>
+  <Cell
+    title="Price"
+  >
+    ₦
+    500.00
+  </Cell>
+  <Cell
+    title="Delivery address"
+  >
+    <p
+      className="deliveryAddress"
+    >
+      24 irepodun street, bodija, ibadan
+    </p>
+  </Cell>
+  <Cell
+    title="Status"
+  >
+    <span
+      style={
+        Object {
+          "color": "green",
+        }
+      }
+    >
+      delivered
+    </span>
+  </Cell>
+  <Cell
+    title=""
+  />
+  <ConfirmCancelOrderModal
+    handleClose={[Function]}
+    isOpen={false}
+    orderId="ecd2344b-9c49-4c78-8623-f7f3334e2f4e"
+  />
+  <UpdateOrderModal
+    handleClose={[Function]}
+    isOpen={false}
+    order={
+      Object {
+        "createdAt": "2018-09-10T09:05:53.650Z",
+        "deliveryAddress": "24 irepodun street, bodija, ibadan",
+        "id": "ecd2344b-9c49-4c78-8623-f7f3334e2f4e",
+        "meal": Object {
+          "caterer": Object {
+            "email": "mealbooker@gmail.com",
+            "fullName": "Otse Obande",
+            "id": "e20ac257-86cc-4a6f-a619-0249a201c475",
+            "role": "caterer",
+            "username": "otseobande",
+          },
+          "description": "Fried rice and beef",
+          "id": "dd72bc9b-beb0-49c6-be7b-20106e8aa3d0",
+          "img": "https://qph.ec.quoracdn.net/main-qimg-114f40fc7ad4f623ac45ebb33e2c1f8d",
+          "price": 500,
+          "title": "Beef with rice",
+        },
+        "phoneNumber": "08131928452",
+        "price": 500,
+        "quantity": 1,
+        "status": "delivered",
+        "updatedAt": "2018-09-10T09:06:06.292Z",
+      }
+    }
+  />
+</Row>
+`;
+
+exports[`OrderRow component should match snapshot if status is not pending 1`] = `
+<Row
+  header={false}
+  key="ecd2344b-9c49-4c78-8623-f7f3334e2f4e"
+>
+  <Cell
+    title="date"
+  >
+    9th Sep, 2018
+  </Cell>
+  <Cell
+    title="Meal"
+  >
+    Beef with rice
+  </Cell>
+  <Cell
+    title="Quantity"
+  >
+    1
+  </Cell>
+  <Cell
+    title="Price"
+  >
+    ₦
+    500.00
+  </Cell>
+  <Cell
+    title="Delivery address"
+  >
+    <p
+      className="deliveryAddress"
+    >
+      24 irepodun street, bodija, ibadan
+    </p>
+  </Cell>
+  <Cell
+    title="Status"
+  >
+    <span
+      style={
+        Object {
+          "color": "red",
+        }
+      }
+    >
+      cancelled
+    </span>
+  </Cell>
+  <Cell
+    title=""
+  />
+  <ConfirmCancelOrderModal
+    handleClose={[Function]}
+    isOpen={false}
+    orderId="ecd2344b-9c49-4c78-8623-f7f3334e2f4e"
+  />
+  <UpdateOrderModal
+    handleClose={[Function]}
+    isOpen={false}
+    order={
+      Object {
+        "createdAt": "2018-09-10T09:05:53.650Z",
+        "deliveryAddress": "24 irepodun street, bodija, ibadan",
+        "id": "ecd2344b-9c49-4c78-8623-f7f3334e2f4e",
+        "meal": Object {
+          "caterer": Object {
+            "email": "mealbooker@gmail.com",
+            "fullName": "Otse Obande",
+            "id": "e20ac257-86cc-4a6f-a619-0249a201c475",
+            "role": "caterer",
+            "username": "otseobande",
+          },
+          "description": "Fried rice and beef",
+          "id": "dd72bc9b-beb0-49c6-be7b-20106e8aa3d0",
+          "img": "https://qph.ec.quoracdn.net/main-qimg-114f40fc7ad4f623ac45ebb33e2c1f8d",
+          "price": 500,
+          "title": "Beef with rice",
+        },
+        "phoneNumber": "08131928452",
+        "price": 500,
+        "quantity": 1,
+        "status": "cancelled",
+        "updatedAt": "2018-09-10T09:06:06.292Z",
+      }
+    }
+  />
+</Row>
+`;
+
+exports[`OrderRow component should match snapshot if status is pending 1`] = `
+<Row
+  header={false}
+  key="ecd2344b-9c49-4c78-8623-f7f3334e2f4e"
+>
+  <Cell
+    title="date"
+  >
+    9th Sep, 2018
+  </Cell>
+  <Cell
+    title="Meal"
+  >
+    Beef with rice
+  </Cell>
+  <Cell
+    title="Quantity"
+  >
+    1
+  </Cell>
+  <Cell
+    title="Price"
+  >
+    ₦
+    500.00
+  </Cell>
+  <Cell
+    title="Delivery address"
+  >
+    <p
+      className="deliveryAddress"
+    >
+      24 irepodun street, bodija, ibadan
+    </p>
+  </Cell>
+  <Cell
+    title="Status"
+  >
+    <span
+      style={
+        Object {
+          "color": "#f16800",
+        }
+      }
+    >
+      pending
+    </span>
+  </Cell>
+  <Cell
+    title=""
+  />
+  <ConfirmCancelOrderModal
+    handleClose={[Function]}
+    isOpen={false}
+    orderId="ecd2344b-9c49-4c78-8623-f7f3334e2f4e"
+  />
+  <UpdateOrderModal
+    handleClose={[Function]}
+    isOpen={false}
+    order={
+      Object {
+        "createdAt": "2018-09-10T09:05:53.650Z",
+        "deliveryAddress": "24 irepodun street, bodija, ibadan",
+        "id": "ecd2344b-9c49-4c78-8623-f7f3334e2f4e",
+        "meal": Object {
+          "caterer": Object {
+            "email": "mealbooker@gmail.com",
+            "fullName": "Otse Obande",
+            "id": "e20ac257-86cc-4a6f-a619-0249a201c475",
+            "role": "caterer",
+            "username": "otseobande",
+          },
+          "description": "Fried rice and beef",
+          "id": "dd72bc9b-beb0-49c6-be7b-20106e8aa3d0",
+          "img": "https://qph.ec.quoracdn.net/main-qimg-114f40fc7ad4f623ac45ebb33e2c1f8d",
+          "price": 500,
+          "title": "Beef with rice",
+        },
+        "phoneNumber": "08131928452",
+        "price": 500,
+        "quantity": 1,
+        "status": "pending",
+        "updatedAt": "2018-09-10T09:06:06.292Z",
+      }
+    }
+  />
+</Row>
+`;

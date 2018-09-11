@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home component should match snapshot 1`] = `
+<Fragment>
+  <div
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <div>
+      <Welcome />
+      <Connect(MenuPeep) />
+    </div>
+  </div>
+  <Footer />
+</Fragment>
+`;

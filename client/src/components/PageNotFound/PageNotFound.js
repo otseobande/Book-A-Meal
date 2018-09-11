@@ -2,7 +2,7 @@ import React from 'react';
 import lost from '../../../assets/img/lost.svg';
 import styles from './pagenotfound.scss';
 
-export default () => (
+const PageNotFound = () => (
   <div className={styles.background}>
     <div className={styles.notFound}>
       <img
@@ -15,3 +15,5 @@ export default () => (
     </div>
   </div>
 );
+
+export default PageNotFound;

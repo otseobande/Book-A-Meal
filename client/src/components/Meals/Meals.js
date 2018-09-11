@@ -6,9 +6,9 @@ import styles from './meals.scss';
 import AddMealModal from './AddMealModal/AddMealModal.js';
 
 /**
- * @class Meal
+ * @class Meals
  */
-class Meal extends Component {
+class Meals extends Component {
   static propTypes = {
     meals: PropTypes.arrayOf(PropTypes.object).isRequired,
     isFetching: PropTypes.bool.isRequired,
@@ -68,4 +68,4 @@ class Meal extends Component {
   }
 }
 
-export default Meal;
+export default Meals;

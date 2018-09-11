@@ -5,19 +5,18 @@ import AuthForm from '../AuthForm.js';
 import { loginSchema } from '../../../utils/validation-schemas/authInfoSchemas.js';
 import { login } from '../../../actions/auth.js';
 
-const loginFormConfig = {
+export const loginFormConfig = {
   mapPropsToValues: () => ({
     username: '',
     password: ''
   }),
   validationSchema: loginSchema,
-  handleSubmit: (values, { setSubmitting, props }) => {
+  handleSubmit: async (values, { setSubmitting, props }) => {
     setSubmitting(true);
     const { from } = props.location.state || { from: null };
 
-    props.dispatch(login(values, from)).then(() => {
-      setSubmitting(false);
-    });
+    await props.dispatch(login(values, from));
+    setSubmitting(false);
   }
 };
 

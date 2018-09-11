@@ -12,5 +12,16 @@ describe("InputField component", () => {
     );
 
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should match snapshot on error', () => {
+    const wrapper = shallow(<InputField
+      errors={{ testInput: 'name is required'}}
+      touched={{ testInput: true }}
+      name='testInput'
+      values={{ testInput: ''}}
+    />);
+
+    expect(wrapper).toMatchSnapshot();
   })
 })

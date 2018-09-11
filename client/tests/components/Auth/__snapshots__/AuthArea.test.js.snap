@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AuthArea component should match snapshot 1`] = `
+<div
+  className="background"
+>
+  <div
+    className="authArea"
+  >
+    <div
+      className="title"
+    >
+      <Link
+        replace={false}
+        to="/"
+      >
+        <img
+          alt="logo"
+          src="test-file-stub"
+        />
+        <h1
+          className="title"
+        >
+          Book-A-Meal
+        </h1>
+      </Link>
+    </div>
+    <div
+      className="authCard"
+    />
+  </div>
+</div>
+`;

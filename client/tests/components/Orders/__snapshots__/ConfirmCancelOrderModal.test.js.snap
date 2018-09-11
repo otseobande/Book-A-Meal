@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfirmCancelOrderModal component should match snapshot 1`] = `
+<Modal
+  ariaHideApp={true}
+  bodyOpenClassName="ReactModal__Body--open"
+  className="react-modal-body"
+  closeTimeoutMS={150}
+  isOpen={false}
+  onRequestClose={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  overlayClassName="react-modal-overlay"
+  parentSelector={[Function]}
+  portalClassName="ReactModalPortal"
+  shouldCloseOnEsc={true}
+  shouldCloseOnOverlayClick={true}
+  shouldFocusAfterRender={true}
+  shouldReturnFocusAfterClose={true}
+>
+  <div
+    className="body"
+  >
+    <p>
+      Are you sure you want to cancel order?
+    </p>
+    <button
+      className="noBtn"
+      onClick={
+        [MockFunction] {
+          "calls": Array [
+            Array [],
+          ],
+          "results": Array [
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+          ],
+        }
+      }
+    >
+      No
+    </button>
+    <button
+      className="yesBtn"
+      onClick={[Function]}
+    >
+      Yes
+    </button>
+  </div>
+</Modal>
+`;

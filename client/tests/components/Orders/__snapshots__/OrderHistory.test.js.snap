@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderHistory component should match snapshot if orders array is empty 1`] = `
+<div
+  className="container"
+>
+  <h2>
+    Order History
+  </h2>
+  <NoOrder />
+</div>
+`;
+
+exports[`OrderHistory component should match snapshot if orders array is not empty 1`] = `
+<div
+  className="container"
+>
+  <h2>
+    Order History
+  </h2>
+  <DisplayOrderHistoryTable
+    cancelOrder={[MockFunction]}
+    isFetching={false}
+    orders={
+      Array [
+        Object {},
+      ]
+    }
+    updateOrder={[MockFunction]}
+  />
+  <PaginationBoxView
+    activeClassName="active"
+    breakLabel={
+      <a
+        href=""
+      >
+        ...
+      </a>
+    }
+    containerClassName="pagination"
+    disableInitialCallback={false}
+    disabledClassName="disabled"
+    marginPagesDisplayed={2}
+    nextClassName="next"
+    nextLabel=">>"
+    onPageChange={[Function]}
+    pageCount={1}
+    pageRangeDisplayed={5}
+    previousClassName="previous"
+    previousLabel="<<"
+    subContainerClassName="pages pagination"
+  />
+  <div
+    className="paginationDetails"
+  >
+    Page 1 of 1
+  </div>
+</div>
+`;

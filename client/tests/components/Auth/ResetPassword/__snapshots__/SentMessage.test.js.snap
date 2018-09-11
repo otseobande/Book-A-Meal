@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SentMessage component should match snapshot 1`] = `
+<div
+  className="mailSent"
+>
+  <h4>
+    Reset password link would be sent to your email shortly.
+  </h4>
+  <p>
+    Go back to 
+    <Link
+      replace={false}
+      to="login"
+    >
+      Login
+    </Link>
+  </p>
+</div>
+`;

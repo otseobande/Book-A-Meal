@@ -67,15 +67,18 @@ class MenuDetailsForm extends Component {
   toggleMealInCategory = index => (meal) => {
     this.setState((state) => {
       const categories = state.categories.slice();
-      let { meals } = categories[index];
+      const { meals: categoryMeals } = categories[index];
+      let updatedMeals = [...categoryMeals];
 
-      if (meals.includes(meal)) {
-        meals = meals.filter(m => m.id !== meal.id);
+      const mealIsInCategory = categoryMeals.find(categoryMeal => categoryMeal.id === meal.id);
+
+      if (mealIsInCategory) {
+        updatedMeals = categoryMeals.filter(categoryMeal => categoryMeal.id !== meal.id);
       } else {
-        meals.push(meal);
+        updatedMeals.push(meal);
       }
 
-      categories[index].meals = meals;
+      categories[index].meals = updatedMeals;
       return {
         categories
       };
@@ -92,7 +95,7 @@ class MenuDetailsForm extends Component {
   handleSave = () => {
     const { date, categories } = this.state;
 
-    menuInfoSchema.validate({ date, categories }, { abortEarly: false })
+    return menuInfoSchema.validate({ date, categories }, { abortEarly: false })
       .then(() => {
         const modifiedCategories = categories.map((category) => {
           const modifiedCategory = {

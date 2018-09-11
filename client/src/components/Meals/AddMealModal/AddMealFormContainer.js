@@ -5,7 +5,7 @@ import MealForm from '../MealForm/MealForm.js';
 import { saveMeal } from '../../../actions/meals';
 import mealInfoSchema from '../../../utils/validation-schemas/mealInfoSchema.js';
 
-const AddMealFormConfig = {
+export const addMealFormConfig = {
   mapPropsToValues: () => ({
     title: '',
     description: '',
@@ -13,18 +13,17 @@ const AddMealFormConfig = {
     img: undefined
   }),
   validationSchema: mealInfoSchema,
-  handleSubmit: (values, { setSubmitting, props }) => {
+  handleSubmit: async (values, { setSubmitting, props }) => {
     setSubmitting(true);
 
-    props.dispatch(saveMeal(values))
-      .then(() => {
-        setSubmitting(false);
-        props.handleClose();
-      });
+    await props.dispatch(saveMeal(values));
+
+    setSubmitting(false);
+    props.handleClose();
   }
 };
 
 export default compose(
   connect(),
-  withFormik(AddMealFormConfig)
+  withFormik(addMealFormConfig)
 )(MealForm);

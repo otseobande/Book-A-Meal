@@ -1,0 +1,170 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MealForm component should match snapshot if values.img is not undefined 1`] = `
+<form
+  onSubmit={[MockFunction]}
+>
+  <h2>
+    Meal details
+  </h2>
+  <InputField
+    errors={Object {}}
+    handleBlur={[MockFunction]}
+    handleChange={[MockFunction]}
+    handleClose={[MockFunction]}
+    handleSubmit={[MockFunction]}
+    isSubmitting={false}
+    label="Title"
+    name="title"
+    setFieldValue={[MockFunction]}
+    touched={Object {}}
+    type="text"
+    values={
+      Object {
+        "img": "pic.jpg",
+      }
+    }
+  />
+  <InputField
+    errors={Object {}}
+    handleBlur={[MockFunction]}
+    handleChange={[MockFunction]}
+    handleClose={[MockFunction]}
+    handleSubmit={[MockFunction]}
+    isSubmitting={false}
+    label="Description"
+    name="description"
+    setFieldValue={[MockFunction]}
+    touched={Object {}}
+    type="text"
+    values={
+      Object {
+        "img": "pic.jpg",
+      }
+    }
+  />
+  <InputField
+    errors={Object {}}
+    handleBlur={[MockFunction]}
+    handleChange={[MockFunction]}
+    handleClose={[MockFunction]}
+    handleSubmit={[MockFunction]}
+    isSubmitting={false}
+    label="Price"
+    name="price"
+    setFieldValue={[MockFunction]}
+    touched={Object {}}
+    type="number"
+    values={
+      Object {
+        "img": "pic.jpg",
+      }
+    }
+  />
+  <label
+    className="label"
+    htmlFor="image"
+  >
+    Change image:
+    <input
+      className="fileInput"
+      name="image"
+      onBlur={[MockFunction]}
+      onChange={[Function]}
+      type="file"
+    />
+  </label>
+  <img
+    alt="meal"
+    src="pic.jpg"
+    width="80"
+  />
+  <MealFormButtons
+    handleClose={[MockFunction]}
+    handleSubmit={[MockFunction]}
+    isSubmitting={false}
+  />
+</form>
+`;
+
+exports[`MealForm component should match snapshot if values.img is undefined 1`] = `
+<form
+  onSubmit={[MockFunction]}
+>
+  <h2>
+    Meal details
+  </h2>
+  <InputField
+    errors={Object {}}
+    handleBlur={[MockFunction]}
+    handleChange={[MockFunction]}
+    handleClose={[MockFunction]}
+    handleSubmit={[MockFunction]}
+    isSubmitting={false}
+    label="Title"
+    name="title"
+    setFieldValue={[MockFunction]}
+    touched={Object {}}
+    type="text"
+    values={
+      Object {
+        "img": undefined,
+      }
+    }
+  />
+  <InputField
+    errors={Object {}}
+    handleBlur={[MockFunction]}
+    handleChange={[MockFunction]}
+    handleClose={[MockFunction]}
+    handleSubmit={[MockFunction]}
+    isSubmitting={false}
+    label="Description"
+    name="description"
+    setFieldValue={[MockFunction]}
+    touched={Object {}}
+    type="text"
+    values={
+      Object {
+        "img": undefined,
+      }
+    }
+  />
+  <InputField
+    errors={Object {}}
+    handleBlur={[MockFunction]}
+    handleChange={[MockFunction]}
+    handleClose={[MockFunction]}
+    handleSubmit={[MockFunction]}
+    isSubmitting={false}
+    label="Price"
+    name="price"
+    setFieldValue={[MockFunction]}
+    touched={Object {}}
+    type="number"
+    values={
+      Object {
+        "img": undefined,
+      }
+    }
+  />
+  <label
+    className="label"
+    htmlFor="image"
+  >
+    Upload image:
+    <input
+      className="fileInput"
+      name="image"
+      onBlur={[MockFunction]}
+      onChange={[Function]}
+      type="file"
+    />
+  </label>
+  <MealFormButtons
+    handleClose={[MockFunction]}
+    handleSubmit={[MockFunction]}
+    isSubmitting={false}
+  />
+</form>
+`;

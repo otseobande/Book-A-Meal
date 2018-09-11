@@ -1,0 +1,336 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar component should match snapshot if loggedIn props is false 1`] = `
+<NavBar
+  home={true}
+  loggedIn={false}
+  logout={[MockFunction]}
+  pathname="/test"
+  user={
+    Object {
+      "email": "otseobande@gmail.com",
+      "id": "test-id",
+      "name": "Otse Obande",
+      "username": "otseobande",
+    }
+  }
+>
+  <nav
+    className="nav home"
+  >
+    <div
+      className="titleArea"
+    >
+      <Link
+        className="title"
+        replace={false}
+        to="/"
+      >
+        <a
+          className="title"
+          href="/"
+          onClick={[Function]}
+        >
+          <img
+            alt="logo"
+            className="logo"
+            src="test-file-stub"
+            width="30"
+          />
+          <span
+            className="appName"
+          >
+            Book-A-Meal
+          </span>
+        </a>
+      </Link>
+      <button
+        className="navToggle"
+        href="#"
+        onClick={[Function]}
+      >
+        <span>
+          ☰
+        </span>
+      </button>
+    </div>
+    <div
+      className="navMenus"
+    >
+      <ul
+        className="navList"
+      >
+        <li>
+          <Link
+            replace={false}
+            to="/login"
+          >
+            <a
+              href="/login"
+              onClick={[Function]}
+            >
+              Login
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link
+            replace={false}
+            to="/signup"
+          >
+            <a
+              href="/signup"
+              onClick={[Function]}
+            >
+              Sign Up
+            </a>
+          </Link>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</NavBar>
+`;
+
+exports[`NavBar component should match snapshot if loggedIn props is true 1`] = `
+<NavBar
+  home={true}
+  loggedIn={true}
+  logout={[MockFunction]}
+  pathname="/test"
+  user={
+    Object {
+      "email": "otseobande@gmail.com",
+      "id": "test-id",
+      "name": "Otse Obande",
+      "username": "otseobande",
+    }
+  }
+>
+  <nav
+    className="nav home"
+  >
+    <div
+      className="titleArea"
+    >
+      <Link
+        className="title"
+        replace={false}
+        to="/"
+      >
+        <a
+          className="title"
+          href="/"
+          onClick={[Function]}
+        >
+          <img
+            alt="logo"
+            className="logo"
+            src="test-file-stub"
+            width="30"
+          />
+          <span
+            className="appName"
+          >
+            Book-A-Meal
+          </span>
+        </a>
+      </Link>
+      <button
+        className="navToggle"
+        href="#"
+        onClick={[Function]}
+      >
+        <span>
+          ☰
+        </span>
+      </button>
+    </div>
+    <div
+      className="navMenus"
+    >
+      <ul
+        className="navList"
+      >
+        <AuthLinks
+          pathname="/test"
+        >
+          <CatererLinks
+            pathname="/test"
+          >
+            <li>
+              <PageLink
+                pathname="/test"
+                text="Meals"
+                to="/manage-meals"
+              >
+                <Link
+                  className=""
+                  replace={false}
+                  to="/manage-meals"
+                >
+                  <a
+                    className=""
+                    href="/manage-meals"
+                    onClick={[Function]}
+                  >
+                    Meals
+                  </a>
+                </Link>
+              </PageLink>
+            </li>
+            <li>
+              <PageLink
+                pathname="/test"
+                text="Menus"
+                to="/manage-menus"
+              >
+                <Link
+                  className=""
+                  replace={false}
+                  to="/manage-menus"
+                >
+                  <a
+                    className=""
+                    href="/manage-menus"
+                    onClick={[Function]}
+                  >
+                    Menus
+                  </a>
+                </Link>
+              </PageLink>
+            </li>
+            <li>
+              <PageLink
+                pathname="/test"
+                text="Orders"
+                to="/manage-orders"
+              >
+                <Link
+                  className=""
+                  replace={false}
+                  to="/manage-orders"
+                >
+                  <a
+                    className=""
+                    href="/manage-orders"
+                    onClick={[Function]}
+                  >
+                    Orders
+                  </a>
+                </Link>
+              </PageLink>
+            </li>
+          </CatererLinks>
+        </AuthLinks>
+        <li>
+          <Link
+            onClick={[MockFunction]}
+            replace={false}
+            to="/"
+          >
+            <a
+              href="/"
+              onClick={[Function]}
+            >
+              Logout
+            </a>
+          </Link>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</NavBar>
+`;
+
+exports[`NavBar component should match snapshot if state.isNavMenuVisible is true 1`] = `
+<NavBar
+  home={true}
+  loggedIn={false}
+  logout={[MockFunction]}
+  pathname="/test"
+  user={
+    Object {
+      "email": "otseobande@gmail.com",
+      "id": "test-id",
+      "name": "Otse Obande",
+      "username": "otseobande",
+    }
+  }
+>
+  <nav
+    className="nav home"
+  >
+    <div
+      className="titleArea"
+    >
+      <Link
+        className="title"
+        replace={false}
+        to="/"
+      >
+        <a
+          className="title"
+          href="/"
+          onClick={[Function]}
+        >
+          <img
+            alt="logo"
+            className="logo"
+            src="test-file-stub"
+            width="30"
+          />
+          <span
+            className="appName"
+          >
+            Book-A-Meal
+          </span>
+        </a>
+      </Link>
+      <button
+        className="navToggle"
+        href="#"
+        onClick={[Function]}
+      >
+        <span>
+          ☰
+        </span>
+      </button>
+    </div>
+    <div
+      className="navMenus"
+    >
+      <ul
+        className="navList"
+      >
+        <li>
+          <Link
+            replace={false}
+            to="/login"
+          >
+            <a
+              href="/login"
+              onClick={[Function]}
+            >
+              Login
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link
+            replace={false}
+            to="/signup"
+          >
+            <a
+              href="/signup"
+              onClick={[Function]}
+            >
+              Sign Up
+            </a>
+          </Link>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</NavBar>
+`;

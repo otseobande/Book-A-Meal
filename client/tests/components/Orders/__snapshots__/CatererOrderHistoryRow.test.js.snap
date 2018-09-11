@@ -1,0 +1,318 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CatererOrderHistoryRow component should match snapshot if status is anything else 1`] = `
+<Fragment>
+  <Row
+    header={false}
+    key="ecd2344b-9c49-4c78-8623-f7f3334e2f4e"
+  >
+    <Cell
+      title="date"
+    >
+      9th Sep, 2018
+    </Cell>
+    <Cell
+      title="Meal"
+    >
+      Beef with rice
+    </Cell>
+    <Cell
+      title="Quantity"
+    >
+      1
+    </Cell>
+    <Cell
+      title="Price"
+    >
+      ₦
+      500.00
+    </Cell>
+    <Cell
+      title="Delivery address"
+    >
+      <p
+        className="deliveryAddress"
+      >
+        24 irepodun street, bodija, ibadan
+      </p>
+    </Cell>
+    <Cell
+      title="Status"
+    >
+      <span
+        style={
+          Object {
+            "color": "yellow",
+          }
+        }
+      >
+        anything else
+      </span>
+    </Cell>
+    <Cell
+      title=""
+    />
+  </Row>
+  <ConfirmMarkAsDeliveredModal
+    deliverOrder={[Function]}
+    handleClose={[Function]}
+    isOpen={false}
+    orderId="ecd2344b-9c49-4c78-8623-f7f3334e2f4e"
+  />
+</Fragment>
+`;
+
+exports[`CatererOrderHistoryRow component should match snapshot if status is cancelled 1`] = `
+<Fragment>
+  <Row
+    header={false}
+    key="ecd2344b-9c49-4c78-8623-f7f3334e2f4e"
+  >
+    <Cell
+      title="date"
+    >
+      9th Sep, 2018
+    </Cell>
+    <Cell
+      title="Meal"
+    >
+      Beef with rice
+    </Cell>
+    <Cell
+      title="Quantity"
+    >
+      1
+    </Cell>
+    <Cell
+      title="Price"
+    >
+      ₦
+      500.00
+    </Cell>
+    <Cell
+      title="Delivery address"
+    >
+      <p
+        className="deliveryAddress"
+      >
+        24 irepodun street, bodija, ibadan
+      </p>
+    </Cell>
+    <Cell
+      title="Status"
+    >
+      <span
+        style={
+          Object {
+            "color": "red",
+          }
+        }
+      >
+        cancelled
+      </span>
+    </Cell>
+    <Cell
+      title=""
+    />
+  </Row>
+  <ConfirmMarkAsDeliveredModal
+    deliverOrder={[Function]}
+    handleClose={[Function]}
+    isOpen={false}
+    orderId="ecd2344b-9c49-4c78-8623-f7f3334e2f4e"
+  />
+</Fragment>
+`;
+
+exports[`CatererOrderHistoryRow component should match snapshot if status is delivered 1`] = `
+<Fragment>
+  <Row
+    header={false}
+    key="ecd2344b-9c49-4c78-8623-f7f3334e2f4e"
+  >
+    <Cell
+      title="date"
+    >
+      9th Sep, 2018
+    </Cell>
+    <Cell
+      title="Meal"
+    >
+      Beef with rice
+    </Cell>
+    <Cell
+      title="Quantity"
+    >
+      1
+    </Cell>
+    <Cell
+      title="Price"
+    >
+      ₦
+      500.00
+    </Cell>
+    <Cell
+      title="Delivery address"
+    >
+      <p
+        className="deliveryAddress"
+      >
+        24 irepodun street, bodija, ibadan
+      </p>
+    </Cell>
+    <Cell
+      title="Status"
+    >
+      <span
+        style={
+          Object {
+            "color": "green",
+          }
+        }
+      >
+        delivered
+      </span>
+    </Cell>
+    <Cell
+      title=""
+    />
+  </Row>
+  <ConfirmMarkAsDeliveredModal
+    deliverOrder={[Function]}
+    handleClose={[Function]}
+    isOpen={false}
+    orderId="ecd2344b-9c49-4c78-8623-f7f3334e2f4e"
+  />
+</Fragment>
+`;
+
+exports[`CatererOrderHistoryRow component should match snapshot if status is not pending 1`] = `
+<Fragment>
+  <Row
+    header={false}
+    key="ecd2344b-9c49-4c78-8623-f7f3334e2f4e"
+  >
+    <Cell
+      title="date"
+    >
+      9th Sep, 2018
+    </Cell>
+    <Cell
+      title="Meal"
+    >
+      Beef with rice
+    </Cell>
+    <Cell
+      title="Quantity"
+    >
+      1
+    </Cell>
+    <Cell
+      title="Price"
+    >
+      ₦
+      500.00
+    </Cell>
+    <Cell
+      title="Delivery address"
+    >
+      <p
+        className="deliveryAddress"
+      >
+        24 irepodun street, bodija, ibadan
+      </p>
+    </Cell>
+    <Cell
+      title="Status"
+    >
+      <span
+        style={
+          Object {
+            "color": "red",
+          }
+        }
+      >
+        cancelled
+      </span>
+    </Cell>
+    <Cell
+      title=""
+    />
+  </Row>
+  <ConfirmMarkAsDeliveredModal
+    deliverOrder={[Function]}
+    handleClose={[Function]}
+    isOpen={false}
+    orderId="ecd2344b-9c49-4c78-8623-f7f3334e2f4e"
+  />
+</Fragment>
+`;
+
+exports[`CatererOrderHistoryRow component should match snapshot if status is pending 1`] = `
+<Fragment>
+  <Row
+    header={false}
+    key="ecd2344b-9c49-4c78-8623-f7f3334e2f4e"
+  >
+    <Cell
+      title="date"
+    >
+      9th Sep, 2018
+    </Cell>
+    <Cell
+      title="Meal"
+    >
+      Beef with rice
+    </Cell>
+    <Cell
+      title="Quantity"
+    >
+      1
+    </Cell>
+    <Cell
+      title="Price"
+    >
+      ₦
+      500.00
+    </Cell>
+    <Cell
+      title="Delivery address"
+    >
+      <p
+        className="deliveryAddress"
+      >
+        24 irepodun street, bodija, ibadan
+      </p>
+    </Cell>
+    <Cell
+      title="Status"
+    >
+      <span
+        style={
+          Object {
+            "color": "#f16800",
+          }
+        }
+      >
+        pending
+      </span>
+    </Cell>
+    <Cell
+      title=""
+    >
+      <button
+        className="deliverBtn"
+        onClick={[Function]}
+      >
+        Mark as delivered
+      </button>
+    </Cell>
+  </Row>
+  <ConfirmMarkAsDeliveredModal
+    deliverOrder={[Function]}
+    handleClose={[Function]}
+    isOpen={false}
+    orderId="ecd2344b-9c49-4c78-8623-f7f3334e2f4e"
+  />
+</Fragment>
+`;

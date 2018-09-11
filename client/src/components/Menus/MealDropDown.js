@@ -19,24 +19,24 @@ class MealDropDown extends Component {
 
   state = {
     droppedDown: false,
-    showModal: false
+    showOrderModal: false
   }
 
-  handleOpenModal = (event) => {
+  handleOpenOrderModal = (event) => {
     event.stopPropagation();
 
     this.setState({
-      showModal: true
+      showOrderModal: true
     });
   }
 
-  handleCloseModal = () => {
+  handleCloseOrderModal = () => {
     this.setState({
-      showModal: false
+      showOrderModal: false
     });
   }
 
-  dropDown = () => {
+  toggleDropDown = () => {
     this.setState(prevState => ({ droppedDown: !prevState.droppedDown }));
   }
 
@@ -53,11 +53,11 @@ class MealDropDown extends Component {
           aria-hidden
           role="button"
           className={styles.mealTitle}
-          onClick={this.dropDown}
+          onClick={this.toggleDropDown}
         >
           * {meal.title}
           <div className={styles.leftSection}>
-            <button className={styles.orderBtn} onClick={this.handleOpenModal}>Order</button>
+            <button className={styles.orderBtn} onClick={this.handleOpenOrderModal}>Order</button>
             <img className={styles.img} src={arrow} alt="down-arrow" />
           </div>
         </div>
@@ -68,8 +68,8 @@ class MealDropDown extends Component {
           />
         }
         <OrderModal
-          isOpen={this.state.showModal}
-          handleClose={this.handleCloseModal}
+          isOpen={this.state.showOrderModal}
+          handleClose={this.handleCloseOrderModal}
           meal={this.props.meal}
         />
       </div>

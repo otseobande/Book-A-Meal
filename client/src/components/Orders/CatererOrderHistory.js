@@ -36,7 +36,6 @@ class CatererOrderHistory extends Component {
 
   handleDeliver = (orderId) => {
     this.props.deliverOrder(orderId);
-    this.closeDeliverModal();
   }
 
   /**

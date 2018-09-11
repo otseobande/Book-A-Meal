@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MealCard component should match snapshot if action prop is edit 1`] = `
+<div
+  className="card"
+>
+  <div
+    className="image"
+  >
+    <img
+      alt="meal"
+      src="picture.jpg"
+    />
+  </div>
+  <div
+    className="body"
+  >
+    <div
+      className="title"
+    >
+      ewedu
+    </div>
+    <div
+      className="description"
+    >
+      adsasdfs
+    </div>
+  </div>
+  <div
+    className="footer"
+  >
+    <span>
+      <b>
+        Price
+      </b>
+      : ₦
+      3,900.00
+    </span>
+    <div
+      className="actions"
+    >
+      <button
+        className="iconBtn"
+        onClick={[Function]}
+      >
+        <img
+          alt="edit"
+          className="icon"
+          src="test-file-stub"
+          width="18"
+        />
+      </button>
+      <button
+        className="iconBtn"
+        onClick={[Function]}
+      >
+        <img
+          alt="delete"
+          className="icon"
+          src="test-file-stub"
+          width="18"
+        />
+      </button>
+      <ConfirmDeleteModal
+        confirmText="Are you sure you want to delete meal?"
+        handleClose={[Function]}
+        handleDelete={[Function]}
+        isOpen={false}
+      />
+      <EditMealModal
+        handleClose={[Function]}
+        isOpen={false}
+        meal={
+          Object {
+            "description": "adsasdfs",
+            "img": "picture.jpg",
+            "price": 3900,
+            "title": "ewedu",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`MealCard component should match snapshot if action prop is order 1`] = `
+<div
+  className="card"
+>
+  <div
+    className="image"
+  >
+    <img
+      alt="meal"
+      src="picture.jpg"
+    />
+  </div>
+  <div
+    className="body"
+  >
+    <div
+      className="title"
+    >
+      ewedu
+    </div>
+    <div
+      className="description"
+    >
+      adsasdfs
+    </div>
+  </div>
+  <div
+    className="footer"
+  >
+    <span>
+      <b>
+        Price
+      </b>
+      : ₦
+      3,900.00
+    </span>
+    <div
+      className="actions"
+    >
+      <button
+        className="orderBtn"
+        onClick={[Function]}
+      >
+        Order
+      </button>
+    </div>
+  </div>
+  <OrderModal
+    handleClose={[Function]}
+    isOpen={false}
+    meal={
+      Object {
+        "description": "adsasdfs",
+        "img": "picture.jpg",
+        "price": 3900,
+        "title": "ewedu",
+      }
+    }
+  />
+</div>
+`;

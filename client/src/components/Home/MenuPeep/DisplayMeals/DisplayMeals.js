@@ -55,8 +55,7 @@ class DisplayMeals extends Component {
         }
         </div>
         {
-          visibleMeals < meals.length
-          &&
+          visibleMeals < meals.length &&
           <LoadMoreButton handleClick={this.displayMore} />
         }
       </Fragment>;

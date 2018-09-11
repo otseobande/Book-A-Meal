@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageNotFound component should match snapshot 1`] = `
+<div
+  className="background"
+>
+  <div
+    className="notFound"
+  >
+    <img
+      alt="not found"
+      className="image"
+      src="test-file-stub"
+      width="150"
+    />
+    <p>
+      Page not found
+    </p>
+  </div>
+</div>
+`;

@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DisplayMeals component should match snapshot if logged is false 1`] = `
+<Fragment>
+  <div
+    className="meals"
+  >
+    <MealCard
+      action=""
+      className=""
+      deleteMeal={[Function]}
+      key="0"
+      meal={
+        Object {
+          "id": "test-id",
+          "title": "Rice and beans",
+        }
+      }
+    />
+  </div>
+</Fragment>
+`;
+
+exports[`DisplayMeals component should match snapshot if meals array is empty 1`] = `
+<div
+  className="noMenu"
+>
+  <NoMenu
+    loggedIn={true}
+  />
+</div>
+`;
+
+exports[`DisplayMeals component should match snapshot if meals array is not empty 1`] = `
+<Fragment>
+  <div
+    className="meals"
+  >
+    <MealCard
+      action="order"
+      className=""
+      deleteMeal={[Function]}
+      key="0"
+      meal={
+        Object {
+          "id": "test-id",
+          "title": "Rice and beans",
+        }
+      }
+    />
+  </div>
+</Fragment>
+`;
+
+exports[`DisplayMeals component should match snapshot if visibleMeals is less than meal length 1`] = `
+<Fragment>
+  <div
+    className="meals"
+  />
+  <LoadMore
+    handleClick={[Function]}
+  />
+</Fragment>
+`;

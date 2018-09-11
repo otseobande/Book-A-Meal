@@ -32,24 +32,6 @@ class OrderHistory extends Component {
     });
   }
 
-  colorStatus = (status) => {
-    let color;
-    switch (status) {
-      case 'pending':
-        color = '#f16800';
-        break;
-      case 'delivered':
-        color = 'green';
-        break;
-      case 'cancelled':
-        color = 'red';
-        break;
-      default:
-        color = 'yellow';
-    }
-
-    return (<span style={{ color }}>{status}</span>);
-  }
   /**
    * @returns {JSX} React JSX
    */

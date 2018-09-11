@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuDisplay component should match snapshot if menus array is empty 1`] = `
+<div
+  className="noMenu"
+>
+  <NoMenu />
+</div>
+`;
+
+exports[`MenuDisplay component should match snapshot if menus array is not empty 1`] = `
+<div
+  className="slideInUp"
+>
+  <MenuNavigator
+    goToNextMenu={[Function]}
+    goToPrevMenu={[Function]}
+    nextExists={[Function]}
+    prevExists={[Function]}
+  />
+  <div
+    className="menuBody"
+  >
+    <div
+      className="catererName"
+    >
+      otseobande
+      's menu
+    </div>
+    <MenuCategory
+      category={
+        Object {
+          "id": "a7166d2c-3af2-438e-ba70-aa02d1a72fb5",
+          "meals": Array [
+            Object {
+              "description": "Delicious Nigerian rice and Chicken Stew with Onions, Tomatoes, and Dijon Recipe",
+              "id": "e0a8e7f2-c27b-484e-9cd7-c4720e14b004",
+              "img": "https://www.simplyrecipes.com/wp-content/uploads/2009/04/chicken-stew-onions-tomatoes-dijon-horiz-a-1600.jpg",
+              "price": 1200,
+              "title": "Rice and stew",
+            },
+          ],
+          "title": "Appetizer",
+        }
+      }
+      key="a7166d2c-3af2-438e-ba70-aa02d1a72fb5"
+    />
+  </div>
+</div>
+`;

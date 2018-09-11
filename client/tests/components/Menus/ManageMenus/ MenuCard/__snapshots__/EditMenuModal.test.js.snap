@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditMenuModal component should match snapshot 1`] = `
+<Modal
+  ariaHideApp={true}
+  bodyOpenClassName="ReactModal__Body--open"
+  className="react-modal-body modal"
+  closeTimeoutMS={150}
+  isOpen={false}
+  onRequestClose={[MockFunction]}
+  overlayClassName="react-modal-overlay"
+  parentSelector={[Function]}
+  portalClassName="ReactModalPortal"
+  shouldCloseOnEsc={true}
+  shouldCloseOnOverlayClick={true}
+  shouldFocusAfterRender={true}
+  shouldReturnFocusAfterClose={true}
+>
+  <MenuDetailsForm
+    categories={Array []}
+    closeModal={[MockFunction]}
+    date=""
+    handleSave={[MockFunction]}
+    meals={Array []}
+  />
+</Modal>
+`;

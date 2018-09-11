@@ -5,7 +5,7 @@ import { signUpSchema } from '../../../utils/validation-schemas/authInfoSchemas.
 import AuthForm from '../AuthForm.js';
 import { signup } from '../../../actions/auth.js';
 
-const signUpFormConfig = {
+export const signUpFormConfig = {
   mapPropsToValues: () => ({
     fullName: '',
     username: '',
