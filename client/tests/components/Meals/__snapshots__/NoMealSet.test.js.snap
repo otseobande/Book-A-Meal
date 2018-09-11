@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoMealSet component should match snapshot 1`] = `
+<div
+  className="container"
+>
+  <img
+    alt="meal cooking"
+    src="test-file-stub"
+    width="150"
+  />
+  <p
+    className="text"
+  >
+    No meal has been added.
+  </p>
+</div>
+`;

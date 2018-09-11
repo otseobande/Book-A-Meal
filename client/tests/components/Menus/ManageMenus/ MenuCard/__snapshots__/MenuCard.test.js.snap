@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuCard component should match snapshot 1`] = `
+<div
+  className="card"
+>
+  <div
+    className="body"
+  >
+    <h4
+      className="dateHeader"
+    >
+      20th Jan, 2018
+      .
+    </h4>
+    <div
+      className="category"
+    >
+      <h4
+        className="categoryTitle"
+      >
+        - 
+        test
+      </h4>
+      <div
+        className="menuMeal"
+        key="test-id"
+      >
+        * 
+        party rice
+      </div>
+    </div>
+  </div>
+  <div
+    className="footer"
+  >
+    <div
+      className="actions"
+    >
+      <button
+        className="iconBtn"
+        onClick={[Function]}
+      >
+        <img
+          alt="edit"
+          className="icon"
+          src="test-file-stub"
+          width="18"
+        />
+      </button>
+      <button
+        className="iconBtn"
+        onClick={[Function]}
+      >
+        <img
+          alt="delete"
+          className="icon"
+          src="test-file-stub"
+          width="18"
+        />
+      </button>
+    </div>
+  </div>
+  <ConfirmDeleteModal
+    confirmText="Are you sure you want to delete?"
+    handleClose={[Function]}
+    handleDelete={[Function]}
+    isOpen={false}
+  />
+  <Connect(EditMenuModal)
+    categories={
+      Array [
+        Object {
+          "meals": Array [
+            Object {
+              "id": "test-id",
+              "img": "image.png",
+              "price": 300,
+              "title": "party rice",
+            },
+          ],
+          "title": "test",
+        },
+      ]
+    }
+    date="2018-01-20"
+    handleClose={[Function]}
+    isOpen={false}
+  />
+</div>
+`;

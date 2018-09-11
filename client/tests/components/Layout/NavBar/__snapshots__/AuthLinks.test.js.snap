@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AuthLinks component should match snapshot if role is customer 1`] = `
+<CustomerLinks
+  pathname="test"
+/>
+`;
+
+exports[`AuthLinks component should match snapshot if role is not customer 1`] = `
+<CatererLinks
+  pathname="test"
+/>
+`;

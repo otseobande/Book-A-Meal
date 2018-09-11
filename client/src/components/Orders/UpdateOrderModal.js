@@ -5,8 +5,6 @@ import OrderInfoForm from './OrderInfoForm.js';
 
 /**
  * @class UpdateOrderModal
- *
- * @param {String} orderId orderid
  */
 class UpdateOrderModal extends Component {
   static propTypes = {
@@ -40,13 +38,15 @@ class UpdateOrderModal extends Component {
   }
 
 
-  updateOrder = orderId => (orderDetails) => {
-    this.setState({ updateOrderRequestIsProcessing: true });
-    const { handleUpdateOrder } = this.props;
+  updateOrder = (orderDetails) => {
+    const { order, handleUpdateOrder } = this.props;
 
-    handleUpdateOrder(orderId, orderDetails)
+    this.setState({ updateOrderRequestIsProcessing: true });
+
+    return handleUpdateOrder(order.id, orderDetails)
       .then(this.handleClose);
   }
+
   /**
    * @return {JSX} React jsx
    */
@@ -68,7 +68,7 @@ class UpdateOrderModal extends Component {
           quantity={order.quantity}
           deliveryAddress={order.deliveryAddress}
           phoneNumber={order.phoneNumber}
-          handleSubmit={this.updateOrder(order.id)}
+          handleSubmit={this.updateOrder}
           proceedText="Confirm update"
           headerText="Confirm order information"
           isProcessing={this.state.updateOrderRequestIsProcessing}

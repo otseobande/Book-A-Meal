@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuPeep component should match snapshot if loading is false 1`] = `
+<div
+  className="peep"
+>
+  <div
+    className="heading"
+  >
+    <span>
+      ~~ 
+      <b>
+        Peep into today's menus
+      </b>
+       ~~
+    </span>
+  </div>
+  <DisplayMeals
+    loggedIn={true}
+    meals={Array []}
+  />
+</div>
+`;
+
+exports[`MenuPeep component should match snapshot if loading is true 1`] = `
+<div
+  className="peep"
+>
+  <div
+    className="heading"
+  >
+    <span>
+      ~~ 
+      <b>
+        Peep into today's menus
+      </b>
+       ~~
+    </span>
+  </div>
+  <Loader
+    message="loading..."
+    width={40}
+  />
+</div>
+`;

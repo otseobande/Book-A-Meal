@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DisplayMealCheckboxes component should match snapshot if error doesnt exists 1`] = `
+<div>
+  <b>
+    Meals:
+  </b>
+  <div
+    className="meals"
+  />
+</div>
+`;
+
+exports[`DisplayMealCheckboxes component should match snapshot if error exists 1`] = `
+<div>
+  <b>
+    Meals:
+  </b>
+  <div
+    className="meals error"
+  />
+  <div
+    className="mealsErrorMessage"
+  >
+    error
+  </div>
+</div>
+`;
+
+exports[`DisplayMealCheckboxes component should match snapshot if meals are present 1`] = `
+<div>
+  <b>
+    Meals:
+  </b>
+  <div
+    className="meals error"
+  >
+    <div
+      key="1"
+    >
+      <label
+        className="checkBoxLabel"
+      >
+        rice
+        <input
+          checked="checked"
+          onChange={[Function]}
+          type="checkbox"
+        />
+        <span
+          className="checkmark"
+        />
+      </label>
+    </div>
+    <div
+      key="2"
+    >
+      <label
+        className="checkBoxLabel"
+      >
+        beans
+        <input
+          checked=""
+          onChange={[Function]}
+          type="checkbox"
+        />
+        <span
+          className="checkmark"
+        />
+      </label>
+    </div>
+  </div>
+  <div
+    className="mealsErrorMessage"
+  >
+    error
+  </div>
+</div>
+`;

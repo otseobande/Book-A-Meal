@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DisplayMealCards component should match snapshot if meal array is empty 1`] = `
+<InfiniteScroll
+  dataLength={0}
+  disableBrowserPullToRefresh={true}
+  hasChildren={false}
+  hasMore={false}
+  initialLoad={false}
+  loader={
+    <Loader
+      message="loading..."
+      width={40}
+    />
+  }
+  next={[Function]}
+  pageStart={1}
+  pullDownToRefreshContent={
+    <h3>
+      Pull down to refresh
+    </h3>
+  }
+  pullDownToRefreshThreshold={100}
+  releaseToRefreshContent={
+    <h3>
+      Release to refresh
+    </h3>
+  }
+>
+  <NoMealSet />
+</InfiniteScroll>
+`;
+
+exports[`DisplayMealCards component should match snapshot if meal array is not empty 1`] = `
+<InfiniteScroll
+  dataLength={1}
+  disableBrowserPullToRefresh={true}
+  hasChildren={true}
+  hasMore={false}
+  initialLoad={false}
+  loader={
+    <Loader
+      message="loading..."
+      width={40}
+    />
+  }
+  next={[Function]}
+  pageStart={1}
+  pullDownToRefreshContent={
+    <h3>
+      Pull down to refresh
+    </h3>
+  }
+  pullDownToRefreshThreshold={100}
+  releaseToRefreshContent={
+    <h3>
+      Release to refresh
+    </h3>
+  }
+>
+  <div
+    className="grid"
+  >
+    <Connect(MealCard)
+      action="edit"
+      key="s324d-safd-da32"
+      meal={
+        Object {
+          "description": "great meal",
+          "id": "s324d-safd-da32",
+          "img": "picture.jpg",
+          "title": "Beans and bread",
+        }
+      }
+    />
+  </div>
+</InfiniteScroll>
+`;

@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderSuccessful component should match snapshot 1`] = `
+<div
+  style={
+    Object {
+      "textAlign": "center",
+    }
+  }
+>
+  <h3>
+    Order placed successfully
+  </h3>
+  <img
+    alt="check-mark"
+    src="test-file-stub"
+    width="50"
+  />
+  <p>
+    <Link
+      replace={false}
+      to="/orders"
+    >
+      View order history
+    </Link>
+  </p>
+  <p>
+    Please note that order update and cancellation can only be done 15 minutes after the order is placed.
+  </p>
+  <div
+    style={
+      Object {
+        "paddingTop": "35px",
+      }
+    }
+  >
+    <button
+      className="closeModalBtn"
+      onClick={[Function]}
+    >
+      close
+    </button>
+  </div>
+</div>
+`;

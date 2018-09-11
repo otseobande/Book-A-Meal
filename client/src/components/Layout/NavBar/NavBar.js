@@ -17,10 +17,12 @@ class NavBar extends Component {
     pathname: PropTypes.string.isRequired,
     user: PropTypes.objectOf(PropTypes.string).isRequired
   }
+
   static defaultProps = {
     home: false,
     loggedIn: false
   }
+
   state = {
     isNavMenuVisible: false
   }
@@ -28,7 +30,7 @@ class NavBar extends Component {
   /**
    * @returns {undefined} - undefined
    */
-  toggleMenu() {
+  toggleMenu = () => {
     this.setState({
       isNavMenuVisible: !this.state.isNavMenuVisible
     });
@@ -51,7 +53,7 @@ class NavBar extends Component {
             <img className={styles.logo} src={logo} width="30" alt="logo" />
             <span className={styles.appName}>Book-A-Meal</span>
           </Link>
-          <button className={styles.navToggle} onClick={() => this.toggleMenu()} href="#">
+          <button className={styles.navToggle} onClick={this.toggleMenu} href="#">
             { this.state.isNavMenuVisible ?
               <span style={{ fontSize: 29 }}>&times;</span> :
               <span>&#9776;</span>

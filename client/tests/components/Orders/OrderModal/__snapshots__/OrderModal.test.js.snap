@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderModal component should match snapshot if orderSuccessful is false 1`] = `
+<Modal
+  ariaHideApp={true}
+  bodyOpenClassName="ReactModal__Body--open"
+  className="react-modal-body"
+  closeTimeoutMS={150}
+  isOpen={false}
+  onRequestClose={[MockFunction]}
+  overlayClassName="react-modal-overlay"
+  parentSelector={[Function]}
+  portalClassName="ReactModalPortal"
+  shouldCloseOnEsc={true}
+  shouldCloseOnOverlayClick={true}
+  shouldFocusAfterRender={true}
+  shouldReturnFocusAfterClose={true}
+>
+  <OrderInfoForm
+    deliveryAddress=""
+    handleClose={[MockFunction]}
+    handleSubmit={[Function]}
+    headerText="Confirm order information"
+    isProcessing={false}
+    meal={
+      Object {
+        "description": "white rice and stew",
+        "id": "adf92d",
+        "img": "picture.png",
+        "price": 3289,
+        "title": "rice and stew",
+      }
+    }
+    phoneNumber=""
+    proceedText="Confirm order"
+    quantity={1}
+  />
+</Modal>
+`;
+
+exports[`OrderModal component should match snapshot if orderSuccessful is true 1`] = `
+<Modal
+  ariaHideApp={true}
+  bodyOpenClassName="ReactModal__Body--open"
+  className="react-modal-body"
+  closeTimeoutMS={150}
+  isOpen={false}
+  onRequestClose={[MockFunction]}
+  overlayClassName="react-modal-overlay"
+  parentSelector={[Function]}
+  portalClassName="ReactModalPortal"
+  shouldCloseOnEsc={true}
+  shouldCloseOnOverlayClick={true}
+  shouldFocusAfterRender={true}
+  shouldReturnFocusAfterClose={true}
+>
+  <OrderSuccessful
+    handleClose={[MockFunction]}
+  />
+</Modal>
+`;

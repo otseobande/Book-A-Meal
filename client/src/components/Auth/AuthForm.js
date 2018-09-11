@@ -123,7 +123,7 @@ class AuthForm extends Component {
 }
 
 AuthForm.propTypes = {
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
   values: PropTypes.objectOf(PropTypes.string),
   touched: PropTypes.objectOf(PropTypes.bool),
   errors: PropTypes.objectOf(PropTypes.string),
@@ -133,6 +133,7 @@ AuthForm.propTypes = {
 };
 
 AuthForm.defaultProps = {
+  type: 'signup',
   values: {},
   touched: {},
   errors: {},

@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DisplayOrderHistoryTable component should match snapshot if isFetching is false 1`] = `
+<div>
+  <Table>
+    <Row
+      header={true}
+    >
+      <Cell
+        title=""
+      >
+        Date
+      </Cell>
+      <Cell
+        title=""
+      >
+        Meal
+      </Cell>
+      <Cell
+        title=""
+      >
+        Qty
+      </Cell>
+      <Cell
+        title=""
+      >
+        Price
+      </Cell>
+      <Cell
+        title=""
+      >
+        Delivery address
+      </Cell>
+      <Cell
+        title=""
+      >
+        Status
+      </Cell>
+      <Cell
+        title=""
+      >
+        Actions
+      </Cell>
+    </Row>
+    <OrderRow
+      handleCancelOrder={[MockFunction]}
+      handleUpdateOrder={[MockFunction]}
+      key="32rdsfafase"
+      order={
+        Object {
+          "id": "32rdsfafase",
+        }
+      }
+    />
+  </Table>
+</div>
+`;
+
+exports[`DisplayOrderHistoryTable component should match snapshot if isFetching is true 1`] = `
+<div>
+  <Table>
+    <Row
+      header={true}
+    >
+      <Cell
+        title=""
+      >
+        Date
+      </Cell>
+      <Cell
+        title=""
+      >
+        Meal
+      </Cell>
+      <Cell
+        title=""
+      >
+        Qty
+      </Cell>
+      <Cell
+        title=""
+      >
+        Price
+      </Cell>
+      <Cell
+        title=""
+      >
+        Delivery address
+      </Cell>
+      <Cell
+        title=""
+      >
+        Status
+      </Cell>
+      <Cell
+        title=""
+      >
+        Actions
+      </Cell>
+    </Row>
+  </Table>
+  <Loader
+    message="loading..."
+    width={40}
+  />
+</div>
+`;

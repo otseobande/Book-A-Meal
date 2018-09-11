@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './meal-form.scss';
 
-const ModalButtons = ({ isSubmitting, handleSubmit, handleClose }) => (
+const MealFormButtons = ({ isSubmitting, handleSubmit, handleClose }) => (
   <div className={styles.btns}>
     <button
       type="button"
@@ -23,10 +23,10 @@ const ModalButtons = ({ isSubmitting, handleSubmit, handleClose }) => (
   </div>
 );
 
-ModalButtons.propTypes = {
+MealFormButtons.propTypes = {
   isSubmitting: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   handleClose: PropTypes.func.isRequired
 };
 
-export default ModalButtons;
+export default MealFormButtons;

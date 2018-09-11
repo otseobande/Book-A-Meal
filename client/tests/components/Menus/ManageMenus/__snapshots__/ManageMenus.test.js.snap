@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ManageMenus component should match snapshot if isFetching is true and menus array is not empty 1`] = `
+<div
+  className="container"
+>
+  <h2>
+    Manage Menus
+  </h2>
+  <button
+    className="successBtn"
+    onClick={[Function]}
+  >
+    Set Menu
+  </button>
+  <DisplayMenus
+    getMenus={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
+      }
+    }
+    menus={
+      Array [
+        Object {},
+      ]
+    }
+    pagination={
+      Object {
+        "currentPage": 1,
+      }
+    }
+  />
+  <Connect(SetMenuModal)
+    handleClose={[Function]}
+    isOpen={false}
+  />
+</div>
+`;
+
+exports[`ManageMenus component should match snapshot if isFetching is true or menus array is empty 1`] = `
+<div
+  className="container"
+>
+  <h2>
+    Manage Menus
+  </h2>
+  <button
+    className="successBtn"
+    onClick={[Function]}
+  >
+    Set Menu
+  </button>
+  <Loader
+    message="loading..."
+    width={40}
+  />
+  <Connect(SetMenuModal)
+    handleClose={[Function]}
+    isOpen={false}
+  />
+</div>
+`;

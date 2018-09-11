@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SetMenuCategory components should match snapshot 1`] = `
+<div
+  className="menuCategory"
+>
+  <CategoryTitleOptionsSelect
+    categoryCount={1}
+    categoryIndex={0}
+    errors={Object {}}
+    handleChange={[MockFunction]}
+    removeCategory={[MockFunction]}
+    selectedTitles={Array []}
+    value=""
+  />
+  <DisplayMealCheckboxes
+    categoryIndex={0}
+    categoryMealIds={Array []}
+    errors={Object {}}
+    meals={Array []}
+    toggleMealInCategory={[MockFunction]}
+  />
+</div>
+`;

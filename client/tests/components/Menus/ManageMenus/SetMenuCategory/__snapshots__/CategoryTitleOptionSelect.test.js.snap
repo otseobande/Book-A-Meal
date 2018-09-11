@@ -1,0 +1,159 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CategoryTitleOptionSelect component should match snapshot if category count greater than 1 and errors dont exist 1`] = `
+<label
+  className="label"
+  htmlFor="title"
+>
+  <div
+    className="title"
+  >
+    Category title:
+    <RemoveCategoryButton
+      handleRemoveCategory={[MockFunction]}
+    />
+  </div>
+  <select
+    className="input"
+    name="title"
+    onChange={[MockFunction]}
+    value=""
+  >
+    <option
+      disabled={true}
+      value=""
+    >
+      Select a category
+    </option>
+    <option
+      disabled=""
+      key="0"
+      value="Appetizer"
+    >
+      Appetizer
+    </option>
+    <option
+      disabled=""
+      key="1"
+      value="Breakfast"
+    >
+      Breakfast
+    </option>
+    <option
+      disabled=""
+      key="2"
+      value="Lunch"
+    >
+      Lunch
+    </option>
+    <option
+      disabled=""
+      key="3"
+      value="Dinner"
+    >
+      Dinner
+    </option>
+    <option
+      disabled=""
+      key="4"
+      value="Dessert"
+    >
+      Dessert
+    </option>
+    <option
+      disabled=""
+      key="5"
+      value="Drinks"
+    >
+      Drinks
+    </option>
+    <option
+      disabled=""
+      key="6"
+      value="Specials"
+    >
+      Specials
+    </option>
+  </select>
+</label>
+`;
+
+exports[`CategoryTitleOptionSelect component should match snapshot if category count is 1 and errors exist 1`] = `
+<label
+  className="label"
+  htmlFor="title"
+>
+  <div
+    className="title"
+  >
+    Category title:
+  </div>
+  <select
+    className="inputError"
+    name="title"
+    onChange={[MockFunction]}
+    value=""
+  >
+    <option
+      disabled={true}
+      value=""
+    >
+      Select a category
+    </option>
+    <option
+      disabled=""
+      key="0"
+      value="Appetizer"
+    >
+      Appetizer
+    </option>
+    <option
+      disabled=""
+      key="1"
+      value="Breakfast"
+    >
+      Breakfast
+    </option>
+    <option
+      disabled=""
+      key="2"
+      value="Lunch"
+    >
+      Lunch
+    </option>
+    <option
+      disabled=""
+      key="3"
+      value="Dinner"
+    >
+      Dinner
+    </option>
+    <option
+      disabled=""
+      key="4"
+      value="Dessert"
+    >
+      Dessert
+    </option>
+    <option
+      disabled=""
+      key="5"
+      value="Drinks"
+    >
+      Drinks
+    </option>
+    <option
+      disabled=""
+      key="6"
+      value="Specials"
+    >
+      Specials
+    </option>
+  </select>
+  <div
+    className="errorMessage"
+  >
+    error
+  </div>
+</label>
+`;

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RemoveCategoryButton should match snapshot 1`] = `
+<button
+  className="iconBtn right"
+  onClick={[Function]}
+>
+  <img
+    alt="cancel"
+    src="test-file-stub"
+    width="15"
+  />
+</button>
+`;

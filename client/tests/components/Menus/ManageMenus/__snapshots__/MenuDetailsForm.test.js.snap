@@ -1,0 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuDetailsForm component should match snapshot if date is not given in prop 1`] = `
+<div>
+  <h2>
+    Menu details
+  </h2>
+  <label
+    className="label"
+    htmlFor="date"
+  >
+    Date:
+    <input
+      className="input"
+      min="2018-09-11"
+      name="date"
+      onChange={[Function]}
+      type="date"
+      value=""
+    />
+  </label>
+  <SetMenuCategory
+    category={
+      Object {
+        "meals": Array [],
+        "title": "",
+      }
+    }
+    categoryCount={1}
+    categoryIndex={0}
+    errors={Object {}}
+    handleCategoryTitleChange={[Function]}
+    key="0"
+    meals={
+      Array [
+        Object {
+          "id": "test-id",
+          "img": "image.png",
+          "price": 300,
+          "title": "party rice",
+        },
+      ]
+    }
+    removeCategory={[Function]}
+    selectedTitles={
+      Array [
+        "",
+      ]
+    }
+    toggleMealInCategory={[Function]}
+  />
+  <div
+    className="btns"
+  >
+    <div>
+      <button
+        className="successBtn"
+        onClick={[Function]}
+      >
+        Save
+      </button>
+      <button
+        className="closeModalBtn"
+        onClick={[Function]}
+      >
+        Add category
+      </button>
+    </div>
+    <button
+      className="closeModalBtn"
+      onClick={[MockFunction]}
+    >
+      Cancel
+    </button>
+  </div>
+</div>
+`;
+
+exports[`MenuDetailsForm component should match snapshot if menus array is empty 1`] = `
+<div
+  className="noMeal"
+>
+  <p>
+    You have not added a meal yet. Please add a meal to create a menu
+  </p>
+  <Link
+    replace={false}
+    to="/manage-meals"
+  >
+    Go to meals
+  </Link>
+</div>
+`;
+
+exports[`MenuDetailsForm component should match snapshot if menus array is not empty 1`] = `
+<div>
+  <h2>
+    Menu details
+  </h2>
+  <h4>
+    11th Sep, 2018
+  </h4>
+  <SetMenuCategory
+    category={
+      Object {
+        "meals": Array [],
+        "title": "",
+      }
+    }
+    categoryCount={1}
+    categoryIndex={0}
+    errors={Object {}}
+    handleCategoryTitleChange={[Function]}
+    key="0"
+    meals={
+      Array [
+        Object {
+          "id": "test-id",
+          "img": "image.png",
+          "price": 300,
+          "title": "party rice",
+        },
+      ]
+    }
+    removeCategory={[Function]}
+    selectedTitles={
+      Array [
+        "",
+      ]
+    }
+    toggleMealInCategory={[Function]}
+  />
+  <div
+    className="btns"
+  >
+    <div>
+      <button
+        className="successBtn"
+        onClick={[Function]}
+      >
+        Save
+      </button>
+      <button
+        className="closeModalBtn"
+        onClick={[Function]}
+      >
+        Add category
+      </button>
+    </div>
+    <button
+      className="closeModalBtn"
+      onClick={[MockFunction]}
+    >
+      Cancel
+    </button>
+  </div>
+</div>
+`;

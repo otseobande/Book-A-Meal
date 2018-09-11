@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DisplayMenus component should match snapshot if menus are empty 1`] = `
+<InfiniteScroll
+  dataLength={0}
+  disableBrowserPullToRefresh={true}
+  hasChildren={false}
+  hasMore={false}
+  initialLoad={false}
+  loader={
+    <Loader
+      message="loading..."
+      width={40}
+    />
+  }
+  next={[Function]}
+  pageStart={1}
+  pullDownToRefreshContent={
+    <h3>
+      Pull down to refresh
+    </h3>
+  }
+  pullDownToRefreshThreshold={100}
+  releaseToRefreshContent={
+    <h3>
+      Release to refresh
+    </h3>
+  }
+>
+  <div
+    className="menus"
+  >
+    <NoMenu />
+  </div>
+</InfiniteScroll>
+`;
+
+exports[`DisplayMenus component should match snapshot if menus are not empty 1`] = `
+<InfiniteScroll
+  dataLength={4}
+  disableBrowserPullToRefresh={true}
+  hasChildren={true}
+  hasMore={false}
+  initialLoad={false}
+  loader={
+    <Loader
+      message="loading..."
+      width={40}
+    />
+  }
+  next={[Function]}
+  pageStart={1}
+  pullDownToRefreshContent={
+    <h3>
+      Pull down to refresh
+    </h3>
+  }
+  pullDownToRefreshThreshold={100}
+  releaseToRefreshContent={
+    <h3>
+      Release to refresh
+    </h3>
+  }
+>
+  <div
+    className="menus"
+  >
+    <Connect(MenuCard)
+      menu={1}
+    />
+    <Connect(MenuCard)
+      menu={2}
+    />
+    <Connect(MenuCard)
+      menu={3}
+    />
+    <Connect(MenuCard)
+      menu={4}
+    />
+  </div>
+</InfiniteScroll>
+`;

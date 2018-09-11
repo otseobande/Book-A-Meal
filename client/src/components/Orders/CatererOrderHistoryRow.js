@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import formatDateString from '../../utils/formatDateString.js';
 import localizeNum from '../../utils/localizeNum.js';
 import Cell from '../ResponsiveTable/Cell.js';
@@ -10,6 +11,19 @@ import styles from './order.scss';
  * @class CatererOrderHistoryRow
  */
 class CatererOrderHistoryRow extends Component {
+  static propTypes = {
+    handleDeliver: PropTypes.func.isRequired,
+    order: PropTypes.shape({
+      id: PropTypes.string,
+      quantity: PropTypes.number,
+      price: PropTypes.number,
+      status: PropTypes.string,
+      deliveryAddress: PropTypes.string,
+      phoneNumber: PropTypes.string,
+      meal: PropTypes.object
+    }).isRequired
+  }
+
   state = {
     deliverModalOpen: false
   }
@@ -65,7 +79,7 @@ class CatererOrderHistoryRow extends Component {
             {order.quantity}
           </Cell>
           <Cell title="Price">
-                        &#8358;{localizeNum(order.price)}
+            &#8358;{localizeNum(order.price)}
           </Cell>
           <Cell title="Delivery address">
             <p className={styles.deliveryAddress}>{order.deliveryAddress}</p>

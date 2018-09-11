@@ -32,7 +32,7 @@ class OrderModal extends Component {
   placeOrder = (orderDetails) => {
     this.setState({ orderRequestIsProcessing: true });
 
-    OrderService.placeOrder(orderDetails)
+    return OrderService.placeOrder(orderDetails)
       .then(() => {
         this.setState({
           orderRequestIsProcessing: false,
@@ -64,19 +64,19 @@ class OrderModal extends Component {
         closeTimeoutMS={150}
       >
         {
-      orderSuccessful ?
-        <OrderSuccessful
-          handleClose={handleClose}
-        /> :
-        <OrderInfoForm
-          meal={meal}
-          handleSubmit={this.placeOrder}
-          proceedText="Confirm order"
-          headerText="Confirm order information"
-          isProcessing={orderRequestIsProcessing}
-          handleClose={handleClose}
-        />
-      }
+          orderSuccessful ?
+            <OrderSuccessful
+              handleClose={handleClose}
+            /> :
+            <OrderInfoForm
+              meal={meal}
+              handleSubmit={this.placeOrder}
+              proceedText="Confirm order"
+              headerText="Confirm order information"
+              isProcessing={orderRequestIsProcessing}
+              handleClose={handleClose}
+            />
+        }
       </ReactModal>
     );
   }
