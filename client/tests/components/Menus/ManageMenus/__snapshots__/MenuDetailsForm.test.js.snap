@@ -12,7 +12,7 @@ exports[`MenuDetailsForm component should match snapshot if date is not given in
     Date:
     <input
       className="input"
-      min="2018-09-11"
+      min="2018-09-12"
       name="date"
       onChange={[Function]}
       type="date"

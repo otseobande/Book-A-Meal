@@ -3,12 +3,18 @@ module.exports = {
   collectCoverage: true,
   coverageDirectory: '<rootDir>/client-coverage',
   collectCoverageFrom: [
-    './client/src/**/*.{js,jsx}'
+    './client/src/**/*.{js,jsx}',
+    './test/e2e'
   ],
   coveragePathIgnorePatterns: [
     '<rootDir>/client/tests',
     '<rootDir>/client/tests/setup/',
-    '<rootDir>/client/tests/__mocks__/'
+    '<rootDir>/client/tests/__mocks__/',
+    '<rootDir>/test/e2e/'
+  ],
+  testMatch: [
+    '<rootDir>/client/tests/**/*.(spec|test).{js,jsx}',
+    '<rootDir>/client/src/**/?(*.)(spec|test).{js,jsx}'
   ],
   setupFiles: [
     'jest-localstorage-mock',
