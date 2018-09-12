@@ -5,5 +5,7 @@ server-coverage
 .nyc_output
 .env
 *.log
+logs
+**/reports
 **/dist
 **/build

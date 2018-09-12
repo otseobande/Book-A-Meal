@@ -24,6 +24,12 @@ services:
 
 before_install:
   - npm i -g npm@latest node-gyp node-pre-gyp codecov
+  - export CHROME_BIN=chrome-browser
+  - export display=:99.0
+  - sh -e /etc/init.d/xvfb start
+
+addons:
+  chrome: beta
 
 install:
   - npm install

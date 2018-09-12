@@ -32,6 +32,7 @@ module.exports = {
     const signupLinkSel = '#root > div.client-src-components-Auth-auth__background--soniN > div > div.client-src-components-Auth-auth__authCard--1xqVS > p > span > a';
 
     browser
+      .url('http://localhost:8000/login')
       .assert.visible(
         signupLinkSel,
         'Signup link should be visible'
@@ -67,6 +68,7 @@ module.exports = {
   },
   'Caterer should be able to login successfully': (browser) => {
     browser
+      .refresh()
       .setValue(
         '#root > div.client-src-components-Auth-auth__background--soniN > div > div.client-src-components-Auth-auth__authCard--1xqVS > form > label:nth-child(1) > input',
         'otseobande'
